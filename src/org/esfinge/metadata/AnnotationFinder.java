@@ -7,8 +7,7 @@ import java.util.List;
 
 public class AnnotationFinder {
 	
-	public static Annotation findAnnotation(AnnotatedElement element, 
-			Class<? extends Annotation> annotationClass){
+	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 		List<MetadataLocator> locators = getAplicableLocators(annotationClass);
 		
 		for(MetadataLocator locator : locators){
@@ -23,7 +22,7 @@ public class AnnotationFinder {
 	private static List<MetadataLocator> getAplicableLocators(Class<? extends Annotation> annotationClass){
 		List<MetadataLocator> list = new ArrayList<>();
 		list.add(new RegularLocator());
-		//list.add(new FatherLocator());
+		list.add(new FatherLocator());
 		//list.add(new ConventionLocator());
 		return list;
 	}

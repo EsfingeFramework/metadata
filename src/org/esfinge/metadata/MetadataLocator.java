@@ -5,10 +5,8 @@ import java.lang.reflect.AnnotatedElement;
 
 public interface MetadataLocator {
 	
-	public Annotation findMetadata(AnnotatedElement element, 
-			Class<? extends Annotation> annotationClass) throws MetadataLocationException;
+	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException;
 	
-	public boolean hasMetadata(AnnotatedElement element, 
-			Class<? extends Annotation> annotationClass);
+	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass);
 
 }
