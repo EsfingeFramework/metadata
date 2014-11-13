@@ -1,8 +1,6 @@
 package org.esfinge.metadata;
 import static org.junit.Assert.*;
-
 import java.lang.annotation.Annotation;
-
 import org.esfinge.metadata.AnnotationFinder;
 import org.junit.Test;
 
@@ -44,5 +42,11 @@ public class TestMetadataLocator {
 		assertTrue(an instanceof FindMeAttribute);
 	}
 
+	@Test
+	public void locateFatherMetadataClass() {
+		Annotation an = AnnotationFinder.findAnnotation(ForTest.class, FindMeClass.class);
+		assertNotNull(an);
+		assertTrue(an instanceof FindMeClass);
+	}
 
 }
