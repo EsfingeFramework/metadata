@@ -13,7 +13,7 @@ public class TestMetadataLocator {
 		@FindMeAttribute
 		public String attribute;
 		
-		//se o acesso for privado ou protegido, o metodo n encontra a anotação
+		//se o acesso for privado ou protegido, o metodo n encontra a anotaï¿½ï¿½o
 		
 		@FindMeMethod
 		public void method(){
@@ -45,6 +45,13 @@ public class TestMetadataLocator {
 	@Test
 	public void locateFatherMetadataClass() {
 		Annotation an = AnnotationFinder.findAnnotation(ForTest.class, FindMeClass.class);
+		assertNotNull(an);
+		assertTrue(an instanceof FindMeClass);
+	}
+	
+	@Test
+	public void locateAnotationOnMethodDefinedOnClass() throws NoSuchMethodException, SecurityException {
+		Annotation an = AnnotationFinder.findAnnotation(ForTest.class.getMethod("method", null), FindMeClass.class);
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeClass);
 	}
