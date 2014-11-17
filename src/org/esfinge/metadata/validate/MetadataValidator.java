@@ -52,7 +52,6 @@ public class MetadataValidator {
 			}else if(!an.annotationType().getPackage().getName().equals("java.lang.annotation")){
 				validateAnnotation(an, ae);
 			}
-			
 		}
 	}
 
