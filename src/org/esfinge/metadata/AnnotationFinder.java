@@ -5,26 +5,22 @@ import java.lang.reflect.AnnotatedElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.esfinge.metadata.locate.FatherLocator;
+import org.esfinge.metadata.locate.MetadataLocator;
+import org.esfinge.metadata.locate.RegularLocator;
+
 public class AnnotationFinder {
 	
 	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		List<MetadataLocator> locators = getAplicableLocators(annotationClass);
-		
-		for(MetadataLocator locator : locators){
-			Annotation an = locator.findMetadata(element, annotationClass);
-			if(an != null)
-				return an;
-		}
-		
-		return null;
+		MetadataLocator locator = getAplicableLocatorChain(annotationClass);
+		Annotation an = locator.findMetadata(element, annotationClass);
+		return an;
 	}
 	
-	private static List<MetadataLocator> getAplicableLocators(Class<? extends Annotation> annotationClass){
-		List<MetadataLocator> list = new ArrayList<>();
-		list.add(new RegularLocator());
-		list.add(new FatherLocator());
-		//list.add(new ConventionLocator());
-		return list;
+	private static MetadataLocator getAplicableLocatorChain(Class<? extends Annotation> annotationClass){
+		MetadataLocator locator = new FatherLocator();
+		locator.setNextLocator(new RegularLocator());
+		return locator;
 	}
 
 }
