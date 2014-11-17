@@ -4,7 +4,7 @@ public class MetadataLocationException extends RuntimeException {
 	
 	//adicionar na exceção qual o metadado e sua localização
 	public MetadataLocationException() {
-		System.out.println("Erro");
+
 	}
 
 }

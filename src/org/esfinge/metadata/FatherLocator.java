@@ -8,28 +8,43 @@ import java.lang.reflect.Method;
 public class FatherLocator implements MetadataLocator {
 
 	@Override
-	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {
-		
+	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
+			throws MetadataLocationException {
 		Annotation an = element.getAnnotation(annotationClass);
-		
-		if (an == null) {			
+
+		//Button-up Searching 
+		if (an == null && !searchOnEnclosingTypes(annotationClass, element)) {
 			if (element instanceof Method) {
-				System.out.println("method");
-				return findMetadata(((Method) element).getDeclaringClass(), annotationClass);
+				return findMetadata(((Method) element).getDeclaringClass(),
+						annotationClass);
 			} else if (element instanceof Field) {
-				System.out.println("field");
-				return findMetadata(((Field) element).getDeclaringClass(), annotationClass);
+				return findMetadata(((Field) element).getDeclaringClass(),
+						annotationClass);
 			} else if (element instanceof Class) {
-				System.out.println("class");
-				return findMetadata(((Class) element).getPackage(), annotationClass);
+				return findMetadata(((Class) element).getPackage(),
+						annotationClass);
 			}
 		}
+		
+		//Top-down Searching
+		else{
+			
+		}
+		
 		return an;
 	}
 
+	//if true, Button-up searching
+	public static boolean searchOnEnclosingTypes(Class<? extends Annotation> c, AnnotatedElement ae) {
+		if (ae.isAnnotationPresent(SearchOnEnclosingTypes.class)) 
+			return true;
+		
+		return false;
+	}
+
 	@Override
-	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
-		// TODO Auto-generated method stub
+	public boolean hasMetadata(AnnotatedElement element,
+			Class<? extends Annotation> annotationClass) {
 		return false;
 	}
 
