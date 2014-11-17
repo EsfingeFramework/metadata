@@ -49,7 +49,10 @@ public class MetadataValidator {
 				}
 				av.initialize(an);
 				av.validate(target, ae);
+			}else if(!an.annotationType().getPackage().getName().equals("java.lang.annotation")){
+				validateAnnotation(an, ae);
 			}
+			
 		}
 	}
 
