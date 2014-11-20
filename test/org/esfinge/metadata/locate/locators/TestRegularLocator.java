@@ -1,40 +1,16 @@
-package org.esfinge.metadata.locate;
+package org.esfinge.metadata.locate.locators;
 
 import static org.junit.Assert.*;
 import java.lang.annotation.Annotation;
 import org.esfinge.metadata.AnnotationFinder;
+import org.esfinge.metadata.locate.annotations.*;
+import org.esfinge.metadata.locate.classes.*;
 import org.junit.Test;
 
 public class TestRegularLocator {
-
-	@FindMeClass
-	public class ForTest {
-
-		@FindMeAttribute
-		public String attribute;
-
-		// se o acesso for privado ou protegido, o metodo n encontra a anotacao
-
-		@FindMeMethod
-		public void method() {
-
-		}
-	}
-
-	public class ForTestWithouAnnottations {
-		@FindMeMethod
-		public String attribute;
-
-		@FindMeClass
-		@FindMeAttribute
-		public void method() {
-
-		}
-	}
-	
 	@Test
 	public void doNotLocateRegularMetadataOnClass() {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestWithouAnnottations.class,
+		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocatorWithoutAnnotations.class,
 				FindMeClass.class);
 		assertNull(an);
 		assertFalse(an instanceof FindMeClass);
@@ -42,7 +18,7 @@ public class TestRegularLocator {
 	
 	@Test
 	public void doNotLocateRegularMetadataOnMethod() {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestWithouAnnottations.class,
+		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocatorWithoutAnnotations.class,
 				FindMeMethod.class);
 		assertNull(an);
 		assertFalse(an instanceof FindMeMethod);
@@ -50,7 +26,7 @@ public class TestRegularLocator {
 	
 	@Test
 	public void doNotLocateRegularMetadataOnField() {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestWithouAnnottations.class,
+		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocatorWithoutAnnotations.class,
 				FindMeAttribute.class);
 		assertNull(an);
 		assertFalse(an instanceof FindMeAttribute);
@@ -59,22 +35,22 @@ public class TestRegularLocator {
 	@Test
 	public void locateRegularMetadataOnMethod() throws NoSuchMethodException, SecurityException {
 		Annotation an = AnnotationFinder.findAnnotation(
-				ForTest.class.getMethod("method", null), FindMeMethod.class);
+				ForTestRegularLocator.class.getMethod("method", null), FindMeMethod.class);
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeMethod);
 	}
 
 	@Test
-	public void locateRegularMetadataOnField() throws NoSuchMethodException, SecurityException, NoSuchFieldException {
+	public void locateRegularMetadataOnField() throws NoSuchMethodException, NoSuchFieldException {
 		Annotation an = AnnotationFinder.findAnnotation(
-				ForTest.class.getField("attribute"), FindMeAttribute.class);
+				ForTestRegularLocator.class.getField("attribute"), FindMeAttribute.class);
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeAttribute);
 	}
 
 	@Test
 	public void locateRegularMetadataOnClass() {
-		Annotation an = AnnotationFinder.findAnnotation(ForTest.class,
+		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocator.class,
 				FindMeClass.class);
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeClass);
@@ -83,7 +59,7 @@ public class TestRegularLocator {
 	@Test
 	public void locateAnotationOnMethodDefinedOnClass()	throws NoSuchMethodException, SecurityException {
 		Annotation an = AnnotationFinder.findAnnotation(
-				ForTest.class.getMethod("method", null), FindMeClass.class);
+				ForTestRegularLocator.class.getMethod("method", null), FindMeClass.class);
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeClass);
 	}

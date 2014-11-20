@@ -11,8 +11,11 @@ public class RegularLocator extends MetadataLocator {
 	}
 
 	@Override
-	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
-		return element.getAnnotation(annotationClass);
+	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {
+		//if(element.getAnnotation(annotationClass) == null)
+		//	throw new MetadataLocationException("The annotated element " +element+ "was not found in "+annotationClass);
+		
+		return element.getAnnotation(annotationClass);				
 	}
 
 	@Override

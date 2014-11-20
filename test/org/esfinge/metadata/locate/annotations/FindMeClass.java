@@ -1,4 +1,4 @@
-package org.esfinge.metadata.locate;
+package org.esfinge.metadata.locate.annotations;
 import java.lang.annotation.RetentionPolicy;
 
 import java.lang.annotation.Retention;
