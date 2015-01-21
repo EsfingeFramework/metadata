@@ -55,13 +55,4 @@ public class TestRegularLocator {
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeClass);
 	}
-
-	@Test
-	public void locateAnotationOnMethodDefinedOnClass()	throws NoSuchMethodException, SecurityException {
-		Annotation an = AnnotationFinder.findAnnotation(
-				ForTestRegularLocator.class.getMethod("method", null), FindMeClass.class);
-		assertNotNull(an);
-		assertTrue(an instanceof FindMeClass);
-	}
-
 }

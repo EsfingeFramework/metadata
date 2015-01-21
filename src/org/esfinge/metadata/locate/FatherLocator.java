@@ -13,8 +13,9 @@ public class FatherLocator extends MetadataLocator {
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
 		
-		Annotation an = nextLocator.findMetadata(element, annotationClass);
-
+		//Annotation an = nextLocator.findMetadata(element, annotationClass);
+		Annotation an=null;
+		
 		//Button-up Searching 
 		if (an == null && !searchOnEnclosingTypes(annotationClass, element)) {
 			if (element instanceof Method) {

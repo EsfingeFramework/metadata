@@ -1,6 +1,5 @@
 package org.esfinge.metadata.locate.locators;
 
-
 import static org.junit.Assert.*;
 import java.lang.annotation.Annotation;
 import org.esfinge.metadata.AnnotationFinder;

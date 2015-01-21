@@ -28,7 +28,7 @@ public class MetadataValidator {
 					validateAnnotation(an, f);
 				}
 			}
-			//TODO: pegar construtores tambÃ©m....
+			//TODO: pegar construtores também....
 			
 			currentClazz = currentClazz.getSuperclass();
 		}

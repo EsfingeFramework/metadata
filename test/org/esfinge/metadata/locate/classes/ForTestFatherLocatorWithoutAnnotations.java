@@ -5,10 +5,10 @@ import org.esfinge.metadata.locate.annotations.FindMeClass;
 
 public class ForTestFatherLocatorWithoutAnnotations {
 	
-	@FindMeAttribute
+	//@FindMeAttribute
 	public String attribute;
 
-	@FindMeClass
+	//@FindMeClass
 	public void method() {
 
 	}
