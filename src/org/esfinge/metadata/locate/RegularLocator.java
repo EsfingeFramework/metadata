@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class RegularLocator extends MetadataLocator {
-
+	
 	@Override
 	public void setNextLocator(MetadataLocator locator) {
 		throw new UnsupportedOperationException(

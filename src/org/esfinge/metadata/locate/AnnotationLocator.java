@@ -22,8 +22,8 @@ public class AnnotationLocator extends MetadataLocator {
 	// Class<? extends Annotation> annotationClass -> (annotation)
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		
-//		Annotation an = nextLocator.findMetadata(element, annotationClass);
-		Annotation an =null;
+		Annotation an = nextLocator.findMetadata(element, annotationClass);
+		//Annotation an =null;
 
 		if (an == null) {
 			Annotation[] ans = element.getAnnotations();

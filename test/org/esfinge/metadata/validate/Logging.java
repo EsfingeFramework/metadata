@@ -5,8 +5,9 @@ import java.lang.annotation.RetentionPolicy;
 
 import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
 
+@NeedsToHave(Transaction.class)
 @SearchOnEnclosingElements
 @Retention(RetentionPolicy.RUNTIME)
-public @interface A {
+public @interface Logging {
 
 }

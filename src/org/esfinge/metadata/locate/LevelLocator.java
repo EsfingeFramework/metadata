@@ -7,14 +7,27 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
 
-public class FatherLocator extends MetadataLocator {
+public class LevelLocator extends MetadataLocator {
 
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
 		
-		//Annotation an = nextLocator.findMetadata(element, annotationClass);
 		Annotation an=null;
+		
+		//System.out.println(element.toString() + "-------------" + annotationClass.toString());
+		
+		Annotation[] ans = element.getAnnotations();
+		
+		for (Annotation a : ans) {			
+			Class<?> c = a.annotationType();			
+			if(c.equals(annotationClass)){			
+				return an = a;
+			}
+			//System.out.println("---> @" + c.getSimpleName());
+		}		
+		
+		an = nextLocator.findMetadata(element, annotationClass);		
 		
 		//Button-up Searching 
 		if (an == null && !searchOnEnclosingTypes(annotationClass, element)) {

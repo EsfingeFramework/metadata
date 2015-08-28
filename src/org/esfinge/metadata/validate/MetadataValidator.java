@@ -41,12 +41,15 @@ public class MetadataValidator {
 			if(an.annotationType().isAnnotationPresent(ToValidate.class)){
 				ToValidate tovalidate = an.annotationType().getAnnotation(ToValidate.class);
 				Class<? extends AnnotationValidator> validClazz = tovalidate.validationClass();
+				
 				AnnotationValidator av;
+				
 				try {
 					av = validClazz.newInstance();
 				} catch (Exception e) {
 					throw new RuntimeException("The AnnotationValidator needs to have an non-args public constructor",e);
 				}
+				
 				av.initialize(an);
 				av.validate(target, ae);
 				

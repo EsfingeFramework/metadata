@@ -4,9 +4,9 @@ import org.junit.Test;
 
 public class TestValidateNeedsToHave {
 	
-	@A
+	@Transaction
 	public class ValidateNeedsToHaveEnclosing{
-		@B
+		@Logging
 		public void method(){}
 	}
 	
@@ -17,7 +17,7 @@ public class TestValidateNeedsToHave {
 	
 	
 	public class ValidateNeedsToHaveNormal{
-		@A @B
+		@Transaction @Logging
 		public void method(){}
 	}
 	
@@ -27,7 +27,7 @@ public class TestValidateNeedsToHave {
 	}
 	
 	public class ValidateNeedsToHaveFail{
-		@B
+		@Logging
 		public void method(){}
 	}
 	
@@ -35,5 +35,4 @@ public class TestValidateNeedsToHave {
 	public void needsToHaveFail() throws AnnotationValidationException{
 		MetadataValidator.validateMetadataOn(ValidateNeedsToHaveFail.class);
 	}
-
 }

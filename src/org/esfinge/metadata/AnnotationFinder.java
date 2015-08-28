@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.esfinge.metadata.locate.AnnotationLocator;
-import org.esfinge.metadata.locate.FatherLocator;
+import org.esfinge.metadata.locate.LevelLocator;
 import org.esfinge.metadata.locate.MetadataLocator;
 import org.esfinge.metadata.locate.RegularLocator;
 
 public class AnnotationFinder {
 	
-
+	/*//Without chain of responsability
 	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 		
 		List<MetadataLocator> locators = getAplicableLocatorChain();
@@ -26,16 +26,15 @@ public class AnnotationFinder {
 	
 	private static List<MetadataLocator> getAplicableLocatorChain(){
 		List<MetadataLocator> list = new ArrayList<>();
-		list.add(new RegularLocator());
-		list.add(new FatherLocator());
-		list.add(new AnnotationLocator());
-		
+	    list.add(new RegularLocator());
+		list.add(new LevelLocator());
+		//list.add(new AnnotationLocator());		
 		return list;
 	}
 	
-	/*
+*/
 	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		/MetadataLocator locator = getAplicableLocatorChain();
+		MetadataLocator locator = getAplicableLocatorChain();
 		Annotation an = locator.findMetadata(element, annotationClass);
 		return an;			
 	}
@@ -43,11 +42,10 @@ public class AnnotationFinder {
 	private static MetadataLocator getAplicableLocatorChain(){
 		MetadataLocator locator = null;
 		
-		locator = new FatherLocator();
-		locator.setNextLocator(new AnnotationLocator());
-		locator.setNextLocator(new RegularLocator());
-		
+		locator = new LevelLocator();
+		locator.setNextLocator(new RegularLocator());		
+		//locator.setNextLocator(new AnnotationLocator());				
 		return locator;
 	}
-*/
+
 }
