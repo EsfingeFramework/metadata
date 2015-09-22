@@ -12,27 +12,6 @@ import org.esfinge.metadata.locate.RegularLocator;
 
 public class AnnotationFinder {
 	
-	/*//Without chain of responsability
-	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		
-		List<MetadataLocator> locators = getAplicableLocatorChain();
-
-		for(MetadataLocator locator: locators){
-			Annotation an = locator.findMetadata(element, annotationClass);
-			if(an != null) return an;
-		}
-		return null;			
-	}
-	
-	private static List<MetadataLocator> getAplicableLocatorChain(){
-		List<MetadataLocator> list = new ArrayList<>();
-	    list.add(new RegularLocator());
-		list.add(new LevelLocator());
-		//list.add(new AnnotationLocator());		
-		return list;
-	}
-	
-*/
 	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 		MetadataLocator locator = getAplicableLocatorChain();
 		Annotation an = locator.findMetadata(element, annotationClass);

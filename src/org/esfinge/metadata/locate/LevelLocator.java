@@ -13,9 +13,7 @@ public class LevelLocator extends MetadataLocator {
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
 		
-		Annotation an=null;
-		
-		//System.out.println(element.toString() + "-------------" + annotationClass.toString());
+		Annotation an=null;	
 		
 		Annotation[] ans = element.getAnnotations();
 		
@@ -24,7 +22,6 @@ public class LevelLocator extends MetadataLocator {
 			if(c.equals(annotationClass)){			
 				return an = a;
 			}
-			//System.out.println("---> @" + c.getSimpleName());
 		}		
 		
 		an = nextLocator.findMetadata(element, annotationClass);		
