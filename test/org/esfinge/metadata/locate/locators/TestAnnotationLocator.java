@@ -20,6 +20,15 @@ public class TestAnnotationLocator {
 		assertTrue(an instanceof FindMeClass);
 	}
 	
+	
+	@Test
+	public void locateRegularMetadataOnMethodLevel2() throws NoSuchMethodException {
+		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("method2", null),FindMeMethod.class);		
+		assertNotNull(an);
+		assertTrue(an instanceof FindMeMethod);
+	}
+	
+	/*
 	@Test
 	public void locateRegularMetadataOnMethod() throws NoSuchMethodException {
 		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("method", null),FindMeMethod.class);		
@@ -33,15 +42,6 @@ public class TestAnnotationLocator {
 		assertNotNull(an);
 		assertTrue(an instanceof FindMeAttribute);
 	}
-	
-	@Test
-	public void locateRegularMetadataOnMethodLevel2() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("method2", null),FindMeMethod.class);		
-		assertNotNull(an);
-		assertTrue(an instanceof FindMeMethod);
-	}
-	
-	
 
 	@Test
 	public void doNotLocateRegularMetadataOnClass() {
@@ -70,5 +70,5 @@ public class TestAnnotationLocator {
 		assertNull(an);
 		assertFalse(an instanceof FindMeMethod);
 	}	
-	
+	*/
 }

@@ -1,38 +1,42 @@
 package org.esfinge.metadata.validate;
 
+import org.esfinge.metadata.validate.AnnotationValidationException;
+import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
-public class TestValidateNeedsToHave {
+public class TestValidateNeedsToHave<Purchase> {
 	
+	//ValidateNeedsToHaveEnclosing
 	@Transaction
-	public class ValidateNeedsToHaveEnclosing{
+	public class OrderProcessing1{
 		@Logging
-		public void method(){}
+		public void registerPurchase(Purchase p){}
 	}
 	
 	@Test
 	public void needsToHaveEnclosing() throws AnnotationValidationException{
-		MetadataValidator.validateMetadataOn(ValidateNeedsToHaveEnclosing.class);
+		MetadataValidator.validateMetadataOn(OrderProcessing1.class);
 	}
 	
-	
-	public class ValidateNeedsToHaveNormal{
+	//ValidateNeedsToHaveNormal
+	public class OrderProcessing2{
 		@Transaction @Logging
-		public void method(){}
+		public void registerPurchase(Purchase p){}
 	}
 	
 	@Test
 	public void needsToHaveNormal() throws AnnotationValidationException{
-		MetadataValidator.validateMetadataOn(ValidateNeedsToHaveNormal.class);
+		MetadataValidator.validateMetadataOn(OrderProcessing2.class);
 	}
 	
-	public class ValidateNeedsToHaveFail{
+	//ValidateNeedsToHaveFail
+	public class OrderProcessing3{
 		@Logging
-		public void method(){}
+		public void registerPurchase(Purchase p){}
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
 	public void needsToHaveFail() throws AnnotationValidationException{
-		MetadataValidator.validateMetadataOn(ValidateNeedsToHaveFail.class);
+		MetadataValidator.validateMetadataOn(OrderProcessing3.class);
 	}
 }
