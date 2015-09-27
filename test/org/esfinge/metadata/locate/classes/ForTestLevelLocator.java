@@ -1,11 +1,11 @@
 package org.esfinge.metadata.locate.classes;
 
-import org.esfinge.metadata.locate.annotations.FindMeClass;
+import org.esfinge.metadata.locate.annotations.Transaction;
 import org.esfinge.metadata.locate.annotations.FindMeMethod;
 import org.esfinge.metadata.locate.annotations.FindMePackage;
 
 @FindMePackage
-@FindMeClass
+@Transaction
 public class ForTestLevelLocator {		
 		@FindMeMethod
 		@FindMePackage

@@ -11,9 +11,9 @@ public class TestRegularLocator {
 	@Test
 	public void doNotLocateRegularMetadataOnClass() {
 		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocatorWithoutAnnotations.class,
-				FindMeClass.class);
+				Transaction.class);
 		assertNull(an);
-		assertFalse(an instanceof FindMeClass);
+		assertFalse(an instanceof Transaction);
 	}
 	
 	@Test
@@ -51,8 +51,8 @@ public class TestRegularLocator {
 	@Test
 	public void locateRegularMetadataOnClass() {
 		Annotation an = AnnotationFinder.findAnnotation(ForTestRegularLocator.class,
-				FindMeClass.class);
+				Transaction.class);
 		assertNotNull(an);
-		assertTrue(an instanceof FindMeClass);
+		assertTrue(an instanceof Transaction);
 	}
 }

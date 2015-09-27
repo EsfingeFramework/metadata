@@ -7,25 +7,24 @@ import java.lang.annotation.Annotation;
 import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.locate.annotations.*;
 import org.esfinge.metadata.locate.classes.ForTestAnnotationLocator;
-import org.esfinge.metadata.locate.classes.ForTestAnnotationLocatorWithoutAnnotations;
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestAnnotationLocator {
 	
 	@Test
-	public void locateRegularMetadataOnClass() {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class,FindMeClass.class);		
+	public void locateRegularMetadataOnMethodLevel1() throws NoSuchMethodException {
+		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("blockUser", null),Transaction.class);		
 		assertNotNull(an);
-		assertTrue(an instanceof FindMeClass);
+		assertTrue(an instanceof Transaction);
 	}
 	
 	
 	@Test
-	public void locateRegularMetadataOnMethodLevel2() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("method2", null),FindMeMethod.class);		
+	public void locateRegularMetadataOnMethod() throws NoSuchMethodException {
+		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("changeAdress", null), Logging.class);		
 		assertNotNull(an);
-		assertTrue(an instanceof FindMeMethod);
+		assertTrue(an instanceof Logging);
 	}
 	
 	/*

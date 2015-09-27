@@ -3,7 +3,7 @@ package org.esfinge.metadata.locate.locators;
 import static org.junit.Assert.*;
 import java.lang.annotation.Annotation;
 import org.esfinge.metadata.AnnotationFinder;
-import org.esfinge.metadata.locate.annotations.FindMeClass;
+import org.esfinge.metadata.locate.annotations.Transaction;
 import org.esfinge.metadata.locate.annotations.FindMeMethod;
 import org.esfinge.metadata.locate.annotations.FindMePackage;
 import org.esfinge.metadata.locate.classes.*;
@@ -14,16 +14,16 @@ public class TestLevelLocator {
 
 	@Test 
 	public void locateAnotationOnMethodDefinedOnClass() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getMethod("method", null),	FindMeClass.class);
+		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getMethod("method", null),	Transaction.class);
 		assertNotNull(an);
-		assertTrue(an instanceof FindMeClass);
+		assertTrue(an instanceof Transaction);
 	}
 	
 	@Test 
 	public void locateAnotationOnFieldDefinedOnClass() throws NoSuchFieldException{
-		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getField("attribute"),	FindMeClass.class);
+		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getField("attribute"),	Transaction.class);
 		assertNotNull(an);
-		assertTrue(an instanceof FindMeClass);
+		assertTrue(an instanceof Transaction);
 	}
 	
 	@Test 
@@ -50,9 +50,9 @@ public class TestLevelLocator {
 
 	@Test 
 	public void doNotLocateAnotationOnFieldDefinedOnClass()throws NoSuchFieldException{
-		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocatorWithoutAnnotations.class.getField("attribute"),	FindMeClass.class);
+		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocatorWithoutAnnotations.class.getField("attribute"),	Transaction.class);
 		assertNull(an);
-		assertFalse(an instanceof FindMeClass);
+		assertFalse(an instanceof Transaction);
 	}
 
 

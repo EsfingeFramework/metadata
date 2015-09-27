@@ -14,7 +14,6 @@ public abstract class MetadataLocator {
 	public abstract Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException;
 
-	public abstract boolean hasMetadata(AnnotatedElement element,
-			Class<? extends Annotation> annotationClass);
+	public abstract boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass);
 
 }
