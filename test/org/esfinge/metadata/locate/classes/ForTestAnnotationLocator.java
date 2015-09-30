@@ -14,9 +14,8 @@ public class ForTestAnnotationLocator {
 	@FindMeMethodLevel1
 	public void registerPurchase() {
 
-	}
+	}	
 	
-	@Logging @Transaction
 	public void changeAdress(){
 		
 	}

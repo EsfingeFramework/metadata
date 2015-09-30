@@ -14,14 +14,14 @@ public class TestLevelLocator {
 
 	@Test 
 	public void locateAnotationOnMethodDefinedOnClass() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getMethod("method", null),	Transaction.class);
+		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getMethod("method", null), Transaction.class);
 		assertNotNull(an);
 		assertTrue(an instanceof Transaction);
 	}
 	
 	@Test 
 	public void locateAnotationOnFieldDefinedOnClass() throws NoSuchFieldException{
-		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getField("attribute"),	Transaction.class);
+		Annotation an = AnnotationFinder.findAnnotation(ForTestLevelLocator.class.getField("attribute"), Transaction.class);
 		assertNotNull(an);
 		assertTrue(an instanceof Transaction);
 	}
@@ -90,4 +90,5 @@ public class TestLevelLocator {
 		assertNull(an);
 		assertFalse(an instanceof FindMeMethod);
 	}
+	
 }

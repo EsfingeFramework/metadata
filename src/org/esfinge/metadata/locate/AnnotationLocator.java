@@ -2,10 +2,8 @@ package org.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.validate.needsToHave.SearchInsideAnnotations;
 
 public class AnnotationLocator extends MetadataLocator {
 
@@ -20,15 +18,15 @@ public class AnnotationLocator extends MetadataLocator {
 		
 		for (Annotation a : ans) {		
 			Class<?> c = a.annotationType();
-			if (searchOnEnclosingElements(c)) 				
+			if (searchInsideAnnotation(c)) 				
 				an = nextLocator.findMetadata(c, annotationClass);						
 		}		
 		return an;
 	}
 
-	// if true, Button-up searching
-	public static boolean searchOnEnclosingElements(Class<?> c) {
-		return c.isAnnotationPresent(SearchOnEnclosingElements.class);
+	// if true, searches inside other annotation
+	public static boolean searchInsideAnnotation(Class<?> c) {
+		return c.isAnnotationPresent(SearchInsideAnnotations.class);
 	}
 
 	@Override

@@ -16,11 +16,11 @@ public class LocatorsFactory {
 
 		if (element instanceof Method || element instanceof Class || element instanceof Field) {
 			locator = new LevelLocator();
-			// locator.setNextLocator(new AnnotationLocator());
+			locator.setNextLocator(new AnnotationLocator());
 			locator.setNextLocator(new RegularLocator());
 		}
 		else if (element instanceof Annotation || element instanceof Package) {
-			//locator = new AnnotationLocator();
+			locator = new AnnotationLocator();
 			locator.setNextLocator(new RegularLocator());
 		}
 

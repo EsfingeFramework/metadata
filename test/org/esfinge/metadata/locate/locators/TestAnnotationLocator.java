@@ -14,18 +14,11 @@ public class TestAnnotationLocator {
 	
 	@Test
 	public void locateRegularMetadataOnMethodLevel1() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("blockUser", null),Transaction.class);		
+		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("blockUser", null), Transaction.class);		
 		assertNotNull(an);
 		assertTrue(an instanceof Transaction);
 	}
 	
-	
-	@Test
-	public void locateRegularMetadataOnMethod() throws NoSuchMethodException {
-		Annotation an = AnnotationFinder.findAnnotation(ForTestAnnotationLocator.class.getMethod("changeAdress", null), Logging.class);		
-		assertNotNull(an);
-		assertTrue(an instanceof Logging);
-	}
 	
 	/*
 	@Test

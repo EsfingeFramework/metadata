@@ -63,29 +63,29 @@
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="9">    
+  <generalization id="9">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="10">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="11">    
     <bendpoint x="818" y="110"/>    
     <bendpoint x="818" y="9"/>    
     <bendpoint x="584" y="8"/>    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="10" name="nextLocator">        
+      <attribute id="12" name="nextLocator">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="11" minimum="0" maximum="1">        
+      <multiplicity id="13" minimum="0" maximum="1">        
         <position height="16" width="23" x="775" y="92"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="12">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

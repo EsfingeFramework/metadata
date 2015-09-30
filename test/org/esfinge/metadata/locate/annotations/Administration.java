@@ -5,12 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.validate.needsToHave.SearchInsideAnnotations;
+import org.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 
 @Transaction
 @SearchOnEnclosingElements
+@SearchInsideAnnotations
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
 public @interface Administration {
 
 }
