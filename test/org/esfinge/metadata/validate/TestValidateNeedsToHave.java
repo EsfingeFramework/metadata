@@ -5,6 +5,9 @@ import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
 public class TestValidateNeedsToHave<Purchase> {
+	public class OrderProcessing{		
+		public void registerPurchase(Purchase p){}
+	}
 	
 	//ValidateNeedsToHaveEnclosing
 	@Transaction
