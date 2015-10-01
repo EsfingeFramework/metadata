@@ -7,6 +7,9 @@ import org.esfinge.metadata.validate.needsToHave.CT07.OrderProcessing07;
 import org.esfinge.metadata.validate.needsToHave.CT11.OrderProcessing11;
 import org.esfinge.metadata.validate.needsToHave.CT14.OrderProcessing14;
 import org.esfinge.metadata.validate.needsToHave.CT18.OrderProcessing18;
+import org.esfinge.metadata.validate.needsToHave.CT21.OrderProcessing21;
+import org.esfinge.metadata.validate.needsToHave.CT25.OrderProcessing25;
+import org.esfinge.metadata.validate.needsToHave.CT28.OrderProcessing28;
 import org.junit.Test;
 
 public class TestValidateNeedsToHave<Purchase> {
@@ -131,7 +134,7 @@ public class TestValidateNeedsToHave<Purchase> {
 		MetadataValidator.validateMetadataOn(OrderProcessing11.class);
 	}
 
-	// CT12 
+	// CT12
 	public class OrderProcessing12 {
 		@Logging02
 		@Administration02
@@ -144,7 +147,7 @@ public class TestValidateNeedsToHave<Purchase> {
 		MetadataValidator.validateMetadataOn(OrderProcessing12.class);
 	}
 
-	// CT13 
+	// CT13
 	@Administration02
 	public class OrderProcessing13 {
 		@Logging01
@@ -162,7 +165,7 @@ public class TestValidateNeedsToHave<Purchase> {
 	public void CT14() throws AnnotationValidationException {
 		MetadataValidator.validateMetadataOn(OrderProcessing14.class);
 	}
-	
+
 	// CT15
 	public class OrderProcessing15 {
 		@Logging03
@@ -177,7 +180,8 @@ public class TestValidateNeedsToHave<Purchase> {
 
 	// CT16
 	public class OrderProcessing16 {
-		@Logging03 @Transaction03
+		@Logging03
+		@Transaction03
 		public void registerPurchase(Purchase p) {
 		}
 	}
@@ -201,11 +205,117 @@ public class TestValidateNeedsToHave<Purchase> {
 	}
 
 	// CT18
-	@Test (expected = AnnotationValidationException.class)
+	@Test(expected = AnnotationValidationException.class)
 	public void CT18() throws AnnotationValidationException {
 		MetadataValidator.validateMetadataOn(OrderProcessing18.class);
 	}
 
+	// CT19 - Problemas com annotationLocator
+	public class OrderProcessing19 {
+		@Logging03
+		@Administration03
+		public void registerPurchase(Purchase p) {
+		}
+	}
+
+	@Test
+	public void CT19() throws AnnotationValidationException {
+		MetadataValidator.validateMetadataOn(OrderProcessing19.class);
+	}
+
+	// CT20 
+	@Administration03
+	public class OrderProcessing20 {
+		@Logging03
+		public void registerPurchase(Purchase p) {
+		}
+	}
+
+	@Test(expected = AnnotationValidationException.class)
+	public void CT20() throws AnnotationValidationException {
+		MetadataValidator.validateMetadataOn(OrderProcessing20.class);
+	}
 	
+	// CT21 
+	@Test(expected = AnnotationValidationException.class)
+	public void CT21() throws AnnotationValidationException {
+		MetadataValidator.validateMetadataOn(OrderProcessing21.class);
+	}
+	
+	// CT22	
+	public class OrderProcessing22 {
+		@Logging04
+		public void registerPurchase(Purchase p) {
+		}
+	}
+
+	@Test(expected = AnnotationValidationException.class)
+	public void CT22() throws AnnotationValidationException {
+		MetadataValidator.validateMetadataOn(OrderProcessing22.class);
+	}
+	
+	// CT23
+		public class OrderProcessing23 {
+			@Logging04
+			@Transaction04
+			public void registerPurchase(Purchase p) {
+			}
+		}
+
+		@Test
+		public void CT23() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing23.class);
+		}
+
+		// CT24
+		@Transaction04
+		public class OrderProcessing24 {
+			@Logging04
+			public void registerPurchase(Purchase p) {
+			}
+		}
+
+		@Test(expected = AnnotationValidationException.class)
+		public void CT24() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing24.class);
+		}
+
+		// CT25
+		@Test(expected = AnnotationValidationException.class)
+		public void CT25() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing25.class);
+		}
+
+		// CT26 
+		public class OrderProcessing26 {
+			@Logging04
+			@Administration04
+			public void registerPurchase(Purchase p) {
+			}
+		}
+		
+		@Test(expected = AnnotationValidationException.class)
+		public void CT26() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing26.class);
+		}
+		
+		// CT27
+		@Administration04
+		public class OrderProcessing27 {
+			@Logging04			
+			public void registerPurchase(Purchase p) {
+			}
+		}
+		
+		@Test(expected = AnnotationValidationException.class)
+		public void CT27() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing27.class);
+		}
+		
+		// CT28		
+		@Test(expected = AnnotationValidationException.class)
+		public void CT28() throws AnnotationValidationException {
+			MetadataValidator.validateMetadataOn(OrderProcessing28.class);
+		}
 
 }

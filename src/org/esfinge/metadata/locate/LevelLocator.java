@@ -21,8 +21,7 @@ public class LevelLocator extends MetadataLocator {
 		for (Annotation a : ans) {			
 			Class<?> c = a.annotationType();			
 			if(c.equals(annotationClass)){					
-				if (SearchOnEnclosingElements(c)) {
-					System.out.println("subiu");
+				if (SearchOnEnclosingElements(c)) {					
 					return an = a;
 				}
 			}
@@ -30,7 +29,7 @@ public class LevelLocator extends MetadataLocator {
 		}	
 		
 		//Button-up Searching 
-		if(ans.length <= 0 || an==null) {
+		if(ans.length <= 0 || an==null) {			
 			if (element instanceof Method) {
 				return findMetadata(((Method) element).getDeclaringClass(),
 						annotationClass);

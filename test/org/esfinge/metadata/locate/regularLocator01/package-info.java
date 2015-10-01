@@ -1,0 +1,1 @@
+package org.esfinge.metadata.locate.regularLocator01;
