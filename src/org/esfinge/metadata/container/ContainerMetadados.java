@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class ContainerMetadados {
 	
-	//TODO: Debug test and add more functionalities
-	//Avoided filling it up too much (Properties only has boolean, no String or Integer, etc)
+	//TODO: Add more functionalities
+	//Avoided filling it up too much (Properties only has boolean, String and Integer)
 	//Because I don't yet know what will be necessary
 	
 	private Map<String, Properties> props = new HashMap<>();

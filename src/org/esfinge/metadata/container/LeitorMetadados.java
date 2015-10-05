@@ -11,23 +11,27 @@ public class LeitorMetadados {
 	public ContainerMetadados lerMetadados(Class<?> classToMap){
 		
 		ContainerMetadados container = new ContainerMetadados();
-	
-		
-		//ArrayList<Annotation> annotationsToCheck = new ArrayList<Annotation>();
-		//populating annotationsToCheck (specific to each case? Missing function?)
-		//Something like:
-		// annotationsToCheck = AnnotationFinder.findAnnotations(classToMap.class);
 
+		
+		/*try{
+			for(Annotation an:annotationsToCheck){
+				if(classToMap.isAnnotationPresent(an))
+				{
+					Properties p = new Properties(classToMap);
+					
+					container.addPropriedade(p);
+				}
+			}
+		}*/
 		
 		for(Method m:classToMap.getMethods())
 		{
 			try
-			{
+			{				
 				if(m.isAnnotationPresent(BooleanAnnotation.class))
 				{
 					Properties p = new Properties(m);
 					p.setHasAnnotation(true);
-					System.out.println(p.getName());
 					container.addPropriedade(p);
 				}
 			}catch (Exception e){
