@@ -4,10 +4,10 @@ import org.esfinge.metadata.locate.annotations.Transaction;
 import org.esfinge.metadata.locate.annotations.FindMeMethod;
 import org.esfinge.metadata.locate.annotations.FindMePackage;
 
-//@FindMePackage
+@FindMePackage
 @Transaction
+@FindMeMethod
 public class ForTestLevelLocator {		
-		//@FindMeMethod
 		//@FindMePackage
 		public String attribute;
 
