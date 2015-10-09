@@ -1,14 +1,16 @@
 package org.esfinge.metadata.locate.levelLocator;
 
 import static org.junit.Assert.*;
+
 import java.lang.annotation.Annotation;
+
 import org.esfinge.metadata.AnnotationFinder;
-import org.esfinge.metadata.locate.levelLocator.CT02.CT02;
-import org.esfinge.metadata.locate.levelLocator.CT02.CT05;
-import org.esfinge.metadata.locate.levelLocator.CT02.CT07;
-import org.esfinge.metadata.locate.levelLocator.CT04.CT04;
-import org.esfinge.metadata.locate.levelLocator.CT04.CT06;
-import org.esfinge.metadata.locate.levelLocator.CT04.CT08;
+import org.esfinge.metadata.locate.levelLocator.CTAux1.CT02;
+import org.esfinge.metadata.locate.levelLocator.CTAux1.CT05;
+import org.esfinge.metadata.locate.levelLocator.CTAux1.CT07;
+import org.esfinge.metadata.locate.levelLocator.CTAux2.CT04;
+import org.esfinge.metadata.locate.levelLocator.CTAux2.CT06;
+import org.esfinge.metadata.locate.levelLocator.CTAux2.CT08;
 import org.junit.Test;
 
 public class TestLevelLocator {	

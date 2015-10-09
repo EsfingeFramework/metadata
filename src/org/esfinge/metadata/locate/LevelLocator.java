@@ -25,9 +25,9 @@ public class LevelLocator extends MetadataLocator {
 		Annotation[] ans = element.getAnnotations();
 		
 		for (Annotation a : ans) {			
-			Class<?> c = a.annotationType();			
-			if(c.equals(annotationClass)){					
-				if (SearchOnEnclosingElements(c)) {					
+			Class<?extends Annotation> c = a.annotationType();							
+			if(c.equals(annotationClass)){								
+				if (SearchOnEnclosingElements(annotationClass) && SearchOnEnclosingElements(c)) {					
 					return an = a;
 				}
 			}
@@ -48,7 +48,7 @@ public class LevelLocator extends MetadataLocator {
 			}
 		}		
 		
-		if(an==null) an = nextLocator.findMetadata(OrginalElement, annotationClass);
+		if(an==null) an = nextLocator.findMetadata(OrginalElement, annotationClass);		
 		return an;
 	}
 	

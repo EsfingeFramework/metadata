@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
 import org.esfinge.metadata.locate.AnnotationLocator;
 import org.esfinge.metadata.locate.LevelLocator;
 import org.esfinge.metadata.locate.MetadataLocator;
@@ -16,11 +17,11 @@ public class LocatorsFactory {
 
 		if (element instanceof Method || element instanceof Class || element instanceof Field) {
 			locator = new LevelLocator();
-			locator.setNextLocator(new AnnotationLocator());
-			locator.setNextLocator(new RegularLocator());
+			locator.setNextLocator(new AnnotationLocator());				
+			locator.setNextLocator(new RegularLocator());			
 		}
-		else if (element instanceof Annotation || element instanceof Package) {
-			locator = new AnnotationLocator();
+		else if (element instanceof Annotation || element instanceof Package) {			
+			locator = new AnnotationLocator();					
 			locator.setNextLocator(new RegularLocator());
 		}
 

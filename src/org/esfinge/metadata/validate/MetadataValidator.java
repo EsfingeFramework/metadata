@@ -53,7 +53,7 @@ public class MetadataValidator {
 				av.initialize(an);
 				av.validate(target, ae);
 				
-			// exclui anotações prefedinidas do Java
+			// exclui anotações predefinidas do Java
 			}else if(!an.annotationType().getPackage().getName().equals("java.lang.annotation")){
 				validateAnnotation(an, ae);
 			}

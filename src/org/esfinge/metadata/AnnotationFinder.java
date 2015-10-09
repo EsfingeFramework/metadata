@@ -10,10 +10,10 @@ public class AnnotationFinder {
 	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 		LocatorsFactory factory = new LocatorsFactory();
 		Annotation an;
-		MetadataLocator locator;
+		MetadataLocator locatorsChain;
 		
-		locator = factory.createLocatorsChain(element, annotationClass);
-		an = locator.findMetadata(element, annotationClass);
+		locatorsChain = factory.createLocatorsChain(element, annotationClass);
+		an = locatorsChain.findMetadata(element, annotationClass);				
 		return an;			
 	}
 }
