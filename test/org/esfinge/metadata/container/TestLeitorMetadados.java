@@ -9,9 +9,12 @@ import org.junit.Test;
 public class TestLeitorMetadados {
 	
 	@Test
-	public void TestBoolean(){
+	public void TestBoolean() throws Exception{
 		LeitorMetadados lm = new LeitorMetadados();
-		ContainerMetadados container = lm.lerMetadados(DummyClass.class);
+		ContainerMetadados container;
+		container = lm.lerMetadadosDePara(DummyClass.class,ContainerMetadados.class,BooleanAnnotation.class);
+		
+			// TODO Auto-generated catch block
 		
 		assertTrue(container.getValue("FindMe").getHasAnnotation());
 	}
