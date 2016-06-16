@@ -3,51 +3,50 @@ package org.esfinge.metadata.locate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import org.esfinge.metadata.validate.needsToHave.SearchInsideAnnotations;
+import org.esfinge.metadata.annotation.SearchInsideAnnotations;
 
 public class AnnotationLocator extends MetadataLocator {
 	private int contador = 0;
-	private AnnotatedElement OrginalElement;
+	private AnnotatedElement OriginalElement;
 
 	@Override
-	// AnnotatedElement element -> (class, method, annotation, attribute...)
-	// Class<? extends Annotation> annotationClass -> (annotation)
 	public Annotation findMetadata(AnnotatedElement element,
 			Class<? extends Annotation> annotationClass) {
-
 		if (contador == 0)
-			OrginalElement = element;
+			OriginalElement = element;
 
-		contador++;
-
-		Annotation an = null;
-
-		Annotation[] ans = element.getAnnotations();
-		for (Annotation a : ans) {
-			// exclui anotações predefinidas do Java
-			if (!a.annotationType().getPackage().getName().equals("java.lang.annotation")) {
-
-				Class<?> c = a.annotationType();
-				// System.out.println(contador + " " + c.toString());
-
-				if (c.equals(annotationClass)) {
-					if (searchInsideAnnotation(annotationClass)
-							&& searchInsideAnnotation(c)) {
-						return an = a;
-					}
-				} else {
+		contador++;		
+		
+		Annotation an=null;	
+		
+		Annotation[] ans = element.getAnnotations();		
+		
+		for (Annotation a : ans) {			
+			Class<?>c = a.annotationType();							
+			// exclui anotações predefinidas do Java e do Esfinge Metadata
+			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) &&			
+				 searchInsideAnnotation(annotationClass) && searchInsideAnnotation(c)) {					
+				if (c.equals(annotationClass)) {											
+					an = a;
+					return an;
+				}else {
 					return findMetadata(c, annotationClass);
-				}
+				}							
 			}
-		}
+		}		
+		return an;	
+	}
 
-		if (an == null)
-			an = nextLocator.findMetadata(OrginalElement, annotationClass);
-		return an;
+	private boolean isEsfingeMetadataAnnotation(Class<?> c) {
+		return c.getPackage().getName().equals("org.esfinge.metadata.annotation");
+	}
+
+	private boolean isJavaAnnotation(Class<?> c) {
+		return c.getPackage().getName().equals("java.lang.annotation");
 	}
 
 	// if true, searches inside other annotation
-	public static boolean searchInsideAnnotation(Class<?> c) {
+	private boolean searchInsideAnnotation(Class<?> c) {
 		return c.isAnnotationPresent(SearchInsideAnnotations.class);
 	}
 

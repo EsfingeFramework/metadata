@@ -2,7 +2,6 @@ package org.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class RegularLocator extends MetadataLocator {

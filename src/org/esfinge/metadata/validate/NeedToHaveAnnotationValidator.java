@@ -4,6 +4,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
 import org.esfinge.metadata.AnnotationFinder;
+import org.esfinge.metadata.AnnotationValidationException;
+import org.esfinge.metadata.AnnotationValidator;
+import org.esfinge.metadata.annotation.NeedsToHave;
 
 public class NeedToHaveAnnotationValidator implements AnnotationValidator{
 	
@@ -17,7 +20,7 @@ public class NeedToHaveAnnotationValidator implements AnnotationValidator{
 
 	@Override
 	public void validate(Annotation toValidate, AnnotatedElement annotated) throws AnnotationValidationException {
-		if(AnnotationFinder.findAnnotation(annotated, whatItNeedsToHave) == null){
+		if(AnnotationFinder.findAnnotation(annotated, whatItNeedsToHave).size() <= 0){
 			throw new AnnotationValidationException("The annotation it needs to have is missing, whatItNeedsToHave = " + whatItNeedsToHave.toString());
 		}
 	}

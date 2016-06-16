@@ -1,6 +1,6 @@
 package org.esfinge.metadata.validate.needsToHave;
 
-import org.esfinge.metadata.validate.AnnotationValidationException;
+import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.esfinge.metadata.validate.needsToHave.CT04.OrderProcessing04;
 import org.esfinge.metadata.validate.needsToHave.CT07.OrderProcessing07;
@@ -58,10 +58,9 @@ public class TestValidateNeedsToHave<Purchase> {
 		MetadataValidator.validateMetadataOn(OrderProcessing04.class);
 	}
 
-	// CT05 - Problemas com annotationLocator
+	// CT05 
 	public class OrderProcessing05 {
-		@Logging01
-		@Administration01
+		@Logging01 @Administration01
 		public void registerPurchase(Purchase p) {
 		}
 	}
@@ -71,7 +70,7 @@ public class TestValidateNeedsToHave<Purchase> {
 		MetadataValidator.validateMetadataOn(OrderProcessing05.class);
 	}
 
-	// CT06 - Problemas com annotationLocator
+	// CT06 
 	@Administration01
 	public class OrderProcessing06 {
 		@Logging01
@@ -210,7 +209,7 @@ public class TestValidateNeedsToHave<Purchase> {
 		MetadataValidator.validateMetadataOn(OrderProcessing18.class);
 	}
 
-	// CT19 - Problemas com annotationLocator
+	// CT19 
 	public class OrderProcessing19 {
 		@Logging03
 		@Administration03
