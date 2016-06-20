@@ -4,5 +4,14 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-beanutils-1.9.2-bin/commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-beanutils-1.9.2-bin/commons-beanutils-1.9.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-beanutils-1.9.2-bin/commons-beanutils-1.9.2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-beanutils-1.9.2-bin/commons-beanutils-1.9.2-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-beanutils-1.9.2-bin/commons-beanutils-1.9.2-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-collections-3.2.2/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Desktop/commons-collections-3.2.2/commons-collections-3.2.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Downloads/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/marcoN/Downloads/commons-logging-1.2-bin/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
