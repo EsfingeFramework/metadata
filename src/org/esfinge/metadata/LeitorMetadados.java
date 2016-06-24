@@ -1,4 +1,4 @@
-package org.esfinge.metadata.container;
+package org.esfinge.metadata;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -16,6 +16,14 @@ import java.util.Map;
 
 import static org.esfinge.metadata.AnnotationFinder.findAnnotation;
 import org.esfinge.metadata.TestAnottation.Tabela;
+import org.esfinge.metadata.container.AnnotationProperty;
+import org.esfinge.metadata.container.AnnotationReadingConfig;
+import org.esfinge.metadata.container.AnnotationReadingProcessor;
+import org.esfinge.metadata.container.ContainsAnnotation;
+import org.esfinge.metadata.container.ElementName;
+import org.esfinge.metadata.container.ProcessFields;
+import org.esfinge.metadata.container.ProcessMethods;
+import org.esfinge.metadata.container.ReflectionReference;
 import org.esfinge.metadata.locate.MetadataLocator;
 import org.esfinge.metadata.locate.RegularLocator;
 import org.esfinge.metadata.validate.MetadataValidator;
@@ -35,10 +43,19 @@ public class LeitorMetadados {
 		Object container = containerClass.newInstance();
 				//Annotation field
 		for (Field field: containerClass.getDeclaredFields())
-		{			
-			containsAnnotation(classWithMetadata, container, field);
-			elementName(classWithMetadata, container, field);
-			reflectionReference(classWithMetadata, container, field);
+		{		
+			for(Annotation an : field.getAnnotations()){
+				Class<?> annotationClass = an.annotationType();
+				if(annotationClass.isAnnotationPresent(AnnotationReadingConfig.class)){
+					AnnotationReadingConfig arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
+					AnnotationReadingProcessor processor = arc.value().newInstance();
+					processor.initAnnotation(an, field);
+					processor.read(classWithMetadata, container);
+				}
+			}
+			//containsAnnotation(classWithMetadata, container, field);
+			//elementName(classWithMetadata, container, field);
+			//reflectionReference(classWithMetadata, container, field);
 			annotationProperty(classWithMetadata, container, field);
 			processMethods(classWithMetadata, container, field);
 			processFields(classWithMetadata, container, field);
@@ -47,6 +64,8 @@ public class LeitorMetadados {
 		
 		return (E) container;
 	}
+
+	
 
 	private void processMethods(Class<?> classWithMetadata, Object container, Field field)
 			throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
@@ -134,7 +153,8 @@ public class LeitorMetadados {
 
 		}
 	}
-
+	
+	//FOIIIIIIIIIIII
 	private void reflectionReference(Class<?> classWithMetadata, Object container, Field field)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(field.isAnnotationPresent(ReflectionReference.class))
@@ -142,7 +162,7 @@ public class LeitorMetadados {
 			setProperty(container, field.getName(),classWithMetadata);
 		}
 	}
-
+	//OKKKK
 	private void elementName(Class<?> classWithMetadata, Object container, Field field)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(field.isAnnotationPresent(ElementName.class))
@@ -150,7 +170,7 @@ public class LeitorMetadados {
 			setProperty(container,field.getName(),classWithMetadata.getName());
 		}
 	}
-
+	//OKKK
 	private void containsAnnotation(AnnotatedElement classWithMetadata, Object container, Field field)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(field.isAnnotationPresent(ContainsAnnotation.class)){
@@ -159,7 +179,5 @@ public class LeitorMetadados {
 			setProperty(container,field.getName(), classWithMetadata.isAnnotationPresent(annotationThatNeedToContains));
 			//field.set(container, classWithMetadata.isAnnotationPresent(annotationThatNeedToContains));
 		}
-	}	
-	
+} 	
 }
-

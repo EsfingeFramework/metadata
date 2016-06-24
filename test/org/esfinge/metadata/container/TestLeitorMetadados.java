@@ -2,8 +2,8 @@ package org.esfinge.metadata.container;
 
 import static org.junit.Assert.*;
 
+import org.esfinge.metadata.LeitorMetadados;
 import org.esfinge.metadata.container.ContainerMetadados;
-import org.esfinge.metadata.container.LeitorMetadados;
 import org.junit.Test;
 
 public class TestLeitorMetadados {
