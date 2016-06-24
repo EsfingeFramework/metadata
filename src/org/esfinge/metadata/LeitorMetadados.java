@@ -56,9 +56,9 @@ public class LeitorMetadados {
 			//containsAnnotation(classWithMetadata, container, field);
 			//elementName(classWithMetadata, container, field);
 			//reflectionReference(classWithMetadata, container, field);
-			annotationProperty(classWithMetadata, container, field);
-			processMethods(classWithMetadata, container, field);
-			processFields(classWithMetadata, container, field);
+			//annotationProperty(classWithMetadata, container, field);
+			//processMethods(classWithMetadata, container, field);
+			//processFields(classWithMetadata, container, field);
 
 		}
 		
@@ -66,23 +66,23 @@ public class LeitorMetadados {
 	}
 
 	
-
 	private void processMethods(Class<?> classWithMetadata, Object container, Field field)
 			throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(field.isAnnotationPresent(ProcessMethods.class)){
-			//codigo
+			//Construtor
 			List<Object> lista = new ArrayList<Object>();
 		    ParameterizedType fieldGenericType =(ParameterizedType)field.getGenericType();
+		    
+		    
 		    for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 				Class <?> outputClass =(Class<?>)t1;
-				
 				
 				for(Method m1: classWithMetadata.getDeclaredMethods()){
 					Object containerMethods = outputClass.newInstance();
 					for(Field outputField: outputClass.getDeclaredFields())
 					{
 						
-						containsAnnotation(m1, containerMethods, outputField);						
+						//containsAnnotation(m1, containerMethods, outputField);						
 						if(outputField.isAnnotationPresent(ElementName.class))
 						{
 							
@@ -131,7 +131,7 @@ public class LeitorMetadados {
 		}
 	}
 
-	
+	//Feitooo
 	private void annotationProperty(Class<?> classWithMetadata, Object container, Field field)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(field.isAnnotationPresent(AnnotationProperty.class))
@@ -179,5 +179,5 @@ public class LeitorMetadados {
 			setProperty(container,field.getName(), classWithMetadata.isAnnotationPresent(annotationThatNeedToContains));
 			//field.set(container, classWithMetadata.isAnnotationPresent(annotationThatNeedToContains));
 		}
-} 	
+	} 	
 }

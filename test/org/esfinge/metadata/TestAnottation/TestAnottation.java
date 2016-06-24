@@ -132,7 +132,6 @@ public class TestAnottation {
 					
 					int sun=0;
 					for(MethodContainer m1 : container.getLista()){
-						System.out.println(m1.isToProcess());
 						if(m1.isToProcess())
 						{
 							sun++;
@@ -174,7 +173,7 @@ public class TestAnottation {
 					
 					int sun = 0;
 					for(MethodContainer m1 : container.getListaMetods()){
-
+						//System.out.println(m1.isToProcess());
 						if(m1.isToProcess())
 						{
 							sun++;
@@ -184,8 +183,7 @@ public class TestAnottation {
 					
 					int sun2 = 0;
 					for(FieldContainer m1 : container.getListaFields()){
-
-						if(m1.isToProcess())
+												if(m1.isToProcess())
 						{
 							sun2++;
 						}
