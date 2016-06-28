@@ -3,9 +3,10 @@ package org.esfinge.metadata.container.reading;
 import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 
+import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainsAnnotation;
@@ -22,14 +23,14 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 	}
 
 	@Override
-	public void read(Class<?> classWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container) throws AnnotationReadingException {
 		try {
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
-			setProperty(container, containerAnnotatedField, classWithMetadata.isAnnotationPresent(annotationThatNeedToContains));
+			setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
 			
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name",e);
+			throw new AnnotationReadingException("Cannot read and record the container annotated field",e);
 		}
 	}
 

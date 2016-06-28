@@ -28,6 +28,15 @@ public class AnnotationFinder {
 		return annotations;			
 	}
 	
+	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
+		if(findAnnotation(element, annotationClass).isEmpty())
+		{
+			return false;
+		}
+		return true;		
+	}
+	
+	
 	private static List<MetadataLocator> getAplicableLocatorChain(){
 		List<MetadataLocator> list = new ArrayList<>();
 		list.add(new LevelLocator());

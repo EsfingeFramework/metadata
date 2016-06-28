@@ -3,20 +3,19 @@ package org.esfinge.metadata.container.reading;
 import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.ContainsAnnotation;
 
 public class AnnotationPropertyReadingProcessor implements AnnotationReadingProcessor {
 	
 	private Field fieldAnnoted;
 	private Class<? extends Annotation> annotationThatNeedToContains;
-	private String value;
 	private AnnotationProperty  annot;
 
 	@Override
@@ -24,16 +23,16 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 		
 		fieldAnnoted = field;
 		annot =(AnnotationProperty)an;		
-		value = annot.property();
+		annot.property();
 		annotationThatNeedToContains = annot.annotation();
 	}
 
 	@Override
-	public void read(Class<?> classWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container) throws AnnotationReadingException {
 		try {
-			if (classWithMetadata.isAnnotationPresent(annotationThatNeedToContains)){
+			if (AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains)){
 				
-				Annotation annotation = classWithMetadata.getAnnotation(annotationThatNeedToContains);
+				Annotation annotation = elementWithMetadata.getAnnotation(annotationThatNeedToContains);
 				
 				for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){
 					if(methodAnotation.getName().equals(annot.property())){
