@@ -2,7 +2,7 @@ package org.esfinge.metadata.container;
 
 import static org.junit.Assert.*;
 
-import org.esfinge.metadata.LeitorMetadados;
+import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.ContainerMetadados;
 import org.junit.Test;
 

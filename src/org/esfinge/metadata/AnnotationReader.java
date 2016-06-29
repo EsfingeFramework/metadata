@@ -34,22 +34,17 @@ import static org.apache.commons.beanutils.PropertyUtils.*;
 import static org.esfinge.metadata.AnnotationFinder.findAnnotation;
 //import java.util.ArrayList;
 
-public class LeitorMetadados {
+public class AnnotationReader {
 
 	// To be modified as necessary. Currently only checks if BooleanAnnotation
 	// is present on methods.
 	// TODO:Checking on classes and parameters
 
-	public <E> E metadataReader(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
+	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
 
 		Object container = containerClass.newInstance();
 
-		for (Field field : containerClass.getDeclaredFields()) {
-			
-			boolean annot ;
-			annot = AnnotationFinder.existAnnotation(field, ContainsAnnotation.class);
-			System.out.println(annot);
-			
+		for (Field field : containerClass.getDeclaredFields()) {			
 			for (Annotation an : field.getAnnotations()) {
 				Class<?> annotationClass = an.annotationType();
 				if (AnnotationFinder.existAnnotation(annotationClass, AnnotationReadingConfig.class))

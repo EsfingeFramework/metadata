@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.esfinge.metadata.LeitorMetadados;
+import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.locate.MetadataLocator;
 import org.junit.Test;
 
@@ -14,8 +14,8 @@ public class TestAnottation {
 	@Test
 	public void CT01() throws Exception {
 		
-		LeitorMetadados lm = new LeitorMetadados();		
-		CT1Container container = (CT1Container)lm.metadataReader(Dominio.class , CT1Container.class);
+		AnnotationReader lm = new AnnotationReader();		
+		CT1Container container = (CT1Container)lm.readingAnnotationsTo(Dominio.class , CT1Container.class);
 		assertTrue(container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -27,8 +27,8 @@ public class TestAnottation {
 	@Test
 	public void CT02() throws Exception {
 		
-		LeitorMetadados lm = new LeitorMetadados();		
-		CT2Container container = (CT2Container)lm.metadataReader(Dominio.class , CT2Container.class);
+		AnnotationReader lm = new AnnotationReader();		
+		CT2Container container = (CT2Container)lm.readingAnnotationsTo(Dominio.class , CT2Container.class);
 		assertTrue(!container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -39,8 +39,8 @@ public class TestAnottation {
 	@Test
 	public void CT03() throws Exception {
 		
-		LeitorMetadados lm = new LeitorMetadados();		
-		CT3Container container = (CT3Container)lm.metadataReader(Dominio.class , CT3Container.class);
+		AnnotationReader lm = new AnnotationReader();		
+		CT3Container container = (CT3Container)lm.readingAnnotationsTo(Dominio.class , CT3Container.class);
 		assertTrue(container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
 		assertNull(container.getNomeClasse());
@@ -52,8 +52,8 @@ public class TestAnottation {
 	@Test
 	public void CT04() throws Exception {
 		
-		LeitorMetadados lm = new LeitorMetadados();		
-		CT4Container container = (CT4Container)lm.metadataReader(Dominio.class , CT4Container.class);
+		AnnotationReader lm = new AnnotationReader();		
+		CT4Container container = (CT4Container)lm.readingAnnotationsTo(Dominio.class , CT4Container.class);
 		assertTrue(container.isEntidade());
 		assertNull(container.getClassValue());
 		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -64,8 +64,8 @@ public class TestAnottation {
 		@Test
 		public void CT05() throws Exception {
 			
-			LeitorMetadados lm = new LeitorMetadados();		
-			CT5Container container = (CT5Container)lm.metadataReader(Dominio.class , CT5Container.class);
+			AnnotationReader lm = new AnnotationReader();		
+			CT5Container container = (CT5Container)lm.readingAnnotationsTo(Dominio.class , CT5Container.class);
 			assertTrue(container.isEntidade());
 			assertEquals(Dominio.class, container.getClassValue());
 			assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -77,8 +77,8 @@ public class TestAnottation {
 				@Test
 				public void CT06() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT6Container container = (CT6Container)lm.metadataReader(Dominio.class , CT6Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT6Container container = (CT6Container)lm.readingAnnotationsTo(Dominio.class , CT6Container.class);
 					assertTrue(container.isEntidade());
 
 				}
@@ -86,46 +86,46 @@ public class TestAnottation {
 				@Test
 				public void CT07() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT7Container container = (CT7Container)lm.metadataReader(Dominio.class , CT7Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT7Container container = (CT7Container)lm.readingAnnotationsTo(Dominio.class , CT7Container.class);
 					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
 
 				}
 				@Test
 				public void CT08() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT8Container container = (CT8Container)lm.metadataReader(Dominio.class , CT8Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT8Container container = (CT8Container)lm.readingAnnotationsTo(Dominio.class , CT8Container.class);
 					assertEquals(Dominio.class, container.getClassValue());
 
 				}
 				@Test
 				public void CT09() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT9Container container = (CT9Container)lm.metadataReader(Dominio.class , CT9Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT9Container container = (CT9Container)lm.readingAnnotationsTo(Dominio.class , CT9Container.class);
 					assertEquals("dominio",container.getNomeTabela());
 				}
 				@Test
 				public void CT10() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT10Container container = (CT10Container)lm.metadataReader(Dominio.class , CT10Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT10Container container = (CT10Container)lm.readingAnnotationsTo(Dominio.class , CT10Container.class);
 					assertNull(container.getNomeTabela());
 				}
 				@Test
 				public void CT11() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT11Container container = (CT11Container)lm.metadataReader(Dominio.class , CT11Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT11Container container = (CT11Container)lm.readingAnnotationsTo(Dominio.class , CT11Container.class);
 					assertNull(container.getNomeTabela());
 				}
 				@Test
 				public void CT012() throws Exception {
 
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT12Container container = (CT12Container)lm.metadataReader(Dominio.class , CT12Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT12Container container = (CT12Container)lm.readingAnnotationsTo(Dominio.class , CT12Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
 					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -144,8 +144,8 @@ public class TestAnottation {
 				@Test
 				public void CT013() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					CT13Container container = (CT13Container)lm.metadataReader(Dominio.class , CT13Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					CT13Container container = (CT13Container)lm.readingAnnotationsTo(Dominio.class , CT13Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
 					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -165,8 +165,8 @@ public class TestAnottation {
 				@Test
 				public void CT014() throws Exception {
 					
-					LeitorMetadados lm = new LeitorMetadados();		
-					Container container = (Container)lm.metadataReader(Dominio.class , Container.class);
+					AnnotationReader lm = new AnnotationReader();		
+					Container container = (Container)lm.readingAnnotationsTo(Dominio.class , Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
 					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
@@ -174,7 +174,6 @@ public class TestAnottation {
 					
 					int sun = 0;
 					for(MethodContainer m1 : container.getListaMetods()){
-						//System.out.println(m1.isToProcess());
 						if(m1.isToProcess())
 						{
 							sun++;

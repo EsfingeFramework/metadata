@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.esfinge.metadata.AnnotationReadingException;
-import org.esfinge.metadata.LeitorMetadados;
+import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainsAnnotation;
@@ -49,9 +49,9 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 					Class <?> outputClass =(Class<?>)t1;
 					for(Field f1: clazz.getDeclaredFields())
 					{
-						LeitorMetadados metadataReader = new LeitorMetadados();
+						AnnotationReader metadataReader = new AnnotationReader();
 						Object containerField = outputClass.newInstance();
-						containerField = metadataReader.metadataReader(f1, outputClass);
+						containerField = metadataReader.readingAnnotationsTo(f1, outputClass);
 						lista.add(containerField);
 					}
 					setProperty(container,fieldAnnoted.getName(),lista);
