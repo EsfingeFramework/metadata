@@ -1,4 +1,4 @@
-package org.esfinge.metadata.TestAnottation;
+package org.esfinge.metadata.TestAnnotationReader;
 
 import java.util.List;
 import java.util.Map;

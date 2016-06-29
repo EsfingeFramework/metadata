@@ -1,4 +1,4 @@
-package org.esfinge.metadata.TestAnottation;
+package org.esfinge.metadata.TestAnnotationReader;
 
 import java.util.Map;
 
@@ -7,9 +7,9 @@ import org.esfinge.metadata.container.ContainsAnnotation;
 import org.esfinge.metadata.container.ElementName;
 import org.esfinge.metadata.container.ReflectionReference;
 
-public class CT10Container {
+public class CT11Container {
 		
-	@AnnotationProperty(annotation = Tabela.class, property ="Agua")
+	@AnnotationProperty(annotation = Fake.class, property ="nome")
 	private String nomeTabela;
 	
 	

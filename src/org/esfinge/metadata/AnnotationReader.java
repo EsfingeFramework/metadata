@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.esfinge.metadata.AnnotationFinder.findAnnotation;
-import org.esfinge.metadata.TestAnottation.Tabela;
+
+import org.esfinge.metadata.TestAnnotationReader.Tabela;
 import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingConfig;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;

@@ -1,20 +1,24 @@
-package org.esfinge.metadata.TestAnottation;
+package org.esfinge.metadata.TestAnnotationReader;
+
+import java.util.Map;
 
 import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.ContainsAnnotation;
 import org.esfinge.metadata.container.ElementName;
 import org.esfinge.metadata.container.ReflectionReference;
 
-public class CT3Container {
+public class CT5Container {
+	
 	@ContainsAnnotation(Entidade.class)
 	private boolean isEntidade;
 	
+	@ElementName
 	private String nomeClasse;
 	
 	@ReflectionReference
 	private Class<?> classValue;
 	
-	@AnnotationProperty(annotation = Tabela.class, property ="nome")
+	
 	private String nomeTabela;
 	
 	
@@ -49,5 +53,7 @@ public class CT3Container {
 	public void setNomeClasse(String nomeClasse) {
 		this.nomeClasse = nomeClasse;
 	}
+	
+	
 
 }

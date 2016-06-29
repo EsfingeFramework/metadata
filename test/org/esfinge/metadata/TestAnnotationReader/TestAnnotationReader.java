@@ -1,14 +1,13 @@
-package org.esfinge.metadata.TestAnottation;
+package org.esfinge.metadata.TestAnnotationReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.esfinge.metadata.AnnotationReader;
-import org.esfinge.metadata.locate.MetadataLocator;
 import org.junit.Test;
 
-public class TestAnottation {
+public class TestAnnotationReader {
 
 	//Todos os elementos ok
 	@Test

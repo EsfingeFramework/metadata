@@ -1,4 +1,4 @@
-package org.esfinge.metadata.TestAnottation;
+package org.esfinge.metadata.TestAnnotationReader;
 
 import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.ContainsAnnotation;
