@@ -12,13 +12,12 @@ public class TestAnnotationReader {
 	//Todos os elementos ok
 	@Test
 	public void CT01() throws Exception {
-		
-		AnnotationReader lm = new AnnotationReader();		
-		CT1Container container = (CT1Container)lm.readingAnnotationsTo(Dominio.class , CT1Container.class);
-		assertTrue(container.isEntidade());
-		assertEquals(Dominio.class, container.getClassValue());
-		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
-		assertEquals("dominio",container.getNomeTabela());
+			AnnotationReader lm = new AnnotationReader();		
+			CT1Container container = (CT1Container)lm.readingAnnotationsTo(Dominio.class , CT1Container.class);
+			assertTrue(container.isEntidade());
+			assertEquals(Dominio.class, container.getClassValue());
+			assertEquals(Dominio.class.getName(), container.getNomeClasse());
+			assertEquals("dominio",container.getNomeTabela());
 	}
 	
 	//Falta 1 elemento
@@ -30,7 +29,7 @@ public class TestAnnotationReader {
 		CT2Container container = (CT2Container)lm.readingAnnotationsTo(Dominio.class , CT2Container.class);
 		assertTrue(!container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
-		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+		assertEquals(Dominio.class.getName(), container.getNomeClasse());
 		assertEquals("dominio",container.getNomeTabela());
 	}
 	
@@ -55,7 +54,7 @@ public class TestAnnotationReader {
 		CT4Container container = (CT4Container)lm.readingAnnotationsTo(Dominio.class , CT4Container.class);
 		assertTrue(container.isEntidade());
 		assertNull(container.getClassValue());
-		assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+		assertEquals(Dominio.class.getName(), container.getNomeClasse());
 		assertEquals("dominio",container.getNomeTabela());
 
 	}
@@ -67,7 +66,7 @@ public class TestAnnotationReader {
 			CT5Container container = (CT5Container)lm.readingAnnotationsTo(Dominio.class , CT5Container.class);
 			assertTrue(container.isEntidade());
 			assertEquals(Dominio.class, container.getClassValue());
-			assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+			assertEquals(Dominio.class.getName(), container.getNomeClasse());
 			assertNull(container.getNomeTabela());
 
 		}
@@ -87,7 +86,7 @@ public class TestAnnotationReader {
 					
 					AnnotationReader lm = new AnnotationReader();		
 					CT7Container container = (CT7Container)lm.readingAnnotationsTo(Dominio.class , CT7Container.class);
-					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+					assertEquals(Dominio.class.getName(), container.getNomeClasse());
 
 				}
 				@Test
@@ -127,7 +126,7 @@ public class TestAnnotationReader {
 					CT12Container container = (CT12Container)lm.readingAnnotationsTo(Dominio.class , CT12Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
-					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+					assertEquals(Dominio.class.getName(), container.getNomeClasse());
 					assertEquals("dominio",container.getNomeTabela());
 					
 					int sun=0;
@@ -147,7 +146,7 @@ public class TestAnnotationReader {
 					CT13Container container = (CT13Container)lm.readingAnnotationsTo(Dominio.class , CT13Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
-					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+					assertEquals(Dominio.class.getName(), container.getNomeClasse());
 					assertEquals("dominio",container.getNomeTabela());
 					
 					int sun = 0;
@@ -168,7 +167,7 @@ public class TestAnnotationReader {
 					Container container = (Container)lm.readingAnnotationsTo(Dominio.class , Container.class);
 					assertTrue(container.isEntidade());
 					assertEquals(Dominio.class, container.getClassValue());
-					assertEquals("org.esfinge.metadata.TestAnottation.Dominio", container.getNomeClasse());
+					assertEquals(Dominio.class.getName(), container.getNomeClasse());
 					assertEquals("dominio",container.getNomeTabela());
 					
 					int sun = 0;
