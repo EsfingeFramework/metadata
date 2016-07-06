@@ -3,14 +3,14 @@ package org.esfinge.metadata.TestAnnotationReader;
 import java.util.List;
 import java.util.Map;
 
-import org.esfinge.metadata.container.AnnotationProperty;
-import org.esfinge.metadata.container.ContainerFor;
-import org.esfinge.metadata.container.ContainsAnnotation;
-import org.esfinge.metadata.container.ElementName;
-import org.esfinge.metadata.container.ProcessFields;
-import org.esfinge.metadata.container.ProcessMethods;
+import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainerFor;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
+import org.esfinge.metadata.annotation.container.ElementName;
+import org.esfinge.metadata.annotation.container.ProcessFields;
+import org.esfinge.metadata.annotation.container.ProcessMethods;
+import org.esfinge.metadata.annotation.container.ReflectionReference;
 import org.esfinge.metadata.container.Propriedades;
-import org.esfinge.metadata.container.ReflectionReference;
 @ContainerFor(vaule = Propriedades.CLASS)
 public class Container {
 	

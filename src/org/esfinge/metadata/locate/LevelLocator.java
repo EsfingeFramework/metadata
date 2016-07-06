@@ -5,7 +5,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 
 public class LevelLocator extends MetadataLocator {
 	private int contador=0;

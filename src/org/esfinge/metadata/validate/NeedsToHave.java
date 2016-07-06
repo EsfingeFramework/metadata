@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.esfinge.metadata.annotation.ToValidate;
+import org.esfinge.metadata.annotation.validator.ToValidate;
 
 @ToValidate(validationClass = NeedToHaveAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)

@@ -8,8 +8,8 @@ import java.lang.reflect.Field;
 
 import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.ContainsAnnotation;
 
 public class ContainsAnnotationReadingProcessor implements AnnotationReadingProcessor {
 	

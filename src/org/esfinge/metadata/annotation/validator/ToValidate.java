@@ -1,4 +1,4 @@
-package org.esfinge.metadata.annotation;
+package org.esfinge.metadata.annotation.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

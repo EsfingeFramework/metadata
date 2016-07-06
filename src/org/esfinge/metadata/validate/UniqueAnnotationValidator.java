@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.esfinge.metadata.AnnotationPropertyValidator;
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.Unique;
+import org.esfinge.metadata.annotation.validator.Unique;
 
 public class UniqueAnnotationValidator implements AnnotationPropertyValidator {
 

@@ -10,8 +10,8 @@ import java.lang.reflect.Method;
 import org.esfinge.metadata.AnnotationPropertyValidator;
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.ToValidate;
-import org.esfinge.metadata.annotation.ToValidateProperty;
+import org.esfinge.metadata.annotation.validator.ToValidate;
+import org.esfinge.metadata.annotation.validator.ToValidateProperty;
 
 public class MetadataValidator {
 	public static void validateMetadataOn(Class<?> clazz) throws AnnotationValidationException{

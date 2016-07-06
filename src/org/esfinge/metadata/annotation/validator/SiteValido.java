@@ -1,14 +1,14 @@
-package org.esfinge.metadata.annotation;
+package org.esfinge.metadata.annotation.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.esfinge.metadata.validate.UniqueAnnotationValidator;
+import org.esfinge.metadata.validate.SiteValidoAnnotationValidator;
 
-@ToValidateProperty(validationClass = UniqueAnnotationValidator.class)
+@ToValidateProperty(validationClass = SiteValidoAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Unique {
+public @interface SiteValido {	
 }

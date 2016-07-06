@@ -1,9 +1,10 @@
 package org.esfinge.metadata.locate.annotationLocator;
 import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Retention;
 
-import org.esfinge.metadata.annotation.SearchInsideAnnotations;
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import org.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
+
+import java.lang.annotation.Retention;
 
 @SearchOnEnclosingElements
 @SearchInsideAnnotations

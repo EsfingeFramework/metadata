@@ -3,7 +3,7 @@ package org.esfinge.metadata.validate.needsToHave;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 
 @SearchOnEnclosingElements
 @Retention(RetentionPolicy.RUNTIME)

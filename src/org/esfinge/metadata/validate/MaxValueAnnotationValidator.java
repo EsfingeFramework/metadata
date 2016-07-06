@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationPropertyValidator;
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.MaxValue;
+import org.esfinge.metadata.annotation.validator.MaxValue;
 
 public class MaxValueAnnotationValidator implements AnnotationPropertyValidator{	
 	private int maxValue;

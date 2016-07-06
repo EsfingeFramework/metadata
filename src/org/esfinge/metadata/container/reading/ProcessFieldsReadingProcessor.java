@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
+import org.esfinge.metadata.annotation.container.ElementName;
+import org.esfinge.metadata.annotation.container.ProcessFields;
+import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
-import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.ContainsAnnotation;
-import org.esfinge.metadata.container.ElementName;
-import org.esfinge.metadata.container.ProcessFields;
-import org.esfinge.metadata.container.ProcessMethods;
 
 
 public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor {

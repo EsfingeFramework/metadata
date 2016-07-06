@@ -1,4 +1,4 @@
-package org.esfinge.metadata.container;
+package org.esfinge.metadata.annotation.container;
 
 import java.lang.annotation.*;
 

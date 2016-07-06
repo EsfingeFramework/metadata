@@ -1,7 +1,7 @@
 package org.esfinge.metadata.validate.maxValue;
 
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.MaxValue;
+import org.esfinge.metadata.annotation.validator.MaxValue;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.esfinge.metadata.validate.minValue.PointsToUser;
 import org.esfinge.metadata.validate.minValue.TestValidateMinValue.Classe;

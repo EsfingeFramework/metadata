@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationReadingException;
-import org.esfinge.metadata.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 
 public class AnnotationPropertyReadingProcessor implements AnnotationReadingProcessor {

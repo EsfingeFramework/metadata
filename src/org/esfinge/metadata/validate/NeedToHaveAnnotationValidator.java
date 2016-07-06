@@ -6,7 +6,7 @@ import java.lang.reflect.AnnotatedElement;
 import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.NeedsToHave;
+import org.esfinge.metadata.annotation.validator.NeedsToHave;
 
 public class NeedToHaveAnnotationValidator implements AnnotationValidator{
 	
