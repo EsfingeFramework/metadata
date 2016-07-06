@@ -24,5 +24,6 @@ public class ProhibitsAnnotationValidator implements AnnotationValidator{
 			throw new AnnotationValidationException("The annotation it needs to prohibits was found = " + whatItNeedsToProhibits.toString());
 		}
 	}
-
+	
+	
 }
