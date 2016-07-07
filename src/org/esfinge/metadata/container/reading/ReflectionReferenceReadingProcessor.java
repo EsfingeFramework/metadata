@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
+import org.esfinge.metadata.container.Propriedades;
 
 public class ReflectionReferenceReadingProcessor implements AnnotationReadingProcessor {
 	
@@ -19,7 +20,7 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException {
 		try {
 			setProperty(container, containerAnnotatedField,elementWithMetadata);
 		
