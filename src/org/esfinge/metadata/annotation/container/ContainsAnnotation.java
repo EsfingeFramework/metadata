@@ -8,7 +8,7 @@ import org.esfinge.metadata.container.reading.ContainsAnnotationReadingProcessor
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ContainsAnnotationReadingProcessor.class)
-@ValidFieldType({String.class})
+@ValidFieldType({String.class,boolean.class})
 public @interface ContainsAnnotation {
 	Class<? extends Annotation> value();
 }

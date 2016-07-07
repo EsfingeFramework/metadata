@@ -24,20 +24,6 @@ public class AnnotationReader {
 		
 		MetadataExecute metadataExecute = new MetadataExecute(containerClass);
 		container = metadataExecute.execMetadata(metadataRepository.getRepositorio(),elementWithMetadata);
-		/*
-		for (Field field : containerClass.getDeclaredFields()) {			
-			for (Annotation an : field.getAnnotations()) {
-				Class<?> annotationClass = an.annotationType();
-				if (AnnotationFinder.existAnnotation(annotationClass, AnnotationReadingConfig.class))
-				//if (annotationClass.isAnnotationPresent(AnnotationReadingConfig.class)) 
-				{
-					AnnotationReadingConfig arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
-					AnnotationReadingProcessor processor = arc.value().newInstance();
-					processor.initAnnotation(an, field);
-					processor.read(elementWithMetadata, container);
-				}
-			}
-		}*/
 
 		return (E) container;
 	}
