@@ -5,10 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.esfinge.metadata.annotation.MaxValue;
-import org.esfinge.metadata.annotation.NotNull;
-import org.esfinge.metadata.annotation.SearchInsideAnnotations;
-import org.esfinge.metadata.annotation.SearchOnEnclosingElements;
+import org.esfinge.metadata.annotation.validator.MaxValue;
+import org.esfinge.metadata.annotation.validator.NotNull;
+import org.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import org.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 
 @SearchOnEnclosingElements
 @SearchInsideAnnotations

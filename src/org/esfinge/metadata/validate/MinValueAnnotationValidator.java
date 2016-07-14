@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationPropertyValidator;
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.MinValue;
+import org.esfinge.metadata.annotation.validator.MinValue;
 
 public class MinValueAnnotationValidator implements AnnotationPropertyValidator{
 	private int minValue;

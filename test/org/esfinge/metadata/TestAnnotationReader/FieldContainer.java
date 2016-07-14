@@ -1,8 +1,10 @@
 package org.esfinge.metadata.TestAnnotationReader;
 
-import org.esfinge.metadata.container.ContainsAnnotation;
-import org.esfinge.metadata.container.ElementName;
-
+import org.esfinge.metadata.annotation.container.ContainerFor;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
+import org.esfinge.metadata.annotation.container.ElementName;
+import org.esfinge.metadata.container.Propriedades;
+@ContainerFor(vaule = Propriedades.FIELDS)
 public class FieldContainer {
 
 	

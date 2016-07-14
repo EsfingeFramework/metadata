@@ -1,8 +1,9 @@
 package org.esfinge.metadata.locate.annotationLocator;
 import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Retention;
 
-import org.esfinge.metadata.annotation.SearchInsideAnnotations;
+import org.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+
+import java.lang.annotation.Retention;
 
 @SearchInsideAnnotations
 @Retention(RetentionPolicy.RUNTIME)

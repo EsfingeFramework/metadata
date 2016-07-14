@@ -10,6 +10,6 @@ public interface AnnotationReadingProcessor {
 	
 	void initAnnotation(Annotation an, Field field);
 	
-	void read(AnnotatedElement classWithMetadata, Object container) throws AnnotationReadingException;
+	void read(AnnotatedElement classWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException;
 
 }

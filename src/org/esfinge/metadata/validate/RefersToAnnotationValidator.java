@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationPropertyValidator;
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.RefersTo;
+import org.esfinge.metadata.annotation.validator.RefersTo;
 
 public class RefersToAnnotationValidator implements AnnotationPropertyValidator {
 

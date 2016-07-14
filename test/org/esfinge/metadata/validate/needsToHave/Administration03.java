@@ -3,7 +3,7 @@ package org.esfinge.metadata.validate.needsToHave;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import org.esfinge.metadata.annotation.SearchInsideAnnotations;
+import org.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
 
 @Transaction03
 @SearchInsideAnnotations

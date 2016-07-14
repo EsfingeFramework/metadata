@@ -4,7 +4,7 @@ package org.esfinge.metadata.validate.needsToHave;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import org.esfinge.metadata.annotation.NeedsToHave;
+import org.esfinge.metadata.annotation.validator.NeedsToHave;
 
 @NeedsToHave(Transaction03.class)
 @Retention(RetentionPolicy.RUNTIME)

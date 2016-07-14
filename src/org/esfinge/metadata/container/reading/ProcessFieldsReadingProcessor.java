@@ -5,23 +5,21 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
+import org.esfinge.metadata.annotation.container.ElementName;
+import org.esfinge.metadata.annotation.container.ProcessFields;
+import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
-import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.ContainsAnnotation;
-import org.esfinge.metadata.container.ElementName;
-import org.esfinge.metadata.container.ProcessFields;
-import org.esfinge.metadata.container.ProcessMethods;
+import org.esfinge.metadata.container.Propriedades;
 
-import com.sun.xml.internal.ws.api.databinding.MetadataReader;
 
 public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor {
 	
@@ -40,10 +38,10 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 	
 	
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException {
 		// TODO Auto-generated method stub
 		try {
-			if (elementWithMetadata.getClass().equals(Class.class)) {
+			if (enumStr == Propriedades.CLASS) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;

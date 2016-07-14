@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainsAnnotation;
+import org.esfinge.metadata.annotation.container.ElementName;
+import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
-import org.esfinge.metadata.container.AnnotationProperty;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.ContainsAnnotation;
-import org.esfinge.metadata.container.ElementName;
-import org.esfinge.metadata.container.ProcessMethods;
+import org.esfinge.metadata.container.Propriedades;
 
 public class ProcessMethodsReadingProcessor implements AnnotationReadingProcessor {
 
@@ -36,9 +37,9 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException {
 		try {
-			if (elementWithMetadata.getClass().equals(Class.class)) {
+			if (enumStr == Propriedades.CLASS) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;

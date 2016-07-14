@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
+import org.esfinge.metadata.container.Propriedades;
 
 public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	
@@ -21,18 +22,18 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	}
 
 	@Override
-	public void read(AnnotatedElement classWithMetadata, Object container) throws AnnotationReadingException {
+	public void read(AnnotatedElement classWithMetadata, Object container,Propriedades enumStr) throws AnnotationReadingException {
 		try {
-			if(classWithMetadata.getClass().equals(Class.class)){
+			if(enumStr == Propriedades.CLASS){
 				Class<?> class1 = (Class<?>) classWithMetadata;
 				setProperty(container,containerAnnotatedField,class1.getName());
 			}
-			else if(classWithMetadata.getClass().equals(Field.class)){
+			else if(enumStr == Propriedades.FIELDS){
 				Field field = (Field) classWithMetadata;
 				setProperty(container,containerAnnotatedField,field.getName());
 
 			}
-			else if(classWithMetadata.getClass().equals(Method.class)){
+			else if(enumStr == Propriedades.METHODS){
 				Method method = (Method) classWithMetadata;
 				setProperty(container,containerAnnotatedField,method.getName());
 
