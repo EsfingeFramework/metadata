@@ -25,7 +25,7 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 			setProperty(container, containerAnnotatedField,elementWithMetadata);
 		
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name",e);
+			throw new AnnotationReadingException("Cannot read and record the file "+elementWithMetadata+"in "+containerAnnotatedField,e);
 		}
 	}
 

@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class RepositorioMetadados {
+public class MetadataRepository {
 	private Map<Annotation,AnnotatedElement> repositorio;
 	
 	public void findMetadata(Class<?> containerClass)
