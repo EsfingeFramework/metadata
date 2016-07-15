@@ -9,13 +9,12 @@ import java.lang.annotation.Target;
 import org.esfinge.metadata.annotation.validator.ValidFieldType;
 import org.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
 
-
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(AnnotationPropertyReadingProcessor.class)
+//Deve validar se o tipo do field é do mesmo tipo do atributo da anotação
 @ValidFieldType({String.class})
 public @interface AnnotationProperty {
 	Class<? extends Annotation> annotation();
-	String property();
-	
+	String property() default "value";
 }

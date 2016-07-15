@@ -11,6 +11,14 @@ public class TestAnnotationReader {
 
 	// Todos os elementos ok
 	@Test
+	public void CT00() throws Exception {
+		AnnotationReader lm = new AnnotationReader();
+		CT0Container container = (CT0Container) lm.readingAnnotationsTo(Dominio.class, CT0Container.class);
+		assertEquals("dominio", container.getNomeTabela());
+	}
+
+	
+	@Test
 	public void CT01() throws Exception {
 		AnnotationReader lm = new AnnotationReader();
 		CT1Container container = (CT1Container) lm.readingAnnotationsTo(Dominio.class, CT1Container.class);

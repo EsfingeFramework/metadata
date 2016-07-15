@@ -19,7 +19,7 @@ import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.Propriedades;
+import org.esfinge.metadata.container.ContainerTarget;
 
 public class ProcessMethodsReadingProcessor implements AnnotationReadingProcessor {
 
@@ -37,9 +37,9 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
 		try {
-			if (enumStr == Propriedades.CLASS) {
+			if (enumStr == ContainerTarget.CLASS) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;

@@ -14,6 +14,7 @@ import org.esfinge.metadata.container.reading.ProcessMethodsReadingProcessor;
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ProcessMethodsReadingProcessor.class)
 @ValidFieldType({List.class})
+//verificar se a classe do generics da lista possui @ContainerFor(METHOD)
 public @interface ProcessMethods {
 
 }

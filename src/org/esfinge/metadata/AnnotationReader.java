@@ -19,7 +19,7 @@ public class AnnotationReader {
 	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
 
 		Object container = containerClass.newInstance();
-		RepositorioMetadados metadataRepository = new RepositorioMetadados();
+		RepositorioMetadados metadataRepository = new RepositorioMetadados();//migrar para inglês
 		metadataRepository.findMetadata(containerClass);
 		
 		MetadataExecute metadataExecute = new MetadataExecute(containerClass);

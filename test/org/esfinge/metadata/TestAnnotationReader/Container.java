@@ -10,8 +10,8 @@ import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ProcessFields;
 import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.annotation.container.ReflectionReference;
-import org.esfinge.metadata.container.Propriedades;
-@ContainerFor(vaule = Propriedades.CLASS)
+import org.esfinge.metadata.container.ContainerTarget;
+@ContainerFor(vaule = ContainerTarget.CLASS)
 public class Container {
 	
 	@ContainsAnnotation(Entidade.class)

@@ -5,9 +5,9 @@ import org.esfinge.metadata.annotation.container.ContainerFor;
 import org.esfinge.metadata.annotation.container.ContainsAnnotation;
 import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ReflectionReference;
-import org.esfinge.metadata.container.Propriedades;
+import org.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(vaule = Propriedades.CLASS)
+@ContainerFor(vaule = ContainerTarget.CLASS)
 public class CT2Container {
 	@ContainsAnnotation(Fake.class)
 	private boolean isEntidade;
