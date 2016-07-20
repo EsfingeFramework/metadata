@@ -10,8 +10,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicTreeUI.TreeHomeAction;
+
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainerFor;
 import org.esfinge.metadata.annotation.container.ContainsAnnotation;
 import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ProcessFields;
@@ -26,25 +30,30 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 	private Field fieldAnnoted;
 	List<Object> lista;
 	ParameterizedType fieldGenericType;
-
+	
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
+	public void initAnnotation(Annotation an, Field field){
 		
 		fieldAnnoted = field;
 		lista = new ArrayList<Object>();
 		fieldGenericType =(ParameterizedType)field.getGenericType();
-		
 	}
 	
 	
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
 		// TODO Auto-generated method stub
 		try {
-			if (enumStr == ContainerTarget.CLASS) {
+			if (target == ContainerTarget.CLASS) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;
+					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
+					if(!containerFor.vaule().equals(ContainerTarget.FIELDS))
+					{
+						throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of FIELDS");
+					}
+					
 					for(Field f1: clazz.getDeclaredFields())
 					{
 						AnnotationReader metadataReader = new AnnotationReader();
@@ -58,6 +67,7 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			throw new AnnotationReadingException("Cannot read and record the processFields", e);
 		}
 		
 	}

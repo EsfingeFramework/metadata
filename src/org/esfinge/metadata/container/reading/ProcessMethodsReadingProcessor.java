@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.annotation.container.AnnotationProperty;
+import org.esfinge.metadata.annotation.container.ContainerFor;
 import org.esfinge.metadata.annotation.container.ContainsAnnotation;
 import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ProcessMethods;
@@ -43,6 +44,12 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;
+					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
+					if(!containerFor.vaule().equals(ContainerTarget.METHODS))
+					{
+						throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of METHODS");
+					}
+
 					for(Method m1: clazz.getDeclaredMethods())
 					{
 						AnnotationReader metadataReader = new AnnotationReader();
@@ -55,7 +62,7 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 			}
 
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name", e);
+			throw new AnnotationReadingException("Cannot read and record the processMethods", e);
 		}
 	}
 
