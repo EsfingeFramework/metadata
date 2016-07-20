@@ -18,14 +18,14 @@ public class MetadataExecute {
 	ContainerFor containerFor;
 	public MetadataExecute(Class<?> containerClass) throws AnnotationValidationException {
 		this.containerClass = containerClass;
-		try{
-			containerFor = containerClass.getDeclaredAnnotation(ContainerFor.class);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
+		
+		this.containerFor = this.containerClass.getDeclaredAnnotation(ContainerFor.class);
+		if(containerFor == null)
+		{
+			throw new AnnotationValidationException("The annotation ContainerFor is null in the container ");
 		}
 		
-		MetadataValidator.validateMetadataOn(containerClass);
+		MetadataValidator.validateMetadataOn(this.containerClass);
 	}
 
 	public Object execMetadata(Map<Annotation, AnnotatedElement> repositorio, AnnotatedElement elementWithMetadata)

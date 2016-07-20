@@ -31,7 +31,8 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 			setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
 			
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the container annotated field",e);
+			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
+			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField,e);
 		}
 	}
 

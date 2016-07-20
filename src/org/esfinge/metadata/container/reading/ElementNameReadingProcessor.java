@@ -22,31 +22,31 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget target) throws AnnotationReadingException {
 		try {
-			FindFields(elementWithMetadata, container, enumStr);
+			FindFields(elementWithMetadata, container, target);
 			//
 		} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the element name",e);
 		}
 	}
 
-	private void FindFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr)
+	private void FindFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		if(enumStr == ContainerTarget.CLASS){
+		if(target == ContainerTarget.CLASS){
 			Class<?> class1 = (Class<?>) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,class1.getName());
 		}
-		else if(enumStr == ContainerTarget.FIELDS){
+		else if(target == ContainerTarget.FIELDS){
 			Field field = (Field) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,field.getName());
 
 		}
-		else if(enumStr == ContainerTarget.METHODS){
+		else if(target == ContainerTarget.METHODS){
 			Method method = (Method) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,method.getName());
 		}
-		else if(enumStr == ContainerTarget.ALL)
+		else if(target == ContainerTarget.ALL)
 		{
 			Method method = (Method) elementWithMetadata;
 			Field field = (Field) elementWithMetadata;
