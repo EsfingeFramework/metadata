@@ -28,15 +28,15 @@ public class MetadataExecute {
 		MetadataValidator.validateMetadataOn(this.containerClass);
 	}
 
-	public Object execMetadata(Map<Annotation, AnnotatedElement> repositorio, AnnotatedElement elementWithMetadata)
+	public Object execMetadata(Map<AnnotatedElement,Annotation> repositorio, AnnotatedElement elementWithMetadata)
 			throws Exception {
 		Object container;
 		container = this.containerClass.newInstance();
 		
-		Set<Annotation> reg = repositorio.keySet();
-		for (Iterator<Annotation> iterator = reg.iterator(); iterator.hasNext();) {
-			Annotation chave = iterator.next();
-			AnnotatedElement element = repositorio.get(chave);
+		Set<AnnotatedElement> reg = repositorio.keySet();
+		for (Iterator<AnnotatedElement> iterator = reg.iterator(); iterator.hasNext();) {
+			AnnotatedElement element= iterator.next();
+			Annotation chave = repositorio.get(element);
 			Annotation an = chave;
 			Class<?> annotationClass = an.annotationType();
 			if (annotationClass.isAnnotationPresent(AnnotationReadingConfig.class)) {
