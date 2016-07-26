@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.Propriedades;
+import org.esfinge.metadata.container.ContainerTarget;
 
 public class ReflectionReferenceReadingProcessor implements AnnotationReadingProcessor {
 	
@@ -20,12 +20,12 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, Propriedades enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
 		try {
 			setProperty(container, containerAnnotatedField,elementWithMetadata);
 		
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name",e);
+			throw new AnnotationReadingException("Cannot read and record the file "+elementWithMetadata+"in "+containerAnnotatedField,e);
 		}
 	}
 

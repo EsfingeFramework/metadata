@@ -5,13 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.esfinge.metadata.container.Propriedades;
+import org.esfinge.metadata.container.ContainerTarget;
 
 
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface ContainerFor {
-	Propriedades vaule();
+	ContainerTarget vaule();
 		
 }

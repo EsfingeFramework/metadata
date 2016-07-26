@@ -6,34 +6,33 @@ import java.lang.reflect.Field;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.validator.ToValidate;
 import org.esfinge.metadata.annotation.validator.ValidFieldType;
 
 public class ValidFieldTypeValidator implements AnnotationValidator {
 
+	private Class<?>[] validType;
+	
 	@Override
 	public void initialize(Annotation self) {
-		// TODO Auto-generated method stub
-
+		ValidFieldType validFieldType = (ValidFieldType) self;
+		validType = validFieldType.value();
 	}
 
 	@Override
 	public void validate(Annotation toValidate, AnnotatedElement annotated) throws AnnotationValidationException {
-		// TODO Auto-generated method stub
 		boolean x = false;
-		Field elementAnnot =(Field) annotated;
-		ValidFieldType validFieldType = toValidate.annotationType().getDeclaredAnnotation(ValidFieldType.class);
-		for(Class<?> clazz : validFieldType.value())
-		{
-			if(elementAnnot.getType().getName().equals(clazz.getTypeName()))
+		Field field = (Field)annotated;
+		for(Class<?> clazz : validType)
+		{		
+			if(field.getType().equals(clazz))
 			{
 				x = true;
-				break;
 			}
 		}
-		if(x==false)
+		if(!x)
 		{
-			throw new AnnotationValidationException("Class not same type of element");
+			throw new AnnotationValidationException("The field "+annotated.toString()+" with annotation @" 
+						+ toValidate.annotationType().getName()+ " should be of one of the types " );
 		}
 	}
 

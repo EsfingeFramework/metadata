@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 import org.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.MetadataExecute;
-import org.esfinge.metadata.container.RepositorioMetadados;
+import org.esfinge.metadata.container.MetadataRepository;
 
 public class AnnotationReader {
 
@@ -19,7 +19,7 @@ public class AnnotationReader {
 	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
 
 		Object container = containerClass.newInstance();
-		RepositorioMetadados metadataRepository = new RepositorioMetadados();
+		MetadataRepository metadataRepository = new MetadataRepository();//migrar para inglês
 		metadataRepository.findMetadata(containerClass);
 		
 		MetadataExecute metadataExecute = new MetadataExecute(containerClass);

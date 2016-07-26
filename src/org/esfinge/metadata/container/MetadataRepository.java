@@ -8,28 +8,35 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class RepositorioMetadados {
-	private Map<Annotation,AnnotatedElement> repositorio;
+public class MetadataRepository {
+	private Map<AnnotatedElement,Annotation> repositorio;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "MetadataRepository [repositorio=" + repositorio.toString() + "]";
+	}
+
 	public void findMetadata(Class<?> containerClass)
 	{
-		repositorio = new HashMap<Annotation,AnnotatedElement>();			
+		repositorio = new HashMap<AnnotatedElement,Annotation>();			
 		for (Field field : containerClass.getDeclaredFields())
 		{
 			Annotation[] annotationsField =field.getDeclaredAnnotations();
 			
 			for(Annotation annot: annotationsField)
 			{
-				repositorio.put(annot,(AnnotatedElement)field);
+				repositorio.put((AnnotatedElement)field,annot);
 			}
 		}
 	}
 
-	public Map<Annotation,AnnotatedElement> getRepositorio() {
+	public Map<AnnotatedElement, Annotation> getRepositorio() {
 		return repositorio;
 	}
 
-	public void setRepositorio(Map<Annotation,AnnotatedElement> repositorio) {
+	public void setRepositorio(Map<AnnotatedElement, Annotation> repositorio) {
 		this.repositorio = repositorio;
 	}
 	

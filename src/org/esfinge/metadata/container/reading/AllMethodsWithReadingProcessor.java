@@ -9,32 +9,39 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.esfinge.metadata.AnnotationReadingException;
+import org.esfinge.metadata.annotation.container.AllMethodsWith;
 import org.esfinge.metadata.annotation.container.ContainerFor;
 import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainerTarget;
 
-public class ProcessMethodsReadingProcessor implements AnnotationReadingProcessor {
+public class AllMethodsWithReadingProcessor implements AnnotationReadingProcessor {
 
 	private Field fieldAnnoted;
 	List<Object> lista;
+	Set<Object> set;
 	ParameterizedType fieldGenericType;
+	AllMethodsWith annotation;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) {
 
 		fieldAnnoted = field;
 		lista = new ArrayList<Object>();
+		set=  new HashSet<Object>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
-
+		annotation = fieldAnnoted.getDeclaredAnnotation(AllMethodsWith.class);
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
 		try {
-			if (enumStr == ContainerTarget.CLASS) {
+			if (target == ContainerTarget.CLASS) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;
@@ -46,18 +53,29 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 
 					for(Method m1: clazz.getDeclaredMethods())
 					{
-						AnnotationReader metadataReader = new AnnotationReader();
-						Object containerField = outputClass.newInstance();
-						containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
-						lista.add(containerField);
+						if(m1.isAnnotationPresent(annotation.value()))
+						{
+							AnnotationReader metadataReader = new AnnotationReader();
+							Object containerField = outputClass.newInstance();
+							containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
+							lista.add(containerField);
+							set.add(containerField);
+						}
 					}
-					setProperty(container,fieldAnnoted.getName(),lista);
+					
+					if(fieldAnnoted.getType().equals(List.class)){
+						setProperty(container,fieldAnnoted.getName(),lista);
+					}
+					else if(fieldAnnoted.getType().equals(Set.class)){
+						setProperty(container,fieldAnnoted.getName(),set);
+					}
 				}					
 			}
 
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the processMethods in the field "+ fieldAnnoted.getName(), e);
+			throw new AnnotationReadingException("Cannot read and record the allMethodsWithMetadata in the"+ fieldAnnoted.getName(), e);
 		}
+
 	}
 
 }

@@ -13,6 +13,7 @@ import org.esfinge.metadata.container.reading.ProcessFieldsReadingProcessor;
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ProcessFieldsReadingProcessor.class)
 @ValidFieldType({List.class})
+//verificar se a classe do generics da lista possui @ContainerFor(FIELD)
 public @interface ProcessFields {
 
 }

@@ -2,7 +2,9 @@ package org.esfinge.metadata.TestAnnotationReader;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.esfinge.metadata.annotation.container.AllMethodsWith;
 import org.esfinge.metadata.annotation.container.AnnotationProperty;
 import org.esfinge.metadata.annotation.container.ContainerFor;
 import org.esfinge.metadata.annotation.container.ContainsAnnotation;
@@ -10,8 +12,8 @@ import org.esfinge.metadata.annotation.container.ElementName;
 import org.esfinge.metadata.annotation.container.ProcessFields;
 import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.annotation.container.ReflectionReference;
-import org.esfinge.metadata.container.Propriedades;
-@ContainerFor(vaule = Propriedades.CLASS)
+import org.esfinge.metadata.container.ContainerTarget;
+@ContainerFor(vaule = ContainerTarget.CLASS)
 public class Container {
 	
 	@ContainsAnnotation(Entidade.class)
@@ -32,7 +34,30 @@ public class Container {
 	@ProcessFields
 	private List<FieldContainer> listaFields;
 	
+	@AllMethodsWith(Proces.class)
+	private Set<MethodContainer> setMethodsWith;
 	
+	@AllMethodsWith(Proces.class)
+	private List<MethodContainer> listaMetodsWith;
+	
+	
+	
+	public Set<MethodContainer> getSetMethodsWith() {
+		return setMethodsWith;
+	}
+
+	public void setSetMethodsWith(Set<MethodContainer> setMethodsWith) {
+		this.setMethodsWith = setMethodsWith;
+	}
+
+	public List<MethodContainer> getListaMetodsWith() {
+		return listaMetodsWith;
+	}
+
+	public void setListaMetodsWith(List<MethodContainer> listaMetodsWith) {
+		this.listaMetodsWith = listaMetodsWith;
+	}
+
 	public String getNomeTabela() {
 		return nomeTabela;
 	}

@@ -10,7 +10,7 @@ import org.esfinge.metadata.AnnotationFinder;
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.annotation.container.ContainsAnnotation;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
-import org.esfinge.metadata.container.Propriedades;
+import org.esfinge.metadata.container.ContainerTarget;
 
 public class ContainsAnnotationReadingProcessor implements AnnotationReadingProcessor {
 	
@@ -24,14 +24,15 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container,Propriedades enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget enumStr) throws AnnotationReadingException {
 		try {
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
 			setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
 			
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the container annotated field",e);
+			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
+			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField+"annotation = "+annot.value(),e);
 		}
 	}
 

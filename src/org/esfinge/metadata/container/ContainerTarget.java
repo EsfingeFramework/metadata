@@ -1,6 +1,6 @@
 package org.esfinge.metadata.container;
 
-public enum Propriedades {
+public enum ContainerTarget {
 	CLASS,
 	METHODS,
 	FIELDS,

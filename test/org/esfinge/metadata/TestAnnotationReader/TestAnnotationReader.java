@@ -1,6 +1,7 @@
 package org.esfinge.metadata.TestAnnotationReader;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -10,6 +11,14 @@ import org.junit.Test;
 public class TestAnnotationReader {
 
 	// Todos os elementos ok
+	@Test
+	public void CT00() throws Exception {
+		AnnotationReader lm = new AnnotationReader();
+		CT0Container container = (CT0Container) lm.readingAnnotationsTo(Dominio.class, CT0Container.class);
+		assertEquals("dominio", container.getNomeTabela());
+	}
+
+	
 	@Test
 	public void CT01() throws Exception {
 		AnnotationReader lm = new AnnotationReader();
@@ -164,7 +173,9 @@ public class TestAnnotationReader {
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals(Dominio.class.getName(), container.getNomeClasse());
 		assertEquals("dominio", container.getNomeTabela());
-
+		assertNotNull(container.getListaMetodsWith());
+		assertNotNull(container.getSetMethodsWith());
+		
 		int sun = 0;
 		for (MethodContainer m1 : container.getListaMetods()) {
 			if (m1.isToProcess()) {
@@ -172,6 +183,9 @@ public class TestAnnotationReader {
 			}
 		}
 		assertEquals(1, sun);
+		assertEquals(2, container.getListaMetods().size());
+		assertEquals(1, container.getListaMetodsWith().size());
+		assertEquals(1, container.getSetMethodsWith().size());
 
 		int sun2 = 0;
 		for (FieldContainer m1 : container.getListaFields()) {
@@ -180,7 +194,6 @@ public class TestAnnotationReader {
 			}
 		}
 		assertEquals(1, sun2);
-
 	}
 
 }
