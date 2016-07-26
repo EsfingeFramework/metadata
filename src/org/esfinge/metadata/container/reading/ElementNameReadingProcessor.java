@@ -7,7 +7,6 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainerTarget;
@@ -27,7 +26,7 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 			FindFields(elementWithMetadata, container, target);
 			//
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name",e);
+			throw new AnnotationReadingException("Cannot read and record the element name:",e);
 		}
 	}
 
@@ -48,9 +47,9 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 		}
 		else if(target == ContainerTarget.ALL)
 		{
-			Method method = (Method) elementWithMetadata;
-			Field field = (Field) elementWithMetadata;
-			Class<?> class1 = (Class<?>) elementWithMetadata;
+			//Method method = (Method) elementWithMetadata;
+			//Field field = (Field) elementWithMetadata;
+			//Class<?> class1 = (Class<?>) elementWithMetadata;
 		}
 	}
 

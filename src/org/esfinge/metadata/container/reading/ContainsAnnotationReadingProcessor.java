@@ -32,7 +32,7 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 			
 		} catch (Exception e) {
 			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
-			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField,e);
+			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField+"annotation = "+annot.value(),e);
 		}
 	}
 

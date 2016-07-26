@@ -5,23 +5,17 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.esfinge.metadata.AnnotationReadingException;
 import org.esfinge.metadata.annotation.container.AllMethodsWith;
-import org.esfinge.metadata.annotation.container.AnnotationProperty;
 import org.esfinge.metadata.annotation.container.ContainerFor;
-import org.esfinge.metadata.annotation.container.ContainsAnnotation;
-import org.esfinge.metadata.annotation.container.ElementName;
-import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainerTarget;
@@ -79,7 +73,7 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 			}
 
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the allMethodsWithMetadata", e);
+			throw new AnnotationReadingException("Cannot read and record the allMethodsWithMetadata in the"+ fieldAnnoted.getName(), e);
 		}
 
 	}

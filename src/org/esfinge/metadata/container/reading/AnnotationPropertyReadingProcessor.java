@@ -43,7 +43,7 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 				}
 			}
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the element name",e);
+			throw new AnnotationReadingException("Cannot read and record the AnnotationProperty: /n As field"+ fieldAnnoted+"annotation " + annotationThatNeedToContains.getName(),e);
 		}
 	}
 

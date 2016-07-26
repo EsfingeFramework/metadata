@@ -9,17 +9,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.basic.BasicTreeUI.TreeHomeAction;
-
 import org.esfinge.metadata.AnnotationReadingException;
-import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.container.AnnotationProperty;
 import org.esfinge.metadata.annotation.container.ContainerFor;
-import org.esfinge.metadata.annotation.container.ContainsAnnotation;
-import org.esfinge.metadata.annotation.container.ElementName;
-import org.esfinge.metadata.annotation.container.ProcessFields;
-import org.esfinge.metadata.annotation.container.ProcessMethods;
 import org.esfinge.metadata.AnnotationReader;
 import org.esfinge.metadata.container.AnnotationReadingProcessor;
 import org.esfinge.metadata.container.ContainerTarget;
@@ -67,7 +58,7 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new AnnotationReadingException("Cannot read and record the processFields", e);
+			throw new AnnotationReadingException("Cannot read and record the processFields: "+ fieldAnnoted.getName(), e);
 		}
 		
 	}
