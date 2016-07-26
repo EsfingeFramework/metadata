@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.esfinge.metadata.annotation.container.AllFieldsWith;
 import org.esfinge.metadata.annotation.container.AllMethodsWith;
 import org.esfinge.metadata.annotation.container.AnnotationProperty;
 import org.esfinge.metadata.annotation.container.ContainerFor;
@@ -40,8 +41,30 @@ public class Container {
 	@AllMethodsWith(Proces.class)
 	private List<MethodContainer> listaMetodsWith;
 	
+	//@AllFieldsWith(FieldLista.class)
+	//private Set<FieldContainer> setFieldsWith;
+	
+	@AllFieldsWith(FieldLista.class)
+	private List<FieldContainer> listaFieldsWith;
+
 	
 	
+	//public Set<FieldContainer> getSetFieldsWith() {
+	//	return setFieldsWith;
+	//}
+
+	//public void setSetFieldsWith(Set<FieldContainer> setFieldsWith) {
+	//	this.setFieldsWith = setFieldsWith;
+	//}
+
+	public List<FieldContainer> getListaFieldsWith() {
+		return listaFieldsWith;
+	}
+
+	public void setListaFieldsWith(List<FieldContainer> listaFieldsWith) {
+		this.listaFieldsWith = listaFieldsWith;
+	}
+
 	public Set<MethodContainer> getSetMethodsWith() {
 		return setMethodsWith;
 	}
