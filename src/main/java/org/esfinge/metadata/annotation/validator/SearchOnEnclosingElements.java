@@ -1,4 +1,4 @@
-/*-> se esta anotação estiver presente, a busca deve ser feita hierarquicamente acima do elemento informado */
+/*-> se esta anotacao estiver presente, a busca deve ser feita hierarquicamente acima do elemento informado */
 package org.esfinge.metadata.annotation.validator;
 
 import java.lang.annotation.ElementType;

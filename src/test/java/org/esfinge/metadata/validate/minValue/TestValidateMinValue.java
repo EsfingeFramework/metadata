@@ -1,7 +1,6 @@
 package org.esfinge.metadata.validate.minValue;
 
 import org.esfinge.metadata.AnnotationValidationException;
-import org.esfinge.metadata.annotation.validator.MinValue;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 

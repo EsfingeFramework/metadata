@@ -155,6 +155,6 @@ public class MetadataValidator {
 	}
 
 	private static boolean isEsfingeMetadataAnnotation(Annotation an) {
-		return an.annotationType().getPackage().getName().equals("org.esfinge.metadata.annotation");
+		return an.annotationType().getPackage().getName().equals("org.esfinge.metadata.annotation.validator");
 	}	
 }

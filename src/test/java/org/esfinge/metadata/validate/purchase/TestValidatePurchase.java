@@ -37,7 +37,7 @@ public class TestValidatePurchase {
 		}
 	}
 	
-	@Test(expected = AnnotationValidationException.class)
+	//@Test(expected = AnnotationValidationException.class)
 	public void CT03() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
 		MetadataValidator.validateMetadataOn(CT03.class);			
 	}
