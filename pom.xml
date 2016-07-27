@@ -9,7 +9,31 @@
 
 	<name>Esfinge Metadata</name>
 	<url>http://esfinge.sourceforge.net/</url>
+	<description>Esfinge Metadata is a meta framework to metadata consume. It simplifies developing this type of frameworks</description>
 
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+
+	<developers>
+		<developer>
+			<name>Eduardo Guerra</name>
+			<email>guerraem@gmail.com</email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/EsfingeFramework/metadata.git</connection>
+		<developerConnection>scm:git:ssh://github.com:EsfingeFramework/metadata.git</developerConnection>
+		<url>http://github.com/EsfingeFramework/metadata/tree/master</url>
+	</scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
