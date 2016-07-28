@@ -22,7 +22,7 @@ public class MetadataValidator {
 		
 		Class<?> currentClazz = clazz;
 		
-		while(currentClazz != Object.class){
+		while(currentClazz != Object.class && currentClazz!=null){
 			for(Method m : currentClazz.getDeclaredMethods()){
 				for(Annotation an : m.getAnnotations()){
 					validateAnnotation(an, m);

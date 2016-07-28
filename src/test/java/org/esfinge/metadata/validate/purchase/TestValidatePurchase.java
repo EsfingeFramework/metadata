@@ -37,9 +37,19 @@ public class TestValidatePurchase {
 		}
 	}
 	
-	//@Test(expected = AnnotationValidationException.class)
+	@Test(expected = AnnotationValidationException.class)
 	public void CT03() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
 		MetadataValidator.validateMetadataOn(CT03.class);			
+	}
+
+	public interface CT04{
+		@Purchase(id="OK", total=9999)
+		public void registrar();
+	}
+	
+	@Test
+	public void CT04() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+		MetadataValidator.validateMetadataOn(CT04.class);			
 	}
 
 }

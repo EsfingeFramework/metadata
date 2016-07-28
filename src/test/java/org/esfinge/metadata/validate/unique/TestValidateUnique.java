@@ -4,7 +4,7 @@ import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
-public class TestValidateUnique<Purchase> {
+public class TestValidateUnique {
 	
 	public class Classe{
 		@PointsToUser(name="ponto", quantity=10)

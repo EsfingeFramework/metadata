@@ -5,7 +5,7 @@ import org.esfinge.metadata.validate.MetadataValidator;
 import org.esfinge.metadata.validate.notNull.PointsToUser;
 import org.junit.Test;
 
-public class TestValidateNotNull<Purchase> {
+public class TestValidateNotNull {
 
 	public class Classe{
 		@PointsToUser(name="", quantity=10)
@@ -14,7 +14,7 @@ public class TestValidateNotNull<Purchase> {
 		}
 	}
 	
-	//@Test(expected = AnnotationValidationException.class)
+	@Test(expected = AnnotationValidationException.class)
 	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
 		MetadataValidator.validateMetadataOn(Classe.class);			
 	}

@@ -5,7 +5,7 @@ import org.esfinge.metadata.validate.MetadataValidator;
 import org.esfinge.metadata.validate.minValue.PointsToUser;
 import org.junit.Test;
 
-public class TestValidateMaxValue<Purchase> {
+public class TestValidateMaxValue {
 
 	public class Classe{
 		@PointsToUser(name="pontoA", quantity=11)
