@@ -5,39 +5,35 @@ import java.lang.reflect.Modifier;
 
 public class ValidateStaticFieldOnly {
 	
-	public static boolean validateStaticFieldOnly(Object someObject){
+	public static boolean validateStaticFieldOnly(Object someObject) throws Exception{
+				
+		StringBuilder errorsBuilder = new StringBuilder();
 
-		Class<?> clazz = someObject.getClass();
-		
-		Field[] declaredFields = clazz.getDeclaredFields();  // get all the fields
+		Class<?> clazz = someObject.getClass();		
+		Field[] declaredFields = clazz.getDeclaredFields();
 		
 		for(Field field: declaredFields){
-			
-//			field.setAccessible(true);	
-			
+									
 			if(field.isAnnotationPresent(StaticFieldOnly.class)){
-				System.out.println(">>>" + field.getName());
-//				System.out.println(field.getType());
-//				System.out.println(field.getModifiers());
 				String modifiers = Modifier.toString(field.getModifiers());
-				System.out.println(modifiers);
-//				System.out.println(field.getGenericType());
-				System.out.println("\n\n");
+				
+				if(!modifiers.contains("static")){					
+					if(modifiers.equals("")) modifiers = "default";
+					
+					String error = "The field " + field.getName() + " in the " + clazz 
+							+ " is using the @StaticFieldOnly annotation, however it has no static modifier.\n"
+							+ "(it has just this(these) modifier(s): " + modifiers + " )";
+					
+					errorsBuilder.append(error + "\n");				
+				}
+				
 			}			
 		}
-			
-//		Field[] fields = clazz.getFields();  // get all public fields
-//		for(Field field: fields){			
-//			field.setAccessible(true);						
-//			if(field.isAnnotationPresent(StaticFieldOnly.class)){
-//				System.out.println(">>>" + field.getName());
-//				System.out.println(field.getType());
-//				System.out.println(field.getModifiers());
-//				System.out.println(field.getGenericType());
-//				System.out.println("\n\n");
-//			}			
-//		}
-
+		
+		String errors = errorsBuilder.toString();
+		if(!errors.equals(""))
+			throw new Exception(errors);
+		
 		return true;
 	}
 
