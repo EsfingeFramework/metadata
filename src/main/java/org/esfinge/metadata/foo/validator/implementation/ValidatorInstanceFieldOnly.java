@@ -9,7 +9,6 @@ import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorInstanceFieldOnly implements ValidatorInterface {
 	
-	@Override
 	public String getErrorMessage(Class<?> clazz, Field field, String modifiers, Class<? extends Annotation> annotation){		
 		return "The field " + field.getName() + " in the " + clazz 
 				+ " is using the @" + annotation.getSimpleName() + " annotation, however it has static modifier.\n"

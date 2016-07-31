@@ -1,7 +1,10 @@
 package org.esfinge.metadata.foo.annotation.test;
 
+import org.esfinge.metadata.foo.annotation.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.InstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
+import org.esfinge.metadata.foo.annotation.TransientFieldOnly;
+import org.esfinge.metadata.foo.annotation.VolatileFieldOnly;
 
 public class Person {
 	
@@ -11,18 +14,18 @@ public class Person {
 	@InstanceFieldOnly
 	private int age;
 	
-	
 	@StaticFieldOnly
 	private static String staticValue = "";	
 	
-	
-	@StaticFieldOnly
+	@FinalFieldOnly
 	private final String finalValue = "";
 	
-	@StaticFieldOnly
+	
+	
+	@TransientFieldOnly
 	private transient String transientValue = "";
 	
-	@StaticFieldOnly
+	@VolatileFieldOnly
 	private volatile String volatileValue = "";
 	
 //	private synchronized String synchronizedValue = "";
