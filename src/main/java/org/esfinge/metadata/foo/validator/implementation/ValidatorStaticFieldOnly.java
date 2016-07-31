@@ -1,12 +1,13 @@
-package org.esfinge.metadata.foo.validator;
+package org.esfinge.metadata.foo.validator.implementation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
+import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
-public class ValidateStaticFieldOnly extends ValidateFather {
+public class ValidatorStaticFieldOnly implements ValidatorInterface {
 	
 	@Override
 	public String getErrorMessage(Class<?> clazz, Field field, String modifiers, Class<? extends Annotation> annotation){		
@@ -32,24 +33,4 @@ public class ValidateStaticFieldOnly extends ValidateFather {
 		return error;
 	}
 	
-//	public boolean validateAnnotationInObject(Object someObject) throws Exception{
-//		StringBuilder errorsBuilder = new StringBuilder();
-//
-//		Class<?> clazz = someObject.getClass();		
-//		Field[] declaredFields = clazz.getDeclaredFields();
-//		
-//		for(Field field: declaredFields){			
-//			String error = validateField(clazz, field);
-//			
-//			if(!error.equals(""))						
-//				errorsBuilder.append(error + "\n");			
-//		}
-//		
-//		String errors = errorsBuilder.toString();
-//		if(!errors.equals(""))
-//			throw new Exception(errors);
-//		
-//		return true;
-//	}
-
 }

@@ -1,13 +1,14 @@
 package org.esfinge.metadata.foo.validator;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-public abstract class ValidateFather {
-		
-	public abstract String getErrorMessage(Class<?> clazz, Field field, String modifiers, Class<? extends Annotation> annotation);
+public class Validator {
 	
-	public abstract String validateField(Class<?> clazz, Field field);
+	private ValidatorInterface vi;
+	
+	public Validator(ValidatorInterface vi){
+		this.vi = vi;		
+	}
 	
 	public boolean validateAnnotationInObject(Object someObject) throws Exception{
 		StringBuilder errorsBuilder = new StringBuilder();
@@ -16,7 +17,7 @@ public abstract class ValidateFather {
 		Field[] declaredFields = clazz.getDeclaredFields();
 		
 		for(Field field: declaredFields){			
-			String error = validateField(clazz, field);
+			String error = vi.validateField(clazz, field);
 			
 			if(!error.equals(""))						
 				errorsBuilder.append(error + "\n");			
