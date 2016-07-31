@@ -6,14 +6,16 @@ import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
 
-public class ValidateStaticFieldOnly {
+public class ValidateStaticFieldOnly extends ValidateFather {
 	
+	@Override
 	public String getErrorMessage(Class<?> clazz, Field field, String modifiers, Class<? extends Annotation> annotation){		
 		return "The field " + field.getName() + " in the " + clazz 
 				+ " is using the @" + annotation.getSimpleName() + " annotation, however it has no static modifier.\n"
 				+ "(it has this(these) modifier(s): " + modifiers + " )";		
 	}
 	
+	@Override	
 	public String validateField(Class<?> clazz, Field field){
 		String error = "";
 		
@@ -30,24 +32,24 @@ public class ValidateStaticFieldOnly {
 		return error;
 	}
 	
-	public boolean validateAnnotationInObject(Object someObject) throws Exception{
-		StringBuilder errorsBuilder = new StringBuilder();
-
-		Class<?> clazz = someObject.getClass();		
-		Field[] declaredFields = clazz.getDeclaredFields();
-		
-		for(Field field: declaredFields){			
-			String error = validateField(clazz, field);
-			
-			if(!error.equals(""))						
-				errorsBuilder.append(error + "\n");			
-		}
-		
-		String errors = errorsBuilder.toString();
-		if(!errors.equals(""))
-			throw new Exception(errors);
-		
-		return true;
-	}
+//	public boolean validateAnnotationInObject(Object someObject) throws Exception{
+//		StringBuilder errorsBuilder = new StringBuilder();
+//
+//		Class<?> clazz = someObject.getClass();		
+//		Field[] declaredFields = clazz.getDeclaredFields();
+//		
+//		for(Field field: declaredFields){			
+//			String error = validateField(clazz, field);
+//			
+//			if(!error.equals(""))						
+//				errorsBuilder.append(error + "\n");			
+//		}
+//		
+//		String errors = errorsBuilder.toString();
+//		if(!errors.equals(""))
+//			throw new Exception(errors);
+//		
+//		return true;
+//	}
 
 }
