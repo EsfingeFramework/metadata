@@ -14,6 +14,10 @@ public class Person {
 	@StaticFieldOnly
 	private String notStaticValue = "";
 	
+//	public String one_public;
+//	protected String one_protected;
+//	String one_default;
+	
 	public Person(String name, String cpf, int age) {
 		this.name = name;
 		this.cpf = cpf;
