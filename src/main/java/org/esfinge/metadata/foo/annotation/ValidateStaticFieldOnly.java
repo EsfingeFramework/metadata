@@ -5,7 +5,26 @@ import java.lang.reflect.Modifier;
 
 public class ValidateStaticFieldOnly {
 	
-	public static boolean validateStaticFieldOnly(Object someObject) throws Exception{
+	public String validateField(Class<?> clazz, Field field){
+		String error = "";
+		
+		if(field.isAnnotationPresent(StaticFieldOnly.class)){
+			String modifiers = Modifier.toString(field.getModifiers());
+			
+			if(!modifiers.contains("static")){					
+				if(modifiers.equals("")) modifiers = "default";
+				
+				error = "The field " + field.getName() + " in the " + clazz 
+						+ " is using the @StaticFieldOnly annotation, however it has no static modifier.\n"
+						+ "(it has just this(these) modifier(s): " + modifiers + " )";
+			
+			}			
+		}
+		
+		return error;
+	}
+	
+	public boolean validateStaticFieldOnly(Object someObject) throws Exception{
 				
 		StringBuilder errorsBuilder = new StringBuilder();
 
@@ -13,21 +32,27 @@ public class ValidateStaticFieldOnly {
 		Field[] declaredFields = clazz.getDeclaredFields();
 		
 		for(Field field: declaredFields){
+			
+			String error = validateField(clazz, field);
+			
+			if(!error.equals(""))						
+				errorsBuilder.append(error + "\n");
 									
-			if(field.isAnnotationPresent(StaticFieldOnly.class)){
-				String modifiers = Modifier.toString(field.getModifiers());
-				
-				if(!modifiers.contains("static")){					
-					if(modifiers.equals("")) modifiers = "default";
-					
-					String error = "The field " + field.getName() + " in the " + clazz 
-							+ " is using the @StaticFieldOnly annotation, however it has no static modifier.\n"
-							+ "(it has just this(these) modifier(s): " + modifiers + " )";
-					
-					errorsBuilder.append(error + "\n");				
-				}
-				
-			}			
+//			if(field.isAnnotationPresent(StaticFieldOnly.class)){
+//				String modifiers = Modifier.toString(field.getModifiers());
+//				
+//				if(!modifiers.contains("static")){					
+//					if(modifiers.equals("")) modifiers = "default";
+//					
+//					String error = "The field " + field.getName() + " in the " + clazz 
+//							+ " is using the @StaticFieldOnly annotation, however it has no static modifier.\n"
+//							+ "(it has just this(these) modifier(s): " + modifiers + " )";
+//					
+//					errorsBuilder.append(error + "\n");				
+//				}
+//				
+//			}
+			
 		}
 		
 		String errors = errorsBuilder.toString();
