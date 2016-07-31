@@ -1,7 +1,9 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.fieldonly.test;
 
 import static org.junit.Assert.*;
 
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
 import org.esfinge.metadata.foo.validator.implementation.ValidatorInstanceFieldOnly;
 import org.junit.Before;

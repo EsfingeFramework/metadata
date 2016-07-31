@@ -6,12 +6,12 @@ import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
-public class ValidatorSpecificFieldOnly implements ValidatorInterface {
+public class ValidatorFieldOnly implements ValidatorInterface {
 	
 	private Class<? extends Annotation> annotation;
 	private String modifiers_name;
 	
-	public ValidatorSpecificFieldOnly(Class<? extends Annotation> annotation, String modifiers_name) {
+	public ValidatorFieldOnly(Class<? extends Annotation> annotation, String modifiers_name) {
 		this.annotation = annotation;
 		this.modifiers_name = modifiers_name;
 	}

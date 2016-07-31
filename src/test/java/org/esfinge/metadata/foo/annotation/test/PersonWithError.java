@@ -1,10 +1,10 @@
 package org.esfinge.metadata.foo.annotation.test;
 
-import org.esfinge.metadata.foo.annotation.FinalFieldOnly;
-import org.esfinge.metadata.foo.annotation.InstanceFieldOnly;
-import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
-import org.esfinge.metadata.foo.annotation.TransientFieldOnly;
-import org.esfinge.metadata.foo.annotation.VolatileFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 
 public class PersonWithError extends Person{
 	

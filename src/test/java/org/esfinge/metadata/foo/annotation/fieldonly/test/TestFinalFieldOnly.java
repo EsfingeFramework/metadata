@@ -1,21 +1,23 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.fieldonly.test;
 
 import static org.junit.Assert.assertTrue;
 
-import org.esfinge.metadata.foo.annotation.VolatileFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorSpecificFieldOnly;
+import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldOnly;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestVolatileFieldOnly {
+public class TestFinalFieldOnly {
 	
 	private Validator validator;
 	
 	@Before
 	public void init(){
-		ValidatorInterface vi = new ValidatorSpecificFieldOnly(VolatileFieldOnly.class, "volatile");			
+		ValidatorInterface vi = new ValidatorFieldOnly(FinalFieldOnly.class, "final");			
 		validator = new Validator(vi);
 	}
 		

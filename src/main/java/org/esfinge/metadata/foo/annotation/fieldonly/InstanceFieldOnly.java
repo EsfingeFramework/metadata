@@ -1,4 +1,4 @@
-package org.esfinge.metadata.foo.annotation;
+package org.esfinge.metadata.foo.annotation.fieldonly;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface TransientFieldOnly {
+public @interface InstanceFieldOnly {
 	boolean ignoreWhenNotField() default true;
 }

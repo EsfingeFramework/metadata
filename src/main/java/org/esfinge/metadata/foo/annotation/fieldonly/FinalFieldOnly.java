@@ -1,4 +1,4 @@
-package org.esfinge.metadata.foo.annotation;
+package org.esfinge.metadata.foo.annotation.fieldonly;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

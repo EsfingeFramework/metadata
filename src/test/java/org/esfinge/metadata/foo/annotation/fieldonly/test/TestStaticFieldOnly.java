@@ -1,11 +1,13 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.fieldonly.test;
 
 import static org.junit.Assert.*;
 
-import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorSpecificFieldOnly;
+import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldOnly;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +17,7 @@ public class TestStaticFieldOnly {
 	
 	@Before
 	public void init(){
-		ValidatorInterface vi = new ValidatorSpecificFieldOnly(StaticFieldOnly.class, "static");			
+		ValidatorInterface vi = new ValidatorFieldOnly(StaticFieldOnly.class, "static");			
 		validator = new Validator(vi);
 	}
 	
