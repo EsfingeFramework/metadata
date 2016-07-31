@@ -20,8 +20,6 @@ public class Person {
 	@FinalFieldOnly
 	private final String finalValue = "";
 	
-	
-	
 	@TransientFieldOnly
 	private transient String transientValue = "";
 	
@@ -29,9 +27,7 @@ public class Person {
 	private volatile String volatileValue = "";
 	
 //	private synchronized String synchronizedValue = "";
-	
-	
-		
+			
 	public Person(String name, String cpf, int age) {
 		this.name = name;
 		this.cpf = cpf;
