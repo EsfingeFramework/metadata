@@ -1,11 +1,14 @@
 package org.esfinge.metadata.foo.annotation.test;
 
+import org.esfinge.metadata.foo.annotation.InstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.StaticFieldOnly;
 
 public class Person {
 	
 	private String name;
 	private String cpf;
+	
+	@InstanceFieldOnly
 	private int age;	
 	
 	@StaticFieldOnly
