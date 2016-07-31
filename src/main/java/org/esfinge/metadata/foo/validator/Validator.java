@@ -3,7 +3,7 @@ package org.esfinge.metadata.foo.validator;
 import java.lang.reflect.Field;
 
 public class Validator {
-	
+		
 	private ValidatorInterface vi;
 	
 	public Validator(ValidatorInterface vi){

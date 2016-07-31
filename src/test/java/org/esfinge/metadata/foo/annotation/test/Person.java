@@ -9,10 +9,25 @@ public class Person {
 	private String cpf;
 	
 	@InstanceFieldOnly
-	private int age;	
+	private int age;
+	
 	
 	@StaticFieldOnly
-	private static String staticValue = "";
+	private static String staticValue = "";	
+	
+	
+	@StaticFieldOnly
+	private final String finalValue = "";
+	
+	@StaticFieldOnly
+	private transient String transientValue = "";
+	
+	@StaticFieldOnly
+	private volatile String volatileValue = "";
+	
+//	private synchronized String synchronizedValue = "";
+	
+	
 		
 	public Person(String name, String cpf, int age) {
 		this.name = name;
