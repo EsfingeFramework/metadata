@@ -10,6 +10,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.esfinge.metadata.AnnotationReadingException;
@@ -24,6 +25,7 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 	private Field fieldAnnoted;
 	List<Object> lista;
 	Set<Object> set;
+	Map<Object,Object> map;
 	ParameterizedType fieldGenericType;
 	AllFieldsWith annotation;
 
@@ -45,6 +47,7 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;
 					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
+					if(containerFor!=null){
 					if(!containerFor.vaule().equals(ContainerTarget.FIELDS))
 					{
 						throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of METHODS");
@@ -68,7 +71,11 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 					else if(fieldAnnoted.getType().equals(Set.class)){
 						setProperty(container,fieldAnnoted.getName(),set);
 					}
-				}					
+					else if(fieldAnnoted.getType().equals(Map.class)){
+						setProperty(container,fieldAnnoted.getName(),map);
+					}
+					}
+				}
 			}
 
 		} catch (Exception e) {
