@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface FieldVisibilityForbidden {
-	String itCannotHaveThisVisibility();
-	boolean ignoreWhenNotField() default true;	
+public @interface ValidFieldTypes {
+	String[] listValidTypes();
+	boolean ignoreWhenNotField() default true;
 }

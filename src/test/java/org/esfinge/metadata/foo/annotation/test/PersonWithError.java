@@ -2,6 +2,7 @@ package org.esfinge.metadata.foo.annotation.test;
 
 import org.esfinge.metadata.foo.annotation.FieldVisibilityForbidden;
 import org.esfinge.metadata.foo.annotation.FieldVisibilityRequired;
+import org.esfinge.metadata.foo.annotation.ValidFieldTypes;
 import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
@@ -23,6 +24,7 @@ public class PersonWithError extends Person{
 	protected String oneProtectedString;
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "default")
+	@ValidFieldTypes(listValidTypes = { "List" })
 	@TransientFieldOnly
 	@FinalFieldOnly
 	String oneDefaultString;
@@ -37,6 +39,7 @@ public class PersonWithError extends Person{
 	private static String oneStaticString = "";
 	
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "")
+	@ValidFieldTypes(listValidTypes = { "int" })
 	@VolatileFieldOnly
 	@InstanceFieldOnly
 	private static String otherStaticString = "";
