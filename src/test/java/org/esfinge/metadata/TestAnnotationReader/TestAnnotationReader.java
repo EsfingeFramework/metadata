@@ -168,7 +168,7 @@ public class TestAnnotationReader {
 	public void CT014() throws Exception {
 
 		AnnotationReader lm = new AnnotationReader();
-		Container container = (Container) lm.readingAnnotationsTo(Dominio.class, Container.class);
+		Container014 container = (Container014) lm.readingAnnotationsTo(Dominio.class, Container014.class);
 		assertTrue(container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals(Dominio.class.getName(), container.getNomeClasse());
@@ -177,13 +177,13 @@ public class TestAnnotationReader {
 		assertNotNull(container.getSetMethodsWith());
 		
 		int sun = 0;
-		for (MethodContainer m1 : container.getListaMetods()) {
+		for (MethodContainer m1 : container.getListaMethods()) {
 			if (m1.isToProcess()) {
 				sun++;
 			}
 		}
 		assertEquals(1, sun);
-		assertEquals(2, container.getListaMetods().size());
+		assertEquals(2, container.getListaMethods().size());
 		assertEquals(1, container.getListaMetodsWith().size());
 		assertEquals(1, container.getSetMethodsWith().size());
 
@@ -195,5 +195,14 @@ public class TestAnnotationReader {
 		}
 		assertEquals(1, sun2);
 	}
+	
+	@Test
+	public void CT015() throws Exception {
+
+		AnnotationReader lm = new AnnotationReader();
+		Container container = (Container) lm.readingAnnotationsTo(Dominio.class, Container.class);
+			
+	}
+
 
 }
