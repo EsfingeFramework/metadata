@@ -16,14 +16,20 @@ public class PersonWithError extends Person{
 	@StaticFieldOnly
 	private String notStaticValue = "";
 	
+	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "protected")
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "default")
 	@TransientFieldOnly
 	@StaticFieldOnly
 	protected String oneProtectedString;
 	
+	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "default")
 	@TransientFieldOnly
 	@FinalFieldOnly
-	String oneFinalString;
+	String oneDefaultString;
+	
+	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "")
+	@VolatileFieldOnly
+	String otherDefaultString;
 	
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "protected")
 	@FinalFieldOnly
@@ -34,6 +40,8 @@ public class PersonWithError extends Person{
 	@VolatileFieldOnly
 	@InstanceFieldOnly
 	private static String otherStaticString = "";
+	
+	
 	
 	public PersonWithError(String name, String cpf, int age) {
 		super(name, cpf, age);
