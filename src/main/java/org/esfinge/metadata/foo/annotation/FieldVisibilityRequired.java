@@ -8,5 +8,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface FieldVisibilityRequired {
-	boolean ignoreWhenNotField() default true;
+	String itNeedsToHaveThisVisibility();
+	boolean ignoreWhenNotField() default true;	
 }

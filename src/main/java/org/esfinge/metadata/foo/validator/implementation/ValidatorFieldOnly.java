@@ -17,7 +17,7 @@ public class ValidatorFieldOnly implements ValidatorInterface {
 	}
 
 	public String getErrorMessage(Class<?> clazz, Field field, String modifiers){			
-		return "The field " + field.getName() + " in the " + clazz 
+		return "The field " + field.getName() + " in the " + clazz.getSimpleName() 
 				+ " is using the @" + annotation.getSimpleName() + " annotation, however it has no " + modifiers_name + " modifier.\n"
 				+ "(it has this(these) modifier(s): " + modifiers + " )";		
 	}

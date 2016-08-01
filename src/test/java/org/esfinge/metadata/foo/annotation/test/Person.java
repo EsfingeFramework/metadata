@@ -1,5 +1,7 @@
 package org.esfinge.metadata.foo.annotation.test;
 
+import org.esfinge.metadata.foo.annotation.FieldVisibilityForbidden;
+import org.esfinge.metadata.foo.annotation.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
@@ -8,21 +10,20 @@ import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 
 public class Person {
 	
+	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "public")
 	private String name;
+	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "private")
 	private String cpf;
 	
 	@InstanceFieldOnly
-	private int age;
+	private int age;	
 	
 	@StaticFieldOnly
-	private static String staticValue = "";	
-	
+	private static String staticValue = "";		
 	@FinalFieldOnly
-	private final String finalValue = "";
-	
+	private final String finalValue = "";	
 	@TransientFieldOnly
-	private transient String transientValue = "";
-	
+	private transient String transientValue = "";	
 	@VolatileFieldOnly
 	private volatile String volatileValue = "";
 	

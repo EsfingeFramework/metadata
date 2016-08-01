@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface FieldVisibilityForbidden {
 	boolean ignoreWhenNotField() default true;
+	String itCannotHaveThisVisibility();
 }
