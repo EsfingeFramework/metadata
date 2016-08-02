@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.esfinge</groupId>
@@ -24,8 +23,8 @@
 		<developer>
 			<name>Eduardo Guerra</name>
 			<email>guerraem@gmail.com</email>
-			<organization></organization>
-			<organizationUrl></organizationUrl>
+			<organization />
+			<organizationUrl />
 		</developer>
 	</developers>
 
@@ -33,7 +32,8 @@
 		<connection>scm:git:git://github.com/pedrocavalero/metadata.git</connection>
 		<developerConnection>scm:git:ssh://github.com:pedrocavalero/metadata.git</developerConnection>
 		<url>http://github.com/pedrocavalero/metadata/</url>
-	</scm>
+	  <tag>metadata-1.0.1</tag>
+  </scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
