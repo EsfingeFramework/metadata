@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface ValidFieldTypes {
-	String[] listValidTypes();
+	Class[] listValidTypes();
 	boolean ignoreWhenNotField() default true;
 }

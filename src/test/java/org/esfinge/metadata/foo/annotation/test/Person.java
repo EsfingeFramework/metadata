@@ -16,13 +16,13 @@ import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 public class Person {
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "public")
-	@ValidFieldTypes(listValidTypes = { "String" })
+	@ValidFieldTypes(listValidTypes = { String.class })
 	private String name;
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "private")
 	private String cpf;
 	
 	@InstanceFieldOnly
-	@ValidFieldTypes(listValidTypes = { "int", "Integer" })
+	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
 	private int age;	
 	
 	@StaticFieldOnly
@@ -34,10 +34,10 @@ public class Person {
 	@VolatileFieldOnly
 	private volatile String volatileValue = "";
 	
-	@ValidFieldTypes(listValidTypes = { "List" })	
+	@ValidFieldTypes(listValidTypes = { List.class })	
 	private List<Integer> someList = new LinkedList<Integer>();
 	
-	@ValidFieldTypes(listValidTypes = { "List" })	
+	@ValidFieldTypes(listValidTypes = { List.class })	
 	private ArrayList<Float> otherList = new ArrayList<Float>();
 	
 //	private synchronized String synchronizedValue = "";

@@ -9,12 +9,12 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 	
 	private Class<ValidFieldTypes> annotation = ValidFieldTypes.class;
 	
-	public String getErrorMessage(Class<?> clazz, Field field, Class<?> type, String[] listValidTypes){
+	public String getErrorMessage(Class<?> clazz, Field field, Class<?> type, Class[] listValidTypes){
 		
 		StringBuilder concatedListValidTypes = new StringBuilder();
 		concatedListValidTypes.append("[");
-		for(String oneValidType: listValidTypes){
-			concatedListValidTypes.append(oneValidType);
+		for(Class<?> oneValidType: listValidTypes){
+			concatedListValidTypes.append(oneValidType.getSimpleName());
 			concatedListValidTypes.append(", ");
 		}
 		concatedListValidTypes.append("]");
@@ -30,25 +30,23 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 		
 		if(field.isAnnotationPresent(annotation)){
 			
-			Class<?> type = field.getType();			
-
+			Class<?> type = field.getType();
+						
 			ValidFieldTypes fvf = field.getAnnotation(annotation);			
-			String[] listValidTypes = fvf.listValidTypes();
+			Class[] listValidTypes = fvf.listValidTypes();
 			
 			boolean found = false;
-			for(String oneValidType: listValidTypes){	
-				
+			for(Class<?> oneValidType: listValidTypes){	
+								
 				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
 					found = true;
 				
-//				List -> List
-//				List -> ArrayList
-				else if(type.isAssignableFrom(oneValidType.getClass()))				
+//				List -> List // String -> String
+				else if(type.isAssignableFrom(oneValidType))				
 					found = true;
 				
-//				List -> List
-//				ArrayList -> List
-				else if(oneValidType.getClass().isAssignableFrom(type))
+//				List -> ArrayList
+				else if(oneValidType.isAssignableFrom(type))
 					found = true;
 				
 			}

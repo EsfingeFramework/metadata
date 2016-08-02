@@ -1,5 +1,7 @@
 package org.esfinge.metadata.foo.annotation.test;
 
+import java.util.List;
+
 import org.esfinge.metadata.foo.annotation.FieldVisibilityForbidden;
 import org.esfinge.metadata.foo.annotation.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.ValidFieldTypes;
@@ -24,7 +26,7 @@ public class PersonWithError extends Person{
 	protected String oneProtectedString;
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "default")
-	@ValidFieldTypes(listValidTypes = { "List" })
+	@ValidFieldTypes(listValidTypes = { List.class })
 	@TransientFieldOnly
 	@FinalFieldOnly
 	String oneDefaultString;
@@ -39,7 +41,7 @@ public class PersonWithError extends Person{
 	private static String oneStaticString = "";
 	
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "")
-	@ValidFieldTypes(listValidTypes = { "int" })
+	@ValidFieldTypes(listValidTypes = { int.class })
 	@VolatileFieldOnly
 	@InstanceFieldOnly
 	private static String otherStaticString = "";
