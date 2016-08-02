@@ -2,10 +2,7 @@ package org.esfinge.metadata.foo.annotation.test;
 
 import static org.junit.Assert.assertTrue;
 
-import org.esfinge.metadata.foo.annotation.test.Person;
-import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorValidFieldTypes;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +12,7 @@ public class TestOneAnnotation {
 	
 	@Before
 	public void init(){
-		validator = new Validator(new ValidatorValidFieldTypes());
+		validator = new Validator();
 	}
 		
 	@Test
@@ -26,6 +23,7 @@ public class TestOneAnnotation {
 	}
 	
 	@Test(expected = Exception.class)
+//	@Test
 	public void testWithError() throws Exception {
 		PersonWithError p = new PersonWithError("Piper", "65345186593", 13);	
 		validator.validateAnnotationInObject(p);

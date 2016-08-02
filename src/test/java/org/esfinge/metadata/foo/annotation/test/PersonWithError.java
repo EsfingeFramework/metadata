@@ -2,9 +2,9 @@ package org.esfinge.metadata.foo.annotation.test;
 
 import java.util.List;
 
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
@@ -13,16 +13,22 @@ import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 public class PersonWithError extends Person{
 	
-	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "public")
-	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "private")
-	@VolatileFieldOnly
-	@StaticFieldOnly
+
+//	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "public")
+//	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "private")
+//	@VolatileFieldOnly
+	
+	@OneAnnotationWithStaticFieldOnly
 	private String notStaticValue = "";
+	
+
+	
+	
+	
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "protected")
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "default")
 	@TransientFieldOnly
-	@StaticFieldOnly
 	protected String oneProtectedString;
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "default")

@@ -5,9 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
+
+@StaticFieldOnly
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface OneAnnotation {
-	Class[] listValidTypes();
-	boolean ignoreWhenNotField() default true;
+public @interface OneAnnotationWithStaticFieldOnly {
 }

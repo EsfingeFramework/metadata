@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
-import org.esfinge.metadata.foo.validator.ValidatorInterface;
+import org.esfinge.metadata.foo.validator.old.ValidatorInterface;
 
 public class ValidatorInstanceFieldOnly implements ValidatorInterface {
 	

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
@@ -14,6 +14,11 @@ import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 public class Person {
+	
+	@OneAnnotationWithStaticFieldOnly
+	private static String staticValue = "";
+	
+	
 	
 	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "public")
 	@ValidFieldTypes(listValidTypes = { String.class })
@@ -25,8 +30,6 @@ public class Person {
 	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
 	private int age;	
 	
-	@StaticFieldOnly
-	private static String staticValue = "";		
 	@FinalFieldOnly
 	private final String finalValue = "";	
 	@TransientFieldOnly
