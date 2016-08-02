@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.esfinge.metadata.foo.annotation.FieldVisibilityForbidden;
-import org.esfinge.metadata.foo.annotation.FieldVisibilityRequired;
-import org.esfinge.metadata.foo.annotation.ValidFieldTypes;
 import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
+import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 public class Person {
 	

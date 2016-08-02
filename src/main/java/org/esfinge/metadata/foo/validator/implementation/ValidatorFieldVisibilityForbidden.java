@@ -3,7 +3,7 @@ package org.esfinge.metadata.foo.validator.implementation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import org.esfinge.metadata.foo.annotation.FieldVisibilityForbidden;
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {

@@ -1,19 +1,21 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.visibility.test;
 
 import static org.junit.Assert.assertTrue;
 
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorValidFieldTypes;
+import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldVisibilityForbidden;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestValidFieldTypes {
+public class TestFieldVisibilityForbidden {
 	
 	private Validator validator;
 	
 	@Before
 	public void init(){
-		validator = new Validator(new ValidatorValidFieldTypes());
+		validator = new Validator(new ValidatorFieldVisibilityForbidden());
 	}
 		
 	@Test

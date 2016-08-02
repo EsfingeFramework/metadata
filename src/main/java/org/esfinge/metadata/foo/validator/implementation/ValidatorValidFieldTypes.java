@@ -2,7 +2,7 @@ package org.esfinge.metadata.foo.validator.implementation;
 
 import java.lang.reflect.Field;
 
-import org.esfinge.metadata.foo.annotation.ValidFieldTypes;
+import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorValidFieldTypes implements ValidatorInterface {
