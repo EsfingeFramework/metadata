@@ -3,6 +3,7 @@ package org.esfinge.metadata.foo.annotation.test;
 import static org.junit.Assert.assertTrue;
 
 import org.esfinge.metadata.foo.validator.Validator;
+import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldOnly;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +13,7 @@ public class TestFieldOnlyAnnotations {
 	
 	@Before
 	public void init(){
-		validator = new Validator();
+		validator = new Validator(new ValidatorFieldOnly());
 	}
 		
 	@Test
