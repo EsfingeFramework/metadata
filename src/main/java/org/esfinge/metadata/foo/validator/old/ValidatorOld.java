@@ -2,13 +2,13 @@ package org.esfinge.metadata.foo.validator.old;
 
 import java.lang.reflect.Field;
 
-import org.esfinge.metadata.foo.validator.old.ValidatorInterface;
+import org.esfinge.metadata.foo.validator.old.ValidatorInterfaceOld;
 
-public class Validator {
+public class ValidatorOld {
 		
-	private ValidatorInterface vi;
+	private ValidatorInterfaceOld vi;
 	
-	public Validator(ValidatorInterface vi){
+	public ValidatorOld(ValidatorInterfaceOld vi){
 		this.vi = vi;		
 	}
 	

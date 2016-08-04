@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithFinalFieldOnly;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithInstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithTransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
@@ -20,6 +21,7 @@ public class Person {
 	@OneAnnotationWithStaticFieldOnly
 	private static int otherStaticValue = 0;	
 	
+	@OneAnnotationWithInstanceFieldOnly
 	@OneAnnotationWithFinalFieldOnly
 	private final String finalValue = "";	
 	@OneAnnotationWithFinalFieldOnly
@@ -32,6 +34,7 @@ public class Person {
 	
 	@OneAnnotationWithVolatileFieldOnly
 	private volatile String volatileValue = "";
+	@OneAnnotationWithInstanceFieldOnly
 	@OneAnnotationWithVolatileFieldOnly
 	private volatile float otherVolatileValue = 3.5f;
 	
@@ -45,7 +48,6 @@ public class Person {
 	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "private")
 	private String cpf;
 	
-	@InstanceFieldOnly
 	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
 	private int age;	
 		

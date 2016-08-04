@@ -4,18 +4,18 @@ import static org.junit.Assert.assertTrue;
 
 import org.esfinge.metadata.foo.annotation.test.Person;
 import org.esfinge.metadata.foo.annotation.test.PersonWithError;
-import org.esfinge.metadata.foo.validator.old.Validator;
+import org.esfinge.metadata.foo.validator.old.ValidatorOld;
 import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldVisibilityForbidden;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestFieldVisibilityForbidden {
 	
-	private Validator validator;
+	private ValidatorOld validator;
 	
 	@Before
 	public void init(){
-		validator = new Validator(new ValidatorFieldVisibilityForbidden());
+		validator = new ValidatorOld(new ValidatorFieldVisibilityForbidden());
 	}
 		
 	@Test

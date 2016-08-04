@@ -3,9 +3,9 @@ package org.esfinge.metadata.foo.validator.implementation;
 import java.lang.reflect.Field;
 
 import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
-import org.esfinge.metadata.foo.validator.old.ValidatorInterface;
+import org.esfinge.metadata.foo.validator.old.ValidatorInterfaceOld;
 
-public class ValidatorValidFieldTypes implements ValidatorInterface {
+public class ValidatorValidFieldTypes implements ValidatorInterfaceOld {
 	
 	private Class<ValidFieldTypes> annotation = ValidFieldTypes.class;
 	

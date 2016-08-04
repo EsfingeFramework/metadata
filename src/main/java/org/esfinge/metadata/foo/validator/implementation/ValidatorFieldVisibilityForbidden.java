@@ -4,9 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
-import org.esfinge.metadata.foo.validator.old.ValidatorInterface;
+import org.esfinge.metadata.foo.validator.old.ValidatorInterfaceOld;
 
-public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {
+public class ValidatorFieldVisibilityForbidden implements ValidatorInterfaceOld {
 	
 	private Class<FieldVisibilityForbidden> annotation = FieldVisibilityForbidden.class;
 	

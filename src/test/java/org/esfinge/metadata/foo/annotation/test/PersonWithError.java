@@ -1,6 +1,7 @@
 package org.esfinge.metadata.foo.annotation.test;
 
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithFinalFieldOnly;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithInstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithTransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
@@ -23,8 +24,12 @@ public class PersonWithError extends Person{
 	@OneAnnotationWithFinalFieldOnly
 	private volatile long oneVolatileLong = 2372983;	
 
+	@OneAnnotationWithInstanceFieldOnly
 	@OneAnnotationWithVolatileFieldOnly
 	private static String oneStaticString = "";
+	
+	@OneAnnotationWithInstanceFieldOnly
+	public static String otherStaticString = "";
 
 	
 	

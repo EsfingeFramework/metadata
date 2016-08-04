@@ -4,9 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
-import org.esfinge.metadata.foo.validator.old.ValidatorInterface;
+import org.esfinge.metadata.foo.validator.old.ValidatorInterfaceOld;
 
-public class ValidatorFieldVisibilityRequired implements ValidatorInterface {
+public class ValidatorFieldVisibilityRequired implements ValidatorInterfaceOld {
 	
 	private Class<FieldVisibilityRequired> annotation = FieldVisibilityRequired.class;
 	

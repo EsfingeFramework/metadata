@@ -1,13 +1,15 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.fieldonly.test;
 
 import static org.junit.Assert.assertTrue;
 
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.foo.validator.Validator;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorFieldOnly;
+import org.esfinge.metadata.foo.validator.ValidatorFieldOnly;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestFieldOnlyAnnotations {
+public class TestFieldOnly {
 	
 	private Validator validator;
 	
