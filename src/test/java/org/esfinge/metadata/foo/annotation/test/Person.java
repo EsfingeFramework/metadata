@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithFinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithTransientFieldOnly;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
@@ -16,7 +16,26 @@ import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 public class Person {
 	
 	@OneAnnotationWithStaticFieldOnly
-	private static String staticValue = "";
+	private static long staticValue = 892832;	
+	@OneAnnotationWithStaticFieldOnly
+	private static int otherStaticValue = 0;	
+	
+	@OneAnnotationWithFinalFieldOnly
+	private final String finalValue = "";	
+	@OneAnnotationWithFinalFieldOnly
+	private final double otherFinalValue = 4.2;	
+	
+	@OneAnnotationWithTransientFieldOnly
+	private transient byte transientValue = 2;	
+	@OneAnnotationWithTransientFieldOnly
+	private transient boolean otherTransientValue = false;	
+	
+	@OneAnnotationWithVolatileFieldOnly
+	private volatile String volatileValue = "";
+	@OneAnnotationWithVolatileFieldOnly
+	private volatile float otherVolatileValue = 3.5f;
+	
+	
 	
 	
 	
@@ -29,14 +48,7 @@ public class Person {
 	@InstanceFieldOnly
 	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
 	private int age;	
-	
-	@FinalFieldOnly
-	private final String finalValue = "";	
-	@TransientFieldOnly
-	private transient String transientValue = "";	
-	@VolatileFieldOnly
-	private volatile String volatileValue = "";
-	
+		
 	@ValidFieldTypes(listValidTypes = { List.class })	
 	private List<Integer> someList = new LinkedList<Integer>();
 	

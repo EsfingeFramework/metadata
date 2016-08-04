@@ -6,7 +6,7 @@ import org.esfinge.metadata.foo.validator.Validator;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestOneAnnotation {
+public class TestFieldOnlyAnnotations {
 	
 	private Validator validator;
 	
