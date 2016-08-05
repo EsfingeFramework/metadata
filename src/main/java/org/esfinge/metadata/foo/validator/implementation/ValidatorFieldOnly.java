@@ -1,4 +1,4 @@
-package org.esfinge.metadata.foo.validator;
+package org.esfinge.metadata.foo.validator.implementation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -8,6 +8,7 @@ import org.esfinge.metadata.foo.annotation.fieldonly.FinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.TransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
+import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorFieldOnly implements ValidatorInterface {
 	

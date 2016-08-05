@@ -1,4 +1,4 @@
-package org.esfinge.metadata.foo.validator.implementation;
+package org.esfinge.metadata.foo.validator;
 
 import java.lang.reflect.Field;
 

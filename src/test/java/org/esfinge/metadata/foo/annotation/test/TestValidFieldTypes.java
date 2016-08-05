@@ -1,11 +1,9 @@
-package org.esfinge.metadata.foo.annotation.visibility.test;
+package org.esfinge.metadata.foo.annotation.test;
 
 import static org.junit.Assert.assertTrue;
 
-import org.esfinge.metadata.foo.annotation.test.Person;
-import org.esfinge.metadata.foo.annotation.test.PersonWithError;
+import org.esfinge.metadata.foo.validator.ValidatorValidFieldTypes;
 import org.esfinge.metadata.foo.validator.old.ValidatorOld;
-import org.esfinge.metadata.foo.validator.implementation.ValidatorValidFieldTypes;
 import org.junit.Before;
 import org.junit.Test;
 

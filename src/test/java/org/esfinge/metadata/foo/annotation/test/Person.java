@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithFieldVisibilityForbidden;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithFieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithFinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithInstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithTransientFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
-import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
-import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
-import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 public class Person {
 	
+	@OneAnnotationWithFieldVisibilityForbidden
 	@OneAnnotationWithStaticFieldOnly
 	private static long staticValue = 892832;	
 	@OneAnnotationWithStaticFieldOnly
@@ -23,10 +23,12 @@ public class Person {
 	
 	@OneAnnotationWithInstanceFieldOnly
 	@OneAnnotationWithFinalFieldOnly
-	private final String finalValue = "";	
+	private final String finalValue = "";
+	@OneAnnotationWithFieldVisibilityRequired
 	@OneAnnotationWithFinalFieldOnly
 	private final double otherFinalValue = 4.2;	
 	
+	@OneAnnotationWithFieldVisibilityForbidden
 	@OneAnnotationWithTransientFieldOnly
 	private transient byte transientValue = 2;	
 	@OneAnnotationWithTransientFieldOnly
@@ -39,22 +41,24 @@ public class Person {
 	private volatile float otherVolatileValue = 3.5f;
 	
 	
-	
-	
-	
-	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "public")
-	@ValidFieldTypes(listValidTypes = { String.class })
-	private String name;
-	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "private")
+	@OneAnnotationWithFieldVisibilityRequired
 	private String cpf;
 	
-	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
+	
+	
+	
+	
+//	@ValidFieldTypes(listValidTypes = { String.class })
+	private String name;
+	
+	
+//	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
 	private int age;	
 		
-	@ValidFieldTypes(listValidTypes = { List.class })	
+//	@ValidFieldTypes(listValidTypes = { List.class })	
 	private List<Integer> someList = new LinkedList<Integer>();
 	
-	@ValidFieldTypes(listValidTypes = { List.class })	
+//	@ValidFieldTypes(listValidTypes = { List.class })	
 	private ArrayList<Float> otherList = new ArrayList<Float>();
 	
 //	private synchronized String synchronizedValue = "";
