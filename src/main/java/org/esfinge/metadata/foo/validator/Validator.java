@@ -30,13 +30,16 @@ public class Validator {
 				for(Annotation annotationInAnnotation: annotationsInAnnotation){			
 					Class<? extends Annotation> classOfSubAnnotation = annotationInAnnotation.annotationType();
 					
+					error = "";
 					error = vi.verifyValidAnnotation(classConcrete, 
 														field, 
 														classOfAnnotationInField, 
 														classOfSubAnnotation);
 					
-					if(!error.equals(""))						
-						errorsBuilder.append(error + "\n");	
+					if(!error.equals("")){						
+						errorsBuilder.append(error + "\n");				
+					}
+					
 				}
 				
 			}		

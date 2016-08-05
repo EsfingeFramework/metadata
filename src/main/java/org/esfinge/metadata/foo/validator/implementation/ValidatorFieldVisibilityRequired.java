@@ -29,7 +29,10 @@ public class ValidatorFieldVisibilityRequired implements ValidatorInterface {
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
 		
-		if(classOfAnnotationInField.isAnnotationPresent(annotation)){
+//		if(classOfAnnotationInField.isAnnotationPresent(annotation)){			
+		if(classOfAnnotationInField.isAnnotationPresent(annotation)
+												&& classOfSubAnnotation.equals(annotation)){
+			
 			String modifiers = Modifier.toString(field.getModifiers());
 
 			FieldVisibilityRequired fvr = classOfAnnotationInField.getAnnotation(annotation);	

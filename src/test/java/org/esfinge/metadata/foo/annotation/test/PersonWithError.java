@@ -14,7 +14,6 @@ import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
 
 public class PersonWithError extends Person{
 	
-	@OneAnnotationWithValidFieldTypes
 	@OneAnnotationWithStaticFieldOnly
 	private int notStaticValue = 42;	
 	

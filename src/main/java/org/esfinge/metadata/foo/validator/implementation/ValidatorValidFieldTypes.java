@@ -37,7 +37,8 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 		
 		String error = "";
 		
-		if(classOfAnnotationInField.isAnnotationPresent(annotation)){
+		if(classOfAnnotationInField.isAnnotationPresent(annotation)
+												&& classOfSubAnnotation.equals(annotation)){
 			
 			Class<?> type = field.getType();
 						
@@ -60,12 +61,14 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 				
 			}
 			
-			if(!found)			
+			if(!found){			
 				error = getErrorMessage(classConcrete, 
 										field, 
 										classOfAnnotationInField, 
 										type, 
 										listValidTypes);
+			}
+			
 						
 		}
 		

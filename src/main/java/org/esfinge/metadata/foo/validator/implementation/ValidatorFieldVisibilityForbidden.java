@@ -30,7 +30,10 @@ public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {
 		
 		String error = "";
 		
-		if(classOfAnnotationInField.isAnnotationPresent(annotation)){
+//		if(classOfAnnotationInField.isAnnotationPresent(annotation)){			
+		if(classOfAnnotationInField.isAnnotationPresent(annotation)
+												&& classOfSubAnnotation.equals(annotation)){			
+			
 			String modifiers = Modifier.toString(field.getModifiers());
 
 			FieldVisibilityForbidden fvf = classOfAnnotationInField.getAnnotation(annotation);			

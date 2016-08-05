@@ -25,7 +25,6 @@ public class TestFieldVisibilityForbidden {
 		assertTrue(validated);
 	}
 	
-	// TODO: o erro retorna 6 erros, invés de 2	
 	@Test(expected = Exception.class)
 //	@Test
 	public void testWithError() throws Exception {

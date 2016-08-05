@@ -27,7 +27,10 @@ public class ValidatorInstanceFieldOnly implements ValidatorInterface {
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
 		
-		if(classOfAnnotationInField.isAnnotationPresent(InstanceFieldOnly.class)){
+//		if(classOfAnnotationInField.isAnnotationPresent(InstanceFieldOnly.class)){			
+		if(classOfAnnotationInField.isAnnotationPresent(InstanceFieldOnly.class)
+									&& classOfSubAnnotation.equals(InstanceFieldOnly.class)){
+			
 			String modifiers = Modifier.toString(field.getModifiers());
 			
 			if(modifiers.contains("static"))
