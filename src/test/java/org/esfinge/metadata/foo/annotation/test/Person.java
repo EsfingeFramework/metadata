@@ -10,8 +10,8 @@ import org.esfinge.metadata.foo.annotation.OneAnnotationWithFinalFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithInstanceFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithStaticFieldOnly;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithTransientFieldOnly;
+import org.esfinge.metadata.foo.annotation.OneAnnotationWithValidFieldTypes;
 import org.esfinge.metadata.foo.annotation.OneAnnotationWithVolatileFieldOnly;
-import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 public class Person {
 	
@@ -40,26 +40,22 @@ public class Person {
 	@OneAnnotationWithVolatileFieldOnly
 	private volatile float otherVolatileValue = 3.5f;
 	
-	
 	@OneAnnotationWithFieldVisibilityRequired
 	private String cpf;
 	
-	
-	
-	
-	
-//	@ValidFieldTypes(listValidTypes = { String.class })
+	@OneAnnotationWithValidFieldTypes
 	private String name;
 	
-	
-//	@ValidFieldTypes(listValidTypes = { int.class, Integer.class })
+	@OneAnnotationWithValidFieldTypes
 	private int age;	
 		
-//	@ValidFieldTypes(listValidTypes = { List.class })	
+	@OneAnnotationWithValidFieldTypes
 	private List<Integer> someList = new LinkedList<Integer>();
 	
-//	@ValidFieldTypes(listValidTypes = { List.class })	
+	@OneAnnotationWithValidFieldTypes
 	private ArrayList<Float> otherList = new ArrayList<Float>();
+	
+	
 	
 //	private synchronized String synchronizedValue = "";
 			

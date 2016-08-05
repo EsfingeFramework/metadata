@@ -1,19 +1,21 @@
-package org.esfinge.metadata.foo.annotation.test;
+package org.esfinge.metadata.foo.annotation.visibility.test;
 
 import static org.junit.Assert.assertTrue;
 
-import org.esfinge.metadata.foo.validator.ValidatorValidFieldTypes;
-import org.esfinge.metadata.foo.validator.old.ValidatorOld;
+import org.esfinge.metadata.foo.annotation.test.Person;
+import org.esfinge.metadata.foo.annotation.test.PersonWithError;
+import org.esfinge.metadata.foo.validator.Validator;
+import org.esfinge.metadata.foo.validator.implementation.ValidatorValidFieldTypes;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestValidFieldTypes {
 	
-	private ValidatorOld validator;
+	private Validator validator;
 	
 	@Before
 	public void init(){
-		validator = new ValidatorOld(new ValidatorValidFieldTypes());
+		validator = new Validator(new ValidatorValidFieldTypes());
 	}
 		
 	@Test
@@ -24,6 +26,7 @@ public class TestValidFieldTypes {
 	}
 	
 	@Test(expected = Exception.class)
+//	@Test
 	public void testWithError() throws Exception {
 		PersonWithError p = new PersonWithError("Piper", "65345186593", 13);	
 		validator.validateAnnotationInObject(p);
