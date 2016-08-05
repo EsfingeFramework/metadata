@@ -44,39 +44,7 @@ public class PersonWithError extends Person{
 	public static String otherStaticString = "";
 	
 	@OneAnnotationWithValidFieldTypes
-	Set oneSet = new HashSet<>();
-
-	
-	
-	
-//	
-//	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "protected")
-//	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "default")
-//	@TransientFieldOnly
-//	protected String oneProtectedString;
-//	
-//	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "default")
-//	@ValidFieldTypes(listValidTypes = { List.class })
-//	@TransientFieldOnly
-//	@FinalFieldOnly
-//	String oneDefaultString;
-//	
-//	@FieldVisibilityForbidden(itCannotHaveThisVisibility = "")
-//	@VolatileFieldOnly
-//	String otherDefaultString;
-//	
-//	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "protected")
-//	@FinalFieldOnly
-//	@InstanceFieldOnly
-//	private static String oneStaticString = "";
-//	
-//	@FieldVisibilityRequired(itNeedsToHaveThisVisibility = "")
-//	@ValidFieldTypes(listValidTypes = { int.class })
-//	@VolatileFieldOnly
-//	@InstanceFieldOnly
-//	private static String otherStaticString = "";
-	
-	
+	Set<Object> oneSet = new HashSet<>();	
 	
 	public PersonWithError(String name, String cpf, int age) {
 		super(name, cpf, age);
