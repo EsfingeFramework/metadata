@@ -2,6 +2,7 @@ package org.esfinge.metadata.foo.validator.implementation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,15 @@ public class ValidatorAll implements ValidatorInterface {
 		}
 		
 		return errorsBuilder.toString();
+	}
+
+	@Override
+	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
+												Method method,
+												Class<? extends Annotation> classOfAnnotationInMethod, 
+												Class<? extends Annotation> classOfSubAnnotation) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
