@@ -13,16 +13,14 @@ public class Validator {
 	
 	public Validator(){
 		this.vi = new ValidatorAll();		
-	}
-	
+	}	
 	public Validator(ValidatorInterface vi){
 		this.vi = vi;		
 	}
 	
 	public void setValidator(ValidatorInterface vi) {
 		this.vi = vi;
-	}
-	
+	}	
 	public ValidatorInterface getValidator() {
 		return vi;
 	}
@@ -56,12 +54,11 @@ public class Validator {
 					
 					error = "";
 					error = this.vi.verifyValidAnnotationInField(classConcrete, 
-															field, 
-															classOfAnnotationInField, 
-															classOfSubAnnotation);					
+																	field, 
+																	classOfAnnotationInField, 
+																	classOfSubAnnotation);					
 					if(!error.equals(""))						
-						this.errorsBuilder.append(error + "\n");
-					
+						this.errorsBuilder.append(error + "\n");					
 				}
 				
 			}		
@@ -91,8 +88,7 @@ public class Validator {
 															classOfAnnotationInMethod, 
 															classOfSubAnnotation);					
 					if(!error.equals(""))						
-						this.errorsBuilder.append(error + "\n");
-					
+						this.errorsBuilder.append(error + "\n");					
 				}
 				
 			}		

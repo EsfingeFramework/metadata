@@ -1,6 +1,7 @@
 package org.esfinge.metadata.foo.validator.implementation;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -20,6 +21,44 @@ public class ValidatorAll implements ValidatorInterface {
 		validators.add(new ValidatorFieldVisibilityForbidden());
 		validators.add(new ValidatorFieldVisibilityRequired());
 		validators.add(new ValidatorValidFieldTypes());	
+	}	
+	
+	private String verifyValidAnnotation(Class<?> classConcrete, 
+										AccessibleObject fieldOrMethod,
+										Class<? extends Annotation> classOfAnnotation, 
+										Class<? extends Annotation> classOfSubAnnotation) 
+												throws Exception {	
+		
+		Class<?> classFieldOrMethod = fieldOrMethod.getClass();
+		
+		String error = "";
+		StringBuilder errorsBuilder = new StringBuilder();	
+		
+		for(ValidatorInterface vi: validators){			
+			error = "";			
+			
+			if(classFieldOrMethod.isAssignableFrom(Field.class)){
+				
+				error = vi.verifyValidAnnotationInField(classConcrete, 
+														(Field) fieldOrMethod, 
+														classOfAnnotation, 
+														classOfSubAnnotation);	
+				
+			} else if(classFieldOrMethod.isAssignableFrom(Method.class)){
+				
+				error = vi.verifyValidAnnotationInMethod(classConcrete, 
+															(Method) fieldOrMethod, 
+															classOfAnnotation, 
+															classOfSubAnnotation);
+			}else{
+				throw new Exception("The parameter is not Field or Method.");
+			}			
+			
+			if(!error.equals(""))						
+				errorsBuilder.append(error + "\n");
+		}
+		
+		return errorsBuilder.toString();
 	}
 		
 	@Override
@@ -28,42 +67,36 @@ public class ValidatorAll implements ValidatorInterface {
 										Class<? extends Annotation> classOfAnnotationInField, 
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
-		StringBuilder errorsBuilder = new StringBuilder();	
-		
-		for(ValidatorInterface vi: validators){	
-			error = "";
-			error = vi.verifyValidAnnotationInField(classConcrete, 
-											field, 
+		try {
+			error = verifyValidAnnotation(classConcrete, 
+											field,
 											classOfAnnotationInField, 
-											classOfSubAnnotation);	
-			
-			if(!error.equals(""))						
-				errorsBuilder.append(error + "\n");
+											classOfSubAnnotation);
+		} catch (Exception e) {
+			e.printStackTrace();
+			error = e.getMessage();
 		}
-		
-		return errorsBuilder.toString();
+				
+		return error;
 	}
 
 	@Override
 	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
-												Class<? extends Annotation> classOfSubAnnotation) {		
+												Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
-		StringBuilder errorsBuilder = new StringBuilder();	
+		try {
+			error = verifyValidAnnotation(classConcrete, 
+											method,
+											classOfAnnotationInMethod, 
+											classOfSubAnnotation);
+		} catch (Exception e) {
+			e.printStackTrace();
+			error = e.getMessage();
+		}		
 		
-		for(ValidatorInterface vi: validators){	
-			error = "";
-			error = vi.verifyValidAnnotationInMethod(classConcrete, 
-														method, 
-														classOfAnnotationInMethod, 
-														classOfSubAnnotation);	
-			if(!error.equals(""))						
-				errorsBuilder.append(error + "\n");
-		}
-		
-		return errorsBuilder.toString();
-		
+		return error;		
 	}
 	
 	
