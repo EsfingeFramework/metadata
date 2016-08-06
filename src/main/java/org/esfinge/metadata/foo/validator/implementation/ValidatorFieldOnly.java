@@ -76,8 +76,65 @@ public class ValidatorFieldOnly implements ValidatorInterface {
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
 												Class<? extends Annotation> classOfSubAnnotation) {
-		// TODO Auto-generated method stub
-		return null;
+		String error = "";		
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(StaticFieldOnly.class)
+										&& classOfSubAnnotation.equals(StaticFieldOnly.class)){
+			
+			StaticFieldOnly ann = classOfAnnotationInMethod.getAnnotation(StaticFieldOnly.class);			
+			boolean ignoreWhenNotField = ann.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){				
+				System.out.println("Verifying in method... StaticFieldOnly");				
+			}else{				
+				System.out.println("Ignoring in method... StaticFieldOnly");				
+			}
+		
+		}
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(FinalFieldOnly.class)
+										&& classOfSubAnnotation.equals(FinalFieldOnly.class)){
+		
+			FinalFieldOnly ann = classOfAnnotationInMethod.getAnnotation(FinalFieldOnly.class);			
+			boolean ignoreWhenNotField = ann.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){				
+				System.out.println("Verifying in method... FinalFieldOnly");				
+			}else{				
+				System.out.println("Ignoring in method... FinalFieldOnly");				
+			}	
+		
+		}
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(TransientFieldOnly.class)
+											&& classOfSubAnnotation.equals(TransientFieldOnly.class)){
+		
+			TransientFieldOnly ann = classOfAnnotationInMethod.getAnnotation(TransientFieldOnly.class);			
+			boolean ignoreWhenNotField = ann.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){				
+				System.out.println("Verifying in method... TransientFieldOnly");				
+			}else{				
+				System.out.println("Ignoring in method... TransientFieldOnly");				
+			}
+		
+		}
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(VolatileFieldOnly.class)
+										&& classOfSubAnnotation.equals(VolatileFieldOnly.class)){
+			
+			VolatileFieldOnly ann = classOfAnnotationInMethod.getAnnotation(VolatileFieldOnly.class);			
+			boolean ignoreWhenNotField = ann.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){				
+				System.out.println("Verifying in method... VolatileFieldOnly");				
+			}else{				
+				System.out.println("Ignoring in method... VolatileFieldOnly");				
+			}						
+		
+		}
+		
+		return error;
 	}
 
 	

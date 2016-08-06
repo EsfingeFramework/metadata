@@ -9,6 +9,6 @@ import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
 
 @StaticFieldOnly
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+//@Target(ElementType.FIELD)
 public @interface OneAnnotationWithStaticFieldOnly {
 }

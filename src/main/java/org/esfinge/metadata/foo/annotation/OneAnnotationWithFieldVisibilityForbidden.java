@@ -9,6 +9,6 @@ import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
 
 @FieldVisibilityForbidden(itCannotHaveThisVisibility = "public")
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+//@Target(ElementType.FIELD)
 public @interface OneAnnotationWithFieldVisibilityForbidden {
 }

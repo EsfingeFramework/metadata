@@ -6,9 +6,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorInstanceFieldOnly implements ValidatorInterface {
+	
+	private Class<InstanceFieldOnly> annotation = InstanceFieldOnly.class;
 		
 	private String getErrorMessage(Class<?> classConcrete, 
 									Field field,			
@@ -27,37 +31,49 @@ public class ValidatorInstanceFieldOnly implements ValidatorInterface {
 										Class<? extends Annotation> classOfAnnotationInField, 
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
-		
-//		if(classOfAnnotationInField.isAnnotationPresent(InstanceFieldOnly.class)){			
-		if(classOfAnnotationInField.isAnnotationPresent(InstanceFieldOnly.class)
-									&& classOfSubAnnotation.equals(InstanceFieldOnly.class)){
+				
+		if(classOfAnnotationInField.isAnnotationPresent(annotation)
+												&& classOfSubAnnotation.equals(annotation)){
 			
 			String modifiers = Modifier.toString(field.getModifiers());
 			
 			if(modifiers.contains("static"))
-				error = getErrorMessage(classConcrete, field,
+				error = getErrorMessage(classConcrete, 
+										field,
 										classOfAnnotationInField, 
-										modifiers);
-			
+										modifiers);			
 		}
 		
 		return error;
 	}
-	
-	
+		
 	@Override
 	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
 												Class<? extends Annotation> classOfSubAnnotation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	
+		
+		String error = "";
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)
+													&& classOfSubAnnotation.equals(annotation)){			
+			
+			InstanceFieldOnly ifo = classOfAnnotationInMethod.getAnnotation(annotation);			
+			boolean ignoreWhenNotField = ifo.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){
+				
+				System.out.println("Verifying in method... InstanceFieldOnly");
+				
+			}else{
+				
+				System.out.println("Ignoring in method... InstanceFieldOnly");
+				
+			}
+			
+		}		
+		
+		return error;
+	}	
 	
 }

@@ -9,6 +9,6 @@ import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 
 @FieldVisibilityRequired(itNeedsToHaveThisVisibility = "private")
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+//@Target(ElementType.FIELD)
 public @interface OneAnnotationWithFieldVisibilityRequired {
 }

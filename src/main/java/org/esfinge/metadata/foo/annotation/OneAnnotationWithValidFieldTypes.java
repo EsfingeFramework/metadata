@@ -10,6 +10,6 @@ import org.esfinge.metadata.foo.annotation.visibility.ValidFieldTypes;
 
 @ValidFieldTypes(listValidTypes = {String.class, List.class, int.class})
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+//@Target(ElementType.FIELD)
 public @interface OneAnnotationWithValidFieldTypes {
 }

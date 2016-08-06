@@ -47,9 +47,22 @@ public class ValidatorAll implements ValidatorInterface {
 	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
-												Class<? extends Annotation> classOfSubAnnotation) {
-		// TODO Auto-generated method stub
-		return null;
+												Class<? extends Annotation> classOfSubAnnotation) {		
+		String error = "";
+		StringBuilder errorsBuilder = new StringBuilder();	
+		
+		for(ValidatorInterface vi: validators){	
+			error = "";
+			error = vi.verifyValidAnnotationInMethod(classConcrete, 
+														method, 
+														classOfAnnotationInMethod, 
+														classOfSubAnnotation);	
+			if(!error.equals(""))						
+				errorsBuilder.append(error + "\n");
+		}
+		
+		return errorsBuilder.toString();
+		
 	}
 
 	

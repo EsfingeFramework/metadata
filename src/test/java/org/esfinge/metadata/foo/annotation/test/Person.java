@@ -58,6 +58,7 @@ public class Person {
 	
 	
 //	private synchronized String synchronizedValue = "";
+	
 			
 	public Person(String name, String cpf, int age) {
 		this.name = name;
@@ -65,29 +66,41 @@ public class Person {
 		this.age = age;
 	}
 	
+	@OneAnnotationWithFieldVisibilityForbidden
 	public String getName() {
 		return name;
 	}
+	@OneAnnotationWithFieldVisibilityRequired
 	public void setName(String name) {
 		this.name = name;
 	}
+	@OneAnnotationWithFinalFieldOnly
 	public String getCpf() {
 		return cpf;
 	}
+	@OneAnnotationWithInstanceFieldOnly
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	@OneAnnotationWithStaticFieldOnly
 	public int getAge() {
 		return age;
 	}
+	@OneAnnotationWithTransientFieldOnly
 	public void setAge(int age) {
 		this.age = age;
 	}
+	@OneAnnotationWithValidFieldTypes
 	public List<Integer> getSomeList() {
 		return someList;
 	}
+	@OneAnnotationWithVolatileFieldOnly
 	public void setSomeList(List<Integer> someList) {
 		this.someList = someList;
-	}	
+	}
+	
+	
+	
+	
 	
 }

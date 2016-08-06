@@ -31,7 +31,7 @@ public class Validator {
 		Class<?> classConcrete = someObject.getClass();		
 		
 		this.verifyAllFields(classConcrete);
-//		this.verifyAllMethods(classConcrete);
+		this.verifyAllMethods(classConcrete);
 		
 		String errors = this.errorsBuilder.toString();
 		if(!errors.equals(""))
@@ -71,36 +71,36 @@ public class Validator {
 
 	}
 	
-//	private void verifyAllMethods(Class<?> classConcrete) {
-//		String error = "";
-//		Method[] declaredMethods = classConcrete.getDeclaredMethods();
-//		
-//		for(Method method: declaredMethods){				
-//			Annotation[] annotationsInMethod = method.getAnnotations();
-//			
-//			for(Annotation annotationInMethod: annotationsInMethod){				
-//				Class<? extends Annotation> classOfAnnotationInMethod = annotationInMethod.annotationType();
-//				Annotation[] annotationsInAnnotation = classOfAnnotationInMethod.getAnnotations();				
-//				
-//				for(Annotation annotationInAnnotation: annotationsInAnnotation){			
-//					Class<? extends Annotation> classOfSubAnnotation = annotationInAnnotation.annotationType();
-//					
-//					error = "";
-//					error = this.vi.verifyValidAnnotationInMethod(classConcrete, 
-//															method, 
-//															classOfAnnotationInMethod, 
-//															classOfSubAnnotation);					
-//					if(!error.equals(""))						
-//						this.errorsBuilder.append(error + "\n");
-//					
-//				}
-//				
-//			}		
-//
-//					
-//		}
-//
-//	}
+	private void verifyAllMethods(Class<?> classConcrete) {
+		String error = "";
+		Method[] declaredMethods = classConcrete.getDeclaredMethods();
+		
+		for(Method method: declaredMethods){				
+			Annotation[] annotationsInMethod = method.getAnnotations();
+			
+			for(Annotation annotationInMethod: annotationsInMethod){				
+				Class<? extends Annotation> classOfAnnotationInMethod = annotationInMethod.annotationType();
+				Annotation[] annotationsInAnnotation = classOfAnnotationInMethod.getAnnotations();				
+				
+				for(Annotation annotationInAnnotation: annotationsInAnnotation){			
+					Class<? extends Annotation> classOfSubAnnotation = annotationInAnnotation.annotationType();
+					
+					error = "";
+					error = this.vi.verifyValidAnnotationInMethod(classConcrete, 
+															method, 
+															classOfAnnotationInMethod, 
+															classOfSubAnnotation);					
+					if(!error.equals(""))						
+						this.errorsBuilder.append(error + "\n");
+					
+				}
+				
+			}		
+
+					
+		}
+
+	}
 	
 	
 

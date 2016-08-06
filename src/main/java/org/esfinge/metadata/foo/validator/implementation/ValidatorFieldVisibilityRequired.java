@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
@@ -29,8 +30,7 @@ public class ValidatorFieldVisibilityRequired implements ValidatorInterface {
 										Class<? extends Annotation> classOfAnnotationInField, 
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
-		
-//		if(classOfAnnotationInField.isAnnotationPresent(annotation)){			
+			
 		if(classOfAnnotationInField.isAnnotationPresent(annotation)
 												&& classOfSubAnnotation.equals(annotation)){
 			
@@ -58,13 +58,35 @@ public class ValidatorFieldVisibilityRequired implements ValidatorInterface {
 		
 		return error;
 	}
-	
+		
 	@Override
 	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
 												Class<? extends Annotation> classOfSubAnnotation) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String error = "";
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)
+													&& classOfSubAnnotation.equals(annotation)){			
+			
+			FieldVisibilityRequired fvr = classOfAnnotationInMethod.getAnnotation(annotation);			
+			boolean ignoreWhenNotField = fvr.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){
+				
+				System.out.println("Verifying in method... FieldVisibilityRequired");
+				
+			}else{
+				
+				System.out.println("Ignoring in method... FieldVisibilityRequired");
+				
+			}
+			
+		}		
+		
+		return error;
 	}
+	
+	
 }

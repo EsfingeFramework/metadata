@@ -31,7 +31,6 @@ public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {
 		
 		String error = "";
 		
-//		if(classOfAnnotationInField.isAnnotationPresent(annotation)){			
 		if(classOfAnnotationInField.isAnnotationPresent(annotation)
 												&& classOfSubAnnotation.equals(annotation)){			
 			
@@ -64,7 +63,29 @@ public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
 												Class<? extends Annotation> classOfSubAnnotation) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String error = "";
+		
+		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)
+													&& classOfSubAnnotation.equals(annotation)){			
+			
+			FieldVisibilityForbidden fvf = classOfAnnotationInMethod.getAnnotation(annotation);			
+			boolean ignoreWhenNotField = fvf.ignoreWhenNotField();
+			
+			if(!ignoreWhenNotField){
+				
+				System.out.println("Verifying in method... FieldVisibilityForbidden");
+				
+			}else{
+				
+				System.out.println("Ignoring in method... FieldVisibilityForbidden");
+				
+			}
+			
+		}		
+		
+		return error;
 	}
+	
+	
 }
