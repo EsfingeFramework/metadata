@@ -33,10 +33,10 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 	}
 	
 	@Override	
-	public String verifyValidAnnotation(Class<?> classConcrete, Field field,
-										Class<? extends Annotation> classOfAnnotationInField, 
-										Class<? extends Annotation> classOfSubAnnotation) {
-		
+	public String verifyValidAnnotationInField(Class<?> classConcrete, 
+												Field field,
+												Class<? extends Annotation> classOfAnnotationInField, 
+												Class<? extends Annotation> classOfSubAnnotation) {		
 		String error = "";
 		
 		if(classOfAnnotationInField.isAnnotationPresent(annotation)
@@ -81,8 +81,7 @@ public class ValidatorValidFieldTypes implements ValidatorInterface {
 	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
 												Method method,
 												Class<? extends Annotation> classOfAnnotationInMethod, 
-												Class<? extends Annotation> classOfSubAnnotation) {
-		
+												Class<? extends Annotation> classOfSubAnnotation) {		
 		String error = "";
 		
 		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)

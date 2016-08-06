@@ -23,7 +23,8 @@ public class ValidatorAll implements ValidatorInterface {
 	}
 		
 	@Override
-	public String verifyValidAnnotation(Class<?> classConcrete, Field field,
+	public String verifyValidAnnotationInField(Class<?> classConcrete, 
+										Field field,
 										Class<? extends Annotation> classOfAnnotationInField, 
 										Class<? extends Annotation> classOfSubAnnotation) {
 		String error = "";
@@ -31,7 +32,7 @@ public class ValidatorAll implements ValidatorInterface {
 		
 		for(ValidatorInterface vi: validators){	
 			error = "";
-			error = vi.verifyValidAnnotation(classConcrete, 
+			error = vi.verifyValidAnnotationInField(classConcrete, 
 											field, 
 											classOfAnnotationInField, 
 											classOfSubAnnotation);	
@@ -64,6 +65,54 @@ public class ValidatorAll implements ValidatorInterface {
 		return errorsBuilder.toString();
 		
 	}
+	
+	
+	
+	
+	
+//	@Override
+//	public String verifyValidAnnotationInField(Class<?> classConcrete, 
+//										Field field,
+//										Class<? extends Annotation> classOfAnnotationInField, 
+//										Class<? extends Annotation> classOfSubAnnotation) {
+//		String error = "";
+//		StringBuilder errorsBuilder = new StringBuilder();	
+//		
+//		for(ValidatorInterface vi: validators){	
+//			error = "";
+//			error = vi.verifyValidAnnotation(classConcrete, 
+//											field, 
+//											classOfAnnotationInField, 
+//											classOfSubAnnotation);	
+//			
+//			if(!error.equals(""))						
+//				errorsBuilder.append(error + "\n");
+//		}
+//		
+//		return errorsBuilder.toString();
+//	}
+//
+//	@Override
+//	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
+//												Method method,
+//												Class<? extends Annotation> classOfAnnotationInMethod, 
+//												Class<? extends Annotation> classOfSubAnnotation) {		
+//		String error = "";
+//		StringBuilder errorsBuilder = new StringBuilder();	
+//		
+//		for(ValidatorInterface vi: validators){	
+//			error = "";
+//			error = vi.verifyValidAnnotationInMethod(classConcrete, 
+//														method, 
+//														classOfAnnotationInMethod, 
+//														classOfSubAnnotation);	
+//			if(!error.equals(""))						
+//				errorsBuilder.append(error + "\n");
+//		}
+//		
+//		return errorsBuilder.toString();
+//		
+//	}
 
 	
 }

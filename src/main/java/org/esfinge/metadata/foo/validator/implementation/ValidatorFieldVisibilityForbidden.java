@@ -25,10 +25,10 @@ public class ValidatorFieldVisibilityForbidden implements ValidatorInterface {
 	}
 	
 	@Override	
-	public String verifyValidAnnotation(Class<?> classConcrete, Field field,
-										Class<? extends Annotation> classOfAnnotationInField, 
-										Class<? extends Annotation> classOfSubAnnotation) {
-		
+	public String verifyValidAnnotationInField(Class<?> classConcrete, 
+												Field field,
+												Class<? extends Annotation> classOfAnnotationInField, 
+												Class<? extends Annotation> classOfSubAnnotation) {		
 		String error = "";
 		
 		if(classOfAnnotationInField.isAnnotationPresent(annotation)

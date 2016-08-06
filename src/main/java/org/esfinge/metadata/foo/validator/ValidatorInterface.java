@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 public interface ValidatorInterface {
 		
-	public String verifyValidAnnotation(Class<?> classConcrete, 
+	public String verifyValidAnnotationInField(Class<?> classConcrete, 
 										Field field,
 										Class<? extends Annotation> classOfAnnotationInField, 
 										Class<? extends Annotation> classOfSubAnnotation);

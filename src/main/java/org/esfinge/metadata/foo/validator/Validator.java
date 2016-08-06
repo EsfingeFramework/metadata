@@ -55,7 +55,7 @@ public class Validator {
 					Class<? extends Annotation> classOfSubAnnotation = annotationInAnnotation.annotationType();
 					
 					error = "";
-					error = this.vi.verifyValidAnnotation(classConcrete, 
+					error = this.vi.verifyValidAnnotationInField(classConcrete, 
 															field, 
 															classOfAnnotationInField, 
 															classOfSubAnnotation);					
