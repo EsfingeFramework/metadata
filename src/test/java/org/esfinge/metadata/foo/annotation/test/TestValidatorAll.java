@@ -13,7 +13,8 @@ public class TestValidatorAll {
 	
 	@Before
 	public void init(){
-		validator = new Validator(new ValidatorAll());
+		validator = new Validator();
+//		validator = new Validator(new ValidatorAll());
 	}
 		
 	@Test
