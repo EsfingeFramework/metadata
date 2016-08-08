@@ -10,7 +10,6 @@ import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
 import org.esfinge.metadata.foo.annotation.fieldonly.InstanceFieldOnly;
 
-//public class ValidatorInstanceFieldOnly implements ValidatorInterface {
 public class ValidatorInstanceFieldOnly implements AnnotationValidator{
 
 	private boolean ignoreWhenNotField = true;
