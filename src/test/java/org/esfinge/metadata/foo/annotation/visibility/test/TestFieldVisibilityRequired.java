@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.foo.annotation.test.Person;
-import org.esfinge.metadata.foo.annotation.test.PersonWithError;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
@@ -18,7 +17,7 @@ public class TestFieldVisibilityRequired {
 	
 	@Test(expected = AnnotationValidationException.class)
 	public void testWithError() throws AnnotationValidationException {				
-		MetadataValidator.validateMetadataOn(PersonWithError.class);
+		MetadataValidator.validateMetadataOn(PersonWithErrorFieldVisibilityRequired.class);
 	}
 
 }
