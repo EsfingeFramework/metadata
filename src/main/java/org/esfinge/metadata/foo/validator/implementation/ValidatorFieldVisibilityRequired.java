@@ -13,7 +13,7 @@ import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
 public class ValidatorFieldVisibilityRequired implements AnnotationValidator {
 	
 	private String visibility = "";
-	boolean ignoreWhenNotField = true;
+	private boolean ignoreWhenNotField = true;
 	
 	@Override
 	public void initialize(Annotation self) {

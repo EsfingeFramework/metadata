@@ -15,7 +15,7 @@ import org.esfinge.metadata.foo.validator.ValidatorInterface;
 public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 	
 	private String visibility = "";
-	boolean ignoreWhenNotField = true;
+	private boolean ignoreWhenNotField = true;
 	
 	@Override
 	public void initialize(Annotation self) {
