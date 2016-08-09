@@ -10,14 +10,15 @@ import java.util.Map;
 import java.util.Set;
 
 import org.esfinge.metadata.annotation.validator.ValidFieldType;
+import org.esfinge.metadata.container.reading.AllFieldsWithReadingProcessor;
 import org.esfinge.metadata.container.reading.AllMethodsWithReadingProcessor;
 import org.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@AnnotationReadingConfig(AllMethodsWithReadingProcessor.class)
+@AnnotationReadingConfig(AllFieldsWithReadingProcessor.class)
 
-@ValidFieldType({List.class, Set.class, Map.class})
-public @interface AllMethodsWith {
+@ValidFieldType({List.class, Set.class,Map.class})
+public @interface AllFieldsWith {
 	Class<? extends Annotation> value();
 }
