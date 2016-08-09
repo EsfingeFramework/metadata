@@ -7,7 +7,7 @@ import org.esfinge.metadata.foo.annotation.test.Person;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
-public class TestVolatileFieldOnly {
+public class TestFinalFieldOnly {
 	
 	@Test
 	public void testWithSuccess() throws Exception {		
@@ -17,7 +17,7 @@ public class TestVolatileFieldOnly {
 	
 	@Test(expected = AnnotationValidationException.class)
 	public void testWithError() throws AnnotationValidationException {				
-		MetadataValidator.validateMetadataOn(PersonWithErrorVolatileFieldOnly.class);
+		MetadataValidator.validateMetadataOn(PersonWithErrorFinalFieldOnly.class);
 	}
 
 }

@@ -9,8 +9,6 @@ import java.lang.reflect.Modifier;
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
 import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityForbidden;
-import org.esfinge.metadata.foo.annotation.visibility.FieldVisibilityRequired;
-import org.esfinge.metadata.foo.validator.ValidatorInterface;
 
 public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 	

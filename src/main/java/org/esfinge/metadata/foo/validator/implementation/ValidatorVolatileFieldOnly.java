@@ -8,9 +8,9 @@ import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.foo.annotation.fieldonly.StaticFieldOnly;
+import org.esfinge.metadata.foo.annotation.fieldonly.VolatileFieldOnly;
 
-public class ValidatorStaticFieldOnly implements AnnotationValidator {	
+public class ValidatorVolatileFieldOnly implements AnnotationValidator {
 	
 	private boolean ignoreWhenNotField = true;
 	private String modifiersNameObliged = "";
@@ -18,8 +18,8 @@ public class ValidatorStaticFieldOnly implements AnnotationValidator {
 	@Override
 	public void initialize(Annotation self) {	
 			
-		StaticFieldOnly fieldOnly = (StaticFieldOnly) self;		
-		modifiersNameObliged = "static";		
+		VolatileFieldOnly fieldOnly = (VolatileFieldOnly) self;		
+		modifiersNameObliged = "volatile";		
 		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();
 		
 	}
