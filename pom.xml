@@ -29,9 +29,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/pedrocavalero/metadata.git</connection>
-		<developerConnection>scm:git:ssh://github.com:pedrocavalero/metadata.git</developerConnection>
-		<url>http://github.com/pedrocavalero/metadata/</url>
+		<connection>scm:git:git://github.com/EsfingeFramework/metadata.git</connection>
+		<developerConnection>scm:git:ssh://github.com:EsfingeFramework/metadata.git</developerConnection>
+		<url>http://github.com/EsfingeFramework/metadata</url>
 	  <tag>metadata-1.0.1</tag>
   </scm>
 	<properties>
