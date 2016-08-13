@@ -3,7 +3,6 @@ package org.esfinge.metadata.validate.field;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
@@ -13,24 +12,19 @@ import org.esfinge.metadata.annotation.validator.field.FieldVisibilityForbidden;
 public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 	
 	private String visibility = "";
-	private boolean ignoreWhenNotField = true;
+//	private boolean ignoreWhenNotField = true;
 	
 	@Override
-	public void initialize(Annotation self) {
-		
-//		self - anotacao para validar, anotacao da anotacao	
-		
+	public void initialize(Annotation self) {		
 		FieldVisibilityForbidden fvf = (FieldVisibilityForbidden) self;		
 		visibility = fvf.itCannotHaveThisVisibility();	
-		ignoreWhenNotField = fvf.ignoreWhenNotField();
-		
+//		ignoreWhenNotField = fvf.ignoreWhenNotField();		
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {
-		
+									throws AnnotationValidationException {		
 //		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
 //		annotated - field ou method que tem a anotacao acima
 		
@@ -59,19 +53,20 @@ public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 				}
 			}
 			
-		}else if(annotated instanceof Method){
-			
-			Method method = (Method) annotated;	
-			
-			if(!ignoreWhenNotField){				
-				System.out.println("Verifying in method... InstanceFieldOnly");				
-			}else{				
-				System.out.println("Ignoring in method... InstanceFieldOnly");				
-			}
-			
-		}else{
-			System.out.println("idk .-.");
 		}		
+//		else if(annotated instanceof Method){
+//			
+//			Method method = (Method) annotated;	
+//			
+//			if(!ignoreWhenNotField){				
+//				System.out.println("Verifying in method... InstanceFieldOnly");				
+//			}else{				
+//				System.out.println("Ignoring in method... InstanceFieldOnly");				
+//			}
+//			
+//		}else{
+//			System.out.println("idk .-.");
+//		}
 		
 	}
 			
@@ -86,78 +81,5 @@ public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 				+ " annotation, with this(these) modifier(s): " + modifiers 
 				+ ", however it is forbidden to use this: " + visibility + ".\n";
 	}
-	
-	
-	
-	
-	
-//	private Class<FieldVisibilityForbidden> annotation = FieldVisibilityForbidden.class;	
-	
-	
-	
-	
-//	@Override	
-//	public String verifyValidAnnotationInField(Class<?> classConcrete, 
-//												Field field,
-//												Class<? extends Annotation> classOfAnnotationInField, 
-//												Class<? extends Annotation> classOfSubAnnotation) {		
-//		String error = "";
-//		
-//		if(classOfAnnotationInField.isAnnotationPresent(annotation)
-//												&& classOfSubAnnotation.equals(annotation)){			
-//			
-//			String modifiers = Modifier.toString(field.getModifiers());
-//
-//			FieldVisibilityForbidden fvf = classOfAnnotationInField.getAnnotation(annotation);			
-//			String visibility = fvf.itCannotHaveThisVisibility();
-//			
-//			if(visibility.equals("default") || visibility.equals("")){					
-//				if( !( modifiers.contains("public") || modifiers.contains("private") || modifiers.contains("protected") ) )						
-//					error = getErrorMessage(classConcrete, field, 
-//											classOfAnnotationInField, 
-//											modifiers + " default", 
-//											"default");			
-//			} else {								
-//				if(modifiers.contains(visibility))
-//					error = getErrorMessage(classConcrete, field, 
-//											classOfAnnotationInField, 
-//											modifiers, 
-//											visibility);				
-//			}
-//			
-//		}
-//		
-//		return error;
-//	}
-//	
-//	@Override
-//	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
-//												Method method,
-//												Class<? extends Annotation> classOfAnnotationInMethod, 
-//												Class<? extends Annotation> classOfSubAnnotation) {
-//		
-//		String error = "";
-//		
-//		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)
-//													&& classOfSubAnnotation.equals(annotation)){			
-//			
-//			FieldVisibilityForbidden fvf = classOfAnnotationInMethod.getAnnotation(annotation);			
-//			boolean ignoreWhenNotField = fvf.ignoreWhenNotField();
-//			
-//			if(!ignoreWhenNotField){
-//				
-//				System.out.println("Verifying in method... FieldVisibilityForbidden");
-//				
-//			}else{
-//				
-//				System.out.println("Ignoring in method... FieldVisibilityForbidden");
-//				
-//			}
-//			
-//		}		
-//		
-//		return error;
-//	}
-	
 	
 }

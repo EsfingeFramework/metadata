@@ -3,7 +3,6 @@ package org.esfinge.metadata.validate.field;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
@@ -12,29 +11,23 @@ import org.esfinge.metadata.annotation.validator.field.ValidFieldTypes;
 public class ValidatorValidFieldTypes implements AnnotationValidator {
 	
 	private Class<?>[] listValidTypes = {};
-	private boolean ignoreWhenNotField = true;
+//	private boolean ignoreWhenNotField = true;
 	
 	@Override
-	public void initialize(Annotation self) {
-		
-//		self - anotacao para validar, anotacao da anotacao	
-		
+	public void initialize(Annotation self) {		
 		ValidFieldTypes vft = (ValidFieldTypes) self;		
 		listValidTypes = vft.listValidTypes();	
-		ignoreWhenNotField = vft.ignoreWhenNotField();
-				
+//		ignoreWhenNotField = vft.ignoreWhenNotField();				
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {
-		
+									throws AnnotationValidationException {		
 //		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
 //		annotated - field ou method que tem a anotacao acima
 		
-		if(annotated instanceof Field){
-			
+		if(annotated instanceof Field){			
 			Field field = (Field) annotated;						
 			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
 						
@@ -64,24 +57,22 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 												listValidTypes);
 				
 				throw new AnnotationValidationException(error);
-			}
-			
-		}else if(annotated instanceof Method){
-			
-			Method method = (Method) annotated;	
-			
-			if(!ignoreWhenNotField){				
-				System.out.println("Verifying in method... InstanceFieldOnly");				
-			}else{				
-				System.out.println("Ignoring in method... InstanceFieldOnly");				
-			}
-			
-		}else{
-			System.out.println("idk .-.");
-		}		
-		
-	}
-	
+			}			
+		}
+//		else if(annotated instanceof Method){
+//			
+//			Method method = (Method) annotated;	
+//			
+//			if(!ignoreWhenNotField){				
+//				System.out.println("Verifying in method... InstanceFieldOnly");				
+//			}else{				
+//				System.out.println("Ignoring in method... InstanceFieldOnly");				
+//			}
+//			
+//		}else{
+//			System.out.println("idk .-.");
+//		}			
+	}	
 	
 	public String getErrorMessage(Class<?> clazz, 
 									Field field, 
@@ -102,6 +93,7 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 				+ " annotation, its type is " + type.getSimpleName() 
 				+ ", however it is not in the list of valid types (list: " + concatedListValidTypes.toString() + "): .\n";
 	}
+	
 	
 	
 	

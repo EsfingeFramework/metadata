@@ -3,7 +3,6 @@ package org.esfinge.metadata.validate.field;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
@@ -12,28 +11,24 @@ import org.esfinge.metadata.annotation.validator.field.TransientFieldOnly;
 
 public class ValidatorTransientFieldOnly implements AnnotationValidator {
 	
-	private boolean ignoreWhenNotField = true;
 	private String modifiersNameObliged = "";
+//	private boolean ignoreWhenNotField = true;
 	
 	@Override
-	public void initialize(Annotation self) {	
-					
+	public void initialize(Annotation self) {						
 		TransientFieldOnly fieldOnly = (TransientFieldOnly) self;		
 		modifiersNameObliged = "transient";	
-		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();
-		
+//		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();		
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {
-		
+									throws AnnotationValidationException {		
 //		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
 //		annotated - field ou method que tem a anotacao acima
 		
-		if(annotated instanceof Field){
-			
+		if(annotated instanceof Field){			
 			Field field = (Field) annotated;						
 			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
 						
@@ -49,22 +44,21 @@ public class ValidatorTransientFieldOnly implements AnnotationValidator {
 												modifiers);
 				
 				throw new AnnotationValidationException(error);			
-			}
-			
-		}else if(annotated instanceof Method){
-			
-			Method method = (Method) annotated;	
-			
-			if(!ignoreWhenNotField){				
-				System.out.println("Verifying in method... InstanceFieldOnly");				
-			}else{				
-				System.out.println("Ignoring in method... InstanceFieldOnly");				
-			}
-			
-		}else{
-			System.out.println("idk .-.");
-		}		
-		
+			}			
+		}
+//		else if(annotated instanceof Method){
+//			
+//			Method method = (Method) annotated;	
+//			
+//			if(!ignoreWhenNotField){				
+//				System.out.println("Verifying in method... InstanceFieldOnly");				
+//			}else{				
+//				System.out.println("Ignoring in method... InstanceFieldOnly");				
+//			}
+//			
+//		}else{
+//			System.out.println("idk .-.");
+//		}				
 	}
 	
 	private String getErrorMessage(Class<?> classConcrete, 
@@ -76,8 +70,7 @@ public class ValidatorTransientFieldOnly implements AnnotationValidator {
 		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
 				+ " annotation, however it has no " + modifiersNameObliged + " modifier.\n"
-				+ "(it has this(these) modifier(s): " + modifiers + " )";
-	
+				+ "(it has this(these) modifier(s): " + modifiers + " )";	
 	}
 	
 	
