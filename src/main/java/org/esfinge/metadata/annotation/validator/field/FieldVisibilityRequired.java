@@ -13,5 +13,5 @@ import org.esfinge.metadata.validate.field.ValidatorFieldVisibilityRequired;
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface FieldVisibilityRequired {
 	String itNeedsToHaveThisVisibility();
-	boolean ignoreWhenNotField() default true;	
+//	boolean ignoreWhenNotField() default true;	
 }

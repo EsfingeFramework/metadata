@@ -12,5 +12,5 @@ import org.esfinge.metadata.validate.field.ValidatorFinalFieldOnly;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface FinalFieldOnly{
-	boolean ignoreWhenNotField() default true;
+//	boolean ignoreWhenNotField() default true;
 }

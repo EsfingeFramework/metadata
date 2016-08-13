@@ -56,15 +56,12 @@ public class Person {
 	private ArrayList<Float> otherList = new ArrayList<Float>();
 	
 	
-	
-//	private synchronized String synchronizedValue = "";
-	
-			
 	public Person(String name, String cpf, int age) {
 		this.name = name;
 		this.cpf = cpf;
 		this.age = age;
 	}
+	
 	
 	@OneAnnotationWithFieldVisibilityForbidden
 	public String getName() {
@@ -98,9 +95,5 @@ public class Person {
 	public void setSomeList(List<Integer> someList) {
 		this.someList = someList;
 	}
-	
-	
-	
-	
 	
 }

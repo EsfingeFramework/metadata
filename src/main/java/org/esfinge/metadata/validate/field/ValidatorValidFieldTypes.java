@@ -11,25 +11,21 @@ import org.esfinge.metadata.annotation.validator.field.ValidFieldTypes;
 public class ValidatorValidFieldTypes implements AnnotationValidator {
 	
 	private Class<?>[] listValidTypes = {};
-//	private boolean ignoreWhenNotField = true;
 	
 	@Override
 	public void initialize(Annotation self) {		
 		ValidFieldTypes vft = (ValidFieldTypes) self;		
-		listValidTypes = vft.listValidTypes();	
-//		ignoreWhenNotField = vft.ignoreWhenNotField();				
+		listValidTypes = vft.listValidTypes();				
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {		
-//		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
-//		annotated - field ou method que tem a anotacao acima
+									throws AnnotationValidationException {
 		
 		if(annotated instanceof Field){			
 			Field field = (Field) annotated;						
-			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
+			Class<?> classConcrete = field.getDeclaringClass(); 
 						
 			Class<?> type = field.getType();
 						
@@ -54,24 +50,11 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 												field, 
 												toValidate.annotationType(), 
 												type, 
-												listValidTypes);
-				
+												listValidTypes);				
 				throw new AnnotationValidationException(error);
 			}			
 		}
-//		else if(annotated instanceof Method){
-//			
-//			Method method = (Method) annotated;	
-//			
-//			if(!ignoreWhenNotField){				
-//				System.out.println("Verifying in method... InstanceFieldOnly");				
-//			}else{				
-//				System.out.println("Ignoring in method... InstanceFieldOnly");				
-//			}
-//			
-//		}else{
-//			System.out.println("idk .-.");
-//		}			
+		
 	}	
 	
 	public String getErrorMessage(Class<?> clazz, 
@@ -93,81 +76,5 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 				+ " annotation, its type is " + type.getSimpleName() 
 				+ ", however it is not in the list of valid types (list: " + concatedListValidTypes.toString() + "): .\n";
 	}
-	
-	
-	
-	
-	
-//	public String verifyValidAnnotationInField(Class<?> classConcrete, 
-//												Field field,
-//												Class<? extends Annotation> classOfAnnotationInField, 
-//												Class<? extends Annotation> classOfSubAnnotation) {		
-//		String error = "";
-//		
-//		if(classOfAnnotationInField.isAnnotationPresent(annotation)
-//												&& classOfSubAnnotation.equals(annotation)){
-//			
-//			Class<?> type = field.getType();
-//						
-//			ValidFieldTypes fvf = classOfAnnotationInField.getAnnotation(annotation);			
-//			Class<?>[] listValidTypes = fvf.listValidTypes();
-//			
-//			boolean found = false;
-//			for(Class<?> oneValidType: listValidTypes){	
-//								
-//				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
-//					found = true;
-//				
-////				List -> List // String -> String
-//				else if(type.isAssignableFrom(oneValidType))				
-//					found = true;
-//				
-////				List -> ArrayList
-//				else if(oneValidType.isAssignableFrom(type))
-//					found = true;
-//				
-//			}
-//			
-//			if(!found){			
-//				error = getErrorMessage(classConcrete, 
-//										field, 
-//										classOfAnnotationInField, 
-//										type, 
-//										listValidTypes);
-//			}
-//			
-//						
-//		}
-//		
-//		return error;
-//	}
-//		
-//	public String verifyValidAnnotationInMethod(Class<?> classConcrete,
-//												Method method,
-//												Class<? extends Annotation> classOfAnnotationInMethod, 
-//												Class<? extends Annotation> classOfSubAnnotation) {		
-//		String error = "";
-//		
-//		if(classOfAnnotationInMethod.isAnnotationPresent(annotation)
-//													&& classOfSubAnnotation.equals(annotation)){			
-//			
-//			ValidFieldTypes vft = classOfAnnotationInMethod.getAnnotation(annotation);			
-//			boolean ignoreWhenNotField = vft.ignoreWhenNotField();
-//			
-//			if(!ignoreWhenNotField){
-//				
-//				System.out.println("Verifying in method... ValidFieldTypes");
-//				
-//			}else{
-//				
-//				System.out.println("Ignoring in method... ValidFieldTypes");
-//				
-//			}
-//			
-//		}		
-//		
-//		return error;
-//	}
-	
 	
 }

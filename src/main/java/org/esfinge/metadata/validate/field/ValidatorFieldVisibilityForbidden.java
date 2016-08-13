@@ -12,24 +12,19 @@ import org.esfinge.metadata.annotation.validator.field.FieldVisibilityForbidden;
 public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 	
 	private String visibility = "";
-//	private boolean ignoreWhenNotField = true;
 	
 	@Override
 	public void initialize(Annotation self) {		
 		FieldVisibilityForbidden fvf = (FieldVisibilityForbidden) self;		
 		visibility = fvf.itCannotHaveThisVisibility();	
-//		ignoreWhenNotField = fvf.ignoreWhenNotField();		
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {		
-//		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
-//		annotated - field ou method que tem a anotacao acima
+									throws AnnotationValidationException {
 		
-		if(annotated instanceof Field){
-			
+		if(annotated instanceof Field){			
 			Field field = (Field) annotated;						
 			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
 						
@@ -51,22 +46,8 @@ public class ValidatorFieldVisibilityForbidden implements AnnotationValidator {
 													visibility);
 					throw new AnnotationValidationException(error);
 				}
-			}
-			
-		}		
-//		else if(annotated instanceof Method){
-//			
-//			Method method = (Method) annotated;	
-//			
-//			if(!ignoreWhenNotField){				
-//				System.out.println("Verifying in method... InstanceFieldOnly");				
-//			}else{				
-//				System.out.println("Ignoring in method... InstanceFieldOnly");				
-//			}
-//			
-//		}else{
-//			System.out.println("idk .-.");
-//		}
+			}			
+		}	
 		
 	}
 			

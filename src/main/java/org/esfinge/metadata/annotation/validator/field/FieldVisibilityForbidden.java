@@ -13,5 +13,5 @@ import org.esfinge.metadata.validate.field.ValidatorFieldVisibilityForbidden;
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface FieldVisibilityForbidden {
 	String itCannotHaveThisVisibility();
-	boolean ignoreWhenNotField() default true;	
+//	boolean ignoreWhenNotField() default true;	
 }
