@@ -28,8 +28,7 @@ public class ValidatorFieldVisibilityRequired implements AnnotationValidator {
 //		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
 //		annotated - field ou method que tem a anotacao acima
 		
-		if(annotated instanceof Field){
-			
+		if(annotated instanceof Field){			
 			Field field = (Field) annotated;						
 			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
 						
@@ -38,23 +37,22 @@ public class ValidatorFieldVisibilityRequired implements AnnotationValidator {
 			if(visibility.equals("default") || visibility.equals("")){					
 				if( modifiers.contains("public") || modifiers.contains("private") || modifiers.contains("protected") ){						
 					String error = getErrorMessage(classConcrete, 
-											field, 
-											toValidate.annotationType(), 
-											modifiers, 
-											"default");
+													field, 
+													toValidate.annotationType(), 
+													modifiers, 
+													"default");
 					throw new AnnotationValidationException(error);
 				}				
 			} else {				
 				if(!modifiers.contains(visibility)){
 					String error = getErrorMessage(classConcrete, 
-											field,
-											toValidate.annotationType(), 
-											modifiers, 
-											visibility);
+													field,
+													toValidate.annotationType(), 
+													modifiers, 
+													visibility);
 					throw new AnnotationValidationException(error);
 				}				
-			}
-			
+			}			
 		}
 //		else if(annotated instanceof Method){
 //			

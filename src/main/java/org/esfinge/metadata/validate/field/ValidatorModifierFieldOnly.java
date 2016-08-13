@@ -7,53 +7,48 @@ import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.validator.field.VolatileFieldOnly;
+import org.esfinge.metadata.annotation.validator.field.StaticFieldOnly;
 
-public class ValidatorVolatileFieldOnly implements AnnotationValidator {
+public class ValidatorModifierFieldOnly{
 	
-//	private String modifiersNameObliged = "";
-//	private boolean ignoreWhenNotField = true;	
-	private ValidatorModifierFieldOnly validator = null;
+	private String modifiersNameObliged = "";	
+//	private boolean ignoreWhenNotField = true;
 	
-	@Override
-	public void initialize(Annotation self) {				
-//		VolatileFieldOnly fieldOnly = (VolatileFieldOnly) self;		
-//		modifiersNameObliged = "volatile";		
-//		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();	
-		
-		this.validator = new ValidatorModifierFieldOnly();		
-		this.validator.setModifiersNameObliged("volatile");
+	
+	public void setModifiersNameObliged(String modifiersNameObliged){
+		this.modifiersNameObliged = modifiersNameObliged;		
 	}
+	
+//	public void initialize(Annotation self) {			
+////		StaticFieldOnly fieldOnly = (StaticFieldOnly) self;		
+////		modifiersNameObliged = "static";		
+////		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();		
+//	}
 
-	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {	
+									throws AnnotationValidationException {		
+//		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
+//		annotated - field ou method que tem a anotacao acima
 		
-		this.validator.validate(toValidate, annotated);	
-		
-		
-		
-//		if(annotated instanceof Field){
-//			
-//			Field field = (Field) annotated;						
-//			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
-//						
-//			String modifiers = Modifier.toString(field.getModifiers());
-//			
-//			if(!modifiers.contains(modifiersNameObliged)){			
-//				if(modifiers.equals("")) modifiers = "default";
-//							
-//				String error = getErrorMessage(classConcrete, 
-//												field, 
-//												toValidate.annotationType(), 
-//												modifiersNameObliged, 
-//												modifiers);
-//				
-//				throw new AnnotationValidationException(error);			
-//			}			
-//		}
-		
+		if(annotated instanceof Field){			
+			Field field = (Field) annotated;						
+			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
+						
+			String modifiers = Modifier.toString(field.getModifiers());
+			
+			if(!modifiers.contains(modifiersNameObliged)){			
+				if(modifiers.equals("")) modifiers = "default";
+							
+				String error = getErrorMessage(classConcrete, 
+												field, 
+												toValidate.annotationType(), 
+												modifiersNameObliged, 
+												modifiers);
+				
+				throw new AnnotationValidationException(error);			
+			}			
+		}
 //		else if(annotated instanceof Method){
 //			
 //			Method method = (Method) annotated;	
@@ -69,17 +64,17 @@ public class ValidatorVolatileFieldOnly implements AnnotationValidator {
 //		}			
 	}
 	
-//	private String getErrorMessage(Class<?> classConcrete, 
-//									Field field,			
-//									Class<? extends Annotation> classOfAnnotationInField, 
-//									String modifiersNameObliged, 
-//									String modifiers) {		
-//	
-//		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
-//				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
-//				+ " annotation, however it has no " + modifiersNameObliged + " modifier.\n"
-//				+ "(it has this(these) modifier(s): " + modifiers + " )";	
-//	}
+	private String getErrorMessage(Class<?> classConcrete, 
+									Field field,			
+									Class<? extends Annotation> classOfAnnotationInField, 
+									String modifiersNameObliged, 
+									String modifiers) {		
+	
+		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
+				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
+				+ " annotation, however it has no " + modifiersNameObliged + " modifier.\n"
+				+ "(it has this(these) modifier(s): " + modifiers + " )";	
+	}
 	
 	
 	

@@ -11,41 +11,47 @@ import org.esfinge.metadata.annotation.validator.field.TransientFieldOnly;
 
 public class ValidatorTransientFieldOnly implements AnnotationValidator {
 	
-	private String modifiersNameObliged = "";
+//	private String modifiersNameObliged = "";
 //	private boolean ignoreWhenNotField = true;
+	private ValidatorModifierFieldOnly validator = null;
 	
 	@Override
 	public void initialize(Annotation self) {						
-		TransientFieldOnly fieldOnly = (TransientFieldOnly) self;		
-		modifiersNameObliged = "transient";	
-//		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();		
+//		TransientFieldOnly fieldOnly = (TransientFieldOnly) self;		
+//		modifiersNameObliged = "transient";	
+//		ignoreWhenNotField = fieldOnly.ignoreWhenNotField();
+		
+		this.validator = new ValidatorModifierFieldOnly();
+		this.validator.setModifiersNameObliged("transient");
 	}
 
 	@Override
 	public void validate(Annotation toValidate, 
 							AnnotatedElement annotated)
-									throws AnnotationValidationException {		
-//		toValidate - anotação que tem a anotação, tipo "OneAnnotationWithInstanceFieldOnly"
-//		annotated - field ou method que tem a anotacao acima
+									throws AnnotationValidationException {
 		
-		if(annotated instanceof Field){			
-			Field field = (Field) annotated;						
-			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
-						
-			String modifiers = Modifier.toString(field.getModifiers());
-			
-			if(!modifiers.contains(modifiersNameObliged)){			
-				if(modifiers.equals("")) modifiers = "default";
-							
-				String error = getErrorMessage(classConcrete, 
-												field, 
-												toValidate.annotationType(), 
-												modifiersNameObliged, 
-												modifiers);
+		this.validator.validate(toValidate, annotated);	
+		
 				
-				throw new AnnotationValidationException(error);			
-			}			
-		}
+//		if(annotated instanceof Field){			
+//			Field field = (Field) annotated;						
+//			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
+//						
+//			String modifiers = Modifier.toString(field.getModifiers());
+//			
+//			if(!modifiers.contains(modifiersNameObliged)){			
+//				if(modifiers.equals("")) modifiers = "default";
+//							
+//				String error = getErrorMessage(classConcrete, 
+//												field, 
+//												toValidate.annotationType(), 
+//												modifiersNameObliged, 
+//												modifiers);
+//				
+//				throw new AnnotationValidationException(error);			
+//			}			
+//		}
+		
 //		else if(annotated instanceof Method){
 //			
 //			Method method = (Method) annotated;	
@@ -61,17 +67,17 @@ public class ValidatorTransientFieldOnly implements AnnotationValidator {
 //		}				
 	}
 	
-	private String getErrorMessage(Class<?> classConcrete, 
-									Field field,			
-									Class<? extends Annotation> classOfAnnotationInField, 
-									String modifiersNameObliged, 
-									String modifiers) {		
-	
-		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
-				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
-				+ " annotation, however it has no " + modifiersNameObliged + " modifier.\n"
-				+ "(it has this(these) modifier(s): " + modifiers + " )";	
-	}
+//	private String getErrorMessage(Class<?> classConcrete, 
+//									Field field,			
+//									Class<? extends Annotation> classOfAnnotationInField, 
+//									String modifiersNameObliged, 
+//									String modifiers) {		
+//	
+//		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
+//				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
+//				+ " annotation, however it has no " + modifiersNameObliged + " modifier.\n"
+//				+ "(it has this(these) modifier(s): " + modifiers + " )";	
+//	}
 	
 	
 	
