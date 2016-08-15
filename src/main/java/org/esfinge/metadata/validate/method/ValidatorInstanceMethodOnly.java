@@ -2,7 +2,7 @@ package org.esfinge.metadata.validate.method;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
@@ -12,7 +12,7 @@ public class ValidatorInstanceMethodOnly implements AnnotationValidator{
 	
 	@Override
 	public void initialize(Annotation self) {	
-//		InstanceFieldOnly instanceFieldOnly = (InstanceFieldOnly) self;		
+//		InstanceMethodOnly instanceMethodOnly = (InstanceMethodOnly) self;		
 	}
 
 	@Override
@@ -20,15 +20,15 @@ public class ValidatorInstanceMethodOnly implements AnnotationValidator{
 							AnnotatedElement annotated)
 									throws AnnotationValidationException {		
 		
-		if(annotated instanceof Field){			
-			Field field = (Field) annotated;						
-			Class<?> classConcrete = field.getDeclaringClass();
+		if(annotated instanceof Method){			
+			Method method = (Method) annotated;						
+			Class<?> classConcrete = method.getDeclaringClass();
 						
-			String modifiers = Modifier.toString(field.getModifiers());
+			String modifiers = Modifier.toString(method.getModifiers());
 						
 			if(modifiers.contains("static")){
 				String error = getErrorMessage(classConcrete, 
-												field,
+												method,
 												toValidate.annotationType(), 
 												modifiers);	
 				throw new AnnotationValidationException(error);
@@ -38,11 +38,11 @@ public class ValidatorInstanceMethodOnly implements AnnotationValidator{
 	}	
 
 	private String getErrorMessage(Class<?> classConcrete, 
-									Field field,			
+									Method method,			
 									Class<?> classOfAnnotationInField,
 									String modifiers) {		
 
-		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
+		return "The method " + method.getName() + " in the " + classConcrete.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
 				+ " annotation, however it has static modifier.\n"
 				+ "(it has this(these) modifier(s): " + modifiers + " )";		

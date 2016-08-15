@@ -1,17 +1,18 @@
 package org.esfinge.metadata.validate.method.test;
 
-import static org.junit.Assert.assertTrue;
-
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
 public class TestFieldOnly {	
 	
+//	MethodNamingConvention
+//	ValidMethodParameterTypes
+	
 	@Test
 	public void testWithSuccess() throws Exception {		
 		MetadataValidator.validateMetadataOn(Person.class);
-		assertTrue(true);
+//		assertTrue(true);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)

@@ -2,20 +2,20 @@ package org.esfinge.metadata.validate.method;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.validator.field.ValidFieldTypes;
+import org.esfinge.metadata.annotation.validator.method.ForbiddenMethodReturn;
 
 public class ValidatorForbiddenMethodReturn implements AnnotationValidator {
 	
-	private Class<?>[] listValidTypes = {};
+	private Class<?>[] listInvalidTypes = {};
 	
 	@Override
 	public void initialize(Annotation self) {		
-		ValidFieldTypes vft = (ValidFieldTypes) self;		
-		listValidTypes = vft.listValidTypes();				
+		ForbiddenMethodReturn fmr = (ForbiddenMethodReturn) self;		
+		listInvalidTypes = fmr.invalidTypesToReturn();				
 	}
 
 	@Override
@@ -23,14 +23,14 @@ public class ValidatorForbiddenMethodReturn implements AnnotationValidator {
 							AnnotatedElement annotated)
 									throws AnnotationValidationException {
 		
-		if(annotated instanceof Field){			
-			Field field = (Field) annotated;						
-			Class<?> classConcrete = field.getDeclaringClass(); 
+		if(annotated instanceof Method){			
+			Method method = (Method) annotated;						
+			Class<?> classConcrete = method.getDeclaringClass(); 
 						
-			Class<?> type = field.getType();
+			Class<?> type = method.getReturnType();
 						
 			boolean found = false;
-			for(Class<?> oneValidType: listValidTypes){	
+			for(Class<?> oneValidType: listInvalidTypes){	
 								
 				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
 					found = true;
@@ -45,12 +45,12 @@ public class ValidatorForbiddenMethodReturn implements AnnotationValidator {
 				
 			}
 			
-			if(!found){			
+			if(found){			
 				String error = getErrorMessage(classConcrete, 
-												field, 
+												method, 
 												toValidate.annotationType(), 
 												type, 
-												listValidTypes);				
+												listInvalidTypes);				
 				throw new AnnotationValidationException(error);
 			}			
 		}
@@ -58,23 +58,23 @@ public class ValidatorForbiddenMethodReturn implements AnnotationValidator {
 	}	
 	
 	public String getErrorMessage(Class<?> clazz, 
-									Field field, 
+									Method method, 
 									Class<? extends Annotation> classOfAnnotationInField,
 									Class<?> type, 
-									Class<?>[] listValidTypes){
+									Class<?>[] listInvalidTypes){
 		
-		StringBuilder concatedListValidTypes = new StringBuilder();
-		concatedListValidTypes.append("[");
-		for(Class<?> oneValidType: listValidTypes){
-			concatedListValidTypes.append(oneValidType.getSimpleName());
-			concatedListValidTypes.append(", ");
+		StringBuilder concatedListTypes = new StringBuilder();
+		concatedListTypes.append("[");
+		for(Class<?> oneType: listInvalidTypes){
+			concatedListTypes.append(oneType.getSimpleName());
+			concatedListTypes.append(", ");
 		}
-		concatedListValidTypes.append("]");
+		concatedListTypes.append("]");
 		
-		return "The field " + field.getName() + " in the " + clazz.getSimpleName() 
+		return "The method " + method.getName() + " in the " + clazz.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
-				+ " annotation, its type is " + type.getSimpleName() 
-				+ ", however it is not in the list of valid types (list: " + concatedListValidTypes.toString() + "): .\n";
+				+ " annotation, its return type is " + type.getSimpleName() 
+				+ ", however it is in the list of invalid types (list: " + concatedListTypes.toString() + ") .";
 	}
 	
 }

@@ -2,12 +2,12 @@ package org.esfinge.metadata.validate.method;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
-import org.esfinge.metadata.annotation.validator.field.FieldVisibilityForbidden;
+import org.esfinge.metadata.annotation.validator.method.MethodVisibilityForbidden;
 
 public class ValidatorMethodVisibilityForbidden implements AnnotationValidator {
 	
@@ -15,8 +15,8 @@ public class ValidatorMethodVisibilityForbidden implements AnnotationValidator {
 	
 	@Override
 	public void initialize(Annotation self) {		
-		FieldVisibilityForbidden fvf = (FieldVisibilityForbidden) self;		
-		visibility = fvf.itCannotHaveThisVisibility();	
+		MethodVisibilityForbidden mvf = (MethodVisibilityForbidden) self;		
+		visibility = mvf.itCannotHaveThisVisibility();	
 	}
 
 	@Override
@@ -24,15 +24,15 @@ public class ValidatorMethodVisibilityForbidden implements AnnotationValidator {
 							AnnotatedElement annotated)
 									throws AnnotationValidationException {
 		
-		if(annotated instanceof Field){			
-			Field field = (Field) annotated;						
-			Class<?> classConcrete = field.getDeclaringClass();  // ex.: Person.class
+		if(annotated instanceof Method){			
+			Method method = (Method) annotated;						
+			Class<?> classConcrete = method.getDeclaringClass();  // ex.: Person.class
 						
-			String modifiers = Modifier.toString(field.getModifiers());
+			String modifiers = Modifier.toString(method.getModifiers());
 			
 			if(visibility.equals("default") || visibility.equals("")){					
 				if( !( modifiers.contains("public") || modifiers.contains("private") || modifiers.contains("protected") ) ){						
-					String error = getErrorMessage(classConcrete, field, 
+					String error = getErrorMessage(classConcrete, method, 
 													toValidate.annotationType(), 
 													modifiers + " default", 
 													"default");	
@@ -40,7 +40,7 @@ public class ValidatorMethodVisibilityForbidden implements AnnotationValidator {
 				}
 			} else {								
 				if(modifiers.contains(visibility)){
-					String error = getErrorMessage(classConcrete, field, 
+					String error = getErrorMessage(classConcrete, method, 
 													toValidate.annotationType(), 
 													modifiers, 
 													visibility);
@@ -52,12 +52,12 @@ public class ValidatorMethodVisibilityForbidden implements AnnotationValidator {
 	}
 			
 	private String getErrorMessage(Class<?> classConcrete, 
-									Field field,			
+									Method method,			
 									Class<? extends Annotation> classOfAnnotationInField,
 									String modifiers,
 									String visibility) {		
 		
-		return "The field " + field.getName() + " in the " + classConcrete.getSimpleName() 
+		return "The method " + method.getName() + " in the " + classConcrete.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
 				+ " annotation, with this(these) modifier(s): " + modifiers 
 				+ ", however it is forbidden to use this: " + visibility + ".\n";
