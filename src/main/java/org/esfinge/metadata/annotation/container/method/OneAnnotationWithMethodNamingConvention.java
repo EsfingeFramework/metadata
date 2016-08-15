@@ -5,7 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import org.esfinge.metadata.annotation.validator.method.MethodNamingConvention;
 
-@MethodNamingConvention(regexNamingConvencion = "//")
+@MethodNamingConvention(regexNamingConvencion = "get")
 @Retention(RetentionPolicy.RUNTIME)
 //@Target(ElementType.METHOD)
 public @interface OneAnnotationWithMethodNamingConvention {

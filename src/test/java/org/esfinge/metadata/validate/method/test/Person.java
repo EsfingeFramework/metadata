@@ -13,6 +13,7 @@ import org.esfinge.metadata.annotation.container.method.OneAnnotationWithNoParam
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithStaticMethodOnly;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithStrictfpMethodOnly;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithSynchronizedMethodOnly;
+import org.esfinge.metadata.annotation.container.method.OneAnnotationWithValidMethodParameterTypes;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithValidMethodReturn;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithValidNumberOfParameters;
 
@@ -121,6 +122,16 @@ public class Person {
 	@OneAnnotationWithValidMethodReturn
 	public Integer returnSomeInteger(){
 		return 3;
+	}
+	
+	@OneAnnotationWithValidMethodParameterTypes
+	public String someMethodStrInt(String a, int b){
+		return a + b;	
+	}
+	
+	@OneAnnotationWithValidMethodParameterTypes
+	public String otherMethodStrInt(String a, int b){
+		return a + b + "42";	
 	}
 	
 }

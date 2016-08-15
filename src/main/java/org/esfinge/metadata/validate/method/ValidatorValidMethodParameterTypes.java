@@ -23,45 +23,57 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 							AnnotatedElement annotated)
 									throws AnnotationValidationException {
 		
-//		if(annotated instanceof Method){			
-//			Method method = (Method) annotated;						
-//			Class<?> classConcrete = method.getDeclaringClass(); 
-//						
-//			Class<?> type = method.getReturnType();
-//						
-//			boolean found = false;
-//			for(Class<?> oneValidType: validTypesToReturn){	
-//								
-//				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
-//					found = true;
-//				
-////				List -> List // String -> String
-//				else if(type.isAssignableFrom(oneValidType))				
-//					found = true;
-//				
-////				List -> ArrayList
-//				else if(oneValidType.isAssignableFrom(type))
-//					found = true;
-//				
-//			}
-//			
-//			if(!found){			
-//				String error = getErrorMessage(classConcrete, 
-//												method, 
-//												toValidate.annotationType(), 
-//												type, 
-//												validTypesToReturn);				
-//				throw new AnnotationValidationException(error);
-//			}			
-//		}
+		if(annotated instanceof Method){			
+			Method method = (Method) annotated;						
+			Class<?> classConcrete = method.getDeclaringClass(); 
+						
+			Class<?>[] parametersTypes = method.getParameterTypes();			
+						
+			if(!isValidParameters(parametersTypes)){			
+				String error = getErrorMessage(classConcrete, 
+												method, 
+												toValidate.annotationType(), 
+												parametersTypes, 
+												validParameters);				
+				throw new AnnotationValidationException(error);
+			}			
+		}
 		
+	}
+
+	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {
+
+		for(Class<?> oneValidParameter: validParameters){	
+										
+			boolean found = false;
+			for(Class<?> parameterTypeOfMethod: parametersTypesOfMethod){
+				
+				if(oneValidParameter.isAssignableFrom(parameterTypeOfMethod)){
+					found = true; 
+					break;				
+				}
+			}
+			
+			if(!found)
+				return false;
+		}
+		
+		return true;
 	}	
 	
 	public String getErrorMessage(Class<?> clazz, 
 									Method method, 
 									Class<? extends Annotation> classOfAnnotationInField,
-									Class<?> type, 
+									Class<?>[] parametersTypes, 
 									Class<?>[] listInvalidTypes){
+		
+		StringBuilder concatedParameterTypes = new StringBuilder();
+		concatedParameterTypes.append("[");
+		for(Class<?> oneParameter: parametersTypes){
+			concatedParameterTypes.append(oneParameter.getSimpleName());
+			concatedParameterTypes.append(", ");
+		}
+		concatedParameterTypes.append("]");		
 		
 		StringBuilder concatedListTypes = new StringBuilder();
 		concatedListTypes.append("[");
@@ -69,12 +81,12 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 			concatedListTypes.append(oneType.getSimpleName());
 			concatedListTypes.append(", ");
 		}
-		concatedListTypes.append("]");
+		concatedListTypes.append("]");		
 		
 		return "The method " + method.getName() + " in the " + clazz.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 
-				+ " annotation, its return type is " + type.getSimpleName() 
-				+ ", however it is not in the list of valid types (list: " + concatedListTypes.toString() + ") .";
+				+ " annotation, its parameters are " + concatedParameterTypes.toString() 
+				+ ", however it is not in the list of valid parameters: " + concatedListTypes.toString() + ".";
 	}
 	
 }

@@ -12,7 +12,6 @@ public class TestFieldOnly {
 	@Test
 	public void testWithSuccess() throws Exception {		
 		MetadataValidator.validateMetadataOn(Person.class);
-//		assertTrue(true);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
