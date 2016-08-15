@@ -12,5 +12,6 @@ import org.esfinge.metadata.validate.method.ValidatorValidMethodParameterTypes;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ValidMethodParameterTypes{
+	Class<?>[] validParameters();
 //	Class<?>[][] validParameters();
 }
