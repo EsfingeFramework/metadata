@@ -54,4 +54,5 @@ public class ValidatorMethodNamingConvention implements AnnotationValidator {
 				+ " annotation, however it is not match with " 
 				+ "the regex naming convencion: " + regexNamingConvencion + ".";
 	}
+	
 }

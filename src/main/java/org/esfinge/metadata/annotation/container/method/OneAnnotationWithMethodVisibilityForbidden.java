@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.MethodVisibilityForbidde
 
 @MethodVisibilityForbidden(itCannotHaveThisVisibility = "private")
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithMethodVisibilityForbidden {
 }

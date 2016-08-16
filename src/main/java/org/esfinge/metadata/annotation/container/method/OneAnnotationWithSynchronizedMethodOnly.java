@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.SynchronizedMethodOnly;
 
 @SynchronizedMethodOnly
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithSynchronizedMethodOnly {
 }

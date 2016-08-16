@@ -32,15 +32,16 @@ public class ValidatorValidMethodReturn implements AnnotationValidator {
 			boolean found = false;
 			for(Class<?> oneValidType: validTypesToReturn){	
 								
-				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
-					found = true;
+//				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
+//					found = true;				
+////				List -> List // String -> String
+//				else if(type.isAssignableFrom(oneValidType))				
+//					found = true;				
+////				List -> ArrayList
+//				else if(oneValidType.isAssignableFrom(type))
+//					found = true;
 				
-//				List -> List // String -> String
-				else if(type.isAssignableFrom(oneValidType))				
-					found = true;
-				
-//				List -> ArrayList
-				else if(oneValidType.isAssignableFrom(type))
+				if(oneValidType.isAssignableFrom(type))
 					found = true;
 				
 			}

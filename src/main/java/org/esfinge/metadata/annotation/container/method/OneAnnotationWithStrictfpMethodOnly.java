@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.StrictfpMethodOnly;
 
 @StrictfpMethodOnly
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithStrictfpMethodOnly {
 }

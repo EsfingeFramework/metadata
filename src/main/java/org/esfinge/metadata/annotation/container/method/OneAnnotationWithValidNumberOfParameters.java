@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.ValidNumberOfParameters;
 
 @ValidNumberOfParameters(numberOfParameters = 2)
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithValidNumberOfParameters {
 }

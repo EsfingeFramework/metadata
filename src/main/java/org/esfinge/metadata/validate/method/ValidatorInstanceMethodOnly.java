@@ -11,8 +11,7 @@ import org.esfinge.metadata.AnnotationValidator;
 public class ValidatorInstanceMethodOnly implements AnnotationValidator{
 	
 	@Override
-	public void initialize(Annotation self) {	
-//		InstanceMethodOnly instanceMethodOnly = (InstanceMethodOnly) self;		
+	public void initialize(Annotation self) {		
 	}
 
 	@Override

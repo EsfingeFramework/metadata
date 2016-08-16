@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.ValidMethodReturn;
 
 @ValidMethodReturn(validTypesToReturn = {int.class, Integer.class})
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithValidMethodReturn {
 }

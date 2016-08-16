@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.ForbiddenMethodReturn;
 
 @ForbiddenMethodReturn(invalidTypesToReturn = {void.class, float.class})
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithForbiddenMethodReturn {
 }

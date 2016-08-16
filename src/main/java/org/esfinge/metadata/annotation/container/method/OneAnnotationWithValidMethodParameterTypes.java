@@ -8,6 +8,5 @@ import org.esfinge.metadata.annotation.validator.method.ValidMethodParameterType
 @ValidMethodParameterTypes(validParameters = {String.class, int.class})
 //@ValidMethodParameterTypes(validParameters = {{String.class, Integer.class}, {String.class, int.class}})
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithValidMethodParameterTypes {
 }

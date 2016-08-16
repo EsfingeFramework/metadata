@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.MethodVisibilityRequired
 
 @MethodVisibilityRequired(itNeedsToHaveThisVisibility = "protected")
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithMethodVisibilityRequired {
 }

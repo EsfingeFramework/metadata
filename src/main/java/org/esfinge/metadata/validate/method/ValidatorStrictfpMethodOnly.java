@@ -22,5 +22,6 @@ public class ValidatorStrictfpMethodOnly implements AnnotationValidator {
 									throws AnnotationValidationException {	
 		
 		this.validator.validate(toValidate, annotated);	
-	}	
+	}
+	
 }

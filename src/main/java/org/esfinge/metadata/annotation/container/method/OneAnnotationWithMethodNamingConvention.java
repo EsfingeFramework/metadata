@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.MethodNamingConvention;
 
 @MethodNamingConvention(regexNamingConvencion = "^get")
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithMethodNamingConvention {
 }

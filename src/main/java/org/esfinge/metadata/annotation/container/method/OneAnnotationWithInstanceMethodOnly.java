@@ -7,6 +7,5 @@ import org.esfinge.metadata.annotation.validator.method.InstanceMethodOnly;
 
 @InstanceMethodOnly
 @Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
 public @interface OneAnnotationWithInstanceMethodOnly {
 }
