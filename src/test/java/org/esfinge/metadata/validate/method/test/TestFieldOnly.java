@@ -7,7 +7,6 @@ import org.junit.Test;
 public class TestFieldOnly {	
 	
 //	ValidMethodParameterTypes
-//	MethodNamingConvention
 	
 	@Test
 	public void testWithSuccess() throws Exception {		
