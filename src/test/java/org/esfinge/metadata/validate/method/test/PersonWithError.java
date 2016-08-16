@@ -6,6 +6,7 @@ import java.util.Set;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithFinalMethodOnly;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithForbiddenMethodReturn;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithInstanceMethodOnly;
+import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodNamingConvention;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityForbidden;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityRequired;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithNoParametersMethodOnly;
@@ -65,6 +66,7 @@ public class PersonWithError extends Person{
 		return oneDefaultfloat;
 	}
 
+	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithStaticMethodOnly
 	public strictfp void setOneDefaultfloat(float oneDefaultfloat) {
 		this.oneDefaultfloat = oneDefaultfloat;
@@ -120,6 +122,7 @@ public class PersonWithError extends Person{
 		return oneSet;
 	}
 
+	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithStrictfpMethodOnly
 	public void setOneSet(Set<Object> oneSet) {
 		this.oneSet = oneSet;
@@ -131,6 +134,7 @@ public class PersonWithError extends Person{
 		return a + b;	
 	}
 	
+	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithValidMethodParameterTypes
 	public String otherMethodStrIntError(int a, String b){
 		return a + b + "42";	

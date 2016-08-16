@@ -3,6 +3,8 @@ package org.esfinge.metadata.validate.method;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
@@ -27,12 +29,15 @@ public class ValidatorMethodNamingConvention implements AnnotationValidator {
 			Method method = (Method) annotated;						
 			Class<?> classConcrete = method.getDeclaringClass();  // ex.: Person.class
 						
-			String methodsName = method.getName();
+			String methodsName = method.getName();			
 			
-			if(!methodsName.contains(regexNamingConvencion)){				
-				String error = getErrorMessage(classConcrete, method, 
-												toValidate.annotationType(), 
-												methodsName);
+			Pattern pattern = Pattern.compile(regexNamingConvencion);
+	        Matcher matcher = pattern.matcher(methodsName);
+	 
+	        if( ! matcher.find() ){				
+				String error = getErrorMessage(classConcrete, 
+												method, 
+												toValidate.annotationType());
 				throw new AnnotationValidationException(error);				
 			}
 						
@@ -42,8 +47,7 @@ public class ValidatorMethodNamingConvention implements AnnotationValidator {
 			
 	private String getErrorMessage(Class<?> classConcrete, 
 									Method method,			
-									Class<? extends Annotation> classOfAnnotationInField,
-									String methodsName) {		
+									Class<? extends Annotation> classOfAnnotationInField) {		
 		
 		return "The method " + method.getName() + " in the " + classConcrete.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 

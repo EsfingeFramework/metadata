@@ -7,6 +7,7 @@ import java.util.List;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithFinalMethodOnly;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithForbiddenMethodReturn;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithInstanceMethodOnly;
+import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodNamingConvention;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityForbidden;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityRequired;
 import org.esfinge.metadata.annotation.container.method.OneAnnotationWithNoParametersMethodOnly;
@@ -58,6 +59,7 @@ public class Person {
 		this.age = age;
 	}
 	
+	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithFinalMethodOnly
 	public final String getName() {
 		return name;
@@ -68,6 +70,7 @@ public class Person {
 		this.name = name;
 	}
 
+	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithNoParametersMethodOnly
 	@OneAnnotationWithStaticMethodOnly
 	public static String getCpf() {
