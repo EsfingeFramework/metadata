@@ -8,11 +8,11 @@ import org.esfinge.metadata.AnnotationValidator;
 
 public class ValidatorStaticFieldOnly implements AnnotationValidator {		
 	
-	private ValidatorModifierFieldOnly validator = null;
+	private UtilValidatorModifierFieldOnly validator = null;
 	
 	@Override
 	public void initialize(Annotation self) {					
-		this.validator = new ValidatorModifierFieldOnly();
+		this.validator = new UtilValidatorModifierFieldOnly();
 		this.validator.setModifiersNameObliged("static");			
 	}
 

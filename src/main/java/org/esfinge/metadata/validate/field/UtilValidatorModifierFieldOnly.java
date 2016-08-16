@@ -7,7 +7,7 @@ import java.lang.reflect.Modifier;
 
 import org.esfinge.metadata.AnnotationValidationException;
 
-public class ValidatorModifierFieldOnly{
+public class UtilValidatorModifierFieldOnly{
 	
 	private String modifiersNameObliged = "";
 	
