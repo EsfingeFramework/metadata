@@ -12,5 +12,4 @@ import org.esfinge.metadata.validate.field.ValidatorInstanceFieldOnly;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface InstanceFieldOnly {
-//	boolean ignoreWhenNotField() default true;
 }

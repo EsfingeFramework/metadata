@@ -12,5 +12,4 @@ import org.esfinge.metadata.validate.field.ValidatorTransientFieldOnly;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface TransientFieldOnly {
-//	boolean ignoreWhenNotField() default true;
 }

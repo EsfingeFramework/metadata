@@ -42,21 +42,12 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 	}
 
 	private boolean isTypeValid(Class<?> type) {
-		for(Class<?> oneValidType: listValidTypes){	
-							
-//			if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
-//				return true;
-////				List -> List // String -> String
-//			else if(type.isAssignableFrom(oneValidType))				
-//				return true;
-////				List -> ArrayList
-//			else if(oneValidType.isAssignableFrom(type))
-//				return true;
-			
+		
+		for(Class<?> oneValidType: listValidTypes){			
 			if(oneValidType.isAssignableFrom(type))
-				return true;
-			
+				return true;			
 		}
+		
 		return false;
 	}	
 	

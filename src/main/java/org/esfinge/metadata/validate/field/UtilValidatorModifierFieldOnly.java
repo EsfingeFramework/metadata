@@ -32,8 +32,7 @@ public class UtilValidatorModifierFieldOnly{
 												field, 
 												toValidate.annotationType(), 
 												modifiersNameObliged, 
-												modifiers);
-				
+												modifiers);				
 				throw new AnnotationValidationException(error);			
 			}			
 		}

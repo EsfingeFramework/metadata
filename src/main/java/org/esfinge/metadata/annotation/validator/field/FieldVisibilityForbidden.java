@@ -12,6 +12,5 @@ import org.esfinge.metadata.validate.field.ValidatorFieldVisibilityForbidden;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface FieldVisibilityForbidden {
-	String itCannotHaveThisVisibility();
-//	boolean ignoreWhenNotField() default true;	
+	String itCannotHaveThisVisibility();	
 }

@@ -13,5 +13,4 @@ import org.esfinge.metadata.validate.field.ValidatorValidFieldTypes;
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ValidFieldTypes {
 	Class<?>[] listValidTypes();
-//	boolean ignoreWhenNotField() default true;
 }

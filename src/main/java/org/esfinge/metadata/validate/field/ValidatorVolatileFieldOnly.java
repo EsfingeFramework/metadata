@@ -23,4 +23,5 @@ public class ValidatorVolatileFieldOnly implements AnnotationValidator {
 		
 		this.validator.validate(toValidate, annotated);	
 	}	
+	
 }
