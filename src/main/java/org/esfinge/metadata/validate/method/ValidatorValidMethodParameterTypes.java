@@ -71,37 +71,6 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 		return true;		
 	}
 	
-	
-	
-	
-	
-//	public boolean isParametersOfMethodInValidParameters(Class<?>[] parametersTypesOfMethod, 
-//															Class<?>[] validParametersClasses){
-//		
-//		for(Class<?> parameterTypeOfMethod : parametersTypesOfMethod){
-//			
-////			parameterTypeOfMethod in validParametersClasses ?					
-//			if( in(parameterTypeOfMethod, validParametersClasses) )
-//				return true;
-//		}
-//		
-//		return false;		
-//	}
-//	
-//	
-//	public boolean in(Class<?> parameterTypeOfMethod, Class<?>[] validParametersClasses){
-//		
-//		for(Class<?> validParameter: validParametersClasses){
-//			
-//			if(validParameter.isAssignableFrom(parameterTypeOfMethod))
-//				return true;			
-//		}
-//		
-//		return false;		
-//	}
-	
-
-	
 	public String getErrorMessage(Class<?> clazz, 
 									Method method, 
 									Class<? extends Annotation> classOfAnnotationInField,
@@ -118,17 +87,17 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 		
 		StringBuilder concatedListTypes = new StringBuilder();
 		concatedListTypes.append("[");
-		for(Parameters parameter: validParameters){
-			
-			Class<?>[] parameters = parameter.parameters();		
+		for(int i = 0; i < validParameters.length; i++){			
+			Class<?>[] parameters = validParameters[i].parameters();		
 			
 			for(Class<?> oneParameter: parameters){				
 				concatedListTypes.append(oneParameter.getSimpleName());
 				concatedListTypes.append(", ");				
-			}
+			}						
 			
-			concatedListTypes.append(" , ");
-		}
+			if(i != (validParameters.length - 1)) // if it is not the last value, so add the "] or ["
+				concatedListTypes.append("] or [");
+		}		
 		concatedListTypes.append("]");	
 		
 		
