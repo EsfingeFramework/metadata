@@ -29,23 +29,7 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 						
 			Class<?> type = field.getType();
 						
-			boolean found = false;
-			for(Class<?> oneValidType: listValidTypes){	
-								
-				if(type.isPrimitive() && type.toString().equals(oneValidType.toString()))
-					found = true;
-				
-//				List -> List // String -> String
-				else if(type.isAssignableFrom(oneValidType))				
-					found = true;
-				
-//				List -> ArrayList
-				else if(oneValidType.isAssignableFrom(type))
-					found = true;
-				
-			}
-			
-			if(!found){			
+			if(!isTypeValid(type)){			
 				String error = getErrorMessage(classConcrete, 
 												field, 
 												toValidate.annotationType(), 
@@ -55,6 +39,16 @@ public class ValidatorValidFieldTypes implements AnnotationValidator {
 			}			
 		}
 		
+	}
+
+	private boolean isTypeValid(Class<?> type) {
+		
+		for(Class<?> oneValidType: listValidTypes){			
+			if(oneValidType.isAssignableFrom(type))
+				return true;			
+		}
+		
+		return false;
 	}	
 	
 	public String getErrorMessage(Class<?> clazz, 

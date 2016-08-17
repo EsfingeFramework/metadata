@@ -12,7 +12,6 @@ public class ValidatorInstanceFieldOnly implements AnnotationValidator{
 	
 	@Override
 	public void initialize(Annotation self) {	
-//		InstanceFieldOnly instanceFieldOnly = (InstanceFieldOnly) self;		
 	}
 
 	@Override
