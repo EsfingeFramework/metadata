@@ -5,9 +5,7 @@ import org.esfinge.metadata.validate.MetadataValidator;
 import org.junit.Test;
 
 public class TestFieldOnly {	
-	
-//	ValidMethodParameterTypes
-	
+		
 	@Test
 	public void testWithSuccess() throws Exception {		
 		MetadataValidator.validateMetadataOn(Person.class);

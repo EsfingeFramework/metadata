@@ -39,28 +39,7 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 			}			
 		}
 		
-	}
-
-//	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {
-//
-//		for(Parameters oneValidParameter: validParameters){	
-//										
-//			boolean found = false;
-//			for(Class<?> parameterTypeOfMethod: parametersTypesOfMethod){
-//				
-//				if(oneValidParameter.isAssignableFrom(parameterTypeOfMethod)){
-//					found = true; 
-//					break;				
-//				}
-//			}
-//			
-//			if(!found)
-//				return false;
-//		}
-//		
-//		return true;
-//	}	
-	
+	}	
 	
 	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {		
 		int countParametersOfMethod = parametersTypesOfMethod.length;
@@ -75,45 +54,53 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 		}
 
 		return false;
-	}	
-	
+	}
 	
 	public boolean isParametersOfMethodInValidParameters(Class<?>[] parametersTypesOfMethod, 
-															Class<?>[] validParametersClasses){
+															Class<?>[] validParametersClasses){		
 		
-		for(Class<?> parameterTypeOfMethod : parametersTypesOfMethod){
-			
-//			parameterTypeOfMethod in validParametersClasses ?					
-			if( in(parameterTypeOfMethod, validParametersClasses) )
-				return true;
+		boolean invalid = false;
+		for(int i = 0; i < parametersTypesOfMethod.length; i++){
+
+			if(!validParametersClasses[i].isAssignableFrom(parametersTypesOfMethod[i]))
+				invalid = true;					
 		}
+
+		if(invalid) return false;
 		
-		return false;		
+		return true;		
 	}
 	
 	
-	public boolean in(Class<?> parameterTypeOfMethod, Class<?>[] validParametersClasses){
-		
-		for(Class<?> validParameter: validParametersClasses){
-			
-			if(validParameter.isAssignableFrom(parameterTypeOfMethod))
-				return true;			
-		}
-		
-		return false;		
-	}
 	
+	
+	
+//	public boolean isParametersOfMethodInValidParameters(Class<?>[] parametersTypesOfMethod, 
+//															Class<?>[] validParametersClasses){
+//		
+//		for(Class<?> parameterTypeOfMethod : parametersTypesOfMethod){
+//			
+////			parameterTypeOfMethod in validParametersClasses ?					
+//			if( in(parameterTypeOfMethod, validParametersClasses) )
+//				return true;
+//		}
+//		
+//		return false;		
+//	}
+//	
+//	
+//	public boolean in(Class<?> parameterTypeOfMethod, Class<?>[] validParametersClasses){
+//		
+//		for(Class<?> validParameter: validParametersClasses){
+//			
+//			if(validParameter.isAssignableFrom(parameterTypeOfMethod))
+//				return true;			
+//		}
+//		
+//		return false;		
+//	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public String getErrorMessage(Class<?> clazz, 
 									Method method, 
