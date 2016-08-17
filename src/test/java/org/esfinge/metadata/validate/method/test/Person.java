@@ -133,7 +133,7 @@ public class Person {
 	}
 	
 	@OneAnnotationWithValidMethodParameterTypes
-	public String otherMethodStrInt(String a, int b){
+	public String otherMethodStrInt(String a, Integer b){
 		return a + b + "42";	
 	}
 	

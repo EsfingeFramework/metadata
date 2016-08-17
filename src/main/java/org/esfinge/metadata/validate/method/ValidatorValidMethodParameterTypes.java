@@ -6,11 +6,12 @@ import java.lang.reflect.Method;
 
 import org.esfinge.metadata.AnnotationValidationException;
 import org.esfinge.metadata.AnnotationValidator;
+import org.esfinge.metadata.annotation.validator.method.Parameters;
 import org.esfinge.metadata.annotation.validator.method.ValidMethodParameterTypes;
 
 public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 	
-	private Class<?>[] validParameters = null;
+	private Parameters[] validParameters = null;
 	
 	@Override
 	public void initialize(Annotation self) {		
@@ -33,39 +34,91 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 				String error = getErrorMessage(classConcrete, 
 												method, 
 												toValidate.annotationType(), 
-												parametersTypes, 
-												validParameters);				
+												parametersTypes);
 				throw new AnnotationValidationException(error);
 			}			
 		}
 		
 	}
 
-	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {
-
-		for(Class<?> oneValidParameter: validParameters){	
-										
-			boolean found = false;
-			for(Class<?> parameterTypeOfMethod: parametersTypesOfMethod){
-				
-				if(oneValidParameter.isAssignableFrom(parameterTypeOfMethod)){
-					found = true; 
-					break;				
-				}
-			}
+//	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {
+//
+//		for(Parameters oneValidParameter: validParameters){	
+//										
+//			boolean found = false;
+//			for(Class<?> parameterTypeOfMethod: parametersTypesOfMethod){
+//				
+//				if(oneValidParameter.isAssignableFrom(parameterTypeOfMethod)){
+//					found = true; 
+//					break;				
+//				}
+//			}
+//			
+//			if(!found)
+//				return false;
+//		}
+//		
+//		return true;
+//	}	
+	
+	
+	private boolean isValidParameters(Class<?>[] parametersTypesOfMethod) {		
+		int countParametersOfMethod = parametersTypesOfMethod.length;
+		
+		for(Parameters oneValidParameters: validParameters){			
+			Class<?>[] validParametersClasses = oneValidParameters.parameters();
 			
-			if(!found)
-				return false;
+			if(countParametersOfMethod == validParametersClasses.length && 
+					isParametersOfMethodInValidParameters(parametersTypesOfMethod, 
+															validParametersClasses))
+					return true;
+		}
+
+		return false;
+	}	
+	
+	
+	public boolean isParametersOfMethodInValidParameters(Class<?>[] parametersTypesOfMethod, 
+															Class<?>[] validParametersClasses){
+		
+		for(Class<?> parameterTypeOfMethod : parametersTypesOfMethod){
+			
+//			parameterTypeOfMethod in validParametersClasses ?					
+			if( in(parameterTypeOfMethod, validParametersClasses) )
+				return true;
 		}
 		
-		return true;
-	}	
+		return false;		
+	}
+	
+	
+	public boolean in(Class<?> parameterTypeOfMethod, Class<?>[] validParametersClasses){
+		
+		for(Class<?> validParameter: validParametersClasses){
+			
+			if(validParameter.isAssignableFrom(parameterTypeOfMethod))
+				return true;			
+		}
+		
+		return false;		
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String getErrorMessage(Class<?> clazz, 
 									Method method, 
 									Class<? extends Annotation> classOfAnnotationInField,
-									Class<?>[] parametersTypes, 
-									Class<?>[] listInvalidTypes){
+									Class<?>[] parametersTypes){
 		
 		StringBuilder concatedParameterTypes = new StringBuilder();
 		concatedParameterTypes.append("[");
@@ -75,13 +128,22 @@ public class ValidatorValidMethodParameterTypes implements AnnotationValidator {
 		}
 		concatedParameterTypes.append("]");		
 		
+		
 		StringBuilder concatedListTypes = new StringBuilder();
 		concatedListTypes.append("[");
-		for(Class<?> oneType: listInvalidTypes){
-			concatedListTypes.append(oneType.getSimpleName());
-			concatedListTypes.append(", ");
+		for(Parameters parameter: validParameters){
+			
+			Class<?>[] parameters = parameter.parameters();		
+			
+			for(Class<?> oneParameter: parameters){				
+				concatedListTypes.append(oneParameter.getSimpleName());
+				concatedListTypes.append(", ");				
+			}
+			
+			concatedListTypes.append(" , ");
 		}
-		concatedListTypes.append("]");		
+		concatedListTypes.append("]");	
+		
 		
 		return "The method " + method.getName() + " in the " + clazz.getSimpleName() 
 				+ " is using the @" + classOfAnnotationInField.getSimpleName() 

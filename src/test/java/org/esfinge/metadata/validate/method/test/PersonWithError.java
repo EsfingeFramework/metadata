@@ -130,14 +130,24 @@ public class PersonWithError extends Person{
 	
 	
 	@OneAnnotationWithValidMethodParameterTypes
-	public String someMethodStrIntError(String a, Integer b){
+	public String someMethodStrIntError(String a, long b){
 		return a + b;	
+	}
+	
+	@OneAnnotationWithValidMethodParameterTypes
+	public String otherMethodStrIntError(String a, int b, int c){
+		return a + b + c;	
 	}
 	
 	@OneAnnotationWithMethodNamingConvention
 	@OneAnnotationWithValidMethodParameterTypes
 	public String otherMethodStrIntError(int a, String b){
 		return a + b + "42";	
+	}
+	
+	@OneAnnotationWithValidMethodParameterTypes
+	public String otherMethodStrIntError(String a){
+		return a;	
 	}
 	
 }
