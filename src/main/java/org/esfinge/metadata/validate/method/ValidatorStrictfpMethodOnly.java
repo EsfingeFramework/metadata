@@ -8,11 +8,11 @@ import org.esfinge.metadata.AnnotationValidator;
 
 public class ValidatorStrictfpMethodOnly implements AnnotationValidator {
 	
-	private ValidatorModifierMethodOnly validator = null;
+	private UtilValidatorModifierMethodOnly validator = null;
 	
 	@Override
 	public void initialize(Annotation self) {						
-		this.validator = new ValidatorModifierMethodOnly();		
+		this.validator = new UtilValidatorModifierMethodOnly();		
 		this.validator.setModifiersNameObliged("strictfp");
 	}
 
