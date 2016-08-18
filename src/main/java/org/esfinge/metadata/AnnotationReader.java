@@ -16,7 +16,7 @@ public class AnnotationReader {
 	// is present on methods.
 	// TODO:Checking on classes and parameters
 
-	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
+	public static <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
 
 		Object container = containerClass.newInstance();
 		MetadataRepository metadataRepository = new MetadataRepository();//migrar para ingles

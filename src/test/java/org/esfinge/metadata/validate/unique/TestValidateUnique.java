@@ -11,6 +11,7 @@ public class TestValidateUnique {
 		public void registrar(){
 			
 		}
+		
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
