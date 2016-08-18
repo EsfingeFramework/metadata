@@ -9,8 +9,7 @@
 	<name>Esfinge Metadata</name>
 	<url>http://esfinge.sourceforge.net/</url>
 	<description>Esfinge Metadata is a meta framework to metadata consume. It simplifies developing this type of frameworks</description>
-
-	<licenses>
+<licenses>
 		<license>
 			<name>MIT License</name>
 			<url>http://www.opensource.org/licenses/mit-license.php</url>
