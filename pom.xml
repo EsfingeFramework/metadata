@@ -24,15 +24,13 @@
 			<email>guerraem@gmail.com</email>
 			<organization />
 			<organizationUrl />
-<<<<<<< HEAD
 		</developer>
 		<developer>
 			<name>Marco Augusto Ribeiro Nardes</name>
 			<email>marconardes@gmail.com</email>
 			<organization></organization>
 			<organizationUrl></organizationUrl>
-=======
->>>>>>> refs/remotes/origin/master
+
 		</developer>
 	</developers>
 	<scm>
