@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.esfinge</groupId>
+	<groupId>net.sf.esfinge</groupId>
 	<artifactId>metadata</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>Esfinge Metadata</name>
@@ -37,7 +37,7 @@
 		<connection>scm:git:git://github.com/EsfingeFramework/metadata.git</connection>
 		<developerConnection>scm:git:ssh://github.com:EsfingeFramework/metadata.git</developerConnection>
 		<url>http://github.com/EsfingeFramework/metadata</url>
-	  <tag>metadata-1.0.1</tag>
+	  <tag>metadata-1.0.2</tag>
   </scm>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
