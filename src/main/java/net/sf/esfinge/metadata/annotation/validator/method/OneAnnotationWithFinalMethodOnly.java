@@ -1,9 +1,7 @@
-package net.sf.esfinge.metadata.annotation.container.method;
+package net.sf.esfinge.metadata.annotation.validator.method;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import net.sf.esfinge.metadata.annotation.validator.method.FinalMethodOnly;
 
 @FinalMethodOnly
 @Retention(RetentionPolicy.RUNTIME)

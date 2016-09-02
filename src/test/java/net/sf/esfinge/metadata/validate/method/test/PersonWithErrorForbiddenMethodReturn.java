@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithForbiddenMethodReturn;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithForbiddenMethodReturn;
 
 public class PersonWithErrorForbiddenMethodReturn extends Person{
 	

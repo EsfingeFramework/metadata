@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.field.test;
 
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithInstanceFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithInstanceFieldOnly;
 
 public class PersonWithErrorInstanceFieldOnly extends Person{
 

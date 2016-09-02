@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithFieldVisibilityForbidden;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithFieldVisibilityRequired;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithFinalFieldOnly;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithInstanceFieldOnly;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithStaticFieldOnly;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithTransientFieldOnly;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithValidFieldTypes;
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithVolatileFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithFieldVisibilityForbidden;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithFieldVisibilityRequired;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithFinalFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithInstanceFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithStaticFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithTransientFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithValidFieldTypes;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithVolatileFieldOnly;
 
 public class Person {
 	

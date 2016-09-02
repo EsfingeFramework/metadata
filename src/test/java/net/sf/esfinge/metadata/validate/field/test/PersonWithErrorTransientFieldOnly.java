@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.field.test;
 
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithTransientFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithTransientFieldOnly;
 
 public class PersonWithErrorTransientFieldOnly extends Person{
 	

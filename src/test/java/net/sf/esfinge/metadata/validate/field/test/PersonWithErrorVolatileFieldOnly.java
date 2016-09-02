@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.field.test;
 
-import net.sf.esfinge.metadata.annotation.container.field.OneAnnotationWithVolatileFieldOnly;
+import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithVolatileFieldOnly;
 
 public class PersonWithErrorVolatileFieldOnly extends Person{
 	

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithFinalMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithForbiddenMethodReturn;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithInstanceMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodNamingConvention;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityForbidden;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithMethodVisibilityRequired;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithNoParametersMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithStaticMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithStrictfpMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithSynchronizedMethodOnly;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithValidMethodParameterTypes;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithValidMethodReturn;
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithValidNumberOfParameters;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithFinalMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithForbiddenMethodReturn;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithInstanceMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodNamingConvention;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodVisibilityForbidden;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodVisibilityRequired;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithNoParametersMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithStaticMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithStrictfpMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithSynchronizedMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodParameterTypes;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodReturn;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidNumberOfParameters;
 
 public class Person {
 	

@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithNoParametersMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithNoParametersMethodOnly;
 
 public class PersonWithErrorNoParametersMethodOnly extends Person{
 	

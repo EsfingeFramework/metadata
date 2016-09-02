@@ -3,7 +3,7 @@ package net.sf.esfinge.metadata.validate.method.test;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithStrictfpMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithStrictfpMethodOnly;
 
 public class PersonWithErrorStrictfpMethodOnly extends Person{
 	

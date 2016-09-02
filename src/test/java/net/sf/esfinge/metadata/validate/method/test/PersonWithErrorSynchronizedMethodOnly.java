@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.container.method.OneAnnotationWithSynchronizedMethodOnly;
+import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithSynchronizedMethodOnly;
 
 public class PersonWithErrorSynchronizedMethodOnly extends Person{
 
