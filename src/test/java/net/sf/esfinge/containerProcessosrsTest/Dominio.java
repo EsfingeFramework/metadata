@@ -11,7 +11,6 @@ public class Dominio {
 	
 	public void entidade1(){}
 	
-	@Proces
 	public void entidade2(){}
 
 }

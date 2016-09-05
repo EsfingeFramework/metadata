@@ -8,7 +8,6 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.container.AllFieldsWith;
 import net.sf.esfinge.metadata.annotation.container.AllMethodsWith;
-import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.ElementName;

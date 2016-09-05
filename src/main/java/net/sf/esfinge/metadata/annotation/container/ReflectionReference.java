@@ -13,11 +13,7 @@ import net.sf.esfinge.metadata.container.reading.ReflectionReferenceReadingProce
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ReflectionReferenceReadingProcessor.class)
 @ValidFieldType({Class.class})
-//Verificar se o tipo do field condiz com o valor do @ContainerFor
-//METHOD -> Method
-//CLASS -> Class
-//FIELD -> Field
-//ALL -> Method, Class, Field 
+
 public @interface ReflectionReference {
 	
 }
