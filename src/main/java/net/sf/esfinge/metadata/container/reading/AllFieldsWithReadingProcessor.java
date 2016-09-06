@@ -48,9 +48,9 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 					Class <?> outputClass =(Class<?>)t1;
 					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
 					if(containerFor!=null){
-					if(!containerFor.vaule().equals(ContainerTarget.FIELDS))
+					if(!containerFor.value().equals(ContainerTarget.FIELDS))
 					{
-						throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of METHODS");
+						throw new Exception("ContainerFor: " +containerFor.value() +" no same of METHODS");
 					}
 
 					for(Field fields: clazz.getDeclaredFields())
