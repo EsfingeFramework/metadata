@@ -13,7 +13,7 @@ import net.sf.esfinge.metadata.container.reading.AnnotationPropertyReadingProces
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(AnnotationPropertyReadingProcessor.class)
 //Deve validar se o tipo do field eh do mesmo tipo do atributo da anotacao
-@ValidFieldType({String.class})
+//@ValidFieldType({String.class})
 public @interface AnnotationProperty {
 	Class<? extends Annotation> annotation();
 	String property() default "value";

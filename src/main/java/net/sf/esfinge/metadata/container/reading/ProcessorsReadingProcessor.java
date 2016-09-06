@@ -41,7 +41,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 					for(Method m1 : clazz.getDeclaredMethods())
 					{
 						AnnotationReader reader = new AnnotationReader();
-						Class containerr = reader.readingAnnotationsTo(m1, Class.class);
+						//Class containerr = reader.readingAnnotationsTo(m1, Class.class);
 					}
 				}
 			}

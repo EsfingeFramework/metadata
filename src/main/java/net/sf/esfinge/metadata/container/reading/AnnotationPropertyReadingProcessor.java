@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
+import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -37,7 +38,15 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 				
 				for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){
 					if(methodAnotation.getName().equals(annot.property())){
-						setProperty(container, fieldAnnoted.getName(),methodAnotation.invoke(annotation));
+						if(methodAnotation.getReturnType().equals(fieldAnnoted.getType())){
+							setProperty(container, fieldAnnoted.getName(),methodAnotation.invoke(annotation));
+						}
+						else{
+							throw new AnnotationValidationException("The field "+fieldAnnoted.getName()+" espera commo retorno "+fieldAnnoted.getType() 
+							+" em vez disso esta recebendo "+methodAnotation.getReturnType());
+
+						}
+							
 					}
 						
 				}
