@@ -10,7 +10,7 @@ import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.container.ContainerTarget;
-@ContainerFor(vaule = ContainerTarget.CLASS)
+@ContainerFor(value = ContainerTarget.CLASS)
 
 public class Container{
 	

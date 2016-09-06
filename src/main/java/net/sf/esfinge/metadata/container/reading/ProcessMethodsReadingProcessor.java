@@ -50,9 +50,9 @@ public class ProcessMethodsReadingProcessor implements AnnotationReadingProcesso
 					if(!outputClass.equals(Method.class))
 					{
 						ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
-						if(!containerFor.vaule().equals(ContainerTarget.METHODS))
+						if(!containerFor.value().equals(ContainerTarget.METHODS))
 						{
-							throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of METHODS");
+							throw new Exception("ContainerFor: " +containerFor.value() +" no same of METHODS");
 						}
 
 						for(Method m1: clazz.getDeclaredMethods())

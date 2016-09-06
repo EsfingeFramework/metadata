@@ -5,7 +5,7 @@ import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(vaule = ContainerTarget.METHODS)
+@ContainerFor(value = ContainerTarget.METHODS)
 public class MethodContainer {
 
 	

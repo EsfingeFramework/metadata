@@ -50,9 +50,9 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 					Class <?> outputClass =(Class<?>)t1;
 					if(!outputClass.equals(Field.class)){
 					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
-					if(!containerFor.vaule().equals(ContainerTarget.FIELDS))
+					if(!containerFor.value().equals(ContainerTarget.FIELDS))
 					{
-						throw new Exception("ContainerFor: " +containerFor.vaule() +" no same of FIELDS");
+						throw new Exception("ContainerFor: " +containerFor.value() +" no same of FIELDS");
 					}
 					
 					for(Field f1: clazz.getDeclaredFields())
