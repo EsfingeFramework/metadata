@@ -43,7 +43,7 @@ public class MetadataExecute {
 				AnnotationReadingConfig arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
 				AnnotationReadingProcessor processor = arc.value().newInstance();
 				processor.initAnnotation(an, (Field) element);
-				processor.read(elementWithMetadata, container, containerFor.vaule());
+				processor.read(elementWithMetadata, container, containerFor.value());
 			}
 		}
 		return container;

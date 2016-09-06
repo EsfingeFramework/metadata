@@ -11,7 +11,7 @@ import net.sf.esfinge.metadata.annotation.container.ProcessMethods;
 import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(vaule = ContainerTarget.CLASS)
+@ContainerFor(value = ContainerTarget.CLASS)
 public class CT12Container {
 	
 	@ContainsAnnotation(Entidade.class)
