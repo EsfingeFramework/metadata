@@ -1,0 +1,1 @@
+package net.sf.esfinge.metadata.validate.minValue;
