@@ -1,8 +1,9 @@
 package net.sf.esfinge.containerProcessosrsTest;
 
+import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 
 @Entidade
-@Algo(DominioSegundo.class)
 public class Dominio {
 	
 	private String field1;

@@ -10,15 +10,12 @@ import net.sf.esfinge.metadata.AnnotationReader;
 public class ContainerProcessorsTest {
 
 	@Test
-	public void test() {
+	public void test() throws Exception {
 		Container container = new Container();
 		AnnotationReader a1 = new AnnotationReader();
-		try {
-			container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
+		
+		//assert();			
 	}
 
 }

@@ -14,28 +14,21 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 public class Container{
 	
-	@Processors(Algo.class)
-	List<Class<?>> list;
-	
-	@MethodProcessors(Algo.class)
-	Map<Method,Class<?>> prossesMethods;
+	//1-Procura anotações com ProcessorAnnotation dentro
+	//2-Pega a classe do value
+	//2.1-verifica se essa classe é do tipo que está na lista
+	//3-Instancia a classe que está no value
+	//4-chama o método init no objeto criado
+	//5-adiciona na lista
+	@Processors(ProcessorAnnotation.class)
+	List<ProcessorInterface> list;
 
-	public List<Class<?>> getList() {
+	public List<ProcessorInterface> getList() {
 		return list;
 	}
 
-	public void setList(List<Class<?>> list) {
+	public void setList(List<ProcessorInterface> list) {
 		this.list = list;
 	}
-
-	public Map<Method, Class<?>> getProssesMethods() {
-		return prossesMethods;
-	}
-
-	public void setProssesMethods(Map<Method, Class<?>> prossesMethods) {
-		this.prossesMethods = prossesMethods;
-	}
-	
-	
 	
 }

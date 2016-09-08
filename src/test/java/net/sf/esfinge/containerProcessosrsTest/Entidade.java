@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 
 @Retention(RetentionPolicy.RUNTIME)
+@ProcessorAnnotation(DominioSegundo.class)
 public @interface Entidade {
 	
 }
