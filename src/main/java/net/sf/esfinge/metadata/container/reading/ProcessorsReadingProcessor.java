@@ -5,7 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
+
+import javax.sql.rowset.spi.TransactionalWriter;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
@@ -21,35 +25,48 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private Field fieldAnnoted;
 	private Processors processors;
 	private Class<? extends Annotation> processorsClass;
+	ParameterizedType fieldGenericType;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
+		System.out.println("============init ProcessorsReadingProcessor============");
 		fieldAnnoted = field;
 		processors = (Processors)an;
 		processorsClass = processors.value();
+		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 	}
 
 	@Override
 	public void read(AnnotatedElement classWithMetadata, Object container, ContainerTarget enumStr)
 			throws AnnotationReadingException {
 		try{
-			System.out.println("============Init ProcessorsReadingProcessor============");
+			System.out.println("============read ProcessorsReadingProcessor============");
 			for (Annotation annotation : classWithMetadata.getAnnotations()) {
-				System.out.println(annotation.toString());
 				for(Annotation annotationAnotation: annotation.annotationType().getAnnotations())
 				{
-					System.out.println(annotationAnotation.toString());
-					for(Method method: annotationAnotation.annotationType().getDeclaredMethods())
-					{
-						if(!annotationAnotation.annotationType().equals(Retention.class)){
-							Object invoke = method.invoke(annotationAnotation);
-							System.out.println(invoke);
+					if(!annotationAnotation.annotationType().equals(Retention.class)){
+						for(Method method: annotationAnotation.annotationType().getDeclaredMethods())
+						{
+							
+							Class<?> selectClass = (Class<?>) method.invoke(annotationAnotation);
+							for(Type args: fieldGenericType.getActualTypeArguments())
+							{
+								for (Type selectClassAType : selectClass.getGenericInterfaces()) {
+									if(!args.equals(selectClassAType))
+									{
+										throw new AnnotationReadingException("O tipo esperado é "+args+"em vez disso foi passado "+ selectClassAType);
+									}
+
+								}
+								
+							}
+							
 						}
 						
 					}
 				}
 			}
-			System.out.println("=============================");
+
 		}
 		catch (Exception e) {
 			// TODO: handle exception

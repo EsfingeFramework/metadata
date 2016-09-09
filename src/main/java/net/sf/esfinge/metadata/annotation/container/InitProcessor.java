@@ -9,6 +9,5 @@ import net.sf.esfinge.metadata.container.reading.ElementNameReadingProcessor;
 import net.sf.esfinge.metadata.container.reading.InitProcessorReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)
-@AnnotationReadingConfig(InitProcessorReadingProcessor.class)
 public @interface InitProcessor {
 }
