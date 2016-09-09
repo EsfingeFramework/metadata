@@ -15,7 +15,6 @@ import net.sf.esfinge.metadata.container.reading.ReflectionReferenceReadingProce
 @Retention(RUNTIME)
 @AnnotationReadingConfig(ProcessorsReadingProcessor.class)
 
-@ValidFieldType({List.class, Set.class,Map.class})
 public @interface Processors {
 	Class<? extends Annotation> value();
 }

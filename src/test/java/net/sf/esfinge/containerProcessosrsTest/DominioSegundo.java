@@ -15,12 +15,16 @@ public class DominioSegundo implements ProcessorInterface {
 	@Override
 	public void processorInitializationMethod(Annotation ann) {
 		// TODO Auto-generated method stub
+		System.out.println("Annotation "+ann);
+	}
+
+	@Override
+	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann) {
+		// TODO Auto-generated method stub
+		System.out.println("Annotation "+ann);
+		System.out.println("AnnotatedElement "+ael);
 		
 	}
-	 
-	//@InitProcessor
-	//public void entidade2(AnnotatedElement an2, 
-	//		Annotation value, Annotation annot){}
 	
 	//@InitProcessor
 	//public void entidade2(Annotation annot, 
