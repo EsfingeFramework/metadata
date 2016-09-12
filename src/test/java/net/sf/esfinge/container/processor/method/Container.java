@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.method;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -20,15 +20,18 @@ public class Container{
 	//3-Instancia a classe que está no value ok 
 	//4-chama o método init no objeto criado
 	//5-adiciona na lista
-	@Processors(ProcessorAnnotation.class)
-	List<ProcessorInterface> list;
+	
+	@MethodProcessors(ProcessorAnnotation.class)
+	Map<Method,ProcessorInterface> map;
 
-	public List<ProcessorInterface> getList() {
-		return list;
+	public Map<Method, ProcessorInterface> getMap() {
+		return map;
 	}
 
-	public void setList(List<ProcessorInterface> list) {
-		this.list = list;
+	public void setMap(Map<Method, ProcessorInterface> map) {
+		this.map = map;
 	}
+	
+	
 	
 }

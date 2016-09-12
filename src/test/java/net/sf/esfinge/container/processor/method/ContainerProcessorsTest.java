@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.method;
 
 import static org.junit.Assert.*;
 
@@ -14,11 +14,8 @@ public class ContainerProcessorsTest {
 		Container container = new Container();
 		AnnotationReader a1 = new AnnotationReader();
 		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
-		
-		for ( ProcessorInterface iterable_element : container.getList()) {
-			assertTrue(iterable_element.getClass().equals(DominioSegundo.class));
-		}
-		assertNotNull(container.getList().size());
+		System.out.println(container.getMap().size());
+		assertNotNull(container.getMap().size());
 		
 		//assert();			
 	}

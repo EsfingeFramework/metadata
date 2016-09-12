@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.clazz;
 
 import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
 import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;

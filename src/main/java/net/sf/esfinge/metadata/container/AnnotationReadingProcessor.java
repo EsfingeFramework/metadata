@@ -11,6 +11,6 @@ public interface AnnotationReadingProcessor {
 	
 	void initAnnotation(Annotation an, Field field) throws AnnotationValidationException;
 	
-	void read(AnnotatedElement classWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException;
+	void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException;
 
 }

@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.method;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -11,6 +11,10 @@ public interface ProcessorInterface {
 	public void processorInitializationMethod(Annotation ann);
 
 	@InitProcessor
-	void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
+	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
+	
+	@InitProcessor
+	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc);
+
 
 }

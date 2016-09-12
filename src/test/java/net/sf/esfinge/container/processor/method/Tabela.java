@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.method;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

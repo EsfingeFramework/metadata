@@ -1,4 +1,4 @@
-package net.sf.esfinge.containerProcessosrsTest;
+package net.sf.esfinge.container.processor.clazz;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
