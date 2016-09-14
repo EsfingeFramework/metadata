@@ -54,12 +54,10 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 					Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 					//cria um objeto dessa classe e invoca o @InitProcessor
 					Object objectToInvoke = valueClass.newInstance();
-			
+					//Aqui tah a gambiarra
 					findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 							objectToInvoke);
 					
-					
-					//Aqui eh o final do method
 					list.add(objectToInvoke);
 				}
 			}
@@ -77,20 +75,15 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			throws IllegalAccessException, InvocationTargetException {
 		for(Class<?> interfaces : valueClass.getInterfaces())
 		{
-			invokeAnnotedElement(elementWithMetadata, container, annotation, objectToInvoke, interfaces);
-		}
-	}
-
-	private void invokeAnnotedElement(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
-			Object objectToInvoke, Class<?> interfaces) throws IllegalAccessException, InvocationTargetException {
-		for(Method methodToInvoke: interfaces.getDeclaredMethods())
-		{
-			//Retorna um array list com os metodos anotados com o @InitProcessor
-			if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
-				Object[] args = new Object[methodToInvoke.getParameters().length];
-				int cont = 0;
-				executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
-						methodToInvoke, args, cont);
+			for(Method methodToInvoke: interfaces.getDeclaredMethods())
+			{
+				//Retorna um array list com os metodos anotados com o @InitProcessor
+				if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
+					Object[] args = new Object[methodToInvoke.getParameters().length];
+					int cont = 0;
+					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
+							methodToInvoke, args, cont);
+				}
 			}
 		}
 	}

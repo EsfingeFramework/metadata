@@ -10,10 +10,8 @@ public interface ProcessorInterface {
 	@InitProcessor
 	public void processorInitializationMethod(Annotation ann);
 
-	@InitProcessor
 	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
 	
-	@InitProcessor
 	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc);
 
 
