@@ -6,11 +6,13 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(value = ContainerTarget.CLASS)
+
 
 public class Container{
 	
