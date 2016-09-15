@@ -79,28 +79,28 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
 				if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
-					Object[] args = new Object[methodToInvoke.getParameters().length];
-					int cont = 0;
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
-							methodToInvoke, args, cont);
+							methodToInvoke);
 				}
 			}
 		}
 	}
 
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
-			Object objectToInvoke, Method methodToInvoke, Object[] args, int cont)
+			Object objectToInvoke, Method methodToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
-		for(Parameter p1 : methodToInvoke.getParameters()){
-			if(p1.getType().equals(Annotation.class))
+		Object[] args = new Object[methodToInvoke.getParameters().length];
+		int cont = 0;
+		for(Parameter parameterMethod : methodToInvoke.getParameters()){
+			if(parameterMethod.getType().equals(Annotation.class))
 			{
 				args[cont] = annotation;
 			}
-			else if(p1.getType().equals(AnnotatedElement.class))
+			else if(parameterMethod.getType().equals(AnnotatedElement.class))
 			{
 				args[cont] = elementWithMetadata;
 			}
-			else if(p1.getType().equals(container.getClass()))
+			else if(parameterMethod.getType().equals(container.getClass()))
 			{
 				args[cont] = container;
 			}
