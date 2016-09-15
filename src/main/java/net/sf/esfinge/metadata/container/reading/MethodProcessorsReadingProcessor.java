@@ -104,5 +104,4 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 		}
 		methodToInvoke.invoke(objectToInvoke, args);
 	}
-
 }
