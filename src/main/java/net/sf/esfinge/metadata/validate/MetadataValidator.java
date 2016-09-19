@@ -21,7 +21,6 @@ public class MetadataValidator {
 		}
 		
 		Class<?> currentClazz = clazz;
-		
 		while(currentClazz != Object.class && currentClazz!=null){
 			for(Method m : currentClazz.getDeclaredMethods()){
 				for(Annotation an : m.getAnnotations()){
@@ -38,9 +37,12 @@ public class MetadataValidator {
 				for(Annotation an : c.getAnnotations()){
 					validateAnnotation(an, c);
 				}
+
 			}						
 				
 			currentClazz = currentClazz.getSuperclass();
+
+
 		}		
 	}
 	
@@ -86,15 +88,7 @@ public class MetadataValidator {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		/*System.out.println("target:"+target.toString());
-		System.out.println("anotElement:"+ae.toString());
-		System.out.println("an:"+an.toString());
-		System.out.println("m:"+m.getName());
-		
-		System.out.println("pointToUser: "+o.toString());
-		
-		*/
+
 		
 		Object oo = null;
 		try {
@@ -113,8 +107,7 @@ public class MetadataValidator {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		//System.out.println("MinValue: "+oo.toString());
+
 		
 		
 		try {

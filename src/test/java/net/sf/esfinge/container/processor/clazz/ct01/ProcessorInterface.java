@@ -1,4 +1,4 @@
-package net.sf.esfinge.container.processor.clazz;
+package net.sf.esfinge.container.processor.clazz.ct01;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;

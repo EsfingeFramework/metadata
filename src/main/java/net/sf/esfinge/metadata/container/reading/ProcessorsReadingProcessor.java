@@ -41,13 +41,17 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 		processorsAnnotationClass = processors.value();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		list = new ArrayList<Object>();
+		System.out.println("initAnnotation");
 	}
 
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr)
 			throws AnnotationReadingException {
 		try{
+			System.out.println("read");
 			for (Annotation annotation : elementWithMetadata.getAnnotations()) {
+				System.out.println(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass));
+				System.out.println(annotation);
 				if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 					Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 					//pega o class do value dessa anotation
@@ -73,6 +77,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
 			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
+		System.out.println("findDeclaredAnnotationOnInterface");
 		for(Class<?> interfaces : valueClass.getInterfaces())
 		{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
@@ -89,6 +94,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
 			Object objectToInvoke, Method methodToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
+		System.out.println("Execute");
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter parameterMethod : methodToInvoke.getParameters()){
