@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.MinValueAnnotationValidator;
 
-@ToValidateProperty(validationClass = MinValueAnnotationValidator.class)
+@ToValidateProperty(value = MinValueAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface MinValue {

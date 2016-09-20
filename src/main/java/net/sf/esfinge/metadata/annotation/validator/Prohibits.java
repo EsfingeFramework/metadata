@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.ProhibitsAnnotationValidator;
 
-@ToValidate(validationClass = ProhibitsAnnotationValidator.class)
+@ToValidate(value = ProhibitsAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface Prohibits {

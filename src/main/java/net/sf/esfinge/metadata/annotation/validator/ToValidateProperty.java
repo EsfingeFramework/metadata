@@ -10,5 +10,5 @@ import net.sf.esfinge.metadata.AnnotationPropertyValidator;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ToValidateProperty {
-	public Class<? extends AnnotationPropertyValidator> validationClass();
+	public Class<? extends AnnotationPropertyValidator> value();
 }

@@ -10,5 +10,5 @@ import net.sf.esfinge.metadata.AnnotationValidator;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ToValidate {
-	public Class<? extends AnnotationValidator> validationClass();
+	public Class<? extends AnnotationValidator> value();
 }

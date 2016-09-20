@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.SiteValidoAnnotationValidator;
 
-@ToValidateProperty(validationClass = SiteValidoAnnotationValidator.class)
+@ToValidateProperty(value = SiteValidoAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface SiteValido {	

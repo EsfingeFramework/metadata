@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import net.sf.esfinge.metadata.annotation.validator.ToValidate;
 import net.sf.esfinge.metadata.validate.method.ValidatorValidNumberOfParameters;
 
-@ToValidate(validationClass = ValidatorValidNumberOfParameters.class)
+@ToValidate(value = ValidatorValidNumberOfParameters.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ValidNumberOfParameters{

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.RefersToAnnotationValidator;
 
-@ToValidateProperty(validationClass = RefersToAnnotationValidator.class)
+@ToValidateProperty(value = RefersToAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface RefersTo {

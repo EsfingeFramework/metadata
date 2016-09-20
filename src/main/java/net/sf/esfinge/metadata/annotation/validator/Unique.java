@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.UniqueAnnotationValidator;
 
-@ToValidateProperty(validationClass = UniqueAnnotationValidator.class)
+@ToValidateProperty(value = UniqueAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Unique {

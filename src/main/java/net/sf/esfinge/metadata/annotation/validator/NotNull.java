@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.NotNullAnnotationValidator;
 
-@ToValidateProperty(validationClass = NotNullAnnotationValidator.class)
+@ToValidateProperty(value = NotNullAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface NotNull {

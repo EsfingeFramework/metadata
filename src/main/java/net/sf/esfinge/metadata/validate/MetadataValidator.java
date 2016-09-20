@@ -71,7 +71,7 @@ public class MetadataValidator {
 		
 		ToValidateProperty tovalidate = an.annotationType().getAnnotation(ToValidateProperty.class);
 		
-		Class<? extends AnnotationPropertyValidator> validClazz = tovalidate.validationClass();
+		Class<? extends AnnotationPropertyValidator> validClazz = tovalidate.value();
 		
 		AnnotationPropertyValidator apv;
 		
@@ -127,7 +127,7 @@ public class MetadataValidator {
 			throws AnnotationValidationException {
 		ToValidate tovalidate = an.annotationType().getAnnotation(ToValidate.class);
 		
-		Class<? extends AnnotationValidator> validClazz = tovalidate.validationClass();
+		Class<? extends AnnotationValidator> validClazz = tovalidate.value();
 		
 		AnnotationValidator av;
 		

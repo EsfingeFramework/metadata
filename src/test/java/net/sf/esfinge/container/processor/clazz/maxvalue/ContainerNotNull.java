@@ -5,7 +5,6 @@ import java.util.List;
 import net.sf.esfinge.metadata.AnnotationPropertyValidator;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.Processors;
-import net.sf.esfinge.metadata.annotation.validator.NotNull;
 import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -13,7 +12,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 public class ContainerNotNull {
 
 	
-	@Processors(NotNull.class)
+	@Processors(ToValidateProperty.class)
 	List<AnnotationPropertyValidator> lista;
 
 	public List<AnnotationPropertyValidator> getLista() {

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import net.sf.esfinge.metadata.validate.ValidFieldTypeValidator;
 
 
-@ToValidate(validationClass = ValidFieldTypeValidator.class)
+@ToValidate(value = ValidFieldTypeValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface ValidFieldType {

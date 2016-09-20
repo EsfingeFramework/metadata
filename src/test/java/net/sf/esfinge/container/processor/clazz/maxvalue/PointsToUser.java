@@ -15,7 +15,7 @@ import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 @Target({ElementType.METHOD,ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PointsToUser {
-	@MinValue(value=0) 
+	//@MinValue(value=0) 
 	int quantity();
 	@NotNull
 	String name();

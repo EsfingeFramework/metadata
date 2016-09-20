@@ -58,11 +58,41 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 					Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 					//cria um objeto dessa classe e invoca o @InitProcessor
 					Object objectToInvoke = valueClass.newInstance();
+					System.out.println("-----------------");
+					System.out.println(objectToInvoke.getClass());
 					//Aqui tah a gambiarra
 					findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 							objectToInvoke);
 					
 					list.add(objectToInvoke);
+				}
+				else{
+					for(Method methodAnootation : annotation.annotationType().getDeclaredMethods())
+					{
+						System.out.println(methodAnootation);
+						for(Annotation anotationMethodAnotation : methodAnootation.getAnnotations())
+						{
+							Annotation processorAnnotation = anotationMethodAnotation.annotationType().getAnnotation(processorsAnnotationClass);
+
+							System.out.println("-------processorAnnotation----------");
+							System.out.println(processorAnnotation);
+							System.out.println("-------methodAnootation----------");
+							System.out.println(methodAnootation);
+							//Passar isso aqui como annotationn
+							System.out.println("-------annotation----------");
+							System.out.println(annotation);
+							
+							//pega o class do value dessa anotation
+							
+							Object obj = methodAnootation.invoke(annotation);
+							System.out.println(obj);
+							
+							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
+							//cria um objeto dessa classe e invoca o @InitProcessor
+							System.out.println(valueClass);
+							
+						}
+					}
 				}
 			}
 			setProperty(container,fieldAnnoted.getName(),list);

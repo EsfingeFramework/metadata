@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.validate.MaxValueAnnotationValidator;
 
-@ToValidateProperty(validationClass =MaxValueAnnotationValidator.class)
+@ToValidateProperty(value =MaxValueAnnotationValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface MaxValue {
