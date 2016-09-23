@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.rowset.spi.TransactionalWriter;
+import javax.swing.plaf.metal.MetalToggleButtonUI;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
@@ -41,58 +42,26 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 		processorsAnnotationClass = processors.value();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		list = new ArrayList<Object>();
-		System.out.println("initAnnotation");
 	}
 
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr)
 			throws AnnotationReadingException {
 		try{
-			System.out.println("read");
+
 			for (Annotation annotation : elementWithMetadata.getAnnotations()) {
-				System.out.println(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass));
-				System.out.println(annotation);
+
 				if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 					Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 					//pega o class do value dessa anotation
 					Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 					//cria um objeto dessa classe e invoca o @InitProcessor
 					Object objectToInvoke = valueClass.newInstance();
-					System.out.println("-----------------");
-					System.out.println(objectToInvoke.getClass());
 					//Aqui tah a gambiarra
 					findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 							objectToInvoke);
 					
 					list.add(objectToInvoke);
-				}
-				else{
-					for(Method methodAnootation : annotation.annotationType().getDeclaredMethods())
-					{
-						System.out.println(methodAnootation);
-						for(Annotation anotationMethodAnotation : methodAnootation.getAnnotations())
-						{
-							Annotation processorAnnotation = anotationMethodAnotation.annotationType().getAnnotation(processorsAnnotationClass);
-
-							System.out.println("-------processorAnnotation----------");
-							System.out.println(processorAnnotation);
-							System.out.println("-------methodAnootation----------");
-							System.out.println(methodAnootation);
-							//Passar isso aqui como annotationn
-							System.out.println("-------annotation----------");
-							System.out.println(annotation);
-							
-							//pega o class do value dessa anotation
-							
-							Object obj = methodAnootation.invoke(annotation);
-							System.out.println(obj);
-							
-							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
-							//cria um objeto dessa classe e invoca o @InitProcessor
-							System.out.println(valueClass);
-							
-						}
-					}
 				}
 			}
 			setProperty(container,fieldAnnoted.getName(),list);
@@ -107,7 +76,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
 			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
-		System.out.println("findDeclaredAnnotationOnInterface");
 		for(Class<?> interfaces : valueClass.getInterfaces())
 		{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
@@ -122,12 +90,12 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	}
 
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
-			Object objectToInvoke, Method methodToInvoke)
+			Object objectToInvoke ,Method methodToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
-		System.out.println("Execute");
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter parameterMethod : methodToInvoke.getParameters()){
+			
 			if(parameterMethod.getType().equals(Annotation.class))
 			{
 				args[cont] = annotation;
@@ -139,10 +107,13 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			else if(parameterMethod.getType().equals(container.getClass()))
 			{
 				args[cont] = container;
+
 			}
+			
 			cont++;
 		}
-		methodToInvoke.invoke(objectToInvoke, args);
+		
+				methodToInvoke.invoke(objectToInvoke, args);
 	}
 
 }

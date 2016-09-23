@@ -1,7 +1,7 @@
 package net.sf.esfinge.metadata.container;
 
 public enum ContainerTarget {
-	CLASS,
+	TYPE,
 	METHODS,
 	FIELDS,
 	ALL,

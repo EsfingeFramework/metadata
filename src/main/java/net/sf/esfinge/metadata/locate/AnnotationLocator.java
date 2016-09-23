@@ -22,7 +22,7 @@ public class AnnotationLocator extends MetadataLocator {
 		Annotation[] ans = element.getAnnotations();		
 		
 		for (Annotation a : ans) {			
-			Class<?>c = a.annotationType();							
+			Class<?>c = a.annotationType();	
 			// exclui anotacoes predefinidas do Java e do Esfinge Metadata
 			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) &&			
 				 searchInsideAnnotation(annotationClass) && searchInsideAnnotation(c)) {					
@@ -33,7 +33,8 @@ public class AnnotationLocator extends MetadataLocator {
 					return findMetadata(c, annotationClass);
 				}							
 			}
-		}		
+		}
+
 		return an;	
 	}
 

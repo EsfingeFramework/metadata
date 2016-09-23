@@ -9,7 +9,7 @@ import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(value = ContainerTarget.CLASS)
+@ContainerFor(value = ContainerTarget.TYPE)
 public class CT9Container {
 		
 	@AnnotationProperty(annotation = Tabela.class, property ="nome")

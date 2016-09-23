@@ -1,13 +1,26 @@
 package net.sf.esfinge.metadata.validate.notNull;
 
+import java.lang.annotation.Annotation;
+import java.util.List;
+
 import org.junit.Test;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationValidationException;
+import net.sf.esfinge.metadata.annotation.validator.NotNull;
+import net.sf.esfinge.metadata.annotation.validator.field.FinalFieldOnly;
+import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.LevelLocator;
+import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.RegularLocator;
+import net.sf.esfinge.metadata.locate.levelLocator.TestLevelLocator.CT01;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
+import net.sf.esfinge.metadata.validate.MetadataValidatorB;
 import net.sf.esfinge.metadata.validate.notNull.PointsToUser;
 
 public class TestValidateNotNull {
-
+	
+	
 	public class Classe{
 		@PointsToUser(name="", quantity=10)
 		public void registrar(){
@@ -16,12 +29,29 @@ public class TestValidateNotNull {
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
-		MetadataValidator.validateMetadataOn(Classe.class);			
+	public void CT01() throws Exception {			
+		MetadataValidator.validateMetadataOn(Classe.class);
+
 	}
 	
 	
-	
+	@Test(expected = AnnotationValidationException.class)
+	public void CT02() throws Exception {			
+		//MetadataValidatorB.validateMetadataOn(Classe.class);
+		//AnnotationLocator ann = new AnnotationLocator();
+		//Annotation x = ann.findMetadata(Classe.class, NotNull.class);
+		
+		//LevelLocator annLevel = new LevelLocator();
+		//Annotation xLevel = annLevel.findMetadata(Classe.class, NotNull.class);
+
+		boolean ann = AnnotationFinder.existAnnotation(PointsToUser.class, NotNull.class);
+		
+		System.out.println(ann);
+		
+		//System.out.println(x);
+		//System.out.println(xLevel);
+		
+	}
 	
 	/*
 	public class OrderProcessing01 {

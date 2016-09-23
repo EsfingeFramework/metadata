@@ -8,7 +8,7 @@ import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(value = ContainerTarget.CLASS)
+@ContainerFor(value = ContainerTarget.TYPE)
 public class ContainerNotNull {
 
 	

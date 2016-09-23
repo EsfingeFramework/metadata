@@ -10,7 +10,7 @@ import net.sf.esfinge.metadata.locate.LevelLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 
-public class AnnotationFinder {
+public class AnnotationFinder2 {
 	
 	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 		//LocatorsFactory factory = new LocatorsFactory();

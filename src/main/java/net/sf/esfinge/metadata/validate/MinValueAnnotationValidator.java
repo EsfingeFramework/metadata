@@ -14,8 +14,10 @@ public class MinValueAnnotationValidator implements AnnotationPropertyValidator{
 
 	@Override
 	public void initialize(Annotation self) {
+
 		mv = (MinValue) self;
 		minValue = mv.value();
+		
 	}
 	
 	@Override
@@ -23,8 +25,6 @@ public class MinValueAnnotationValidator implements AnnotationPropertyValidator{
 			AnnotatedElement annotatedWithMainAnnotation,
 			Method annotatedWithValidation, Object annotationPropertyValue)
 			throws AnnotationValidationException {
-		System.out.println("----------------");
-		System.out.println(annotatedWithValidation.toString());
 		Integer value = (Integer) annotationPropertyValue;
 		if(minValue > value){
 			throw new AnnotationValidationException("The attribute "+ annotatedWithValidation.getName() +" of @" +annotationOnElement.annotationType().getName() + " has a value("+value+"), which is less than the @MinValue("+minValue+")");

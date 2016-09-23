@@ -18,10 +18,17 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationPropertyValidator;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.annotation.container.Processors;
+import net.sf.esfinge.metadata.annotation.validator.MinValue;
 import net.sf.esfinge.metadata.annotation.validator.NotNull;
 import net.sf.esfinge.metadata.locate.LevelLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.levelLocator.Transaction01;
+import net.sf.esfinge.metadata.locate.levelLocator.TestLevelLocator.CT01;
+import net.sf.esfinge.metadata.validate.MaxValueAnnotationValidator;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
+import net.sf.esfinge.metadata.validate.MetadataValidatorB;
+import net.sf.esfinge.metadata.validate.MinValueAnnotationValidator;
+import net.sf.esfinge.metadata.validate.NotNullAnnotationValidator;
 
 
 public class ContainerProcessorsTest {
@@ -48,12 +55,9 @@ public class ContainerProcessorsTest {
 	
 	@Test
 	public void containerMaxValue() throws Exception{
-		ContainerNotNull mv = new ContainerNotNull();
-		AnnotationReader a1 = new AnnotationReader();
-		
-		mv = a1.readingAnnotationsTo(DomMaxValue.class, mv.getClass());
-		System.out.println("SIZE");
-		System.out.println(mv.getLista().size());
+	
+		MetadataValidator b = new MetadataValidator();
+
 	}
 
 }

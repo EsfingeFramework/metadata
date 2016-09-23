@@ -33,7 +33,7 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 
 	private void FindFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		if(target == ContainerTarget.CLASS){
+		if(target == ContainerTarget.TYPE){
 			Class<?> class1 = (Class<?>) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,class1.getName());
 		}

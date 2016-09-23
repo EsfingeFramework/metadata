@@ -46,7 +46,7 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
 		try {
-			if (target == ContainerTarget.CLASS) {
+			if (target == ContainerTarget.TYPE) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 					Class<?> outputClass = (Class<?>) t1;

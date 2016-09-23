@@ -11,7 +11,7 @@ public interface AnnotationPropertyValidator {
 	@InitProcessor
 	public void initialize(Annotation self);
 	
-	@InitProcessor
+
 	public void validate(Annotation annotationOnElement, 
 			AnnotatedElement annotatedWithMainAnnotation, 
 			Method annotatedWithValidation, 

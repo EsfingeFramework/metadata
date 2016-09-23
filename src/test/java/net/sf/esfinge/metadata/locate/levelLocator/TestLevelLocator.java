@@ -18,7 +18,7 @@ public class TestLevelLocator {
 	
 	//CT01
 	@Transaction01
-	public class CT01{		
+	public class CT01{	
 		public String attribute;
 		
 	}

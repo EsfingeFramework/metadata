@@ -4,7 +4,7 @@ import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-@ContainerFor(ContainerTarget.CLASS)
+@ContainerFor(ContainerTarget.TYPE)
 public class Container {
 	@AnnotationProperty(annotation = Propriedade.class, property ="nome")
 	private Class<?> nomeTabela;

@@ -11,7 +11,7 @@ public class NotNullAnnotationValidator implements AnnotationPropertyValidator{
 	
 	@Override
 	public void initialize(Annotation self) {
-		System.out.println(self);
+
 		
 	}
 
@@ -20,7 +20,6 @@ public class NotNullAnnotationValidator implements AnnotationPropertyValidator{
 			AnnotatedElement annotatedWithMainAnnotation,
 			Method annotatedWithValidation, Object annotationPropertyValue)
 			throws AnnotationValidationException {
-		
 		if(annotationPropertyValue.equals("") ||
 				annotationPropertyValue == null){
 			throw new AnnotationValidationException("The attribute "+ annotatedWithValidation.getName() +" of @" +annotationOnElement.annotationType().getName() + " can not be empty/null!");

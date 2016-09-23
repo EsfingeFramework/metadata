@@ -9,7 +9,7 @@ import net.sf.esfinge.metadata.container.reading.FieldProcessorsReadingProcessor
 
 @Retention(RetentionPolicy.RUNTIME)
 @AnnotationReadingConfig(FieldProcessorsReadingProcessor.class)
-@ContainerFor(ContainerTarget.CLASS)
+@ContainerFor(ContainerTarget.TYPE)
 public @interface FieldProcessors {
 	Class<? extends Annotation> value();
 }
