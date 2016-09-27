@@ -11,9 +11,9 @@ import net.sf.esfinge.container.processor.clazz.ct01.Container;
 import net.sf.esfinge.container.processor.clazz.ct01.Dominio;
 import net.sf.esfinge.container.processor.clazz.ct01.DominioSegundo;
 import net.sf.esfinge.container.processor.clazz.ct01.ProcessorInterface;
-import net.sf.esfinge.container.processor.clazz.maxvalue.ContainerNotNull;
-import net.sf.esfinge.container.processor.clazz.maxvalue.DomMaxValue;
-import net.sf.esfinge.container.processor.clazz.maxvalue.PointsToUser;
+import net.sf.esfinge.container.processor.clazz.ct02.ContainerNotNull;
+import net.sf.esfinge.container.processor.clazz.ct02.DomMaxValue;
+import net.sf.esfinge.container.processor.clazz.ct02.PointsToUser;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationPropertyValidator;
 import net.sf.esfinge.metadata.AnnotationReader;
@@ -38,7 +38,6 @@ public class ContainerProcessorsTest {
 		Container container = new Container();
 		AnnotationReader a1 = new AnnotationReader();
 		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
-		assertNotNull(container.getList().size());
 		assertEquals(1,container.getList().size());
 		for (ProcessorInterface iterable : container.getList()) {
 			if(iterable.getClass().equals(DominioSegundo.class))
@@ -54,10 +53,16 @@ public class ContainerProcessorsTest {
 	}
 	
 	@Test
-	public void containerMaxValue() throws Exception{
-	
-		MetadataValidator b = new MetadataValidator();
+	public void testClassIntern() throws Exception{
+		
+		Container container = new Container();
+		AnnotationReader a1 = new AnnotationReader();
+		container = a1.readingAnnotationsTo(DomMaxValue.class, container.getClass());
+		
+		System.out.println(container.getList().toString());
+		assertNotEquals(0,container.getList().size());
 
+		
 	}
 
 }

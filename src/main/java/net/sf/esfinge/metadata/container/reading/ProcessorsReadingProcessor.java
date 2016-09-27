@@ -49,21 +49,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			throws AnnotationReadingException {
 		try{
 
-			for (Annotation annotation : elementWithMetadata.getAnnotations()) {
-
-				if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
-					Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
-					//pega o class do value dessa anotation
-					Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
-					//cria um objeto dessa classe e invoca o @InitProcessor
-					Object objectToInvoke = valueClass.newInstance();
-					//Aqui tah a gambiarra
-					findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
-							objectToInvoke);
-					
-					list.add(objectToInvoke);
-				}
-			}
+			annotationSearch(elementWithMetadata, container);
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
 		catch (Exception e) {
@@ -71,6 +57,22 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			throw new AnnotationReadingException(e);
 		}
 		
+	}
+
+	private void annotationSearch(AnnotatedElement elementWithMetadata, Object container)
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+		for (Annotation annotation : elementWithMetadata.getAnnotations()) {
+
+			if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
+				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
+				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
+				Object objectToInvoke = valueClass.newInstance();
+				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+						objectToInvoke);
+				
+				list.add(objectToInvoke);
+			}
+		}
 	}
 
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,

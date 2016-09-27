@@ -1,4 +1,4 @@
-package net.sf.esfinge.container.processor.clazz.maxvalue;
+package net.sf.esfinge.container.processor.clazz.ct02;
 
 import java.util.List;
 

@@ -9,32 +9,33 @@ import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.annotation.validator.NotNull;
 import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.TYPE)
 public class ContainerValidator {
 
-	@Processors(SearchOnEnclosingElements.class)
-	List<Object> notNullProcessors;
+	@Processors(ToValidateProperty.class)
+	List<Object> validateProcessors;
+
+	public List<Object> getValidateProcessors() {
+		return validateProcessors;
+	}
+
+	public void setValidateProcessors(List<Object> validateProcessors) {
+		this.validateProcessors = validateProcessors;
+	}
 	
-	@MethodProcessors(NotNull.class)
-	Map<Method,Object> notNullMethodProcessor;
+	//@MethodProcessors(ToValidateProperty.class)
+	//Map<Method,Object> notNullMethodProcessor;
+ 
+	//public Map<Method, Object> getNotNullMethodProcessor() {
+	//	return notNullMethodProcessor;
+	//}
 
-	public List<Object> getNotNullProcessors() {
-		return notNullProcessors;
-	}
-
-	public void setNotNullProcessors(List<Object> notNullProcessors) {
-		this.notNullProcessors = notNullProcessors;
-	}
-
-	public Map<Method, Object> getNotNullMethodProcessor() {
-		return notNullMethodProcessor;
-	}
-
-	public void setNotNullMethodProcessor(Map<Method, Object> notNullMethodProcessor) {
-		this.notNullMethodProcessor = notNullMethodProcessor;
-	}
+	//public void setNotNullMethodProcessor(Map<Method, Object> notNullMethodProcessor) {
+	//	this.notNullMethodProcessor = notNullMethodProcessor;
+	//}
 	
 	
 	
