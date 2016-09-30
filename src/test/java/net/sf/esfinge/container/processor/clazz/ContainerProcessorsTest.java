@@ -60,7 +60,7 @@ public class ContainerProcessorsTest {
 		container = a1.readingAnnotationsTo(DomMaxValue.class, container.getClass());
 		
 		System.out.println(container.getList().toString());
-		assertNotEquals(0,container.getList().size());
+		assertEquals(1,container.getList().size());
 
 		
 	}
