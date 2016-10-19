@@ -5,4 +5,4 @@ script:
   - java -version
 jdk:
   - oraclejdk8
-install: mvn clean test install
+install: mvn clean test
