@@ -8,6 +8,7 @@ import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.annotation.validator.NotNull;
+import net.sf.esfinge.metadata.annotation.validator.Prohibits;
 import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -15,7 +16,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(ContainerTarget.TYPE)
 public class ContainerValidator {
 
-	@Processors(ToValidateProperty.class)
+	@Processors(Prohibits.class)
 	List<Object> validateProcessors;
 
 	public List<Object> getValidateProcessors() {

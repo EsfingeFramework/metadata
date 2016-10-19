@@ -88,8 +88,10 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter p1 : methodToInvoke.getParameters()){
+			System.err.println(p1.getType());
 			if(p1.getType().equals(Annotation.class))
 			{
+				System.err.println(annotation);
 				args[cont] = annotation;
 			}
 			else if(p1.getType().equals(AnnotatedElement.class))

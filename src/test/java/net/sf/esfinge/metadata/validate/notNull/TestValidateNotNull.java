@@ -35,23 +35,13 @@ public class TestValidateNotNull {
 	}
 	
 	
-	@Test(expected = AnnotationValidationException.class)
-	public void CT02() throws Exception {			
-		//MetadataValidatorB.validateMetadataOn(Classe.class);
-		//AnnotationLocator ann = new AnnotationLocator();
-		//Annotation x = ann.findMetadata(Classe.class, NotNull.class);
-		
-		//LevelLocator annLevel = new LevelLocator();
-		//Annotation xLevel = annLevel.findMetadata(Classe.class, NotNull.class);
-
-		boolean ann = AnnotationFinder.existAnnotation(PointsToUser.class, NotNull.class);
-		
-		System.out.println(ann);
-		
-		//System.out.println(x);
-		//System.out.println(xLevel);
-		
-	}
+//	@Test(expected = AnnotationValidationException.class)
+	//	public void CT02() throws Exception {			
+	//
+	//boolean ann = AnnotationFinder.existAnnotation(PointsToUser.class, NotNull.class);
+	//
+	//	
+	//}
 	
 	/*
 	public class OrderProcessing01 {

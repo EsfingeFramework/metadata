@@ -19,7 +19,5 @@ public @interface PointsToUser {
 	@NotNull
 	String name();
 	
-	@MinValue(value = 10)
-	@MaxValue(value = 100)
 	int valor();
 }

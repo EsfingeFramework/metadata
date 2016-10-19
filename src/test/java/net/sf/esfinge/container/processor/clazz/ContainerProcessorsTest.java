@@ -52,17 +52,18 @@ public class ContainerProcessorsTest {
 		
 	}
 	
-	@Test
-	public void testClassIntern() throws Exception{
+	//@Test
+	//public void testClassIntern() throws Exception{
+	//	
+	//	ContainerNotNull container = new ContainerNotNull();
+	//	AnnotationReader a1 = new AnnotationReader();
+	//	container = a1.readingAnnotationsTo(DomMaxValue.class, container.getClass());
+	//	
+	//	assertEquals(1,container.getLista().size());
 		
-		Container container = new Container();
-		AnnotationReader a1 = new AnnotationReader();
-		container = a1.readingAnnotationsTo(DomMaxValue.class, container.getClass());
 		
-		System.out.println(container.getList().toString());
-		assertEquals(1,container.getList().size());
 
 		
-	}
+	//}
 
 }

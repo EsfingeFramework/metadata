@@ -15,7 +15,8 @@ public class ProhibitsAnnotationValidator implements AnnotationValidator{
 	@Override
 	public void initialize(Annotation self) {
 		Prohibits ntp = (Prohibits) self;
-		whatItNeedsToProhibits = ntp.value();						
+		whatItNeedsToProhibits = ntp.value();
+		System.out.println(self);
 	}
 
 	@Override

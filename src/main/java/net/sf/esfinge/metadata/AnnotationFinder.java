@@ -28,6 +28,7 @@ public class AnnotationFinder {
 				annotations.add(an);
 			}
 		}
+		
 		return annotations;			
 	}
 	
