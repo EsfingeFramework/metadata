@@ -15,7 +15,9 @@ import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessMethods;
 import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 import net.sf.esfinge.metadata.container.ContainerTarget;
-@ContainerFor(value = ContainerTarget.TYPE)
+
+
+@ContainerFor(ContainerTarget.TYPE)
 public class Container{
 	
 	@ProcessMethods

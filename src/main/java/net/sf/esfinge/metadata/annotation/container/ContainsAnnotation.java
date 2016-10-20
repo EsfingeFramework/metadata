@@ -3,7 +3,6 @@ package net.sf.esfinge.metadata.annotation.container;
 import java.lang.annotation.*;
 import java.lang.annotation.Annotation;
 
-import net.sf.esfinge.metadata.TestAnnotationReader.Entidade;
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ContainsAnnotationReadingProcessor;
 

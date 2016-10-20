@@ -12,6 +12,8 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface ContainerFor {
+
+
 	ContainerTarget value();
 		
 }
