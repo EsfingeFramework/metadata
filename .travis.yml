@@ -7,4 +7,4 @@ script:
   - java -version
   
 install:
-  - mvn clear test
+  - mvn clean test
