@@ -97,10 +97,5 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.esfinge</groupId>
-			<artifactId>metadata</artifactId>
-			<version>1.0.2</version>
-		</dependency>
 	</dependencies>
 </project>
