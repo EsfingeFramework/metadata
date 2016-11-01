@@ -9,7 +9,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 public class MethodContainer {
 
 	
-	@ContainsAnnotation(Proces.class)
+	@ContainsAnnotation(Procesos.class)
 	private boolean toProcess;
 	
 	@ElementName
