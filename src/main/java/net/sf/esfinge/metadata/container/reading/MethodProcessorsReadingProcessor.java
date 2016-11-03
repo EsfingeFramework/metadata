@@ -64,9 +64,11 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 					}
 				}
 			}
+			System.out.println("SetProp");
 			setProperty(container,fieldAnnoted.getName(),map);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.err.println(elementWithMetadata);
 			throw new AnnotationReadingException("==========="+e);
 		}
 		
