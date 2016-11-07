@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,22 +49,53 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 			if(elementWithMetadata instanceof Class)
 			{
 				Class clazz = (Class) elementWithMetadata;
-				for(Method methodOfClazz : clazz.getDeclaredMethods())
+				Class[] inter = clazz.getInterfaces();
+				
+				
+				if(inter.length>0)
 				{
-					for(Annotation annotation:methodOfClazz.getDeclaredAnnotations())
-					{
-						Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
-						//pega o class do value dessa anotation
-						Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
-						//cria um objeto dessa classe e invoca o @InitProcessor
-						Object objectToInvoke = valueClass.newInstance();
-						findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
-								objectToInvoke);					
-						map.put(methodOfClazz, objectToInvoke);	
+
+					for (Class class1 : inter) {
+						for(Method methodOfClazz : class1.getDeclaredMethods())
+						{
+							for(Annotation annotation:methodOfClazz.getDeclaredAnnotations())
+							{
+								Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
+								//pega o class do value dessa anotation
+								Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
+								//cria um objeto dessa classe e invoca o @InitProcessor
+								Object objectToInvoke = valueClass.newInstance();
+								findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+										objectToInvoke);					
+								map.put(methodOfClazz, objectToInvoke);	
+
+							}
+						}
 
 					}
+					
 				}
-			}
+				else
+				{
+					for(Method methodOfClazz : clazz.getDeclaredMethods())
+					{
+						for(Annotation annotation:methodOfClazz.getDeclaredAnnotations())
+						{
+							Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
+							//pega o class do value dessa anotation
+							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
+							//cria um objeto dessa classe e invoca o @InitProcessor
+							Object objectToInvoke = valueClass.newInstance();
+							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+									objectToInvoke);					
+							map.put(methodOfClazz, objectToInvoke);	
+
+						}
+					}
+
+				}
+				
+		}
 			System.out.println("SetProp");
 			setProperty(container,fieldAnnoted.getName(),map);
 		} catch (Exception e) {

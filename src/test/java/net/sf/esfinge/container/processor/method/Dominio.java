@@ -4,16 +4,16 @@ import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
 import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
 
 
-public class Dominio {
+public class Dominio implements OldDommi{
 	
 	private String field1;
 	
 	private int field2;
 	
-	@Entidade
+	
 	public void entidade1(){}
 	
-	@Entidade
+	
 	public void entidade2(){}
 
 }
