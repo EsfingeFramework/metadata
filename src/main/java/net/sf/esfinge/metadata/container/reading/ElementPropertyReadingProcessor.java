@@ -72,7 +72,6 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 							else if(clazz.getMethod(propertyToGetter(field.getName())).getDeclaredAnnotations().length>0)
 							{
 								Method input = clazz.getMethod(propertyToGetter(field.getName()));
-								System.out.println(input.getName());
 								AnnotationReader metadataReader = new AnnotationReader();
 
 								Object containerField = outputClass.newInstance();
@@ -92,6 +91,8 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 							setProperty(container,fieldAnnoted.getName(),set);
 						}
 						else if(fieldAnnoted.getType().equals(Map.class)){
+							System.out.println(fieldAnnoted);
+							System.out.println(map.toString());
 							setProperty(container,fieldAnnoted.getName(),map);
 						}
 
@@ -99,7 +100,7 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 				}
 			}
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the processMethods in the field "+ fieldAnnoted.getName(), e);
+			throw new AnnotationReadingException("Cannot read and record the ElementPropertyReadingProcessor in the field "+ fieldAnnoted.getName(), e);
 		}
 	}
 	

@@ -5,6 +5,7 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import org.omg.CORBA.portable.ValueBase;
 
@@ -25,14 +26,31 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
 		try {
-			System.err.println(elementWithMetadata);
+
 			if(target.equals(ContainerTarget.TYPE))
 			{
 				setProperty(container, containerAnnotatedField,elementWithMetadata);
 			}
-			else
+			else if(target.equals(ContainerTarget.FIELDS))
 			{
-				setProperty(container, containerAnnotatedField,elementWithMetadata.getClass());
+				Field fieldAnnoted = (Field) elementWithMetadata;
+
+				setProperty(container, containerAnnotatedField,fieldAnnoted.getType());
+			}
+			else if(target.equals(ContainerTarget.METHODS))
+			{
+				Method methodAnnoted = (Method) elementWithMetadata;
+
+				setProperty(container, containerAnnotatedField,methodAnnoted.getClass());
+			}
+			else if(target.equals(ContainerTarget.ALL))
+			{
+				
+				if(elementWithMetadata.getClass().equals(Field.class))
+				{
+					Field fieldAnnoted = (Field) elementWithMetadata;
+					setProperty(container, containerAnnotatedField,fieldAnnoted.getType());
+				}
 			}
 			
 		
