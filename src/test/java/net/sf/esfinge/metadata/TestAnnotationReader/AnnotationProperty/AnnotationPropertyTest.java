@@ -16,7 +16,6 @@ public class AnnotationPropertyTest {
 		
 		AnnotationReader reader = new AnnotationReader();
 		ct = reader.readingAnnotationsTo(Dominio.class, ct.getClass());
-		System.out.println(ct.getNomeTabela().toString());
 		assertEquals(Dominio.class, ct.getNomeTabela());
 	}
 

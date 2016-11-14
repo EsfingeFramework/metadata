@@ -11,7 +11,7 @@ public class NotNullAnnotationValidator implements AnnotationPropertyValidator{
 	
 	@Override
 	public void initialize(Annotation self) {
-		System.out.println(self);
+
 		
 	}
 

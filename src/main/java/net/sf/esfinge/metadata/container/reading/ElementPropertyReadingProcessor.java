@@ -60,7 +60,6 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 
 						for(Field field: clazz.getDeclaredFields())
 						{
-							System.out.println(field.getName());
 							if(field.getDeclaredAnnotations().length>0){
 								AnnotationReader metadataReader = new AnnotationReader();
 								Object containerField = outputClass.newInstance();

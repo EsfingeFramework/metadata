@@ -96,11 +96,9 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 				}
 				
 		}
-			System.out.println("SetProp");
 			setProperty(container,fieldAnnoted.getName(),map);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.err.println(elementWithMetadata);
 			throw new AnnotationReadingException("==========="+e);
 		}
 		
@@ -122,10 +120,8 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter p1 : methodToInvoke.getParameters()){
-			System.err.println(p1.getType());
 			if(p1.getType().equals(Annotation.class))
 			{
-				System.err.println(annotation);
 				args[cont] = annotation;
 			}
 			else if(p1.getType().equals(AnnotatedElement.class))

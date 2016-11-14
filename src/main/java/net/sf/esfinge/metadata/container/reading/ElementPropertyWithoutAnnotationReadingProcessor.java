@@ -64,30 +64,16 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 
 						for(Field field: clazz.getDeclaredFields())
 						{
-							System.out.println(field.getName());
-							if(field.getDeclaredAnnotations().length>0){
-								if(AnnotationFinder.existAnnotation(field, prop.value()))
-								{
+							boolean methodValid = clazz.getMethod(propertyToGetter(field.getName())).isAnnotationPresent(prop.value());
+							boolean fieldValid = field.isAnnotationPresent(prop.value());
+							if(!methodValid&&!fieldValid){
+
 									AnnotationReader metadataReader = new AnnotationReader();
 									Object containerField = outputClass.newInstance();
 									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
 									lista.add(containerField);
 									set.add(containerField);
 									map.put(field.getName(), containerField);
-								}
-							}
-							else if(clazz.getMethod(propertyToGetter(field.getName())).getDeclaredAnnotations().length>0)
-							{
-								Method input = clazz.getMethod(propertyToGetter(field.getName()));
-								if(AnnotationFinder.existAnnotation(input, prop.value()))
-								{								
-									AnnotationReader metadataReader = new AnnotationReader();
-									Object containerField = outputClass.newInstance();
-									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
-									lista.add(containerField);
-									set.add(containerField);
-									map.put(field.getName(), containerField);
-								}
 
 							}
 							
@@ -100,8 +86,6 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 							setProperty(container,fieldAnnoted.getName(),set);
 						}
 						else if(fieldAnnoted.getType().equals(Map.class)){
-							System.out.println(fieldAnnoted);
-							System.out.println(map.toString());
 							setProperty(container,fieldAnnoted.getName(),map);
 						}
 

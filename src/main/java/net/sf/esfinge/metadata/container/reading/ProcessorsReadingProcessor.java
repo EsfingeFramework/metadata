@@ -50,17 +50,9 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
-		try{
-			System.out.println("Read ProcessorsReadingProcessor");
-				System.out.println(elementWithMetadata);
-				System.out.println(container);
-				System.out.println(target);
-			System.out.println("VerificandoannotationSearch ");
-			
+		try{		
 			
 			annotationSearch(elementWithMetadata, container);
-			System.out.println("Read ProcessorsReadingProcessor");
-			System.out.println(fieldAnnoted.getType());
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
 		catch (Exception e) {
@@ -72,12 +64,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 
 	private void annotationSearch(AnnotatedElement elementWithMetadata, Object container)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
-		System.out.println("annotationSearch ProcessorsReadingProcessor");
-		System.out.println(elementWithMetadata);
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {
-			System.out.println(annotation);
-			System.out.println("annotationSearch ProcessorsReadingProcessor");
-			
 			if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
@@ -118,7 +105,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
 			Object objectToInvoke ,Method methodToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
-		System.out.println("executeParameters ProcessorsReadingProcessor");
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter parameterMethod : methodToInvoke.getParameters()){

@@ -158,7 +158,6 @@ public class TestAnnotationReader {
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals(Dominio.class.getName(), container.getNomeClasse());
 		assertEquals("dominio", container.getNomeTabela());
-		System.out.println(container.getNomeClasse());
 		
 		int sun = 0;
 		for (MethodContainer2 m1 : container.getLista()) {
