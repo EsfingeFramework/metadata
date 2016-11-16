@@ -135,6 +135,12 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.esfinge</groupId>
+			<artifactId>classmock</artifactId>
+			<version>1.1.2</version>
+		</dependency>
 	</dependencies>
 
 </project>

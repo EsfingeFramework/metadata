@@ -73,10 +73,6 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 		{
 			
 			Field field = (Field) elementWithMetadata;
-			System.out.println("=========");
-			System.out.println(field.getDeclaringClass());
-			System.out.println(field.getName());
-			System.out.println("=========");
 			Class<?> clazz = field.getDeclaringClass();
 			
 			Method method = clazz.getMethod(propertyToGetter(field.getName()));

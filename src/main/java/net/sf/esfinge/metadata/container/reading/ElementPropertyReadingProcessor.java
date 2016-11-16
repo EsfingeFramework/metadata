@@ -45,60 +45,43 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 	}
 
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
-		try {
-			if (target == ContainerTarget.TYPE) {
-				Class<?> clazz = (Class<?>) elementWithMetadata;
-				for (Type t1 : fieldGenericType.getActualTypeArguments()){
-					Class <?> outputClass =(Class<?>)t1;
-					if(!outputClass.equals(String.class))
+		try {			if (target == ContainerTarget.TYPE) {
+			Class<?> clazz = (Class<?>) elementWithMetadata;
+			for (Type t1 : fieldGenericType.getActualTypeArguments()){
+				Class <?> outputClass =(Class<?>)t1;
+				if(!outputClass.equals(String.class))
+				{
+					ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
+					if(!containerFor.value().equals(ContainerTarget.ALL))
 					{
-						ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
-						if(!containerFor.value().equals(ContainerTarget.ALL))
-						{
-							throw new Exception("ContainerFor: " +containerFor.value() +" no same of ALL");
-						}
-
-						for(Field field: clazz.getDeclaredFields())
-						{
-							if(field.getDeclaredAnnotations().length>0){
-								AnnotationReader metadataReader = new AnnotationReader();
-								Object containerField = outputClass.newInstance();
-								containerField = metadataReader.readingAnnotationsTo(field, outputClass);
-								lista.add(containerField);
-								set.add(containerField);
-								map.put(field.getName(), containerField);
-							}
-							else if(clazz.getMethod(propertyToGetter(field.getName())).getDeclaredAnnotations().length>0)
-							{
-								Method input = clazz.getMethod(propertyToGetter(field.getName()));
-								AnnotationReader metadataReader = new AnnotationReader();
-
-								Object containerField = outputClass.newInstance();
-								containerField = metadataReader.readingAnnotationsTo(field, outputClass);
-								lista.add(containerField);
-								set.add(containerField);
-								map.put(field.getName(), containerField);
-
-							}
-							
-
-						}			
-						if(fieldAnnoted.getType().equals(List.class)){
-							setProperty(container,fieldAnnoted.getName(),lista);
-						}
-						else if(fieldAnnoted.getType().equals(Set.class)){
-							setProperty(container,fieldAnnoted.getName(),set);
-						}
-						else if(fieldAnnoted.getType().equals(Map.class)){
-							System.out.println(fieldAnnoted);
-							System.out.println(map.toString());
-							setProperty(container,fieldAnnoted.getName(),map);
-						}
-
+						throw new Exception("ContainerFor: " +containerFor.value() +" no same of ALL");
 					}
+
+					for(Field field: clazz.getDeclaredFields())
+					{
+
+								AnnotationReader metadataReader = new AnnotationReader();
+								Object containerField = outputClass.newInstance();
+								containerField = metadataReader.readingAnnotationsTo(field, outputClass);
+								lista.add(containerField);
+								set.add(containerField);
+								map.put(field.getName(), containerField);						
+
+					}			
+					if(fieldAnnoted.getType().equals(List.class)){
+						setProperty(container,fieldAnnoted.getName(),lista);
+					}
+					else if(fieldAnnoted.getType().equals(Set.class)){
+						setProperty(container,fieldAnnoted.getName(),set);
+					}
+					else if(fieldAnnoted.getType().equals(Map.class)){
+						setProperty(container,fieldAnnoted.getName(),map);
+					}
+
 				}
 			}
-		} catch (Exception e) {
+		}
+} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the ElementPropertyReadingProcessor in the field "+ fieldAnnoted.getName(), e);
 		}
 	}
