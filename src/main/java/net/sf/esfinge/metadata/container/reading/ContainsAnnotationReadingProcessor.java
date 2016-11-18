@@ -5,6 +5,7 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
@@ -28,12 +29,28 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 		try {
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
-			setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
+			
+
+				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
+
+			
 			
 		} catch (Exception e) {
 			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
 			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField+"annotation = "+annot.value(),e);
 		}
 	}
+	
+    public static String propertyToGetter(String propertieName) {
+		return propertyToGetter(propertieName, false);
+	}
+    
+    public static String propertyToGetter(String propertieName, boolean isBoolean) {
+		if(isBoolean)
+			return "is"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
+		return "get"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
+	}
+
+
 
 }
