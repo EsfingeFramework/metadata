@@ -74,9 +74,12 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 			
 			Field field = (Field) elementWithMetadata;
 			Class<?> clazz = field.getDeclaringClass();
+			Method method;
 			
-			Method method = clazz.getMethod(propertyToGetter(field.getName()));
-			
+			if(field.getType().equals(boolean.class)||field.getType().equals(Boolean.class))
+				method = clazz.getMethod(propertyToGetter(field.getName(),true));
+			else
+				method = clazz.getMethod(propertyToGetter(field.getName(),false));
 			
 			addObject(method, container);
 		}
