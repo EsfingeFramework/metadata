@@ -13,5 +13,5 @@ import net.sf.esfinge.metadata.container.reading.ElementPropertyReadingProcessor
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ElementPropertyReadingProcessor.class)
 public @interface ElementProperty {
-
+	
 }

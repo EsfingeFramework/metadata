@@ -19,6 +19,8 @@ import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
+import net.sf.esfinge.metadata.annotation.container.ElementProperty;
+import net.sf.esfinge.metadata.annotation.validator.field.FieldVisibilityForbidden;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -41,6 +43,8 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 		set = new HashSet<Object>();
 		map = new HashMap<>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
+
+
 
 	}
 
