@@ -22,7 +22,7 @@ public class CT12Container {
 	
 	@ReflectionReference
 	private Class<?> classValue;
-	
+
 	@AnnotationProperty(annotation = Tabela.class, property = "nome")
 	private String nomeTabela;
 	
@@ -70,5 +70,7 @@ public class CT12Container {
 	public void setLista(List<MethodContainer> lista) {
 		this.lista = lista;
 	}
+	
+	
 	
 }
