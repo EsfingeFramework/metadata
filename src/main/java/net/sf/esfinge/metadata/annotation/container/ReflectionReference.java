@@ -17,7 +17,5 @@ import net.sf.esfinge.metadata.container.reading.ReflectionReferenceReadingProce
 @ValidFieldType({Class.class})
 
 public @interface ReflectionReference {
-
-	Class<? extends Annotation>[] value() default {};
 	
 }

@@ -75,8 +75,6 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 
 									AnnotationReader metadataReader = new AnnotationReader();
 									Object containerField = outputClass.newInstance();
-									System.out.println(outputClass);
-									System.out.println(field);
 									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
 									lista.add(containerField);
 									set.add(containerField);
