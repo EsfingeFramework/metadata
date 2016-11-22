@@ -64,11 +64,10 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 
 						for(Field field: clazz.getDeclaredFields())
 						{
-							System.out.print(field.getType()+"       ");
-							System.out.println(field.getType().equals(List.class));
 							boolean methodValid = false;
-							
-							methodValid = clazz.getMethod(propertyToGetter(field.getName())).isAnnotationPresent(prop.value());
+							String methodName = propertyToGetter(field.getName());
+							System.out.println(prop.value());
+							methodValid = clazz.getMethod(methodName).isAnnotationPresent(prop.value());
 							
 							boolean fieldValid = field.isAnnotationPresent(prop.value());
 							if(!methodValid&&!fieldValid){

@@ -118,9 +118,7 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
 			Object objectToInvoke ,Method methodToInvoke)
-			throws IllegalAccessException, InvocationTargetException {
-		System.out.println("executeParameters ProcessorsReadingProcessor");
-		Object[] args = new Object[methodToInvoke.getParameters().length];
+			throws IllegalAccessException, InvocationTargetException {		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter parameterMethod : methodToInvoke.getParameters()){
 			

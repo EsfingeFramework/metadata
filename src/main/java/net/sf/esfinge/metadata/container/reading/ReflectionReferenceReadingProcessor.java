@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.container.reading;
 import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 
 import java.awt.List;
+import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
@@ -55,16 +56,28 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 				//VERIFICAR SE TEM MAIS DE UM PARAMETRO
 				//VERIFICAR
 				Map<String, Object> x = PropertyUtils.describe(elementWithMetadata);
-				 Object y = x.get("declaringClass");
-				System.out.println(y);
-				if(y.equals(String.class))
-				{
+				PropertyDescriptor[] describe = PropertyUtils.getPropertyDescriptors(elementWithMetadata);
+				 Object y = x.get("genericType");
 					Field fieldAnnoted = (Field) elementWithMetadata;
-					setProperty(container, containerAnnotatedField, fieldAnnoted.getType());
+					Class<?> targetType = fieldAnnoted.getDeclaringClass();
+					String propName;
+					if(!fieldAnnoted.getType().equals(boolean.class)){
+						 propName = propertyToGetter(fieldAnnoted.getName());
+					}
+					else
+					{
+						propName = propertyToGetter(fieldAnnoted.getName(), false);
+					}
+					System.out.println(targetType);
+				if(targetType.getMethod(propName).getDeclaredAnnotations().length>1)
+				{
+					setProperty(container, containerAnnotatedField, y);
+
 				}
 				else
 				{
-					setProperty(container, containerAnnotatedField, y);
+					setProperty(container, containerAnnotatedField, fieldAnnoted.getType());
+
 				}
 				
 				
