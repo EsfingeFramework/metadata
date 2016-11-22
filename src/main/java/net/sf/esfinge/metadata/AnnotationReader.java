@@ -16,13 +16,13 @@ public class AnnotationReader {
 	// is present on methods.
 	// TODO:Checking on classes and parameters
 
-	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<E> containerClass) throws Exception {
+	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<?> outputClass) throws Exception {
 
-		Object container = containerClass.newInstance();
+		Object container = outputClass.newInstance();
 		MetadataRepository metadataRepository = new MetadataRepository();//migrar para ingles
-		metadataRepository.findMetadata(containerClass);
+		metadataRepository.findMetadata(outputClass);
 		
-		MetadataExecute metadataExecute = new MetadataExecute(containerClass);
+		MetadataExecute metadataExecute = new MetadataExecute(outputClass);
 		container = metadataExecute.execMetadata(metadataRepository.getRepositorio(),elementWithMetadata);
 
 		return (E) container;

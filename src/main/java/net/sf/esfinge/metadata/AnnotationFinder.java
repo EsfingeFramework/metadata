@@ -33,11 +33,8 @@ public class AnnotationFinder {
 	}
 	
 	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		if(findAnnotation(element, annotationClass).isEmpty())
-		{
-			return false;
-		}
-		return true;		
+
+		return !findAnnotation(element, annotationClass).isEmpty();		
 	}
 	
 	

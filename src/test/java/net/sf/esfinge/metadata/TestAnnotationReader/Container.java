@@ -29,7 +29,7 @@ public class Container{
 	@AllFieldsWith(FieldLista.class)
 	private Map<Field,FieldContainer> allFieldsWithTest;
 
-	@AllMethodsWith(Proces.class)
+	@AllMethodsWith(Procesos.class)
 	private Map<Method, MethodContainer> methodWithContainer;
 
 	public Map<Field, FieldContainer> getFieldContainerProcess() {

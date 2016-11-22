@@ -40,10 +40,10 @@ public class Container014 {
 	@ProcessFields
 	private List<FieldContainer> listaFields;
 	
-	@AllMethodsWith(Proces.class)
+	@AllMethodsWith(Procesos.class)
 	private Set<MethodContainer> setMethodsWith;
 	
-	@AllMethodsWith(Proces.class)
+	@AllMethodsWith(Procesos.class)
 	private List<MethodContainer> listaMetodsWith;
 	
 	@AllFieldsWith(FieldLista.class)

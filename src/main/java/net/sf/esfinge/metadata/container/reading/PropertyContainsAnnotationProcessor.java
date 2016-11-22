@@ -9,19 +9,21 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
+import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
+import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-public class ContainsAnnotationReadingProcessor implements AnnotationReadingProcessor {
-	
-	private String containerAnnotatedField;
-	private ContainsAnnotation  annot;
+public class PropertyContainsAnnotationProcessor implements AnnotationReadingProcessor{
 
+	PropertyContainsAnnotation annot;
+	private String containerAnnotatedField;
+	
 	@Override
 	public void initAnnotation(Annotation an, Field field) {
 		containerAnnotatedField = field.getName();
-		annot =(ContainsAnnotation)an;		
+		annot =(PropertyContainsAnnotation)an;		
 	}
 
 	@Override
@@ -30,17 +32,23 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
 			
-
+		
+			if(AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains))
+			{
 				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));
+			}
+			else if(elementWithMetadata.getClass().equals(Field.class))
+			{
+				Class<?> clazz = ((Field) elementWithMetadata).getDeclaringClass();
+				Method method = clazz.getMethod(propertyToGetter(((Field) elementWithMetadata).getName()));
+				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(method,annotationThatNeedToContains));
 
-			
-			
+			}
 		} catch (Exception e) {
 			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
 			throw new AnnotationReadingException("Cannot read and record the container = "+containerAnnotatedField+"annotation = "+annot.value(),e);
 		}
 	}
-	
     public static String propertyToGetter(String propertieName) {
 		return propertyToGetter(propertieName, false);
 	}
@@ -50,7 +58,6 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 			return "is"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
 		return "get"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
 	}
-
 
 
 }

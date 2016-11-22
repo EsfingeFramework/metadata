@@ -12,7 +12,7 @@ public class Dominio {
 	
 	public void entidade1(){}
 	
-	@Proces
+	@Procesos
 	public void entidade2(){}
 
 }

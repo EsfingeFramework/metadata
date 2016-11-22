@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import javax.sound.midi.Synthesizer;
+
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationReader;
@@ -22,8 +24,11 @@ public class TestAnnotationReader {
 	
 	@Test
 	public void CT01() throws Exception {
+		
 		AnnotationReader lm = new AnnotationReader();
 		CT1Container container = (CT1Container) lm.readingAnnotationsTo(Dominio.class, CT1Container.class);
+		
+		
 		assertTrue(container.isEntidade());
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals(Dominio.class.getName(), container.getNomeClasse());
@@ -153,7 +158,7 @@ public class TestAnnotationReader {
 		assertEquals(Dominio.class, container.getClassValue());
 		assertEquals(Dominio.class.getName(), container.getNomeClasse());
 		assertEquals("dominio", container.getNomeTabela());
-
+		
 		int sun = 0;
 		for (MethodContainer2 m1 : container.getLista()) {
 
