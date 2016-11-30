@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Test.annotations.FieldAnnoted;
 import Test.annotations.Interna;
 import Test.annotations.MethodAnnoted;
 import Test.annotations.Variavel;
@@ -75,8 +76,8 @@ public class TestLocators {
 	public void testAllFieldsWith() throws Exception {
 		Annotada anotada = new Annotada();
 		
-		List<Annotation> annoted= AnnotationFinder.findAnnotation(anotada.getClass().getMethod("fieldAnnoted"),MethodAnnoted.class);
-		List<Annotation> notAnnoted = AnnotationFinder.findAnnotation(anotada.getClass().getMethod("fieldNotAnnoted"),MethodAnnoted.class);
+		List<Annotation> annoted= AnnotationFinder.findAnnotation(anotada.getClass().getDeclaredField("fieldAnnoted"),FieldAnnoted.class);
+		List<Annotation> notAnnoted = AnnotationFinder.findAnnotation(anotada.getClass().getDeclaredField("fieldNotAnnoted"),FieldAnnoted.class);
 
 		AllFieldsWithContainer container  = new AllFieldsWithContainer();
 		
