@@ -1,10 +1,10 @@
 package Test;
 
-import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.TestAnnotationReader.Tabela;
 
+@Entidade
+@Tabela(nome="dominio")
 public class Annotada {
-	
-	@annot(value = 10)
 	int field;
 	
 	

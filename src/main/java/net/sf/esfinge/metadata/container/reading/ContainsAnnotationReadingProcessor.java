@@ -1,11 +1,11 @@
 package net.sf.esfinge.metadata.container.reading;
 
-import static org.apache.commons.beanutils.PropertyUtils.setProperty;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import org.apache.commons.beanutils.PropertyUtils;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
@@ -29,8 +29,7 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 		try {
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
-			
-				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));			
+				boolean value = AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains);				PropertyUtils.setProperty(container, containerAnnotatedField, value);			
 			
 		} catch (Exception e) {
 			//throw new AnnotationReadingException("Cannot read and record the container ContainsAnnotation",e);
