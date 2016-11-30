@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
+import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.annotation.validator.MaxValue;
 import net.sf.esfinge.metadata.annotation.validator.NotNull;
 import net.sf.esfinge.metadata.locate.AnnotationLocator;
@@ -18,23 +19,18 @@ import net.sf.esfinge.metadata.locate.RegularLocator;
 public class TestLocators {
 
 	@Test
-	public void testExterno() throws MetadataLocationException, NoSuchFieldException, SecurityException {
+	public void testExterno() throws Exception {
 		Annotada anotada = new Annotada();
 		
-		List<Annotation> c = AnnotationFinder.findAnnotation(Annotada.class.getDeclaredField("field"),Interna.class);
+		List<Annotation> c = AnnotationFinder.findAnnotation(anotada.getClass(),Interna.class);
 		
+		ContainsAnnotationContainer container  = new ContainsAnnotationContainer();
+		
+		container = new AnnotationReader().readingAnnotationsTo(anotada.getClass(), container.getClass());
 
 		assertTrue(c.size()>0);
+		assertTrue(container.isEntidadePresent());
 	}
 	
-	@Test
-	public void testInterno() throws MetadataLocationException, NoSuchFieldException, SecurityException {
-		Annotada anotada = new Annotada();
-		
-		List<Annotation> c = AnnotationFinder.findAnnotation(Annotada.class.getDeclaredField("field"),NotNull.class);
-		
-
-		assertTrue(c.size()>0);
-	}
 
 }
