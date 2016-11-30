@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.annotation.container.AllMethodsWith;
@@ -40,6 +41,7 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 		map = new HashMap<>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
 		annotation = fieldAnnoted.getDeclaredAnnotation(AllMethodsWith.class);
+		
 	}
 
 	@Override
@@ -57,7 +59,9 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 							throw new Exception("ContainerFor: " + containerFor.value() + " no same of METHODS");
 						}
 						for (Method m1 : clazz.getDeclaredMethods()) {
-							if (m1.isAnnotationPresent(annotation.value())) {
+							
+							
+							if (AnnotationFinder.existAnnotation(m1, annotation.value())) {
 								AnnotationReader metadataReader = new AnnotationReader();
 								Object containerField = outputClass.newInstance();
 								containerField = metadataReader.readingAnnotationsTo(m1, outputClass);

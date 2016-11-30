@@ -6,6 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.List;
 
+import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
+
+
+@SearchInsideAnnotations
+@SearchOnEnclosingElements
 @ValidFieldTypes(listValidTypes = {String.class, List.class, int.class})
 @Retention(RetentionPolicy.RUNTIME)
 //@Target(ElementType.FIELD)

@@ -13,9 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.annotation.container.AllFieldsWith;
+import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -55,7 +57,7 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 
 					for(Field fields: clazz.getDeclaredFields())
 					{
-						if(fields.isAnnotationPresent(annotation.value()))
+						if(AnnotationFinder.existAnnotation(fields, annotation.value()))
 						{
 							AnnotationReader metadataReader = new AnnotationReader();
 							Object containerField = outputClass.newInstance();

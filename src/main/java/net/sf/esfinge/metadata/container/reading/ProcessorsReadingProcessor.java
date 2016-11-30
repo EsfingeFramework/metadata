@@ -94,7 +94,8 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
-				if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
+				
+				if(AnnotationFinder.existAnnotation(methodToInvoke, InitProcessor.class)){
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
 							methodToInvoke);
 				}

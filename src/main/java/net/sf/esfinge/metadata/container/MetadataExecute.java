@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
@@ -39,7 +40,8 @@ public class MetadataExecute {
 			Annotation chave = repositorio.get(element);
 			Annotation an = chave;
 			Class<?> annotationClass = an.annotationType();
-			if (annotationClass.isAnnotationPresent(AnnotationReadingConfig.class)) {
+			
+			if (AnnotationFinder.existAnnotation(annotationClass, AnnotationReadingConfig.class)) {
 				AnnotationReadingConfig arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
 				AnnotationReadingProcessor processor = arc.value().newInstance();
 				processor.initAnnotation(an, (Field) element);
