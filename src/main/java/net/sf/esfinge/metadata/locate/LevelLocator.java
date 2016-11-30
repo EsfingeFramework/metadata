@@ -21,11 +21,11 @@ public class LevelLocator extends MetadataLocator {
 		Annotation an=null;		
 		
 		Annotation[] ans = element.getAnnotations();
-
+	
 		
-		for (Annotation a : ans) {			
-			Class<?extends Annotation> c = a.annotationType();							
-									
+		for (Annotation a : ans) {
+			
+			Class<?extends Annotation> c = a.annotationType();
 			if (SearchOnEnclosingElements(annotationClass) && SearchOnEnclosingElements(c)) {
 				if(c.equals(annotationClass)){
 					an = a;

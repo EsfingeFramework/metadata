@@ -35,8 +35,8 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 		try {
 			if (AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains)){
 				
-				Annotation annotation = elementWithMetadata.getAnnotation(annotationThatNeedToContains);
-				
+				List<Annotation> annotations= AnnotationFinder.findAnnotation(elementWithMetadata,annotationThatNeedToContains);				
+				for (Annotation annotation: annotations)
 					for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){
 						if(methodAnotation.getName().equals(annot.property())){
 							if(methodAnotation.getReturnType().equals(fieldAnnoted.getType())){

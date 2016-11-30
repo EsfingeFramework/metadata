@@ -1,5 +1,6 @@
-package Test;
+package Test.containers;
 
+import Test.annotations.Entidade;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
 import net.sf.esfinge.metadata.container.ContainerTarget;

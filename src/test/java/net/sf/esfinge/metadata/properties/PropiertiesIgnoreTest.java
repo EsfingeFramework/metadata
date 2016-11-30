@@ -104,13 +104,13 @@ public class PropiertiesIgnoreTest {
 		clazz = mockBean.createClass();
 				
 		AnnotationReader ar = new AnnotationReader();
+		ContainerIgnore containerIgnore = new ContainerIgnore();
+		containerIgnore = ar.readingAnnotationsTo(clazz, containerIgnore.getClass());
 		
-		ContainerIgnore container = ar.readingAnnotationsTo(clazz, ContainerIgnore.class);
-		
-		assertFalse(container.getProperties().isEmpty());
-		assertEquals(2, container.getProperties().size());
-		assertEquals("prop2", container.getPropertyDescriptor("prop2").getName());
-		assertEquals("prop3", container.getPropertyDescriptor("prop3").getName());
+		assertFalse(containerIgnore.getProperties().isEmpty());
+		assertEquals(2, containerIgnore.getProperties().size());
+		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
+		assertEquals("prop3", containerIgnore.getPropertyDescriptor("prop3").getName());
 
 	}
 
