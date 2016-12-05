@@ -37,16 +37,4 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 		}
 	}
 	
-    public static String propertyToGetter(String propertieName) {
-		return propertyToGetter(propertieName, false);
-	}
-    
-    public static String propertyToGetter(String propertieName, boolean isBoolean) {
-		if(isBoolean)
-			return "is"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
-		return "get"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
-	}
-
-
-
 }

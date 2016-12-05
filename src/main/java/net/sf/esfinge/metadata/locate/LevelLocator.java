@@ -21,7 +21,6 @@ public class LevelLocator extends MetadataLocator {
 		Annotation an=null;		
 		
 		Annotation[] ans = element.getAnnotations();
-	
 		
 		for (Annotation a : ans) {
 			

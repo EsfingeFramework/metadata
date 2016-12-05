@@ -3,14 +3,26 @@ package net.sf.esfinge.metadata.properties;
 import static net.sf.esfinge.classmock.ClassMockUtils.set;
 import static org.junit.Assert.*;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 import org.apache.commons.collections.functors.IfClosure;
 import org.junit.Before;
 import org.junit.Test;
 
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.metadata.properties.containers.*;
+import net.sf.esfinge.metadata.properties.elements.IgnoraInterno;
+import net.sf.esfinge.metadata.properties.elements.IgnoreOneField;
+import net.sf.esfinge.metadata.properties.elements.IgnoreOneFieldAndReturnTwo;
+import net.sf.esfinge.metadata.properties.elements.PropertyEmpty;
+import net.sf.esfinge.metadata.properties.elements.WinouthIgnore;
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.locate.AnnotationLocator;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
+import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
 
 public class PropiertiesIgnoreTest {
 	private ClassMock mockBean;
@@ -25,49 +37,21 @@ public class PropiertiesIgnoreTest {
 
 	@Test
 	public void testNull() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		clazz = mockBean.createClass();
-		
-		Object beanA = clazz.newInstance();
-		set(beanA, "prop1", 100);
 		
 		AnnotationReader ar = new AnnotationReader();
 		
-		ContainerIgnore container = ar.readingAnnotationsTo(clazz, ContainerIgnore.class);
+		ContainerIgnore container = ar.readingAnnotationsTo(PropertyEmpty.class, ContainerIgnore.class);
 		
 		assertTrue(container.getProperties().isEmpty());
 		
 	}
 	
-	@Test
-	public void testIgnoreProperty() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		clazz = mockBean.createClass();
-		
-		Object beanA = clazz.newInstance();
-		set(beanA, "prop1", 100);
-		
-		AnnotationReader ar = new AnnotationReader();
-		
-		ContainerIgnore container = ar.readingAnnotationsTo(clazz, ContainerIgnore.class);
-		
-		assertTrue(container.getProperties().isEmpty());
-		
-	}
 
 	@Test
 	public void testSemOIgnore() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		clazz = mockBean.createClass();
-		
-		Object beanA = clazz.newInstance();
-		set(beanA, "prop1", 100);
-		
 		AnnotationReader ar = new AnnotationReader();
 		
-		ContainerIgnore container = ar.readingAnnotationsTo(clazz, ContainerIgnore.class);
+		ContainerIgnore container = ar.readingAnnotationsTo(WinouthIgnore.class, ContainerIgnore.class);
 		
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals("prop1", container.getPropertyDescriptor("prop1").getName());
@@ -75,17 +59,11 @@ public class PropiertiesIgnoreTest {
 	}
 	
 	@Test
-	public void testIgnorandoUmObjeto() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		mockBean.addProperty("prop2", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-
-		clazz = mockBean.createClass();
-				
+	public void testIgnorandoUmField() throws Exception {
 		AnnotationReader ar = new AnnotationReader();
 		
-		ContainerIgnore container = ar.readingAnnotationsTo(clazz, ContainerIgnore.class);
+		ContainerIgnore container = ar.readingAnnotationsTo(IgnoreOneField.class, ContainerIgnore.class);
+
 		
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(1, container.getProperties().size());
@@ -95,22 +73,33 @@ public class PropiertiesIgnoreTest {
 
 	@Test
 	public void testIgnorandoUmObjetoeRetronaDois() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		mockBean.addProperty("prop2", int.class);
-		mockBean.addProperty("prop3", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-
-		clazz = mockBean.createClass();
-				
+		
 		AnnotationReader ar = new AnnotationReader();
-		ContainerIgnore containerIgnore = new ContainerIgnore();
-		containerIgnore = ar.readingAnnotationsTo(clazz, containerIgnore.getClass());
+		
+		ContainerIgnore containerIgnore = ar.readingAnnotationsTo(IgnoreOneFieldAndReturnTwo.class, ContainerIgnore.class);
+
 		
 		assertFalse(containerIgnore.getProperties().isEmpty());
 		assertEquals(2, containerIgnore.getProperties().size());
 		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
 		assertEquals("prop3", containerIgnore.getPropertyDescriptor("prop3").getName());
+
+	}
+
+	
+	@Test
+	public void testIgnoraInterno() throws Exception {
+
+		
+		
+		
+		AnnotationReader ar = new AnnotationReader();
+		ContainerIgnore containerIgnore = new ContainerIgnore();
+		containerIgnore = ar.readingAnnotationsTo(IgnoraInterno.class, containerIgnore.getClass());
+		
+		assertFalse(containerIgnore.getProperties().isEmpty());
+		assertEquals(1, containerIgnore.getProperties().size());
+		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
 
 	}
 
