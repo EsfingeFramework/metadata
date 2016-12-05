@@ -21,7 +21,6 @@ public class AnnotationFinder {
 		
 		List<MetadataLocator> locators = getAplicableLocatorChain();
 		List<Annotation> annotations = new ArrayList<Annotation>();
-		
 		for(MetadataLocator locator: locators){
 			Annotation an = locator.findMetadata(element, annotationClass);
 			if(an != null) {
@@ -33,7 +32,6 @@ public class AnnotationFinder {
 	}
 	
 	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-
 		return !findAnnotation(element, annotationClass).isEmpty();		
 	}
 	
