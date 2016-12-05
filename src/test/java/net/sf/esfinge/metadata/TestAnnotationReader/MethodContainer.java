@@ -30,6 +30,11 @@ public class MethodContainer {
 	public void setMetodo(String metodo) {
 		this.metodo = metodo;
 	}
+
+	@Override
+	public String toString() {
+		return "MethodContainer [toProcess=" + toProcess + ", metodo=" + metodo + "]";
+	}
 	
 	
 	

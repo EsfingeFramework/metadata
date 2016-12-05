@@ -16,31 +16,27 @@ public class ContainerIgnore {
 	
 	@ElementName
 	private String idProp;
-	
-	public void addPropertyDescriptor(PropertyDescriptor descProp){
-		properties.put(descProp.getName(), descProp);
+
+	public Map<String, PropertyDescriptor> getProperties() {
+		return properties;
 	}
-	public void removePropertyDescriptor(String prop){
-		properties.remove(prop);
+
+	public void setProperties(Map<String, PropertyDescriptor> properties) {
+		this.properties = properties;
 	}
-	public PropertyDescriptor getPropertyDescriptor(String prop){
-		return properties.get(prop);
-	}
-	public Set<String> getSetProperties(){
-		return properties.keySet();
-	}
+
 	public String getIdProp() {
 		return idProp;
 	}
+
 	public void setIdProp(String idProp) {
 		this.idProp = idProp;
 	}
 
-	public void setProperties(Map<String, PropertyDescriptor> propertiesNew) {
-		this.properties = propertiesNew;
+	public PropertyDescriptor getPropertyDescriptor(String string) {
+		// TODO Auto-generated method stub
+		return properties.get(string);
 	}
-	public Map<String, PropertyDescriptor> getProperties() {
-		return properties;
-	}
+	
 	
 }

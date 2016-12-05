@@ -60,7 +60,6 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 						}
 						for (Method m1 : clazz.getDeclaredMethods()) {
 							
-							
 							if (AnnotationFinder.existAnnotation(m1, annotation.value())) {
 								AnnotationReader metadataReader = new AnnotationReader();
 								Object containerField = outputClass.newInstance();
