@@ -25,16 +25,7 @@ import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
 
 public class PropiertiesIgnoreTest {
-	private ClassMock mockBean;
-	private Class clazz;
-
-	@Before
-	public void createClasses(){
-		mockBean = new ClassMock("Bean");
-		
-
-	}
-
+	
 	@Test
 	public void testNull() throws Exception {
 		
@@ -54,7 +45,7 @@ public class PropiertiesIgnoreTest {
 		ContainerIgnore container = ar.readingAnnotationsTo(WinouthIgnore.class, ContainerIgnore.class);
 		
 		assertFalse(container.getProperties().isEmpty());
-		assertEquals("prop1", container.getPropertyDescriptor("prop1").getName());
+		assertEquals("prop1", container.getProperties().get(0).getName());
 		
 	}
 	
@@ -67,7 +58,7 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(1, container.getProperties().size());
-		assertEquals("prop2", container.getPropertyDescriptor("prop2").getName());
+		assertEquals("prop2", container.getProperties().get(0).getName());
 
 	}
 
@@ -81,8 +72,8 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(containerIgnore.getProperties().isEmpty());
 		assertEquals(2, containerIgnore.getProperties().size());
-		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
-		assertEquals("prop3", containerIgnore.getPropertyDescriptor("prop3").getName());
+		assertEquals("prop2", containerIgnore.getProperties().get(0).getName());
+		assertEquals("prop3", containerIgnore.getProperties().get(1).getName());
 
 	}
 
@@ -99,7 +90,8 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(containerIgnore.getProperties().isEmpty());
 		assertEquals(1, containerIgnore.getProperties().size());
-		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
+		assertEquals("prop2", containerIgnore.getProperties().get(0).getName());
+
 
 	}
 

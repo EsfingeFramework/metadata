@@ -19,8 +19,6 @@ public class PropiertiesTest {
 	@Before
 	public void createClasses(){
 		mockBean = new ClassMock("Bean");
-		
-
 	}
 
 	@Test
