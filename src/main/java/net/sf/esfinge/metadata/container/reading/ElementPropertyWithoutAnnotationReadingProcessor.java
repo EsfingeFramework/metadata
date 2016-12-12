@@ -67,27 +67,17 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 							
 							boolean methodValid = false;
 							String methodName = propertyToGetter(field.getName());
-							System.out.println(field);
 							Method method = clazz.getDeclaredMethod(methodName);
-							System.out.println(method);
 							
-							methodValid = AnnotationFinder.existAnnotation(method, prop.value());
-							System.out.println(methodValid);
-							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
-							System.out.println(fieldValid);
+							methodValid = AnnotationFinder.existAnnotation(method, prop.value());							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
 							
 							if(!methodValid||fieldValid){
-								System.out.println("entrou no ifffff");
 									AnnotationReader metadataReader = new AnnotationReader();
 									Object containerField = outputClass.newInstance();
 									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
-									System.out.println("LeitorMetadata");
 									lista.add(containerField);
-									System.out.println("Passou do lista.addS");
 									set.add(containerField);
-									System.out.println("Passou do SET");
 									map.put(field.getName(), containerField);
-									System.out.println("Passou do MAP");
 
 
 							}
@@ -95,15 +85,12 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 
 						}
 						if(fieldAnnoted.getType().equals(List.class)){
-							System.out.println("if.LIST");
 							setProperty(container,fieldAnnoted.getName(),lista);
 						}
 						else if(fieldAnnoted.getType().equals(Set.class)){
-							System.out.println("if.SET");
 							setProperty(container,fieldAnnoted.getName(),set);
 						}
 						else if(fieldAnnoted.getType().equals(Map.class)){
-							System.out.println("if.MAP");
 							setProperty(container,fieldAnnoted.getName(),map);
 						}
 

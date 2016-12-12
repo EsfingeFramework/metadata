@@ -14,6 +14,7 @@ import Test.annotations.Variavel;
 import Test.containers.AllFieldsWithContainer;
 import Test.containers.AllMethodsWithContainer;
 import Test.containers.AnnotationPropertyContainer;
+import Test.containers.Container;
 import Test.containers.ContainsAnnotationContainer;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
@@ -89,6 +90,23 @@ public class TestLocators {
 		assertTrue(container.getListaFieldsWith().size()==1);
 	}
 
+	@Test
+	public void testContainer() throws Exception {
+		Annotada2 anotada = new Annotada2();
+		
+		List<Annotation> c = AnnotationFinder.findAnnotation(anotada.getClass(),Interna.class);
+		List<Annotation> d = AnnotationFinder.findAnnotation(anotada.getClass(),Variavel.class);
+		
+		Container container  = new Container();
+		
+		container = new AnnotationReader().readingAnnotationsTo(anotada.getClass(), container.getClass());
 
+		
+		assertTrue(c.size()==1);
+		assertTrue(container.isEntidadePresent());
+		assertEquals("dominio",container.getNomeTabela());
+		
+
+	}
 
 }
