@@ -33,6 +33,8 @@ public class PropiertiesTest {
 		Container container = ar.readingAnnotationsTo(clazz, Container.class);
 		
 		assertTrue(container.getProperties().isEmpty());
+		assertTrue(container.getPropertiesList().isEmpty());
+		assertTrue(container.getPropertiesSet().isEmpty());
 		
 	}
 	
@@ -72,6 +74,10 @@ public class PropiertiesTest {
 		assertEquals(2, container.getProperties().size());
 		assertEquals("prop1", container.getPropertyDescriptor("prop1").getName());
 		assertEquals("prop2", container.getPropertyDescriptor("prop2").getName());
+		
+		assertEquals("prop2", container.getPropertiesList().get(0).getName());
+		assertEquals("prop1", container.getPropertiesList().get(1).getName());
+		
 
 	}
 
