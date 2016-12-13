@@ -2,8 +2,11 @@ package net.sf.esfinge.metadata.properties.elements;
 
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
+import net.sf.esfinge.metadata.properties.annotation.PropertyContrainAnnotation;
 
-public class WinouthIgnore {
+
+@PropertyContrainAnnotation
+public class PropertyInClass {
 	int prop1;
 
 	

@@ -7,10 +7,13 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 import net.sf.esfinge.metadata.properties.annotation.PropertyAnnotation;
 import net.sf.esfinge.metadata.properties.annotation.PropertyContrainAnnotation;
 @ContainerFor(ContainerTarget.ALL)
-public class PropertyDescriptor {
+public class PropertyDescriptorAnnoted {
 
 	@ElementName
 	private String name;
+
+	@PropertyContainsAnnotation(PropertyAnnotation.class)
+	private boolean annoted;
 	
 	public String getName() {
 		return name;
@@ -20,6 +23,13 @@ public class PropertyDescriptor {
 		this.name = name;
 	}
 
+	public boolean isAnnoted() {
+		return annoted;
+	}
+
+	public void setAnnoted(boolean annoted) {
+		this.annoted = annoted;
+	}
 	
 	
 }

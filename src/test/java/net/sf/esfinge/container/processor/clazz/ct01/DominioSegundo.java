@@ -14,12 +14,10 @@ public class DominioSegundo implements ProcessorInterface {
 
 	@Override
 	public void processorInitializationMethod(Annotation ann) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann) {
-		// TODO Auto-generated method stub
 		
 	}
 	

@@ -57,7 +57,6 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
 		catch (Exception e) {
-			// TODO: handle exception
 			throw new AnnotationReadingException(e);
 		}
 		

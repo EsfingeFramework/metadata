@@ -23,7 +23,7 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 	@Override
 	public void initAnnotation(Annotation an, Field field) {
 		containerAnnotatedField = field.getName();
-		annot =(PropertyContainsAnnotation)an;		
+		annot =(PropertyContainsAnnotation)an;
 	}
 
 	@Override
@@ -32,7 +32,6 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
 			
-		
 			if(AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains))
 			{
 				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));

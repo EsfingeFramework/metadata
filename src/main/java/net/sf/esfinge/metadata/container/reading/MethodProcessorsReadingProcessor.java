@@ -33,7 +33,6 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		// TODO Auto-generated method stub
 		fieldAnnoted = field;
 		processors = (MethodProcessors)an;
 		processorsAnnotationClass = processors.value();
@@ -44,7 +43,6 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
-		// TODO Auto-generated method stub
 		try {
 			if(elementWithMetadata instanceof Class)
 			{
@@ -98,7 +96,6 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 		}
 			setProperty(container,fieldAnnoted.getName(),map);
 		} catch (Exception e) {
-			// TODO: handle exception
 			throw new AnnotationReadingException("==========="+e);
 		}
 		

@@ -13,16 +13,16 @@ import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 @ContainerFor(ContainerTarget.TYPE)
 public class ContainerIgnore {
 	@ElementPropertyWithoutAnnotation(IgnoreInComparison.class)
-	private List<PropertyDescriptor> properties;
+	private List<PropertyDescriptorAnnoted> properties;
 	
 	@ElementName
 	private String idProp;
 
-	public List<PropertyDescriptor> getProperties() {
+	public List<PropertyDescriptorAnnoted> getProperties() {
 		return properties;
 	}
 
-	public void setProperties(List<PropertyDescriptor> properties) {
+	public void setProperties(List<PropertyDescriptorAnnoted> properties) {
 		this.properties = properties;
 	}
 

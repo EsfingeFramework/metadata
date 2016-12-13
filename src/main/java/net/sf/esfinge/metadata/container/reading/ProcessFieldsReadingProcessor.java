@@ -78,7 +78,6 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			throw new AnnotationReadingException("Cannot read and record the processFields: "+ fieldAnnoted.getName(), e);
 		}
 		
