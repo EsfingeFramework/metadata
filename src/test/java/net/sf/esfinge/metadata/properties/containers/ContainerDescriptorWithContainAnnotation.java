@@ -16,6 +16,8 @@ public class ContainerDescriptorWithContainAnnotation {
 	@ElementProperty
 	private Map<String,PropertyDescriptorAnnoted> properties;
 	
+	
+	
 	@ElementName
 	private String idProp;
 	

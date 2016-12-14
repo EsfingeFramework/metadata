@@ -151,5 +151,4 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 		return "get"+propertieName.substring(0,1).toUpperCase()+propertieName.substring(1);
 	}
 
-	
 }

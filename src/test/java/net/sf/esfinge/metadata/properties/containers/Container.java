@@ -14,25 +14,25 @@ import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 @ContainerFor(ContainerTarget.TYPE)
 public class Container {
 	@ElementProperty
-	private Map<String,PropertyDescriptorAnnoted> properties;
+	private Map<String,PropertyDescriptor> properties;
 
 	@ElementProperty
-	private Set<PropertyDescriptorAnnoted> propertiesSet;
+	private Set<PropertyDescriptor> propertiesSet;
 
 	@ElementProperty
-	private List<PropertyDescriptorAnnoted> propertiesList;
+	private List<PropertyDescriptor> propertiesList;
 
 	
 	@ElementName
 	private String idProp;
 	
-	public void addPropertyDescriptor(PropertyDescriptorAnnoted descProp){
+	public void addPropertyDescriptor(PropertyDescriptor descProp){
 		properties.put(descProp.getName(), descProp);
 	}
 	public void removePropertyDescriptor(String prop){
 		properties.remove(prop);
 	}
-	public PropertyDescriptorAnnoted getPropertyDescriptor(String prop){
+	public PropertyDescriptor getPropertyDescriptor(String prop){
 		return properties.get(prop);
 	}
 	public Set<String> getSetProperties(){
@@ -45,22 +45,22 @@ public class Container {
 		this.idProp = idProp;
 	}
 
-	public void setProperties(Map<String, PropertyDescriptorAnnoted> propertiesNew) {
+	public void setProperties(Map<String, PropertyDescriptor> propertiesNew) {
 		this.properties = propertiesNew;
 	}
-	public Map<String, PropertyDescriptorAnnoted> getProperties() {
+	public Map<String, PropertyDescriptor> getProperties() {
 		return properties;
 	}
-	public Set<PropertyDescriptorAnnoted> getPropertiesSet() {
+	public Set<PropertyDescriptor> getPropertiesSet() {
 		return propertiesSet;
 	}
-	public void setPropertiesSet(Set<PropertyDescriptorAnnoted> propertiesSet) {
+	public void setPropertiesSet(Set<PropertyDescriptor> propertiesSet) {
 		this.propertiesSet = propertiesSet;
 	}
-	public List<PropertyDescriptorAnnoted> getPropertiesList() {
+	public List<PropertyDescriptor> getPropertiesList() {
 		return propertiesList;
 	}
-	public void setPropertiesList(List<PropertyDescriptorAnnoted> propertiesList) {
+	public void setPropertiesList(List<PropertyDescriptor> propertiesList) {
 		this.propertiesList = propertiesList;
 	}
 	
