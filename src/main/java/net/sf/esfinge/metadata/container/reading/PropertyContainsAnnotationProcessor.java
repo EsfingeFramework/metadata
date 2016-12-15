@@ -9,8 +9,6 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
-import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -23,7 +21,7 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 	@Override
 	public void initAnnotation(Annotation an, Field field) {
 		containerAnnotatedField = field.getName();
-		annot =(PropertyContainsAnnotation)an;		
+		annot =(PropertyContainsAnnotation)an;
 	}
 
 	@Override
@@ -32,7 +30,6 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
 			
-		
 			if(AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains))
 			{
 				setProperty(container, containerAnnotatedField,	AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains));

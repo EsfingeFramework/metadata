@@ -11,8 +11,6 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.AllFieldsWithReadingProcessor;
-import net.sf.esfinge.metadata.container.reading.AllMethodsWithReadingProcessor;
-import net.sf.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

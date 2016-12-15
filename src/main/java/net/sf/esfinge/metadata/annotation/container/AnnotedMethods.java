@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.annotation.container;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
-import net.sf.esfinge.metadata.container.reading.AllFieldsWithReadingProcessor;
 import net.sf.esfinge.metadata.container.reading.AnnotedMethodsReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)

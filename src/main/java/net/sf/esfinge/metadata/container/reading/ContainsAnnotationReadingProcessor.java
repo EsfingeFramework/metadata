@@ -3,8 +3,6 @@ package net.sf.esfinge.metadata.container.reading;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 import org.apache.commons.beanutils.PropertyUtils;
 
 import net.sf.esfinge.metadata.AnnotationFinder;

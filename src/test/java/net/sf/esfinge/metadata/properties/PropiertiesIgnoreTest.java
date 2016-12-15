@@ -1,40 +1,19 @@
 package net.sf.esfinge.metadata.properties;
 
-import static net.sf.esfinge.classmock.ClassMockUtils.set;
 import static org.junit.Assert.*;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-import org.apache.commons.collections.functors.IfClosure;
-import org.junit.Before;
 import org.junit.Test;
 
-import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.metadata.properties.containers.*;
 import net.sf.esfinge.metadata.properties.elements.IgnoraInterno;
 import net.sf.esfinge.metadata.properties.elements.IgnoreOneField;
 import net.sf.esfinge.metadata.properties.elements.IgnoreOneFieldAndReturnTwo;
 import net.sf.esfinge.metadata.properties.elements.PropertyEmpty;
 import net.sf.esfinge.metadata.properties.elements.WinouthIgnore;
-import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
-import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
-import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
 
 public class PropiertiesIgnoreTest {
-	private ClassMock mockBean;
-	private Class clazz;
-
-	@Before
-	public void createClasses(){
-		mockBean = new ClassMock("Bean");
-		
-
-	}
-
+	
 	@Test
 	public void testNull() throws Exception {
 		
@@ -54,7 +33,7 @@ public class PropiertiesIgnoreTest {
 		ContainerIgnore container = ar.readingAnnotationsTo(WinouthIgnore.class, ContainerIgnore.class);
 		
 		assertFalse(container.getProperties().isEmpty());
-		assertEquals("prop1", container.getPropertyDescriptor("prop1").getName());
+		assertEquals("prop1", container.getProperties().get(0).getName());
 		
 	}
 	
@@ -67,7 +46,7 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(1, container.getProperties().size());
-		assertEquals("prop2", container.getPropertyDescriptor("prop2").getName());
+		assertEquals("prop2", container.getProperties().get(0).getName());
 
 	}
 
@@ -81,8 +60,8 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(containerIgnore.getProperties().isEmpty());
 		assertEquals(2, containerIgnore.getProperties().size());
-		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
-		assertEquals("prop3", containerIgnore.getPropertyDescriptor("prop3").getName());
+		assertEquals("prop2", containerIgnore.getProperties().get(0).getName());
+		assertEquals("prop3", containerIgnore.getProperties().get(1).getName());
 
 	}
 
@@ -99,7 +78,8 @@ public class PropiertiesIgnoreTest {
 		
 		assertFalse(containerIgnore.getProperties().isEmpty());
 		assertEquals(1, containerIgnore.getProperties().size());
-		assertEquals("prop2", containerIgnore.getPropertyDescriptor("prop2").getName());
+		assertEquals("prop2", containerIgnore.getProperties().get(0).getName());
+
 
 	}
 

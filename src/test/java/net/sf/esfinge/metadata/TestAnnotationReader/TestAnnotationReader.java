@@ -2,8 +2,6 @@ package net.sf.esfinge.metadata.TestAnnotationReader;
 
 import static org.junit.Assert.*;
 
-import javax.sound.midi.Synthesizer;
-
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationReader;

@@ -2,8 +2,6 @@ package net.sf.esfinge.metadata.TestAnnotationReader.AnnotationProperty;
 
 import static org.junit.Assert.*;
 
-import java.lang.annotation.Annotation;
-
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationReader;

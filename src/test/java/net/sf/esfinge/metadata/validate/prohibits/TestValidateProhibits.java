@@ -1,13 +1,8 @@
 package net.sf.esfinge.metadata.validate.prohibits;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-import org.junit.internal.runners.statements.Fail;
-
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
-import net.sf.esfinge.metadata.validate.MetadataValidatorB;
 
 public class TestValidateProhibits<Purchase> {
 

@@ -1,7 +1,6 @@
 package net.sf.esfinge.metadata.validate;
 
 import net.sf.esfinge.metadata.AnnotationReader;
-import net.sf.esfinge.metadata.AnnotationValidationException;
 
 public class MetadataValidatorB {
 	

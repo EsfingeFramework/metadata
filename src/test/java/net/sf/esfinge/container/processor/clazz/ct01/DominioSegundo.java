@@ -3,8 +3,6 @@ package net.sf.esfinge.container.processor.clazz.ct01;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
-
 
 public class DominioSegundo implements ProcessorInterface {
 	
@@ -14,12 +12,10 @@ public class DominioSegundo implements ProcessorInterface {
 
 	@Override
 	public void processorInitializationMethod(Annotation ann) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann) {
-		// TODO Auto-generated method stub
 		
 	}
 	

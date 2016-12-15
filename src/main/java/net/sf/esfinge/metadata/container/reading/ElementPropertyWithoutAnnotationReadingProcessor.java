@@ -42,7 +42,7 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 		fieldAnnoted = field;
 		lista = new ArrayList<Object>();
 		set = new HashSet<Object>();
-		map = new HashMap<>();
+		map = new HashMap<Object,Object>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
 		prop = (ElementPropertyWithoutAnnotation) an;
 
@@ -68,13 +68,10 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 							boolean methodValid = false;
 							String methodName = propertyToGetter(field.getName());
 							Method method = clazz.getDeclaredMethod(methodName);
-
-							methodValid = AnnotationFinder.existAnnotation(method, prop.value());
 							
-							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
+							methodValid = AnnotationFinder.existAnnotation(method, prop.value());							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
 							
-							if(!methodValid&&!fieldValid){
-
+							if(!methodValid||fieldValid){
 									AnnotationReader metadataReader = new AnnotationReader();
 									Object containerField = outputClass.newInstance();
 									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
@@ -82,10 +79,11 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 									set.add(containerField);
 									map.put(field.getName(), containerField);
 
+
 							}
 							
 
-						}			
+						}
 						if(fieldAnnoted.getType().equals(List.class)){
 							setProperty(container,fieldAnnoted.getName(),lista);
 						}
@@ -100,7 +98,7 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 				}
 			}
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the ElementPropertyReadingProcessor in the field "+ fieldAnnoted.getName(), e);
+			throw new AnnotationReadingException("Cannot read and record the Element "+elementWithMetadata+" in ElementPropertyWithoutAnnotationReadingProcessor in the field "+ fieldAnnoted.getName(), e);
 		}
 	}
 	

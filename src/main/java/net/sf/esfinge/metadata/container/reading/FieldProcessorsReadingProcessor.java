@@ -9,17 +9,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
 import net.sf.esfinge.metadata.annotation.container.InitProcessor;
-import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
-import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -33,7 +29,6 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 	
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		// TODO Auto-generated method stub
 		fieldAnnoted = field;
 		processors = (FieldProcessors)an;
 		processorsAnnotationClass = processors.value();
@@ -44,7 +39,6 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
-		// TODO Auto-generated method stub
 		try {
 			if(elementWithMetadata instanceof Class)
 			{
@@ -67,7 +61,6 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 			}
 			setProperty(container,fieldAnnoted.getName(),map);
 		} catch (Exception e) {
-			// TODO: handle exception
 			throw new AnnotationReadingException("==========="+e);
 		}
 		

@@ -3,7 +3,6 @@ package net.sf.esfinge.metadata.properties;
 import static net.sf.esfinge.classmock.ClassMockUtils.set;
 import static org.junit.Assert.*;
 
-import org.apache.commons.collections.functors.IfClosure;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,8 +18,6 @@ public class PropiertiesTest {
 	@Before
 	public void createClasses(){
 		mockBean = new ClassMock("Bean");
-		
-
 	}
 
 	@Test
@@ -35,6 +32,8 @@ public class PropiertiesTest {
 		Container container = ar.readingAnnotationsTo(clazz, Container.class);
 		
 		assertTrue(container.getProperties().isEmpty());
+		assertTrue(container.getPropertiesList().isEmpty());
+		assertTrue(container.getPropertiesSet().isEmpty());
 		
 	}
 	
@@ -74,6 +73,10 @@ public class PropiertiesTest {
 		assertEquals(2, container.getProperties().size());
 		assertEquals("prop1", container.getPropertyDescriptor("prop1").getName());
 		assertEquals("prop2", container.getPropertyDescriptor("prop2").getName());
+		
+		assertEquals("prop2", container.getPropertiesList().get(0).getName());
+		assertEquals("prop1", container.getPropertiesList().get(1).getName());
+		
 
 	}
 

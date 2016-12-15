@@ -1,8 +1,6 @@
 package net.sf.esfinge.metadata.properties.containers;
 
-import java.util.Map;
-import java.util.Set;
-
+import java.util.List;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.annotation.container.ElementPropertyWithoutAnnotation;
@@ -12,16 +10,16 @@ import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 @ContainerFor(ContainerTarget.TYPE)
 public class ContainerIgnore {
 	@ElementPropertyWithoutAnnotation(IgnoreInComparison.class)
-	private Map<String,PropertyDescriptor> properties;
+	private List<PropertyDescriptorAnnoted> properties;
 	
 	@ElementName
 	private String idProp;
 
-	public Map<String, PropertyDescriptor> getProperties() {
+	public List<PropertyDescriptorAnnoted> getProperties() {
 		return properties;
 	}
 
-	public void setProperties(Map<String, PropertyDescriptor> properties) {
+	public void setProperties(List<PropertyDescriptorAnnoted> properties) {
 		this.properties = properties;
 	}
 
@@ -31,11 +29,6 @@ public class ContainerIgnore {
 
 	public void setIdProp(String idProp) {
 		this.idProp = idProp;
-	}
-
-	public PropertyDescriptor getPropertyDescriptor(String string) {
-		// TODO Auto-generated method stub
-		return properties.get(string);
 	}
 	
 	

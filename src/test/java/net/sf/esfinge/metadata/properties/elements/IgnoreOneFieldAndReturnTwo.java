@@ -1,12 +1,11 @@
 package net.sf.esfinge.metadata.properties.elements;
 
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
-import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
 
 public class IgnoreOneFieldAndReturnTwo {
-	int prop1;
-	int prop2;
-	int prop3;
+	private int prop1;
+	private int prop2;
+	private int prop3;
 
 	
 	@IgnoreInComparison
