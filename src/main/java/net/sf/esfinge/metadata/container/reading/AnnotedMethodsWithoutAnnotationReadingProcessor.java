@@ -62,8 +62,7 @@ public class AnnotedMethodsWithoutAnnotationReadingProcessor implements Annotati
 
 						for(Method m1: clazz.getDeclaredMethods())
 						{
-							
-							if(m1.getDeclaredAnnotations().length>0&&!m1.isAnnotationPresent(annotation.value())){
+							if(!m1.isAnnotationPresent(annotation.value())){
 								AnnotationReader metadataReader = new AnnotationReader();
 								Object containerField = outputClass.newInstance();
 								containerField = metadataReader.readingAnnotationsTo(m1, outputClass);

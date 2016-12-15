@@ -1,8 +1,5 @@
 package net.sf.esfinge.container.processor.method;
 
-import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
-import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
-
 
 public class Dominio implements OldDommi{
 	

@@ -3,7 +3,6 @@ package net.sf.esfinge.metadata.properties;
 import static net.sf.esfinge.classmock.ClassMockUtils.set;
 import static org.junit.Assert.*;
 
-import org.apache.commons.collections.functors.IfClosure;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,11 +1,6 @@
 package net.sf.esfinge.metadata.TestAnnotationReader;
 
-import java.util.Map;
-
 import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
-import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
-import net.sf.esfinge.metadata.annotation.container.ElementName;
-import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 
 public class CT11Container {
 		

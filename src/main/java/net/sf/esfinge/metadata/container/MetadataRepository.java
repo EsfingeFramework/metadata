@@ -4,9 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 public class MetadataRepository {
 	private Map<AnnotatedElement,Annotation> repositorio;

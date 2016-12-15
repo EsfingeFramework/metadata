@@ -6,7 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)

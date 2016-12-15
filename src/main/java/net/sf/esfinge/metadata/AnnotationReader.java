@@ -1,12 +1,6 @@
 package net.sf.esfinge.metadata;
 
-import java.lang.annotation.Annotation;
-
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
-
-import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
-import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.MetadataExecute;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 

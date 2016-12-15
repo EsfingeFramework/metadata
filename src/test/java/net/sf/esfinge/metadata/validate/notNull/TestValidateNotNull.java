@@ -1,21 +1,9 @@
 package net.sf.esfinge.metadata.validate.notNull;
 
-import java.lang.annotation.Annotation;
-import java.util.List;
-
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.validator.NotNull;
-import net.sf.esfinge.metadata.annotation.validator.field.FinalFieldOnly;
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
-import net.sf.esfinge.metadata.locate.LevelLocator;
-import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.RegularLocator;
-import net.sf.esfinge.metadata.locate.levelLocator.TestLevelLocator.CT01;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
-import net.sf.esfinge.metadata.validate.MetadataValidatorB;
 import net.sf.esfinge.metadata.validate.notNull.PointsToUser;
 
 public class TestValidateNotNull {

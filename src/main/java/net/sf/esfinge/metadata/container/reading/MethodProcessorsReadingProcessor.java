@@ -9,17 +9,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.TypeVariable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.InitProcessor;
 import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
-import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 

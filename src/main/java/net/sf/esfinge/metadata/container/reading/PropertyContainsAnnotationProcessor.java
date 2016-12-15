@@ -9,8 +9,6 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
-import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;

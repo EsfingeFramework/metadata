@@ -1,8 +1,5 @@
 package net.sf.esfinge.metadata.properties.elements;
 
-import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
-import net.sf.esfinge.metadata.properties.annotation.IgnoreInc;
-
 public class WinouthIgnore {
 	int prop1;
 

@@ -5,7 +5,6 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -19,8 +18,6 @@ import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
-import net.sf.esfinge.metadata.annotation.container.ElementProperty;
-import net.sf.esfinge.metadata.annotation.validator.field.FieldVisibilityForbidden;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 

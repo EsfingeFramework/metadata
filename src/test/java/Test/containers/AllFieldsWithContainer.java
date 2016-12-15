@@ -1,13 +1,8 @@
 package Test.containers;
 
 import java.util.List;
-import java.util.Set;
-
 import Test.annotations.FieldAnnoted;
-import Test.annotations.MethodAnnoted;
-import net.sf.esfinge.metadata.TestAnnotationReader.Procesos;
 import net.sf.esfinge.metadata.annotation.container.AllFieldsWith;
-import net.sf.esfinge.metadata.annotation.container.AllMethodsWith;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 

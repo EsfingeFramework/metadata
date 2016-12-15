@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
-import net.sf.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
 import net.sf.esfinge.metadata.container.reading.ProcessMethodsReadingProcessor;
 
 import java.lang.annotation.ElementType;

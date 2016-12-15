@@ -4,7 +4,6 @@ import Test.annotations.AnnotationPropertyEncapsuled;
 import Test.annotations.Entidade;
 import Test.annotations.InTheField;
 import Test.annotations.InTheMethod;
-import net.sf.esfinge.metadata.TestAnnotationReader.Tabela;
 
 @Entidade
 @AnnotationPropertyEncapsuled
