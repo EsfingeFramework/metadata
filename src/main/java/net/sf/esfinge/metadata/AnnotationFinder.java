@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InheritanceLocator;
 import net.sf.esfinge.metadata.locate.LevelLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
@@ -38,6 +39,7 @@ public class AnnotationFinder {
 	
 	private static List<MetadataLocator> getAplicableLocatorChain(){
 		List<MetadataLocator> list = new ArrayList<>();
+		list.add(new InheritanceLocator());
 		list.add(new LevelLocator());
 		list.add(new AnnotationLocator());
 		list.add(new RegularLocator());
