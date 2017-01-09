@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import net.sf.esfinge.metadata.locate.annotationLocator.Transaction01;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
+import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.Heranca.Interfaces.ClassNotAnnotation;
 import net.sf.esfinge.metadata.locate.Heranca.Interfaces.ClassWithAnnotation;
 import net.sf.esfinge.metadata.locate.annotationLocator.TestAnnotationLocator.CT01;
@@ -21,6 +22,7 @@ public class Heranca {
 	
 	
 	//TODO Testes que retornam false
+	//TODO testsForClass
 	@Test
 	public void testNullInterface() {
 		Annotation an = locator.findMetadata(ClassNotAnnotation.class, AnnotationReq.class);
@@ -45,9 +47,6 @@ public class Heranca {
 
 	}
 
-	
-	
-	
 	
 	//TODO Testes que retornam true
 	@Test
@@ -74,4 +73,29 @@ public class Heranca {
 
 	}
 
+	//TODO Testes que retornam false
+	//TODO testsForMethods
+	@Test
+	public void testNullMethod() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+		
+		
+		Annotation an = locator.findMetadata(MethodNotAnnotation.class.getMethod("value1"), AnnotationReq.class);
+		assertNull(an);
+		assertFalse(an instanceof AnnotationReq);
+
+	}
+	//TODO Testes que retornam True
+	//TODO testsForMethods
+	
+	@Test
+	public void testNotNullMethod() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+		
+		
+		Annotation an = locator.findMetadata(MethodNotAnnotation.class.getMethod("value1"), AnnotationReq.class);
+		assertNotNull(an);
+		assertTrue(an instanceof AnnotationReq);
+
+	}
+
+	
 }
