@@ -43,7 +43,7 @@ public class AnnotationFinder {
 		list.add(new AnnotationLocator());
 		list.add(new RegularLocator());
 		
-		//list.add(new InheritanceLocator());
+		list.add(new InheritanceLocator());
 
 		
 		return list;

@@ -3,6 +3,8 @@ package net.sf.esfinge.metadata.locate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.AnnotatedType;
+import java.lang.reflect.Method;
+import java.net.InterfaceAddress;
 
 public class InheritanceLocator extends MetadataLocator {
 
@@ -24,16 +26,24 @@ public class InheritanceLocator extends MetadataLocator {
 					return x.getAnnotation(annotationClass);
 				}
 			}
-			while(!classWithMetadata.getSuperclass().equals(Object.class))
+			if(!classWithMetadata.isInterface())
 			{
-				classWithMetadata = classWithMetadata.getSuperclass();
-				if(classWithMetadata.isAnnotationPresent(annotationClass))
+				while(!classWithMetadata.getSuperclass().equals(Object.class))
 				{
-					//TODO validate annotation in superclass
-					return classWithMetadata.getAnnotation(annotationClass);
+					classWithMetadata = classWithMetadata.getSuperclass();
+					if(classWithMetadata.isAnnotationPresent(annotationClass))
+					{
+						//TODO validate annotation in superclass
+						return classWithMetadata.getAnnotation(annotationClass);
+					}
 				}
 			}
 			
+		}
+		else if(originalElement instanceof Method)
+		{
+			//TODO Implements methods in class
+
 		}
 		
 		return null;

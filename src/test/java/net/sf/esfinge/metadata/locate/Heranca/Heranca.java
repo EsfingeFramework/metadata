@@ -16,7 +16,7 @@ public class Heranca {
 	
 	
 	InheritanceLocator locator = new InheritanceLocator();
-	//TODO Falta criar os testes para fields.........
+	//TODO Falta criar os testes para Methods.........
 	
 	
 	
