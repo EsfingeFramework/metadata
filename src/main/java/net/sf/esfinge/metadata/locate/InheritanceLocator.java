@@ -42,8 +42,25 @@ public class InheritanceLocator extends MetadataLocator {
 		}
 		else if(originalElement instanceof Method)
 		{
+			Method methodElement = (Method) originalElement;
+			Class classWithElement= methodElement.getDeclaringClass();
 			//TODO Implements methods in class
-
+			for(Class interfaceWithMethods: classWithElement.getInterfaces())
+			{
+				try {
+					Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
+					//Ateh aqui okey
+					if(interfaceMethod.isAnnotationPresent(annotationClass))
+					{
+						return interfaceMethod.getAnnotation(annotationClass);
+					}
+					
+					
+				} catch (NoSuchMethodException | SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return null;

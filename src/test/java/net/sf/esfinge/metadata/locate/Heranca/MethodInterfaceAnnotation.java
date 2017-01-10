@@ -1,6 +1,6 @@
 package net.sf.esfinge.metadata.locate.Heranca;
 
-public class MethodNotAnnotation implements InterfaceMethodAnnotation{
+public class MethodInterfaceAnnotation implements InterfaceMethodAnnotation{
 
 	@Override
 	public void value1() {

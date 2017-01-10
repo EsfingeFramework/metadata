@@ -76,10 +76,20 @@ public class Heranca {
 	//TODO Testes que retornam false
 	//TODO testsForMethods
 	@Test
-	public void testNullMethod() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+	public void testMethodNullInInterface() throws MetadataLocationException, NoSuchMethodException, SecurityException {
 		
 		
-		Annotation an = locator.findMetadata(MethodNotAnnotation.class.getMethod("value1"), AnnotationReq.class);
+		Annotation an = locator.findMetadata(MethodInterfaceAnnotation.class.getMethod("value1"), AnnotationReq.class);
+		assertNull(an);
+		assertFalse(an instanceof AnnotationReq);
+
+	}
+	
+	@Test
+	public void testMethodNullInSuperclass() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+		
+		
+		Annotation an = locator.findMetadata(MethodSuperclassAnnotation.class.getMethod("value1"), AnnotationReq.class);
 		assertNull(an);
 		assertFalse(an instanceof AnnotationReq);
 
@@ -88,14 +98,24 @@ public class Heranca {
 	//TODO testsForMethods
 	
 	@Test
-	public void testNotNullMethod() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+	public void testNotNullMethodInInterface() throws MetadataLocationException, NoSuchMethodException, SecurityException {
 		
 		
-		Annotation an = locator.findMetadata(MethodNotAnnotation.class.getMethod("value1"), AnnotationReq.class);
+		Annotation an = locator.findMetadata(MethodInterfaceAnnotation.class.getMethod("value2"), AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);
 
 	}
+	@Test
+	public void testMethodNotNullInSuperclass() throws MetadataLocationException, NoSuchMethodException, SecurityException {
+		
+		
+		Annotation an = locator.findMetadata(MethodSuperclassAnnotation.class.getMethod("value2"), AnnotationReq.class);
+		assertNotNull(an);
+		assertTrue(an instanceof AnnotationReq);
+
+	}
+
 
 	
 }
