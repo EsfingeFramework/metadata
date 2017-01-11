@@ -18,26 +18,7 @@ public class InheritanceLocator extends MetadataLocator {
 		originalElement = element;
 		if(originalElement instanceof Class)
 		{
-			Class classWithMetadata = (Class)originalElement;
-			for ( Class x : classWithMetadata.getInterfaces()) {
-				if(x.isAnnotationPresent(annotationClass))
-				{
-					//TODO validate annotation in Interfaces
-					return x.getAnnotation(annotationClass);
-				}
-			}
-			if(!classWithMetadata.isInterface())
-			{
-				while(!classWithMetadata.getSuperclass().equals(Object.class))
-				{
-					classWithMetadata = classWithMetadata.getSuperclass();
-					if(classWithMetadata.isAnnotationPresent(annotationClass))
-					{
-						//TODO validate annotation in superclass
-						return classWithMetadata.getAnnotation(annotationClass);
-					}
-				}
-			}
+			return forClassAnnotation(annotationClass);
 			
 		}
 		else if(originalElement instanceof Method)
@@ -45,24 +26,71 @@ public class InheritanceLocator extends MetadataLocator {
 			Method methodElement = (Method) originalElement;
 			Class classWithElement= methodElement.getDeclaringClass();
 			//TODO Implements methods in class
-			for(Class interfaceWithMethods: classWithElement.getInterfaces())
-			{
-				try {
-					Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
-					//Ateh aqui okey
-					if(interfaceMethod.isAnnotationPresent(annotationClass))
+				for(Class interfaceWithMethods: classWithElement.getInterfaces())
 					{
-						return interfaceMethod.getAnnotation(annotationClass);
+						try {
+							Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
+							//Ateh aqui okey
+							if(interfaceMethod.isAnnotationPresent(annotationClass))
+							{
+								return interfaceMethod.getAnnotation(annotationClass);
+							}
+							
+							
+						} catch (NoSuchMethodException | SecurityException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
-					
-					
-				} catch (NoSuchMethodException | SecurityException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				
+			if(!classWithElement.isInterface())
+			{
+				while(!classWithElement.getSuperclass().equals(Object.class))
+				{
+					classWithElement = classWithElement.getSuperclass();
+					Method superClassMethod;
+					try {
+						superClassMethod = classWithElement.getMethod(methodElement.getName());
+						if(superClassMethod.isAnnotationPresent(annotationClass))
+						{
+							return superClassMethod.getAnnotation(annotationClass);
+						}
+
+					} catch (NoSuchMethodException | SecurityException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+				}
+				
+
+			}
+			
+		}
+		
+		return null;
+	}
+
+	private Annotation forClassAnnotation(Class<? extends Annotation> annotationClass) {
+		Class classWithMetadata = (Class)originalElement;
+		for ( Class x : classWithMetadata.getInterfaces()) {
+			if(x.isAnnotationPresent(annotationClass))
+			{
+				//TODO validate annotation in Interfaces
+				return x.getAnnotation(annotationClass);
+			}
+		}
+		if(!classWithMetadata.isInterface())
+		{
+			while(!classWithMetadata.getSuperclass().equals(Object.class))
+			{
+				classWithMetadata = classWithMetadata.getSuperclass();
+				if(classWithMetadata.isAnnotationPresent(annotationClass))
+				{
+					//TODO validate annotation in superclass
+					return classWithMetadata.getAnnotation(annotationClass);
 				}
 			}
 		}
-		
 		return null;
 	}
 
