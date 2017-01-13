@@ -6,6 +6,7 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
 import java.net.InterfaceAddress;
 
+//TODO Refatorar
 public class InheritanceLocator extends MetadataLocator {
 
 	private int contador = 0;
@@ -24,7 +25,7 @@ public class InheritanceLocator extends MetadataLocator {
 		else if(originalElement instanceof Method)
 		{
 			Method methodElement = (Method) originalElement;
-			Class classWithElement= methodElement.getDeclaringClass();
+			Class<?> classWithElement= methodElement.getDeclaringClass();
 			//TODO Implements methods in class
 				for(Class interfaceWithMethods: classWithElement.getInterfaces())
 					{
@@ -71,8 +72,8 @@ public class InheritanceLocator extends MetadataLocator {
 	}
 
 	private Annotation forClassAnnotation(Class<? extends Annotation> annotationClass) {
-		Class classWithMetadata = (Class)originalElement;
-		for ( Class x : classWithMetadata.getInterfaces()) {
+		Class<?> classWithMetadata = (Class)originalElement;
+		for ( Class<?> x : classWithMetadata.getInterfaces()) {
 			if(x.isAnnotationPresent(annotationClass))
 			{
 				//TODO validate annotation in Interfaces
