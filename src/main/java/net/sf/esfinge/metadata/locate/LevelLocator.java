@@ -14,7 +14,7 @@ public class LevelLocator extends MetadataLocator {
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {				
-		if(contador==0) OriginalElement = element;			
+		if(contador==0) OriginalElement = element;		
 		
 		contador++;
 		
@@ -23,7 +23,6 @@ public class LevelLocator extends MetadataLocator {
 		Annotation[] ans = element.getAnnotations();
 		
 		for (Annotation a : ans) {
-			
 			Class<?extends Annotation> c = a.annotationType();
 			if (SearchOnEnclosingElements(annotationClass) && SearchOnEnclosingElements(c)) {
 				if(c.equals(annotationClass)){

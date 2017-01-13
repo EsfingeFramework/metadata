@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
+import net.sf.esfinge.metadata.validate.MetadataValidatorB;
 import net.sf.esfinge.metadata.validate.minValue.PointsToUser;
 
 public class TestValidateMaxValue {
@@ -16,8 +17,9 @@ public class TestValidateMaxValue {
 	}
 	
 	@Test (expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
-		MetadataValidator.validateMetadataOn(Classe.class);			
+	public void CT01() throws Exception {			
+		MetadataValidator.validateMetadataOn(Classe.class);		
+		
 	}
 	
 	/*
