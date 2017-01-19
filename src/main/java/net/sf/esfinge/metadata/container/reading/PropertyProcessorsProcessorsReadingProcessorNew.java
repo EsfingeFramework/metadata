@@ -30,24 +30,34 @@ public class PropertyProcessorsProcessorsReadingProcessorNew implements Annotati
 		
 		if(annotation.value()==AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 		{
-			
+			//Verifica somente nos atributos se existe a anotação
 		}
 		else if(annotation.value()==AnnotationPropertyLocation.GETTER_ONLY)
 		{
-			
+			//Verifica nos metodos get se existe a anotação
 		}
 		else if(annotation.value()==AnnotationPropertyLocation.SETTER_ONLY)
 		{
-			
+			//Verifica nos metodos set se existe a anotação
 		}
 		else if(annotation.value()==AnnotationPropertyLocation.ATTRIBUTE_GETTER)
 		{
-			
+			//Verifica nos atributos e nos getter
 		}
 		else if(annotation.value()==AnnotationPropertyLocation.ATTRIBUTE_SETTER)
 		{
-			
+			//Verifica nos atributos e nos seters
 		}
+		else if(annotation.value()==AnnotationPropertyLocation.GETTER_SETTER)
+		{
+			//Verifica nos get e set
+		}
+
+		else if(annotation.value()==AnnotationPropertyLocation.ALL)
+		{
+			//verifica em todos se existe a anotação
+		}
+
 	}
 
 }

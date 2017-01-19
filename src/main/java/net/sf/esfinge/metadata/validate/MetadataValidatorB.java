@@ -24,18 +24,18 @@ public class MetadataValidatorB {
 			while(currentClazz != Object.class && currentClazz!=null){
 				for(Method m : currentClazz.getDeclaredMethods()){
 					for(Annotation an : m.getAnnotations()){
-						boolean cc = AnnotationFinder.existAnnotation(an.annotationType(), MaxValue.class);
+
 					}
 				}
 				for(Field f : currentClazz.getDeclaredFields()){
 					for(Annotation an : f.getAnnotations()){
-						containerValidator = reader.readingAnnotationsTo(f, containerValidator.getClass());
+
 					}
 				}		
 				
 				for(Constructor<?> c : currentClazz.getConstructors()){
 					for(Annotation an : c.getAnnotations()){
-						containerValidator = reader.readingAnnotationsTo(c, containerValidator.getClass());
+
 					}
 
 				}						
