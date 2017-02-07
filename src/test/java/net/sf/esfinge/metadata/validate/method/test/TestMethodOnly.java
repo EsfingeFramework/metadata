@@ -5,7 +5,7 @@ import org.junit.Test;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
 
-public class TestFieldOnly {	
+public class TestMethodOnly {	
 		
 	@Test
 	public void testWithSuccess() throws Exception {		
