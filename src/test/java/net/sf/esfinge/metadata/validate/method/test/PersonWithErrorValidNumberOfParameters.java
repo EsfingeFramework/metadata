@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidNumberOfParameters;
-
 public class PersonWithErrorValidNumberOfParameters extends Person{
 	
 	private static String oneStaticString = "";	

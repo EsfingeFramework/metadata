@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithFinalMethodOnly;
-
 public class PersonWithErrorFinalMethodOnly extends Person{
 	
 	private int notStaticValue = 42;	

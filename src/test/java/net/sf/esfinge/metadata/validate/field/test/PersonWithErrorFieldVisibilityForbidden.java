@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.validate.field.test;
 
-import net.sf.esfinge.metadata.annotation.validator.field.OneAnnotationWithFieldVisibilityForbidden;
-
 public class PersonWithErrorFieldVisibilityForbidden extends Person{
 		
 	@OneAnnotationWithFieldVisibilityForbidden	
