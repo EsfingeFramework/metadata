@@ -6,7 +6,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
@@ -35,23 +34,22 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 		try {
 			if (AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains)){
 				
-				List<Annotation> annotations= AnnotationFinder.findAnnotation(elementWithMetadata,annotationThatNeedToContains);				
-				for (Annotation annotation: annotations)
-					for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){
-						if(methodAnotation.getName().equals(annot.property())){
-							if(methodAnotation.getReturnType().equals(fieldAnnoted.getType())){
-								setProperty(container, fieldAnnoted.getName(),methodAnotation.invoke(annotation));
-							}
-							else{
-								throw new AnnotationValidationException("The field "+fieldAnnoted.getName()+" espera commo retorno "+fieldAnnoted.getType() 
-								+" em vez disso esta recebendo "+methodAnotation.getReturnType());
-	
-							}
-								
+				Annotation annotation = elementWithMetadata.getAnnotation(annotationThatNeedToContains);
+				
+				for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){
+					if(methodAnotation.getName().equals(annot.property())){
+						if(methodAnotation.getReturnType().equals(fieldAnnoted.getType())){
+							setProperty(container, fieldAnnoted.getName(),methodAnotation.invoke(annotation));
+						}
+						else{
+							throw new AnnotationValidationException("The field "+fieldAnnoted.getName()+" espera commo retorno "+fieldAnnoted.getType() 
+							+" em vez disso esta recebendo "+methodAnotation.getReturnType());
+
 						}
 							
 					}
-				
+						
+				}
 			}
 		} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the AnnotationProperty: /n As field"+ fieldAnnoted+"annotation " + annotationThatNeedToContains.getName(),e);
