@@ -69,7 +69,8 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 							String methodName = propertyToGetter(field.getName());
 							Method method = clazz.getDeclaredMethod(methodName);
 							
-							methodValid = AnnotationFinder.existAnnotation(method, prop.value());							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
+							methodValid = AnnotationFinder.existAnnotation(method, prop.value());							
+							boolean fieldValid = AnnotationFinder.existAnnotation(field, prop.value());
 							
 							if(!methodValid||fieldValid){
 									AnnotationReader metadataReader = new AnnotationReader();

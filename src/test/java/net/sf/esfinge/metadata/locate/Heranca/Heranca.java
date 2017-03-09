@@ -7,6 +7,7 @@ import java.lang.annotation.Annotation;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.locate.annotationLocator.Transaction01;
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
@@ -21,6 +22,7 @@ public class Heranca {
 	//TODO Falta criar os testes para Methods.........
 	//TODO Testes que retornam false
 	//TODO testsForClass
+	
 	
 	
 	@Test
@@ -49,6 +51,17 @@ public class Heranca {
 
 	
 	//TODO Testes que retornam true
+	
+	@Test
+	public void testAnnotationFinder() {
+		
+		//assertNull(an);
+		
+		assertTrue(AnnotationFinder.existAnnotation(ClassWithAnnotation.class, AnnotationReq.class));
+
+	}
+
+	
 	@Test
 	public void testReturnInInterface() {
 		Annotation an = locator.findMetadata(ClassWithAnnotation.class, AnnotationReq.class);

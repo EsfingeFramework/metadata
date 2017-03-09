@@ -5,8 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
-import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 import net.sf.esfinge.metadata.annotation.validator.Unique;
 
 @SearchOnEnclosingElements

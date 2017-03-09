@@ -31,7 +31,6 @@ public class InheritanceLocator extends MetadataLocator {
 					{
 						try {
 							Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
-							//Ateh aqui okey
 							if(interfaceMethod.isAnnotationPresent(annotationClass))
 							{
 								return interfaceMethod.getAnnotation(annotationClass);
