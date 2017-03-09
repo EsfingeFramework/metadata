@@ -19,7 +19,6 @@ public class PropiertiesExecute {
 		
 		ContainerIgnore container = ar.readingAnnotationsTo(ValidElement.class, ContainerIgnore.class);
 		
-		System.out.println(container.getProperties().get(0).getM1());
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(2, container.getProperties().size());
 		

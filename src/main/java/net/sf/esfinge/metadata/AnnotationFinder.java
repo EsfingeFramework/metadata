@@ -39,11 +39,12 @@ public class AnnotationFinder {
 	
 	private static List<MetadataLocator> getAplicableLocatorChain(){
 		List<MetadataLocator> list = new ArrayList<>();
+		list.add(new InheritanceLocator());
 		list.add(new LevelLocator());
 		list.add(new AnnotationLocator());
 		list.add(new RegularLocator());
 		
-		list.add(new InheritanceLocator());
+		
 
 		
 		return list;
