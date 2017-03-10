@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodReturn;
-
 public class PersonWithErrorValidMethodReturn extends Person{
 	
 	public volatile long oneVolatileLong = 2372983;	

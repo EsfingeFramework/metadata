@@ -4,20 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithFinalMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithForbiddenMethodReturn;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithInstanceMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodNamingConvention;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodVisibilityForbidden;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodVisibilityRequired;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithNoParametersMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithStaticMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithStrictfpMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithSynchronizedMethodOnly;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodParameterTypes;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodReturn;
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidNumberOfParameters;
-
 public class Person {
 	
 	@OneAnnotationWithFinalMethodOnly

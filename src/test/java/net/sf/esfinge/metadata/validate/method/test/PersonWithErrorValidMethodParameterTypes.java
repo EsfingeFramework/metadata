@@ -1,7 +1,5 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithValidMethodParameterTypes;
-
 public class PersonWithErrorValidMethodParameterTypes extends Person{	
 	
 	public PersonWithErrorValidMethodParameterTypes(String name, String cpf, int age) {

@@ -3,8 +3,6 @@ package net.sf.esfinge.metadata.validate.method.test;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.sf.esfinge.metadata.annotation.validator.method.OneAnnotationWithMethodNamingConvention;
-
 public class PersonWithErrorMethodNamingConvention extends Person{
 	
 	float oneDefaultfloat = 4.2f;	

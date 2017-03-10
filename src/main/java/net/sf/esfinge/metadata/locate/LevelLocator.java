@@ -5,7 +5,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import net.sf.esfinge.metadata.annotation.validator.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 public class LevelLocator extends MetadataLocator {
 	private int contador=0;
@@ -14,7 +14,7 @@ public class LevelLocator extends MetadataLocator {
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {				
-		if(contador==0) OriginalElement = element;			
+		if(contador==0) OriginalElement = element;		
 		
 		contador++;
 		
@@ -23,15 +23,16 @@ public class LevelLocator extends MetadataLocator {
 		Annotation[] ans = element.getAnnotations();
 		
 		for (Annotation a : ans) {
-			
 			Class<?extends Annotation> c = a.annotationType();
 			if (SearchOnEnclosingElements(annotationClass) && SearchOnEnclosingElements(c)) {
 				if(c.equals(annotationClass)){
 					an = a;
-					return an;
+					return an;					
+					
 				}else{
 					AnnotationLocator ll = new AnnotationLocator();
 					an = ll.findMetadata(c, annotationClass);
+
 				}
 			}							
 		}	

@@ -3,7 +3,7 @@ package net.sf.esfinge.metadata.locate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import net.sf.esfinge.metadata.annotation.validator.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 
 public class AnnotationLocator extends MetadataLocator {
 	private int contador = 0;
