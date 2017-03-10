@@ -5,10 +5,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 
-import net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsReadingProcessor;
+import net.sf.esfinge.metadata.container.reading.PropertyProcessorsReadingProcessor;
 
 @Retention(RUNTIME)
-@AnnotationReadingConfig(PropertyProcessorsProcessorsReadingProcessor.class)
+@AnnotationReadingConfig(PropertyProcessorsReadingProcessor.class)
 
 public @interface PropertyProcessors {
 

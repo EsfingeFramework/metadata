@@ -28,7 +28,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
 
-public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationReadingProcessor{
+public class PropertyProcessorsReadingProcessor implements AnnotationReadingProcessor{
 
 	private Field fieldAnnoted;
 	private List<Object> list;
