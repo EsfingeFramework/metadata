@@ -47,6 +47,7 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 				Class<?> clazz = (Class<?>) elementWithMetadata;
 				for (Type t1 : fieldGenericType.getActualTypeArguments()){
 					Class <?> outputClass =(Class<?>)t1;
+					//TODO Remover getDeclaredAnnotation
 					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
 					if(containerFor!=null){
 					if(!containerFor.value().equals(ContainerTarget.FIELDS))

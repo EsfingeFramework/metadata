@@ -54,6 +54,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 						{
 							for(Annotation annotation:methodOfClazz.getDeclaredAnnotations())
 							{
+								//TODO Remover getDeclaredAnnotation
 								Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 								//pega o class do value dessa anotation
 								Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
@@ -75,6 +76,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 					{
 						for(Annotation annotation:methodOfClazz.getDeclaredAnnotations())
 						{
+							//TODO Remover getDeclaredAnnotation
 							Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 							//pega o class do value dessa anotation
 							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);

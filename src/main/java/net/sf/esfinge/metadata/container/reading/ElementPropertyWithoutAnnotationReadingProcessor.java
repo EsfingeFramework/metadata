@@ -56,6 +56,7 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 					Class <?> outputClass =(Class<?>)t1;
 					if(!outputClass.equals(String.class))
 					{
+						//TODO Remover getDeclaredAnnotation
 						ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
 						if(!containerFor.value().equals(ContainerTarget.ALL))
 						{

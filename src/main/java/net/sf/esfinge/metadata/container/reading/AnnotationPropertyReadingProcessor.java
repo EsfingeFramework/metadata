@@ -33,7 +33,7 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
 		try {
 			if (AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains)){
-				
+				//TODO Remover getDeclaredAnnotation
 				Annotation annotation = elementWithMetadata.getAnnotation(annotationThatNeedToContains);
 				
 				for(Method methodAnotation: annotation.annotationType().getDeclaredMethods()){

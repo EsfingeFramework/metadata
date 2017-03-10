@@ -54,6 +54,7 @@ public class AnnotedMethodsWithoutAnnotationReadingProcessor implements Annotati
 					Class <?> outputClass =(Class<?>)t1;			
 					if(!outputClass.equals(Method.class))
 					{
+						//TODO Remover getDeclaredAnnotation
 						ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
 						if(!containerFor.value().equals(ContainerTarget.METHODS))
 						{
