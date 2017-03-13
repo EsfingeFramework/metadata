@@ -48,6 +48,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 					for(Annotation annotation:fieldOfClazz.getDeclaredAnnotations())
 					{
 						//TODO Remover getDeclaredAnnotation
+						//TODO REFACTOR TOTAL
 						Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 						//pega o class do value dessa anotation
 						Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
