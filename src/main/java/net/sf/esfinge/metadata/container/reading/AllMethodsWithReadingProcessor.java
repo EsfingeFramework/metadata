@@ -53,31 +53,37 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 					Class<?> outputClass = (Class<?>) t1;
 					if (!outputClass.equals(Method.class)) {
-						//TODO Remover getDeclaredAnnotation
-						ContainerFor containerFor = (ContainerFor) outputClass
-								.getDeclaredAnnotation(ContainerFor.class);
-						if (!containerFor.value().equals(ContainerTarget.METHODS)) {
-							throw new Exception("ContainerFor: " + containerFor.value() + " no same of METHODS");
-						}
-						for (Method m1 : clazz.getDeclaredMethods()) {
-							
-							if (AnnotationFinder.existAnnotation(m1, annotation.value())) {
-								AnnotationReader metadataReader = new AnnotationReader();
-								Object containerField = outputClass.newInstance();
-								containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
-								lista.add(containerField);
-								set.add(containerField);
-								map.put(m1, containerField);
+						if (AnnotationFinder.existAnnotation(outputClass, ContainerFor.class)) {
+							List<Annotation> containerList = AnnotationFinder.findAnnotation(outputClass,ContainerFor.class);
+							ContainerFor containerFor = (ContainerFor) containerList.get(0);
+						
+						
+							if (!containerFor.value().equals(ContainerTarget.METHODS)) {
+								throw new Exception("ContainerFor: " + containerFor.value() + " no same of METHODS");
 							}
+							for (Method m1 : clazz.getDeclaredMethods()) {
+								
+								if (AnnotationFinder.existAnnotation(m1, annotation.value())) {
+									AnnotationReader metadataReader = new AnnotationReader();
+									Object containerField = outputClass.newInstance();
+									containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
+									lista.add(containerField);
+									set.add(containerField);
+									map.put(m1, containerField);
+								}
+							}
+
+							if (fieldAnnoted.getType().equals(List.class)) {
+								setProperty(container, fieldAnnoted.getName(), lista);
+							} else if (fieldAnnoted.getType().equals(Set.class)) {
+								setProperty(container, fieldAnnoted.getName(), set);
+							} else if (fieldAnnoted.getType().equals(Map.class)) {
+								setProperty(container, fieldAnnoted.getName(), map);
+							}
+
+							
 						}
 
-						if (fieldAnnoted.getType().equals(List.class)) {
-							setProperty(container, fieldAnnoted.getName(), lista);
-						} else if (fieldAnnoted.getType().equals(Set.class)) {
-							setProperty(container, fieldAnnoted.getName(), set);
-						} else if (fieldAnnoted.getType().equals(Map.class)) {
-							setProperty(container, fieldAnnoted.getName(), map);
-						}
 					}
 				}
 			}
