@@ -15,6 +15,8 @@ import net.sf.esfinge.metadata.validate.MetadataValidator;
 
 public class MetadataExecute {
 
+	AnnotationReadingConfig arc;
+	AnnotationReadingProcessor processor;
 	Class<?> containerClass;
 	ContainerFor containerFor;
 	public MetadataExecute(Class<?> containerClass) throws AnnotationValidationException {
@@ -42,8 +44,8 @@ public class MetadataExecute {
 			Class<?> annotationClass = an.annotationType();
 			
 			if (AnnotationFinder.existAnnotation(annotationClass, AnnotationReadingConfig.class)) {
-				AnnotationReadingConfig arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
-				AnnotationReadingProcessor processor = arc.value().newInstance();
+				arc = annotationClass.getAnnotation(AnnotationReadingConfig.class);
+				processor = arc.value().newInstance();
 				processor.initAnnotation(an, (Field) element);
 				processor.read(elementWithMetadata, container, containerFor.value());
 			}
