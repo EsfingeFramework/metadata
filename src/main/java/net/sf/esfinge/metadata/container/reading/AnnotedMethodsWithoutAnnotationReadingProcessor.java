@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -23,18 +24,18 @@ import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
-public class AnnotedMethodsWithoutAnnotationReadingProcessor implements AnnotationReadingProcessor{
+public class AnnotedMethodsWithoutAnnotationReadingProcessor implements AnnotationReadingProcessor {
 
 	private Field fieldAnnoted;
 	private AnnotedMethodsWithoutAnnotation annotation;
 	private List<Object> lista;
 	private Set<Object> set;
-	private Map<Object,Object> map;
+	private Map<Object, Object> map;
 	private ParameterizedType fieldGenericType;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		
+
 		fieldAnnoted = field;
 		annotation = (AnnotedMethodsWithoutAnnotation) an;
 		lista = new ArrayList<Object>();
@@ -42,50 +43,49 @@ public class AnnotedMethodsWithoutAnnotationReadingProcessor implements Annotati
 		map = new HashMap<>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
 
-		
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
+			throws AnnotationReadingException {
 		try {
 			if (target == ContainerTarget.TYPE) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
-				for (Type t1 : fieldGenericType.getActualTypeArguments()){
-					Class <?> outputClass =(Class<?>)t1;			
-					if(!outputClass.equals(Method.class))
-					{
-						ContainerFor containerFor = (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
-						if(!containerFor.value().equals(ContainerTarget.METHODS))
-						{
-							throw new Exception("ContainerFor: " +containerFor.value() +" no same of METHODS");
-						}
+				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
+					Class<?> outputClass = (Class<?>) t1;
+					if (!outputClass.equals(Method.class)) {
+						for (Annotation ann : AnnotationFinder.findAnnotation(outputClass, ContainerFor.class)) {
 
-						for(Method m1: clazz.getDeclaredMethods())
-						{
-							if(!m1.isAnnotationPresent(annotation.value())){
-								AnnotationReader metadataReader = new AnnotationReader();
-								Object containerField = outputClass.newInstance();
-								containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
-								lista.add(containerField);
-								set.add(containerField);
-								map.put(m1, containerField);
+							ContainerFor containerFor = (ContainerFor) ann;
+							if (!containerFor.value().equals(ContainerTarget.METHODS)) {
+								throw new Exception("ContainerFor: " + containerFor.value() + " no same of METHODS");
 							}
-						}			
-						if(fieldAnnoted.getType().equals(List.class)){
-							setProperty(container,fieldAnnoted.getName(),lista);
-						}
-						else if(fieldAnnoted.getType().equals(Set.class)){
-							setProperty(container,fieldAnnoted.getName(),set);
-						}
-						else if(fieldAnnoted.getType().equals(Map.class)){
-							setProperty(container,fieldAnnoted.getName(),map);
-						}
 
+							for (Method m1 : clazz.getDeclaredMethods()) {
+								if (!m1.isAnnotationPresent(annotation.value())) {
+									AnnotationReader metadataReader = new AnnotationReader();
+									Object containerField = outputClass.newInstance();
+									containerField = metadataReader.readingAnnotationsTo(m1, outputClass);
+									lista.add(containerField);
+									set.add(containerField);
+									map.put(m1, containerField);
+								}
+							}
+							if (fieldAnnoted.getType().equals(List.class)) {
+								setProperty(container, fieldAnnoted.getName(), lista);
+							} else if (fieldAnnoted.getType().equals(Set.class)) {
+								setProperty(container, fieldAnnoted.getName(), set);
+							} else if (fieldAnnoted.getType().equals(Map.class)) {
+								setProperty(container, fieldAnnoted.getName(), map);
+							}
+
+						}
 					}
 				}
 			}
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the processMethods in the field "+ fieldAnnoted.getName(), e);
+			throw new AnnotationReadingException(
+					"Cannot read and record the processMethods in the field " + fieldAnnoted.getName(), e);
 		}
 	}
 

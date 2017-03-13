@@ -28,7 +28,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
 
-public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationReadingProcessor{
+public class PropertyProcessorsReadingProcessor implements AnnotationReadingProcessor{
 
 	private Field fieldAnnoted;
 	private List<Object> list;
@@ -89,6 +89,7 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 	private void addObject(AnnotatedElement elementWithMetadata, Object container)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {			
+			//TODO Verificar essa parte Até 
 			if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
@@ -97,6 +98,7 @@ public class PropertyProcessorsProcessorsReadingProcessor implements AnnotationR
 						objectToInvoke);
 				list.add(objectToInvoke);
 			}
+			//AQUIIIIIII
 		}
 	}
 

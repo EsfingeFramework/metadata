@@ -26,7 +26,7 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 	private Field fieldAnnoted;
 	List<Object> lista;
 	Set<Object> set;
-	Map<Object,Object> map;
+	Map<Object, Object> map;
 	ParameterizedType fieldGenericType;
 	AllFieldsWith annotation;
 
@@ -35,52 +35,55 @@ public class AllFieldsWithReadingProcessor implements AnnotationReadingProcessor
 
 		fieldAnnoted = field;
 		lista = new ArrayList<Object>();
-		set=  new HashSet<Object>();
+		set = new HashSet<Object>();
 		fieldGenericType = (ParameterizedType) field.getGenericType();
 		annotation = fieldAnnoted.getDeclaredAnnotation(AllFieldsWith.class);
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
+			throws AnnotationReadingException {
 		try {
 			if (target == ContainerTarget.TYPE) {
 				Class<?> clazz = (Class<?>) elementWithMetadata;
-				for (Type t1 : fieldGenericType.getActualTypeArguments()){
-					Class <?> outputClass =(Class<?>)t1;
-					ContainerFor containerFor = (ContainerFor) outputClass.getDeclaredAnnotation(ContainerFor.class);
-					if(containerFor!=null){
-					if(!containerFor.value().equals(ContainerTarget.FIELDS))
-					{
-						throw new Exception("ContainerFor: " +containerFor.value() +" no same of METHODS");
-					}
+				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 
-					for(Field fields: clazz.getDeclaredFields())
-					{
-						if(AnnotationFinder.existAnnotation(fields, annotation.value()))
-						{
-							AnnotationReader metadataReader = new AnnotationReader();
-							Object containerField = outputClass.newInstance();
-							containerField = metadataReader.readingAnnotationsTo(fields, outputClass);
-							lista.add(containerField);
-							set.add(containerField);
+					Class<?> outputClass = (Class<?>) t1;
+
+					if (AnnotationFinder.existAnnotation(outputClass, ContainerFor.class)) {
+						List<Annotation> containerList = AnnotationFinder.findAnnotation(outputClass,ContainerFor.class);
+						ContainerFor containerFor = (ContainerFor) containerList.get(0);
+						if (containerFor != null) {
+							if (!containerFor.value().equals(ContainerTarget.FIELDS)) {
+								throw new Exception("ContainerFor: " + containerFor.value() + " no same of METHODS");
+							}
+
+							for (Field fields : clazz.getDeclaredFields()) {
+								if (AnnotationFinder.existAnnotation(fields, annotation.value())) {
+									AnnotationReader metadataReader = new AnnotationReader();
+									Object containerField = outputClass.newInstance();
+									containerField = metadataReader.readingAnnotationsTo(fields, outputClass);
+									lista.add(containerField);
+									set.add(containerField);
+								}
+							}
+
+							if (fieldAnnoted.getType().equals(List.class)) {
+								setProperty(container, fieldAnnoted.getName(), lista);
+							} else if (fieldAnnoted.getType().equals(Set.class)) {
+								setProperty(container, fieldAnnoted.getName(), set);
+							} else if (fieldAnnoted.getType().equals(Map.class)) {
+								setProperty(container, fieldAnnoted.getName(), map);
+							}
 						}
 					}
-					
-					if(fieldAnnoted.getType().equals(List.class)){
-						setProperty(container,fieldAnnoted.getName(),lista);
-					}
-					else if(fieldAnnoted.getType().equals(Set.class)){
-						setProperty(container,fieldAnnoted.getName(),set);
-					}
-					else if(fieldAnnoted.getType().equals(Map.class)){
-						setProperty(container,fieldAnnoted.getName(),map);
-					}
-					}
+
 				}
 			}
 
 		} catch (Exception e) {
-			throw new AnnotationReadingException("Cannot read and record the allFieldsWithMetadata in the "+ fieldAnnoted.getName(), e);
+			throw new AnnotationReadingException(
+					"Cannot read and record the allFieldsWithMetadata in the " + fieldAnnoted.getName(), e);
 		}
 
 	}
