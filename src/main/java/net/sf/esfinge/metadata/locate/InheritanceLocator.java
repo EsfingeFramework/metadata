@@ -6,7 +6,7 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
 import java.net.InterfaceAddress;
 
-//TODO Refatorar
+//TODO Refatorar o locator para usar o locator.....
 public class InheritanceLocator extends MetadataLocator {
 
 	private int contador = 0;
@@ -26,7 +26,7 @@ public class InheritanceLocator extends MetadataLocator {
 		{
 			Method methodElement = (Method) originalElement;
 			Class<?> classWithElement= methodElement.getDeclaringClass();
-			//TODO Implements methods in class
+			//Implements methods in class
 				for(Class interfaceWithMethods: classWithElement.getInterfaces())
 					{
 						try {
@@ -38,7 +38,6 @@ public class InheritanceLocator extends MetadataLocator {
 							
 							
 						} catch (NoSuchMethodException | SecurityException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -57,7 +56,6 @@ public class InheritanceLocator extends MetadataLocator {
 						}
 
 					} catch (NoSuchMethodException | SecurityException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}					
 				}

@@ -17,7 +17,7 @@ import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 
 public class AnnotationFinder {
-	//TODO Refatorar
+	
 	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 
 		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
@@ -45,7 +45,6 @@ public class AnnotationFinder {
 					try {
 						locators.put(chain.chainPriority(), chain.value().newInstance());
 					} catch (InstantiationException | IllegalAccessException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

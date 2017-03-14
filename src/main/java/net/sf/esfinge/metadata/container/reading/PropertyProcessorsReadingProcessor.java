@@ -90,7 +90,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {			
 			//TODO Verificar essa parte Até 
-			if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
+			if(AnnotationFinder.existAnnotation(annotation.annotationType(), processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 				Object objectToInvoke = valueClass.newInstance();

@@ -12,6 +12,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
@@ -47,16 +48,17 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 				{
 					for(Annotation annotation:fieldOfClazz.getDeclaredAnnotations())
 					{
-						//TODO Remover getDeclaredAnnotation
 						//TODO REFACTOR TOTAL
-						Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
+						for (Annotation processorAnnotation : AnnotationFinder
+								.findAnnotation(annotation.annotationType(), processorsAnnotationClass)) {
 						//pega o class do value dessa anotation
 						Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 						//cria um objeto dessa classe e invoca o @InitProcessor
 						Object objectToInvoke = valueClass.newInstance();
 						findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 								objectToInvoke);					
-						map.put(fieldOfClazz, objectToInvoke);	
+						map.put(fieldOfClazz, objectToInvoke);
+						}
 
 					}
 				}

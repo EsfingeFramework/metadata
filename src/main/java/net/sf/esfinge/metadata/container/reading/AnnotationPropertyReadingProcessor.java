@@ -36,8 +36,6 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 		try {
 			if (AnnotationFinder.existAnnotation(elementWithMetadata, annotationThatNeedToContains)) {
 
-				// TODO Remover getDeclaredAnnotation
-
 				for (Annotation annotation : AnnotationFinder.findAnnotation(elementWithMetadata,
 						annotationThatNeedToContains)) {
 					for (Method methodAnotation : annotation.annotationType().getDeclaredMethods()) {
