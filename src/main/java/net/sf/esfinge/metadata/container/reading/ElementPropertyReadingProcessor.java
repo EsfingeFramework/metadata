@@ -49,9 +49,6 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 					Class<?> outputClass = (Class<?>) t1;
 					if (!outputClass.equals(String.class)) {
-						// TODO Remover getDeclaredAnnotation
-						// ContainerFor containerFor =
-						// (ContainerFor)outputClass.getDeclaredAnnotation(ContainerFor.class);
 
 						for (Annotation ann : AnnotationFinder.findAnnotation(outputClass, ContainerFor.class)) {
 							ContainerFor containerFor = (ContainerFor) ann;

@@ -48,7 +48,6 @@ public class ProcessFieldsReadingProcessor implements AnnotationReadingProcessor
 				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 					Class<?> outputClass = (Class<?>) t1;
 					if (!outputClass.equals(Field.class)) {
-						// TODO Remover getDeclaredAnnotation
 						for (Annotation ann : AnnotationFinder.findAnnotation(outputClass, ContainerFor.class)) {
 							ContainerFor containerFor = (ContainerFor) ann;
 							if (!containerFor.value().equals(ContainerTarget.FIELDS)) {

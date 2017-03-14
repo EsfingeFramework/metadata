@@ -19,11 +19,6 @@ public class Heranca {
 	
 	
 	InheritanceLocator locator = new InheritanceLocator();
-	//TODO Falta criar os testes para Methods.........
-	//TODO Testes que retornam false
-	//TODO testsForClass
-	
-	
 	
 	@Test
 	public void testNullInterface() {

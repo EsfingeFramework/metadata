@@ -6,9 +6,6 @@ import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class AnnotationReader {
 
-	// To be modified as necessary. Currently only checks if BooleanAnnotation
-	// is present on methods.
-	// TODO:Checking on classes and parameters
 	MetadataRepository metadataRepository;
 	Object container;
 	MetadataExecute metadataExecute;

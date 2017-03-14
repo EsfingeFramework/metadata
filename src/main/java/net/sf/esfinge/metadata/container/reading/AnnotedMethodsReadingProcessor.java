@@ -50,7 +50,6 @@ public class AnnotedMethodsReadingProcessor implements AnnotationReadingProcesso
 				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
 					Class<?> outputClass = (Class<?>) t1;
 					if (!outputClass.equals(Method.class)) {
-						// TODO Remover getDeclaredAnnotation
 						for (Annotation ann : AnnotationFinder.findAnnotation(outputClass, ContainerFor.class)) {
 							ContainerFor containerFor = (ContainerFor) ann;
 							if (!containerFor.value().equals(ContainerTarget.METHODS)) {

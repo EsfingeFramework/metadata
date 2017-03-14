@@ -56,7 +56,8 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	private void annotationSearch(AnnotatedElement elementWithMetadata, Object container)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {
-			if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
+			if(AnnotationFinder.existAnnotation(annotation.annotationType(),processorsAnnotationClass)){
+			//if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 				Object objectToInvoke = valueClass.newInstance();
@@ -67,13 +68,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 				
 				list.add(objectToInvoke);
 			}
-			//else
-			//{
-			//	for(Method annotedMethod : annotation.annotationType().getDeclaredMethods())
-			//	{
-			//		annotationSearch(annotedMethod,container);
-			//	}
-			//}
 		}
 	}
 
@@ -85,7 +79,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
-				
 				if(AnnotationFinder.existAnnotation(methodToInvoke, InitProcessor.class)){
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
 							methodToInvoke);
