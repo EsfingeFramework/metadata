@@ -24,7 +24,8 @@ public class AnnotationLocator extends MetadataLocator {
 		for (Annotation a : ans) {	
 			Class<?>c = a.annotationType();
 			// exclui anotacoes predefinidas do Java e do Esfinge Metadata
-			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) ){					
+			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) &&			
+				 searchInsideAnnotation(annotationClass) && searchInsideAnnotation(c)) {					
 				if (c.equals(annotationClass)) {											
 					an = a;
 					return an;
