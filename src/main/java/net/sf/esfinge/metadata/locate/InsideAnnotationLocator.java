@@ -5,7 +5,7 @@ import java.lang.reflect.AnnotatedElement;
 
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 
-public class AnnotationLocator extends MetadataLocator {
+public class InsideAnnotationLocator extends MetadataLocator {
 	private int contador = 0;
 	private AnnotatedElement OriginalElement;
 

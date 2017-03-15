@@ -5,7 +5,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
 import net.sf.esfinge.metadata.locate.EnclosingElementLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
@@ -36,7 +36,7 @@ public class AnnotationFinderOld {
 		List<MetadataLocator> list = new ArrayList<>();
 		list.add(new InheritanceLocator());
 		list.add(new EnclosingElementLocator());
-		list.add(new AnnotationLocator());
+		list.add(new InsideAnnotationLocator());
 		list.add(new RegularLocator());
 
 		return list;

@@ -5,10 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
-@Locator(value = AnnotationLocator.class, chainPriority = 10)
+@Locator(value = InsideAnnotationLocator.class, chainPriority = 10)
 public @interface SearchInsideAnnotations {
 }

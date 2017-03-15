@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.finder.Locator;
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
 import net.sf.esfinge.metadata.locate.EnclosingElementLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;

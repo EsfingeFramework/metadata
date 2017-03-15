@@ -6,7 +6,7 @@ import java.lang.annotation.Annotation;
 
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.annotationLocator.CTAux1.CT04;
 import net.sf.esfinge.metadata.locate.annotationLocator.CTAux2.CT07;
 import net.sf.esfinge.metadata.locate.annotationLocator.CTAux3.CT10;
@@ -14,7 +14,7 @@ import net.sf.esfinge.metadata.validate.needsToHave.Logging01;
 
 public class TestAnnotationLocator {
 	
-	private AnnotationLocator locator = new AnnotationLocator();
+	private InsideAnnotationLocator locator = new InsideAnnotationLocator();
 	
 	// CT01
 	public class CT01 {		

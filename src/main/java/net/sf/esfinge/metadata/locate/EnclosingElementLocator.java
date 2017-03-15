@@ -30,7 +30,7 @@ public class EnclosingElementLocator extends MetadataLocator {
 					return an;					
 					
 				}else{
-					AnnotationLocator ll = new AnnotationLocator();
+					InsideAnnotationLocator ll = new InsideAnnotationLocator();
 					an = ll.findMetadata(c, annotationClass);
 
 				}
