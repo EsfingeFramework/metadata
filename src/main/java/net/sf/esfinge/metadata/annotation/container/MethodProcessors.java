@@ -10,5 +10,6 @@ import net.sf.esfinge.metadata.container.reading.MethodProcessorsReadingProcesso
 @AnnotationReadingConfig(MethodProcessorsReadingProcessor.class)
 public @interface MethodProcessors {
 	Class<? extends Annotation> value();
+	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
 
 }

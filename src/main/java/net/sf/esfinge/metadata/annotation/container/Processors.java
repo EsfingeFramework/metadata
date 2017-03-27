@@ -11,4 +11,5 @@ import net.sf.esfinge.metadata.container.reading.ProcessorsReadingProcessor;
 
 public @interface Processors {
 	Class<? extends Annotation> value();
+	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
 }

@@ -21,6 +21,7 @@ import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
@@ -35,6 +36,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 	private PropertyProcessors processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	Type fieldGenericType;
+	private Object returnInvoke;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
@@ -96,6 +98,14 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 				Object objectToInvoke = valueClass.newInstance();
 				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 						objectToInvoke);
+				
+				if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+					list.add(objectToInvoke);
+
+				}
+				else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
+					list.add(returnInvoke);
+				}
 				list.add(objectToInvoke);
 			}
 			//AQUIIIIIII
@@ -141,7 +151,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			cont++;
 		}
 		
-				methodToInvoke.invoke(objectToInvoke, args);
+		returnInvoke=methodToInvoke.invoke(objectToInvoke, args);
 	}
 
     public static String propertyToGetter(String propertieName) {

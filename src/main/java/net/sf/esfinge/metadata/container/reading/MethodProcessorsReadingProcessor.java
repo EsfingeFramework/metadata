@@ -17,6 +17,7 @@ import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.InitProcessor;
 import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -27,6 +28,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	private MethodProcessors processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	ParameterizedType fieldGenericType;
+	private Object returnInvoke;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
@@ -60,6 +62,13 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 									findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation,
 											valueClass, objectToInvoke);
 									map.put(methodOfClazz, objectToInvoke);
+									if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+										map.put(methodOfClazz, objectToInvoke);
+
+									}
+									else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
+										map.put(methodOfClazz,returnInvoke);
+									}
 
 								}
 							}
@@ -80,6 +89,13 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 									objectToInvoke);
 							map.put(methodOfClazz, objectToInvoke);
+							if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+								map.put(methodOfClazz, objectToInvoke);
+
+							}
+							else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
+								map.put(methodOfClazz,returnInvoke);
+							}
 
 						}
 					}
@@ -118,6 +134,6 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 			}
 			cont++;
 		}
-		methodToInvoke.invoke(objectToInvoke, args);
+		returnInvoke = methodToInvoke.invoke(objectToInvoke, args);
 	}
 }
