@@ -6,6 +6,7 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ProcessMethodsReadingProcessor;
+import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -16,6 +17,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ProcessMethodsReadingProcessor.class)
 @ValidFieldType({Map.class,List.class,Set.class})
+@SearchOnEnclosingElements
+
 //verificar se a classe do generics da lista possui @ContainerFor(METHOD)
 public @interface ProcessMethods {
 

@@ -7,10 +7,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.container.reading.AnnotationPropertyReadingProcessor;
+import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(AnnotationPropertyReadingProcessor.class)
+@SearchOnEnclosingElements
+
 //Deve validar se o tipo do field eh do mesmo tipo do atributo da anotacao
 //@ValidFieldType({String.class})
 public @interface AnnotationProperty {

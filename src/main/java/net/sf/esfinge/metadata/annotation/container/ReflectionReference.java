@@ -7,12 +7,15 @@ import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ReflectionReferenceReadingProcessor;
+import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ReflectionReferenceReadingProcessor.class)
 @ValidFieldType({Class.class})
+@SearchOnEnclosingElements
+
 public @interface ReflectionReference {
 	
 }

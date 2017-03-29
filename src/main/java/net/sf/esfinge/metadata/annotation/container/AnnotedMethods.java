@@ -10,10 +10,12 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.AnnotedMethodsReadingProcessor;
+import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(AnnotedMethodsReadingProcessor.class)
+@SearchOnEnclosingElements
 
 @ValidFieldType({List.class, Set.class,Map.class})
 public @interface AnnotedMethods {
