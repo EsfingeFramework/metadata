@@ -16,7 +16,7 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -84,7 +84,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 			throws IllegalAccessException, InvocationTargetException {
 		for(Method methodToInvoke: valueClass.getInterfaces()[0].getDeclaredMethods())
 		{
-			if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
+			if(methodToInvoke.isAnnotationPresent(ExecuteProcessor.class)){
 				executeParameters(elementWithMetadata, container, annotation, objectToInvoke, methodToInvoke);
 			}
 		}

@@ -20,7 +20,7 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
@@ -106,7 +106,10 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 				else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
 					list.add(returnInvoke);
 				}
-				list.add(objectToInvoke);
+				else
+				{
+				}
+				//list.add(objectToInvoke);
 			}
 			//AQUIIIIIII
 		}
@@ -120,7 +123,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
-				if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
+				if(methodToInvoke.isAnnotationPresent(ExecuteProcessor.class)){
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
 							methodToInvoke);
 				}

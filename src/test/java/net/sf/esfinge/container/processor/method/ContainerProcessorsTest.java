@@ -14,7 +14,7 @@ public class ContainerProcessorsTest {
 		Container container = new Container();
 		AnnotationReader a1 = new AnnotationReader();
 		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
-		assertNotNull(container.getMap().size());
+		//assertNotNull(container.getMap().size());
 		assertNotEquals(0, container.getMap().size());
 		
 		//assert();			

@@ -14,7 +14,7 @@ import java.util.List;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.Processors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
@@ -47,6 +47,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 		try{		
 			
 			annotationSearch(elementWithMetadata, container);
+			
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
 		catch (Exception e) {
@@ -59,7 +60,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {
 			if(AnnotationFinder.existAnnotation(annotation.annotationType(),processorsAnnotationClass)){
-			//if(annotation.annotationType().isAnnotationPresent(processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 				Object objectToInvoke = valueClass.newInstance();
@@ -87,7 +87,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
-				if(AnnotationFinder.existAnnotation(methodToInvoke, InitProcessor.class)){
+				if(AnnotationFinder.existAnnotation(methodToInvoke, ExecuteProcessor.class)){
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
 							methodToInvoke);
 				}
