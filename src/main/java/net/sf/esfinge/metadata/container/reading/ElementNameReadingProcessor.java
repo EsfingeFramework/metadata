@@ -19,6 +19,8 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	@Override
 	public void initAnnotation(Annotation an, Field field) {
 		containerAnnotatedField = field.getName();
+		System.out.println(an);
+		System.out.println(field);
 	}
 
 	@Override

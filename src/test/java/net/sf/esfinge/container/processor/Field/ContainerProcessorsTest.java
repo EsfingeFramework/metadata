@@ -11,11 +11,10 @@ public class ContainerProcessorsTest {
 
 	@Test
 	public void test() throws Exception {
-		Container container = new Container();
+		ContainerMapField container = new ContainerMapField();
 		AnnotationReader a1 = new AnnotationReader();
 		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
-		assertNotNull(container.getMap().size());
-		
+		System.out.println(container);
 		//assert();			
 	}
 

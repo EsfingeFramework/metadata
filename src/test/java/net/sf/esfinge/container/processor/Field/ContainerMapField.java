@@ -1,14 +1,17 @@
 package net.sf.esfinge.container.processor.Field;
 
 import java.lang.reflect.Field;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessFields;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(value = ContainerTarget.TYPE)
 
-public class Container{
+public class ContainerMapField{
 	
 	//1-Procura anotações com ProcessorAnnotation dentro ok
 	//2-Pega a classe do value ok
@@ -17,16 +20,20 @@ public class Container{
 	//4-chama o método init no objeto criado
 	//5-adiciona na lista
 	
-	@FieldProcessors(ProcessorAnnotation.class)
-	Map<Field,ProcessorInterface> map;
-
-	public Map<Field, ProcessorInterface> getMap() {
-		return map;
+	@ProcessFields
+	private List<FieldMapContainer> list;
+	
+	
+	
+	public List<FieldMapContainer> getList() {
+		return list;
 	}
 
-	public void setMap(Map<Field, ProcessorInterface> map) {
-		this.map = map;
+	public void setList(List<FieldMapContainer> list) {
+		this.list = list;
 	}
+
+	
 	
 	
 	

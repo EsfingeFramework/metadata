@@ -10,11 +10,11 @@ public interface ProcessorInterface {
 	@ExecuteProcessor
 	public void processorInitializationMethod(Annotation ann);
 
-	@ExecuteProcessor
-	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
+//	@ExecuteProcessor
+//	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
 	
-	@ExecuteProcessor
-	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc);
+//	@ExecuteProcessor
+//	public void entidade2(Annotation ann, AnnotatedElement ael, ContainerMapField annotc);
 
 
 }

@@ -11,7 +11,7 @@ import net.sf.esfinge.metadata.container.reading.FieldProcessorsReadingProcessor
 @Retention(RetentionPolicy.RUNTIME)
 @AnnotationReadingConfig(FieldProcessorsReadingProcessor.class)
 @SearchInsideAnnotations
-@ContainerFor(ContainerTarget.TYPE)
+@ContainerFor(ContainerTarget.FIELDS)
 public @interface FieldProcessors {
 	Class<? extends Annotation> value();
 	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
