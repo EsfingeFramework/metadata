@@ -12,7 +12,7 @@ import net.sf.esfinge.metadata.container.reading.FieldProcessorsReadingProcessor
 @AnnotationReadingConfig(FieldProcessorsReadingProcessor.class)
 @SearchInsideAnnotations
 @ContainerFor(ContainerTarget.FIELDS)
-public @interface FieldProcessors {
-	Class<? extends Annotation> value();
+public @interface ProcessorPerField {
+	Class<? extends Annotation> configAnnotation();
 	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
 }

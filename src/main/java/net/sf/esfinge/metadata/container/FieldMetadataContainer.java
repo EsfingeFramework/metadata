@@ -6,7 +6,7 @@ import java.util.Map;
 import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
-import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
 import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 
@@ -15,7 +15,7 @@ public class FieldMetadataContainer {
 	@ElementName
 	private String fieldName;
 
-	@FieldProcessors(value=AnnotationReadingConfig.class, type=ProcessorType.READER_ADDS_PROCESSOR)
+	@ProcessorPerField(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_ADDS_PROCESSOR)
 	private Map<Field, AnnotationReadingProcessor> processors;
 
 	public String getFieldName() {

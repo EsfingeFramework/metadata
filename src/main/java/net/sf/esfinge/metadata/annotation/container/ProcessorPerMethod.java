@@ -11,8 +11,8 @@ import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
 @AnnotationReadingConfig(MethodProcessorsReadingProcessor.class)
 @SearchOnEnclosingElements
 
-public @interface MethodProcessors {
-	Class<? extends Annotation> value();
+public @interface ProcessorPerMethod {
+	Class<? extends Annotation> configAnnotation();
 	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
 
 }

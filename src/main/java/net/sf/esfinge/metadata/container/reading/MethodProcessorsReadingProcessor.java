@@ -16,7 +16,7 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
-import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerMethod;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -25,7 +25,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 
 	private Field fieldAnnoted;
 	private Map<Object, Object> mapReturn,map;
-	private MethodProcessors processors;
+	private ProcessorPerMethod processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	ParameterizedType fieldGenericType;
 	private Object returnInvoke;
@@ -33,8 +33,8 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
 		fieldAnnoted = field;
-		processors = (MethodProcessors) an;
-		processorsAnnotationClass = processors.value();
+		processors = (ProcessorPerMethod) an;
+		processorsAnnotationClass = processors.configAnnotation();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		map = new HashMap<>();
 		mapReturn = new HashMap<>();

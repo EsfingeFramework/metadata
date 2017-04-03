@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
-import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
 import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -20,21 +20,15 @@ public class ContainerMapField{
 	//4-chama o método init no objeto criado
 	//5-adiciona na lista
 	
-	@ProcessFields
-	private List<FieldMapContainer> list;
-	
-	
-	
-	public List<FieldMapContainer> getList() {
-		return list;
+	@ProcessorPerField(configAnnotation = ProcessorAnnotation.class, type= ProcessorType.READER_ADDS_PROCESSOR)
+	Map<Field,ProcessorInterface> map;
+
+	public Map<Field, ProcessorInterface> getMap() {
+		return map;
 	}
 
-	public void setList(List<FieldMapContainer> list) {
-		this.list = list;
+	public void setMap(Map<Field, ProcessorInterface> map) {
+		this.map = map;
 	}
-
-	
-	
-	
 	
 }

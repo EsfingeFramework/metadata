@@ -16,7 +16,7 @@ import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
-import net.sf.esfinge.metadata.annotation.container.Processors;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -24,7 +24,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 
 	private Field fieldAnnoted;
 	private List<Object> list;
-	private Processors processors;
+	private CustomReader processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	Type fieldGenericType;
 	private Object returnInvoke;
@@ -34,8 +34,8 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 		
 		
 		fieldAnnoted = field;
-		processors = (Processors)an;
-		processorsAnnotationClass = processors.value();
+		processors = (CustomReader)an;
+		processorsAnnotationClass = processors.configAnnotation();
 		fieldGenericType =  fieldAnnoted.getGenericType();
 		list = new ArrayList<Object>();		
 		

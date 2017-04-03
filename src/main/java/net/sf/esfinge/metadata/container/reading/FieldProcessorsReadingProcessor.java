@@ -16,7 +16,7 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
-import net.sf.esfinge.metadata.annotation.container.FieldProcessors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -25,16 +25,16 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 
 	private Field fieldAnnoted;
 	private Map<Object, Object> map;
-	private FieldProcessors processors;
+	private ProcessorPerField processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	ParameterizedType fieldGenericType;
-	private Object methodReturn, objectToInvoke;
+	private Object methodReturn, invoke;
 
 	@Override
 	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
 		fieldAnnoted = field;
-		processors = (FieldProcessors) an;
-		processorsAnnotationClass = processors.value();
+		processors = (ProcessorPerField) an;
+		processorsAnnotationClass = processors.configAnnotation();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		map = new HashMap<>();
 	}
@@ -44,23 +44,21 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 			throws AnnotationReadingException {
 		try {
 			if (elementWithMetadata instanceof Class) {
-				System.out.println("elementWithMetadata instanceof Class");
 				Class clazz = (Class) elementWithMetadata;
 				for (Field fieldOfClazz : clazz.getDeclaredFields()) {
 					for (Annotation annotation : fieldOfClazz.getDeclaredAnnotations()) {
 						// TODO REFACTOR TOTAL
 						for (Annotation processorAnnotation : AnnotationFinder
 								.findAnnotation(annotation.annotationType(), processorsAnnotationClass)) {
-							// pega o class do value dessa anotation
+							
 							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value")
 									.invoke(processorAnnotation);
-							// cria um objeto dessa classe e invoca o
-							// @InitProcessor
-							objectToInvoke = valueClass.newInstance();
+
+							invoke = valueClass.newInstance();
 							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
-									objectToInvoke);
+									invoke);
 							if (processors.type() == ProcessorType.READER_ADDS_PROCESSOR) {
-								map.put(fieldOfClazz, objectToInvoke);
+								map.put(fieldOfClazz, invoke);
 
 							} else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
 								map.put(fieldOfClazz, methodReturn);
@@ -79,13 +77,11 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 						Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value")
 								.invoke(processorAnnotation);
 						// cria um objeto dessa classe e invoca o @InitProcessor
-						objectToInvoke = valueClass.newInstance();
+						invoke = valueClass.newInstance();
 						findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
-								objectToInvoke);
+								invoke);
 						if (processors.type() == ProcessorType.READER_ADDS_PROCESSOR) {
-							System.out.println("O ERRO");
-							map.put(fieldOfClazz, objectToInvoke);
-							System.out.println("Certo");
+							map.put(fieldOfClazz, invoke);
 						} else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
 							map.put(fieldOfClazz, methodReturn);
 						}
@@ -127,24 +123,11 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 			}
 			cont++;
 		}
-		System.err.println(objectToInvoke);
-		System.err.println(container);
-		System.out.println(args[0]);
-		System.out.println(args[1]);
-		System.out.println("========================");
 		for (Object object : args) {
-			System.out.println(objectToInvoke.toString());
-			System.out.println(args);
 		}
-		System.out.println("========================");
 		if(methodToInvoke.invoke(objectToInvoke, args)!=null){
 			methodReturn = methodToInvoke.invoke(objectToInvoke, args);
-		}
-		else
-		{
-			System.err.println("INVOKE");
-		}
-		
+		}		
 	}
 
 }

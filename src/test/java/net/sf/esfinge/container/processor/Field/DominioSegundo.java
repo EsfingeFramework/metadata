@@ -12,17 +12,17 @@ public class DominioSegundo implements ProcessorInterface {
 
 	@Override
 	public void processorInitializationMethod(Annotation ann) {
-
-	}
-
-	
-	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann) {
 		
 	}
+
+	
+	//public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann) {
+		
+	//}
 	
 	
-	public void entidade2(Annotation ann, 
-			AnnotatedElement ael, ContainerMapField annotc){
-	}
+	//public void entidade2(Annotation ann, 
+	//		AnnotatedElement ael, ContainerMapField annotc){
+	//}
 
 }

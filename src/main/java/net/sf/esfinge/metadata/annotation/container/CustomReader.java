@@ -11,7 +11,7 @@ import net.sf.esfinge.metadata.container.reading.ProcessorsReadingProcessor;
 @Retention(RUNTIME)
 @AnnotationReadingConfig(ProcessorsReadingProcessor.class)
 @SearchOnEnclosingElements
-public @interface Processors {
-	Class<? extends Annotation> value();
+public @interface CustomReader {
+	Class<? extends Annotation> configAnnotation();
 	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
 }

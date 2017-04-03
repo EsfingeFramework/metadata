@@ -43,7 +43,6 @@ public class MetadataExecute {
 		
 		if((container instanceof MetadataContainer)||(container instanceof FieldMetadataContainer))
 		{
-			System.out.println(repositorio.size());
 			Set<AnnotatedElement> reg = repositorio.keySet();
 			for (Iterator<AnnotatedElement> iterator = reg.iterator(); iterator.hasNext();) {
 				AnnotatedElement element= iterator.next();
@@ -65,9 +64,7 @@ public class MetadataExecute {
 			AnnotationReader ar = new AnnotationReader();
 									
 			MetadataContainer containerMetadata = ar.readingAnnotationsTo(containerClass, MetadataContainer.class);
-			
-			System.out.println("\n"+container+"\n");
-			
+						
 			for( FieldMetadataContainer fieldsContainer :containerMetadata.getFields()){
 				Map<Field, AnnotationReadingProcessor> processFields = fieldsContainer.getProcessors();
 				
