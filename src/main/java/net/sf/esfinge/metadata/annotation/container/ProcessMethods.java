@@ -6,7 +6,7 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ProcessMethodsReadingProcessor;
-import net.sf.esfinge.metadata.validate.needsToHave.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

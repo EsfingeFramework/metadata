@@ -1,4 +1,3 @@
-/*-> se esta anotacao estiver presente, a busca deve ser feita hierarquicamente acima do elemento informado */
 package net.sf.esfinge.metadata.annotation.finder;
 
 import java.lang.annotation.ElementType;

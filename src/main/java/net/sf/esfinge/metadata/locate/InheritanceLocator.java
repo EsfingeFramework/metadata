@@ -2,14 +2,11 @@ package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
-import java.net.InterfaceAddress;
 
 //TODO Refatorar o locator para usar o locator.....
 public class InheritanceLocator extends MetadataLocator {
 
-	private int contador = 0;
 	private AnnotatedElement originalElement;
 
 	@Override
@@ -27,7 +24,7 @@ public class InheritanceLocator extends MetadataLocator {
 			Method methodElement = (Method) originalElement;
 			Class<?> classWithElement= methodElement.getDeclaringClass();
 			//Implements methods in class
-				for(Class interfaceWithMethods: classWithElement.getInterfaces())
+				for(Class<?> interfaceWithMethods: classWithElement.getInterfaces())
 					{
 						try {
 							Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
