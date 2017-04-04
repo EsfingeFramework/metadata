@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.container.reading;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+
 import org.apache.commons.beanutils.PropertyUtils;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
@@ -17,8 +18,8 @@ public class ContainsAnnotationReadingProcessor implements AnnotationReadingProc
 	private ContainsAnnotation  annot;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
-		containerAnnotatedField = field.getName();
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) {
+		containerAnnotatedField = ((Field) elementWithMetadata).getName();
 		annot =(ContainsAnnotation)an;		
 	}
 

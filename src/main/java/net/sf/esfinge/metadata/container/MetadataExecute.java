@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.SynchronousQueue;
 
 import org.hamcrest.core.IsInstanceOf;
 
@@ -62,18 +63,21 @@ public class MetadataExecute {
 		else
 		{
 			AnnotationReader ar = new AnnotationReader();
-									
+								
 			MetadataContainer containerMetadata = ar.readingAnnotationsTo(containerClass, MetadataContainer.class);
-						
+			
+			
+			for (AnnotationReadingProcessor processAnnotation : containerMetadata.getProcessorClass()) {		
+				processAnnotation.read(elementWithMetadata, container, containerFor.value());
+			}
+			
 			for( FieldMetadataContainer fieldsContainer :containerMetadata.getFields()){
-				Map<Field, AnnotationReadingProcessor> processFields = fieldsContainer.getProcessors();
-				
+				Map<Field, AnnotationReadingProcessor> processFields = fieldsContainer.getProcessors();	
 				Iterator it = processFields.values().iterator();
 				while (it.hasNext()) {
 					AnnotationReadingProcessor reading = (AnnotationReadingProcessor)it.next();
 					reading.read(elementWithMetadata, container, containerFor.value());
 				}
-				
 			}
 			
 		}

@@ -34,14 +34,14 @@ public class AnnotedMethodsWithoutAnnotationReadingProcessor implements Annotati
 	private ParameterizedType fieldGenericType;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
 
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		annotation = (AnnotedMethodsWithoutAnnotation) an;
 		lista = new ArrayList<Object>();
 		set = new HashSet<Object>();
 		map = new HashMap<>();
-		fieldGenericType = (ParameterizedType) field.getGenericType();
+		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 
 	}
 

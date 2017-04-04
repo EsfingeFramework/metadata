@@ -14,4 +14,5 @@ import net.sf.esfinge.metadata.container.reading.ProcessorsReadingProcessor;
 public @interface CustomReader {
 	Class<? extends Annotation> configAnnotation();
 	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
+	String readerConfig() default "value";
 }

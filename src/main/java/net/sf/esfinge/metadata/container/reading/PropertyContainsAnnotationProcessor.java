@@ -19,8 +19,8 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 	private String containerAnnotatedField;
 	
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
-		containerAnnotatedField = field.getName();
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) {
+		containerAnnotatedField = ((Field) elementWithMetadata).getName();
 		annot =(PropertyContainsAnnotation)an;
 	}
 

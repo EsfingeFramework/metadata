@@ -31,8 +31,8 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	private Object returnInvoke;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		fieldAnnoted = field;
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
+		fieldAnnoted = (Field) elementWithMetadata;
 		processors = (ProcessorPerMethod) an;
 		processorsAnnotationClass = processors.configAnnotation();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();

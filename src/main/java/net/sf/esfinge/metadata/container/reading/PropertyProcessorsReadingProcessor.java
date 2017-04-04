@@ -39,10 +39,10 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 	private Object returnInvoke;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
 		
 		
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		processors = (PropertyProcessors)an;
 		processorsAnnotationClass = processors.value();
 		fieldGenericType =  fieldAnnoted.getGenericType();
@@ -150,8 +150,6 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			
 			cont++;
 		}
-		
-		System.out.println(methodToInvoke);
 		if(methodToInvoke.invoke(objectToInvoke, args)!=null)
 		{
 			returnInvoke=methodToInvoke.invoke(objectToInvoke, args);			

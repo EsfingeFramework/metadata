@@ -23,6 +23,9 @@ public class MetadataContainer {
 	@ReflectionReference
 	private Class containerClass;
 	
+	@CustomReader(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_ADDS_PROCESSOR, readerConfig="value")
+	private List<AnnotationReadingProcessor> processorClass;
+	
 	@ProcessFields
 	private List<FieldMetadataContainer> fields;
 
@@ -57,16 +60,27 @@ public class MetadataContainer {
 		//}
 
 
-	
 	@Override
 	public String toString() {
 		return "MetadataContainer [containerName=" + containerName + ", containerClass=" + containerClass
-				+ ", objectToExecute=" + fields+ "]";
+				+ ", processorClass=" + processorClass + ", fields=" + fields + "]";
+	}
+	
+	
+		
+	public List<AnnotationReadingProcessor> getProcessorClass() {
+		return processorClass;
+	}
+
+	public void setProcessorClass(List<AnnotationReadingProcessor> processorClass) {
+		this.processorClass = processorClass;
 	}
 
 	public List<FieldMetadataContainer> getFields() {
 		return fields;
 	}
+
+	
 
 	public void setFields(List<FieldMetadataContainer> fields) {
 		this.fields = fields;
