@@ -15,7 +15,7 @@ public class FieldMetadataContainer {
 	@ElementName
 	private String fieldName;
 
-	@ProcessorPerField(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_ADDS_PROCESSOR)
+	@ProcessorPerField(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_IS_PROCESSOR)
 	private Map<Field, AnnotationReadingProcessor> processors;
 
 	public String getFieldName() {

@@ -20,7 +20,7 @@ public class ContainerMapField{
 	//4-chama o método init no objeto criado
 	//5-adiciona na lista
 	
-	@ProcessorPerField(configAnnotation = ProcessorAnnotation.class, type= ProcessorType.READER_ADDS_PROCESSOR)
+	@ProcessorPerField(configAnnotation = ProcessorAnnotation.class, type= ProcessorType.READER_IS_PROCESSOR)
 	Map<Field,ProcessorInterface> map;
 
 	public Map<Field, ProcessorInterface> getMap() {

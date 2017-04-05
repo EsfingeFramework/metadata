@@ -6,7 +6,7 @@ import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.TYPE)
-@CustomReader(configAnnotation=ProcessAnnotation.class,type=ProcessorType.READER_IS_PROCESSOR,readerConfig="value")
+@CustomReader(configAnnotation=ProcessAnnotation.class,type=ProcessorType.READER_ADD_PROCESSOR,readerConfig="value")
 public class AnnotedContainer {
 	
 	private boolean enabled;

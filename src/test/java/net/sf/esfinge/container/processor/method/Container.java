@@ -18,7 +18,7 @@ public class Container{
 	//4-chama o método init no objeto criado
 	//5-adiciona na lista
 	
-	@ProcessorPerMethod(configAnnotation=ProcessorAnnotation.class,type=ProcessorType.READER_ADDS_PROCESSOR)
+	@ProcessorPerMethod(configAnnotation=ProcessorAnnotation.class,type=ProcessorType.READER_IS_PROCESSOR)
 	Map<Method,ProcessorInterface> map;
 
 	public Map<Method, ProcessorInterface> getMap() {

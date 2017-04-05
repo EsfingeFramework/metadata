@@ -96,7 +96,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 						objectToInvoke);
 				
-				if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+				if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
 					list.add(objectToInvoke);
 				}
 				else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){

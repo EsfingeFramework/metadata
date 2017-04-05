@@ -54,7 +54,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 		try{		
 			this.target = target;
 			annotationSearch(elementWithMetadata, container);
-			if(processors.type()!=ProcessorType.READER_IS_PROCESSOR)
+			if(processors.type()!=ProcessorType.READER_ADD_PROCESSOR)
 			{
 				setProperty(container,fieldAnnoted.getName(),list);
 			}
@@ -80,7 +80,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 						objectToInvoke);
 				
-				if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+				if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
 					list.add(objectToInvoke);
 
 				}

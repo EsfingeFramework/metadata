@@ -99,7 +99,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 
 			}
 			
-			if(processors.type() == ProcessorType.READER_ADDS_PROCESSOR){
+			if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
 				setProperty(container, fieldAnnoted.getName(), map);
 
 			}

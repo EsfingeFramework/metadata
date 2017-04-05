@@ -23,7 +23,7 @@ public class MetadataContainer {
 	@ReflectionReference
 	private Class containerClass;
 	
-	@CustomReader(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_ADDS_PROCESSOR, readerConfig="value")
+	@CustomReader(configAnnotation=AnnotationReadingConfig.class, type=ProcessorType.READER_IS_PROCESSOR, readerConfig="value")
 	private List<AnnotationReadingProcessor> processorClass;
 	
 	@ProcessFields

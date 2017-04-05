@@ -20,6 +20,6 @@ import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 public @interface PropertyProcessors {
 
 	Class<? extends Annotation> value();
-	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
+	ProcessorType type() default ProcessorType.READER_ADD_PROCESSOR;
 
 }

@@ -57,7 +57,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 							invoke = valueClass.newInstance();
 							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 									invoke);
-							if (processors.type() == ProcessorType.READER_ADDS_PROCESSOR) {
+							if (processors.type() == ProcessorType.READER_IS_PROCESSOR) {
 								map.put(fieldOfClazz, invoke);
 
 							} else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
@@ -80,7 +80,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 						invoke = valueClass.newInstance();
 						findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 								invoke);
-						if (processors.type() == ProcessorType.READER_ADDS_PROCESSOR) {
+						if (processors.type() == ProcessorType.READER_IS_PROCESSOR) {
 							map.put(fieldOfClazz, invoke);
 						} else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
 							map.put(fieldOfClazz, methodReturn);

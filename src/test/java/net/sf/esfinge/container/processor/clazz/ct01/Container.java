@@ -16,7 +16,7 @@ public class Container{
 	//3-Instancia a classe que está no value ok 
 	//4-chama o método init no objeto criado ok
 	//5-adiciona na lista
-	@CustomReader(configAnnotation = ProcessorAnnotation.class,type=ProcessorType.READER_ADDS_PROCESSOR)
+	@CustomReader(configAnnotation = ProcessorAnnotation.class,type=ProcessorType.READER_IS_PROCESSOR)
 	List<ProcessorInterface> list;
 
 	public List<ProcessorInterface> getList() {

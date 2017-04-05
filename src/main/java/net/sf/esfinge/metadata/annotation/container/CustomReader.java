@@ -13,6 +13,6 @@ import net.sf.esfinge.metadata.container.reading.ProcessorsReadingProcessor;
 @SearchOnEnclosingElements
 public @interface CustomReader {
 	Class<? extends Annotation> configAnnotation();
-	ProcessorType type() default ProcessorType.READER_IS_PROCESSOR;
+	ProcessorType type() default ProcessorType.READER_ADD_PROCESSOR;
 	String readerConfig() default "value";
 }
