@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.AnnotedMethodsReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(AnnotedMethodsReadingProcessor.class)
-
+@SearchOnEnclosingElements
 @ValidFieldType({List.class, Set.class,Map.class})
 public @interface AnnotedMethods {
 

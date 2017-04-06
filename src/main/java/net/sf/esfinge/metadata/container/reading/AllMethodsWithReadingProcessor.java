@@ -33,13 +33,13 @@ public class AllMethodsWithReadingProcessor implements AnnotationReadingProcesso
 	AllMethodsWith annotation;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) {
 
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		lista = new ArrayList<Object>();
 		set = new HashSet<Object>();
 		map = new HashMap<>();
-		fieldGenericType = (ParameterizedType) field.getGenericType();
+		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		annotation = fieldAnnoted.getDeclaredAnnotation(AllMethodsWith.class);
 		
 	}

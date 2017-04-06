@@ -32,12 +32,12 @@ public class AnnotedMethodsReadingProcessor implements AnnotationReadingProcesso
 	ParameterizedType fieldGenericType;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		fieldAnnoted = field;
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
+		fieldAnnoted = (Field) elementWithMetadata;
 		lista = new ArrayList<Object>();
 		set = new HashSet<Object>();
 		map = new HashMap<>();
-		fieldGenericType = (ParameterizedType) field.getGenericType();
+		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 
 	}
 

@@ -13,10 +13,12 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 public class ReflectionReferenceReadingProcessor implements AnnotationReadingProcessor {
 	
 	private String containerAnnotatedField;
+	private Field fieldAnn;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
-		containerAnnotatedField = field.getName();
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) {
+		fieldAnn = (Field) elementWithMetadata;
+		containerAnnotatedField =  fieldAnn.getName();
 	}
 
 	@Override

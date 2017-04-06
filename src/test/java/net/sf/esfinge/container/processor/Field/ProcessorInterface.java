@@ -3,18 +3,18 @@ package net.sf.esfinge.container.processor.Field;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 
 public interface ProcessorInterface {
 	
-	@InitProcessor
+	@ExecuteProcessor
 	public void processorInitializationMethod(Annotation ann);
 
-	@InitProcessor
-	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
+//	@ExecuteProcessor
+//	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
 	
-	@InitProcessor
-	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc);
+//	@ExecuteProcessor
+//	public void entidade2(Annotation ann, AnnotatedElement ael, ContainerMapField annotc);
 
 
 }

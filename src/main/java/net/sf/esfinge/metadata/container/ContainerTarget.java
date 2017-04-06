@@ -4,5 +4,8 @@ public enum ContainerTarget {
 	TYPE,
 	METHODS,
 	FIELDS,
+	ANNOTATIONS,
+	PROPERTY,
+	PARAMETER,
 	ALL,
 }

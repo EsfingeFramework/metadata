@@ -3,9 +3,10 @@ package net.sf.esfinge.metadata.locate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 
-public class AnnotationLocator extends MetadataLocator {
+public class InsideAnnotationLocator extends MetadataLocator {
 	private int contador = 0;
 	private AnnotatedElement OriginalElement;
 
@@ -25,7 +26,7 @@ public class AnnotationLocator extends MetadataLocator {
 			Class<?>c = a.annotationType();
 			// exclui anotacoes predefinidas do Java e do Esfinge Metadata
 			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) &&			
-				 searchInsideAnnotation(annotationClass) && searchInsideAnnotation(c)) {					
+				  searchInsideAnnotation(c)) {					
 				if (c.equals(annotationClass)) {											
 					an = a;
 					return an;
@@ -48,7 +49,8 @@ public class AnnotationLocator extends MetadataLocator {
 
 	// if true, searches inside other annotation
 	private boolean searchInsideAnnotation(Class<?> c) {
-		return c.isAnnotationPresent(SearchInsideAnnotations.class);
+		
+		return AnnotationFinder.existAnnotation(c, SearchInsideAnnotations.class);
 	}
 
 	@Override

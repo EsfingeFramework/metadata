@@ -2,7 +2,8 @@ package net.sf.esfinge.container.processor.clazz.ct01;
 
 import java.util.List;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
-import net.sf.esfinge.metadata.annotation.container.Processors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(value = ContainerTarget.TYPE)
 
@@ -15,7 +16,7 @@ public class Container{
 	//3-Instancia a classe que está no value ok 
 	//4-chama o método init no objeto criado ok
 	//5-adiciona na lista
-	@Processors(ProcessorAnnotation.class)
+	@CustomReader(configAnnotation = ProcessorAnnotation.class,type=ProcessorType.READER_IS_PROCESSOR)
 	List<ProcessorInterface> list;
 
 	public List<ProcessorInterface> getList() {

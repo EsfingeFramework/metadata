@@ -20,8 +20,9 @@ import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
-import net.sf.esfinge.metadata.annotation.container.Processors;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -35,24 +36,23 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 	private PropertyProcessors processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	Type fieldGenericType;
+	private Object returnInvoke;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
 		
 		
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		processors = (PropertyProcessors)an;
 		processorsAnnotationClass = processors.value();
 		fieldGenericType =  fieldAnnoted.getGenericType();
-		list = new ArrayList<Object>();		
-		
+		list = new ArrayList<Object>();				
 	}
 
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
 		try{			
-			
 			annotationSearch(elementWithMetadata, container);
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
@@ -83,7 +83,6 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			
 			addObject(method, container);
 		}
-		
 	}
 
 	private void addObject(AnnotatedElement elementWithMetadata, Object container)
@@ -96,7 +95,15 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 				Object objectToInvoke = valueClass.newInstance();
 				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 						objectToInvoke);
-				list.add(objectToInvoke);
+				
+				if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
+					list.add(objectToInvoke);
+				}
+				else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
+					list.add(returnInvoke);
+				}
+
+				//list.add(objectToInvoke);
 			}
 			//AQUIIIIIII
 		}
@@ -110,17 +117,20 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor
-				if(methodToInvoke.isAnnotationPresent(InitProcessor.class)){
+				if(AnnotationFinder.existAnnotation(methodToInvoke, ExecuteProcessor.class))
+				{
 					executeParameters(elementWithMetadata, container, annotation, objectToInvoke,
 							methodToInvoke);
 				}
 			}
 		}
+		
 	}
 
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
 			Object objectToInvoke ,Method methodToInvoke)
-			throws IllegalAccessException, InvocationTargetException {		Object[] args = new Object[methodToInvoke.getParameters().length];
+			throws IllegalAccessException, InvocationTargetException {		
+		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for(Parameter parameterMethod : methodToInvoke.getParameters()){
 			
@@ -140,8 +150,10 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			
 			cont++;
 		}
-		
-				methodToInvoke.invoke(objectToInvoke, args);
+		if(methodToInvoke.invoke(objectToInvoke, args)!=null)
+		{
+			returnInvoke=methodToInvoke.invoke(objectToInvoke, args);			
+		}
 	}
 
     public static String propertyToGetter(String propertieName) {

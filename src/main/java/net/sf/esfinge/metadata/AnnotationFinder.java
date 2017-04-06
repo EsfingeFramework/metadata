@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.finder.Locator;
-import net.sf.esfinge.metadata.locate.AnnotationLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
-import net.sf.esfinge.metadata.locate.LevelLocator;
+import net.sf.esfinge.metadata.locate.EnclosingElementLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 
@@ -22,7 +22,6 @@ public class AnnotationFinder {
 
 		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
 		List<Annotation> annotations = new ArrayList<Annotation>();
-		
 		for (Map.Entry<Integer, MetadataLocator> entry : locators.entrySet()) {
 			Annotation an = entry.getValue().findMetadata(element, annotationClass);
 			if(an != null) {

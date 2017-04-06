@@ -22,9 +22,9 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 	private AnnotationProperty annot;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) {
 
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		annot = (AnnotationProperty) an;
 		annot.property();
 		annotationThatNeedToContains = annot.annotation();

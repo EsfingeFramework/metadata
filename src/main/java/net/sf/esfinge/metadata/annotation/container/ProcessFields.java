@@ -10,11 +10,13 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ProcessFieldsReadingProcessor;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @AnnotationReadingConfig(ProcessFieldsReadingProcessor.class)
 @ValidFieldType({List.class, Set.class, Map.class})
+@SearchOnEnclosingElements
 //verificar se a classe do generics da lista possui @ContainerFor(FIELD)
 public @interface ProcessFields {
 

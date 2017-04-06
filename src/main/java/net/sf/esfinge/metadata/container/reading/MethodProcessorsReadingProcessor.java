@@ -15,27 +15,30 @@ import java.util.Map;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
-import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerMethod;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
 public class MethodProcessorsReadingProcessor implements AnnotationReadingProcessor {
 
 	private Field fieldAnnoted;
-	private Map<Object, Object> map;
-	private MethodProcessors processors;
+	private Map<Object, Object> mapReturn,map;
+	private ProcessorPerMethod processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	ParameterizedType fieldGenericType;
+	private Object returnInvoke;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
-		fieldAnnoted = field;
-		processors = (MethodProcessors) an;
-		processorsAnnotationClass = processors.value();
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
+		fieldAnnoted = (Field) elementWithMetadata;
+		processors = (ProcessorPerMethod) an;
+		processorsAnnotationClass = processors.configAnnotation();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		map = new HashMap<>();
-	}
+		mapReturn = new HashMap<>();
+	} 
 
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
@@ -61,6 +64,9 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 											valueClass, objectToInvoke);
 									map.put(methodOfClazz, objectToInvoke);
 
+										mapReturn.put(methodOfClazz,returnInvoke);
+
+
 								}
 							}
 						}
@@ -79,7 +85,12 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 							Object objectToInvoke = valueClass.newInstance();
 							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 									objectToInvoke);
-							map.put(methodOfClazz, objectToInvoke);
+
+								map.put(methodOfClazz, objectToInvoke);
+
+
+								mapReturn.put(methodOfClazz,returnInvoke);
+
 
 						}
 					}
@@ -87,7 +98,15 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 				}
 
 			}
-			setProperty(container, fieldAnnoted.getName(), map);
+			
+			if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
+				setProperty(container, fieldAnnoted.getName(), map);
+
+			}
+			else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
+				setProperty(container, fieldAnnoted.getName(), mapReturn);
+			}
+			
 		} catch (Exception e) {
 			throw new AnnotationReadingException("===========" + e);
 		}
@@ -98,7 +117,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
 			throws IllegalAccessException, InvocationTargetException {
 		for (Method methodToInvoke : valueClass.getInterfaces()[0].getDeclaredMethods()) {
-			if (methodToInvoke.isAnnotationPresent(InitProcessor.class)) {
+			if (methodToInvoke.isAnnotationPresent(ExecuteProcessor.class)) {
 				executeParameters(elementWithMetadata, container, annotation, objectToInvoke, methodToInvoke);
 			}
 		}
@@ -118,6 +137,6 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 			}
 			cont++;
 		}
-		methodToInvoke.invoke(objectToInvoke, args);
+		returnInvoke = methodToInvoke.invoke(objectToInvoke, args);
 	}
 }

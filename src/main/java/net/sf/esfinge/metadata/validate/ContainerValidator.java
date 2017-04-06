@@ -6,8 +6,8 @@ import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;
-import net.sf.esfinge.metadata.annotation.container.MethodProcessors;
-import net.sf.esfinge.metadata.annotation.container.Processors;
+import net.sf.esfinge.metadata.annotation.container.ProcessorPerMethod;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.validator.MaxValue;
 import net.sf.esfinge.metadata.annotation.validator.Prohibits;
 import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;

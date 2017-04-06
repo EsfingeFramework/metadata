@@ -3,17 +3,17 @@ package net.sf.esfinge.container.processor.method;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import net.sf.esfinge.metadata.annotation.container.InitProcessor;
+import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 
 public interface ProcessorInterface {
 	
-	@InitProcessor
+	@ExecuteProcessor
 	public void processorInitializationMethod(Annotation ann);
 
-	@InitProcessor
+	@ExecuteProcessor
 	public void processorInitializationMethodAndAnnotedElement(AnnotatedElement ael, Annotation ann);
 	
-	@InitProcessor
+	@ExecuteProcessor
 	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc);
 
 

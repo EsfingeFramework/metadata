@@ -34,13 +34,13 @@ public class ElementPropertyWithoutAnnotationReadingProcessor implements Annotat
 	private ElementPropertyWithoutAnnotation prop;
 
 	@Override
-	public void initAnnotation(Annotation an, Field field) throws AnnotationValidationException {
+	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
 
-		fieldAnnoted = field;
+		fieldAnnoted = (Field) elementWithMetadata;
 		lista = new ArrayList<Object>();
 		set = new HashSet<Object>();
 		map = new HashMap<Object, Object>();
-		fieldGenericType = (ParameterizedType) field.getGenericType();
+		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
 		prop = (ElementPropertyWithoutAnnotation) an;
 
 	}
