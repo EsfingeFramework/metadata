@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.properties;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.properties.containers.*;
@@ -11,8 +12,14 @@ import net.sf.esfinge.metadata.properties.elements.IgnoreOneFieldAndReturnTwo;
 import net.sf.esfinge.metadata.properties.elements.PropertyEmpty;
 import net.sf.esfinge.metadata.properties.elements.WinouthIgnore;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class PropiertiesIgnoreTest {
+	@Before
+	public void destroyAnnotation() throws Exception
+	{
+		MetadataRepository.destroy();
+	}
 	
 	@Test
 	public void testNull() throws Exception {

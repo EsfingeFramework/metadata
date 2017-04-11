@@ -9,6 +9,7 @@ import org.junit.Test;
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.metadata.properties.containers.*;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 
 public class PropiertiesTest {
@@ -18,6 +19,12 @@ public class PropiertiesTest {
 	@Before
 	public void createClasses(){
 		mockBean = new ClassMock("Bean");
+	}
+	
+	@Before
+	public void destroyAnnotation() throws Exception
+	{
+		MetadataRepository.destroy();
 	}
 
 	@Test
