@@ -28,7 +28,7 @@ public class AnnotationFinder {
 				annotations.add(an);
 			}
 		}
-		return annotations;			
+		return annotations;
 	}
 	
 	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
