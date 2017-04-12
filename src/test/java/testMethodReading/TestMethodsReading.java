@@ -2,18 +2,26 @@ package testMethodReading;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import testMethodReading.Dominio;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class TestMethodsReading {
+	
+	@Before
+	public void destroyAnnotation() throws Exception
+	{
+		MetadataRepository.destroy();
+	}
 
 	@Test
 	public void test() throws Exception {
 		AnnotationReader ann = new AnnotationReader();
 		
-		Container ct = ann.readingAnnotationsTo(Dominio.class, Container.class);
+		ContainerEX1 ct = ann.readingAnnotationsTo(Dominio.class, ContainerEX1.class);
 		
 		assertEquals(1,ct.getMethodContainerProcess().size());
 		assertEquals(1, ct.getMethodContainerWinouthAnnotation().size());
@@ -22,7 +30,7 @@ public class TestMethodsReading {
 	public void test2() throws Exception {
 		AnnotationReader ann = new AnnotationReader();
 		
-		Container ct = ann.readingAnnotationsTo(Dominio2.class, Container.class);
+		ContainerEX1 ct = ann.readingAnnotationsTo(Dominio2.class, ContainerEX1.class);
 		
 		assertEquals(1,ct.getMethodContainerProcess().size());
 		assertEquals(3, ct.getMethodContainerWinouthAnnotation().size());
@@ -31,7 +39,7 @@ public class TestMethodsReading {
 	public void test3() throws Exception {
 		AnnotationReader ann = new AnnotationReader();
 		
-		Container ct = ann.readingAnnotationsTo(Dominio3.class, Container.class);
+		ContainerEX1 ct = ann.readingAnnotationsTo(Dominio3.class, ContainerEX1.class);
 		
 		assertEquals(3,ct.getMethodContainerProcess().size());
 		assertEquals(1, ct.getMethodContainerWinouthAnnotation().size());
@@ -41,7 +49,7 @@ public class TestMethodsReading {
 	public void test4() throws Exception {
 		AnnotationReader ann = new AnnotationReader();
 		
-		Container ct = ann.readingAnnotationsTo(Dominio4.class, Container.class);
+		ContainerEX1 ct = ann.readingAnnotationsTo(Dominio4.class, ContainerEX1.class);
 		
 		assertEquals(0,ct.getMethodContainerProcess().size());
 		assertEquals(4, ct.getMethodContainerWinouthAnnotation().size());
@@ -50,7 +58,7 @@ public class TestMethodsReading {
 	public void test5() throws Exception {
 		AnnotationReader ann = new AnnotationReader();
 		
-		Container ct = ann.readingAnnotationsTo(Dominio5.class, Container.class);
+		ContainerEX1 ct = ann.readingAnnotationsTo(Dominio5.class, ContainerEX1.class);
 		
 		assertEquals(4,ct.getMethodContainerProcess().size());
 		assertEquals(0, ct.getMethodContainerWinouthAnnotation().size());

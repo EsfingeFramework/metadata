@@ -12,11 +12,11 @@ public class AnnotationReader {
 	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<?> outputClass) throws Exception {
 
 		Object container = outputClass.newInstance();
-		metadataRepository = new MetadataRepository();
-		metadataRepository.findMetadata(outputClass);
-		
-		metadataExecute = new MetadataExecute(outputClass);
-		container = metadataExecute.execMetadata(metadataRepository.getRepositorio(),elementWithMetadata);
+		metadataRepository = MetadataRepository.initializeRepository();
+		container = metadataRepository.getContainer(outputClass, elementWithMetadata);
+				
+		//metadataExecute = new MetadataExecute(outputClass);
+		//container = metadataExecute.execMetadata(metadataRepository.getRepositorio(),elementWithMetadata);
 		return (E) container;
 	}
 

@@ -9,7 +9,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 
 @ContainerFor(ContainerTarget.TYPE)
-public class Container{
+public class ContainerEX1{
 	
 	@AnnotedMethodsWithoutAnnotation(Procesos.class)
 	private List<MethodContainer> methodContainerWinouthAnnotation;

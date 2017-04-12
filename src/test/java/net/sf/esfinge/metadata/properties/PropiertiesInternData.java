@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.properties;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.properties.containers.*;
@@ -9,17 +10,20 @@ import net.sf.esfinge.metadata.properties.elements.PropertyInClass;
 import net.sf.esfinge.metadata.properties.elements.PropertyInField;
 import net.sf.esfinge.metadata.properties.elements.PropertyInMethod;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class PropiertiesInternData {
 	
 
+	@Before
+	public void destroyAnnotation() throws Exception
+	{
+		MetadataRepository.destroy();
+	}
 	
 	@Test
 	public void testInClass() throws Exception {
 
-		
-		
-		
 		AnnotationReader ar = new AnnotationReader();
 		ContainerDescriptorWithContainAnnotation container= new ContainerDescriptorWithContainAnnotation();
 		container = ar.readingAnnotationsTo(PropertyInClass.class, container.getClass());
@@ -28,7 +32,6 @@ public class PropiertiesInternData {
 		assertEquals(1, container.getProperties().size());
 		assertTrue("FALSO",container.getPropertyDescriptor("prop1").isAnnoted());
 		
-
 
 	}
 	

@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.container;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -23,9 +24,12 @@ public class MetadataExecute {
 	AnnotationReadingProcessor processor;
 	Class<?> containerClass;
 	ContainerFor containerFor;
+	
+	private Map<AnnotatedElement,Annotation> repositorio;
+	
 	public MetadataExecute(Class<?> containerClass) throws AnnotationValidationException {
 		this.containerClass = containerClass;
-		
+		findMetadata(containerClass);
 		this.containerFor = this.containerClass.getDeclaredAnnotation(ContainerFor.class);
 		if(containerFor == null)
 		{
@@ -35,7 +39,7 @@ public class MetadataExecute {
 		MetadataValidator.validateMetadataOn(this.containerClass);
 	}
 
-	public Object execMetadata(Map<AnnotatedElement,Annotation> repositorio, AnnotatedElement elementWithMetadata)
+	public Object execMetadata(AnnotatedElement elementWithMetadata)
 			throws Exception {
 		Object container;
 		container = this.containerClass.newInstance();
@@ -82,7 +86,27 @@ public class MetadataExecute {
 			
 		}
 		
+		
+		
 		return container;
+	}
+	
+	private void findMetadata(Class<?> containerClass)
+	{
+		repositorio = new HashMap<AnnotatedElement,Annotation>();			
+		for (Field field : containerClass.getDeclaredFields())
+		{
+			Annotation[] annotationsField =field.getDeclaredAnnotations();
+			
+			for(Annotation annot: annotationsField)
+			{
+				repositorio.put((AnnotatedElement)field,annot);
+			}
+		}
+	}
+
+	public void setRepositorio(Map<AnnotatedElement, Annotation> repositorio) {
+		this.repositorio = repositorio;
 	}
 
 }
