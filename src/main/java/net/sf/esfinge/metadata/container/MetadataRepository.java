@@ -47,43 +47,18 @@ public class MetadataRepository {
 		}else{
 			MetadataExecute execute = new MetadataExecute(containerClass);
 			Object newContainer = null; //ler o metadado
-			findMetadata(containerClass);
-			newContainer = execute.execMetadata(repositorio, targetElement);
+
+			newContainer = execute.execMetadata(targetElement);
 			addContainer(containerClass, targetElement, newContainer);
 			return (E) newContainer;
 		}
 	}
-	
-	
-	private Map<AnnotatedElement,Annotation> repositorio;
-	
-	
 	
 	@Override
 	public String toString() {
 		return "MetadataRepository [repository=" + repository.toString() + "]";
 	}
 
-	private void findMetadata(Class<?> containerClass)
-	{
-		repositorio = new HashMap<AnnotatedElement,Annotation>();			
-		for (Field field : containerClass.getDeclaredFields())
-		{
-			Annotation[] annotationsField =field.getDeclaredAnnotations();
-			
-			for(Annotation annot: annotationsField)
-			{
-				repositorio.put((AnnotatedElement)field,annot);
-			}
-		}
-	}
-
-	public Map<AnnotatedElement, Annotation> getRepositorio() {
-		return repositorio;
-	}
-
-	public void setRepositorio(Map<AnnotatedElement, Annotation> repositorio) {
-		this.repositorio = repositorio;
-	}
+	
 	
 }
