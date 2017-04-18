@@ -13,6 +13,6 @@ import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 public @interface ProcessorPerMethod {
 	Class<? extends Annotation> configAnnotation();
-	ProcessorType type() default ProcessorType.READER_ADD_PROCESSOR;
+	ProcessorType type() default ProcessorType.READER_ADDS_METADATA;
 
 }
