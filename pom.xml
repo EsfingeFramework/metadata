@@ -31,7 +31,12 @@
 			<email>marconardes@gmail.com</email>
 			<organization></organization>
 			<organizationUrl></organizationUrl>
-
+		</developer>
+				<developer>
+			<name>Jose Lazaro de Siqueira Junior</name>
+			<email>joselazarosiqueira@gmail.com</email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
 		</developer>
 	</developers>
 	<scm>

@@ -7,7 +7,6 @@ import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
-import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 
 @ContainerFor(ContainerTarget.FIELDS)

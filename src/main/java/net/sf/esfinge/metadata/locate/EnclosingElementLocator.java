@@ -5,8 +5,6 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
-
 public class EnclosingElementLocator extends MetadataLocator {
 	private int contador=0;
 	private AnnotatedElement OriginalElement;

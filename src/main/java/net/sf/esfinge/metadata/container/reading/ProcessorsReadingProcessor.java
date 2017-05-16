@@ -2,7 +2,6 @@ package net.sf.esfinge.metadata.container.reading;
 
 import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 
-import java.awt.Container;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
@@ -16,9 +15,9 @@ import java.util.List;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
-import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 

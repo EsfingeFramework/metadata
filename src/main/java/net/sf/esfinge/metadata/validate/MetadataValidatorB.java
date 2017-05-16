@@ -1,14 +1,11 @@
 package net.sf.esfinge.metadata.validate;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import net.sf.esfinge.metadata.AnnotationReader;
-import net.sf.esfinge.metadata.annotation.validator.MaxValue;
 
 public class MetadataValidatorB {
 	

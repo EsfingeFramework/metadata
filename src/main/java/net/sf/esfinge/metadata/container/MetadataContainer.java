@@ -1,16 +1,13 @@
 package net.sf.esfinge.metadata.container;
 
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
-import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
 import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
-import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 
 

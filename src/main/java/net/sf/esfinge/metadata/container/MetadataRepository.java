@@ -1,15 +1,10 @@
 package net.sf.esfinge.metadata.container;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.security.auth.login.Configuration;
-
 import net.sf.esfinge.metadata.AnnotationReadingException;
-import net.sf.esfinge.metadata.AnnotationValidationException;
 
 public class MetadataRepository {
 	private static MetadataRepository instance;

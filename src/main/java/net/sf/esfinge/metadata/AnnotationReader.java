@@ -1,7 +1,7 @@
 package net.sf.esfinge.metadata;
 
 import java.lang.reflect.AnnotatedElement;
-import net.sf.esfinge.metadata.container.MetadataExecute;
+
 import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class AnnotationReader {

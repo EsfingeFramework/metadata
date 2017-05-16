@@ -3,16 +3,11 @@ package net.sf.esfinge.metadata;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import net.sf.esfinge.metadata.annotation.finder.Locator;
-import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
-import net.sf.esfinge.metadata.locate.InheritanceLocator;
-import net.sf.esfinge.metadata.locate.EnclosingElementLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 
