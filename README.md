@@ -1,5 +1,6 @@
-# EsfingeMetadata
 [![Build Status](https://travis-ci.org/EsfingeFramework/metadata.svg?branch=master)](https://travis-ci.org/EsfingeFramework/metadata)
+
+# EsfingeMetadata
 An extensible framework for handling and retrieving metadata in Java, which aims to simplify and mainly assist the development of frameworks based on metadata.
 
 ## Dependencies 
@@ -24,3 +25,10 @@ An extensible framework for handling and retrieving metadata in Java, which aims
     <version>1.2</version>
 </dependency>
 ```
+### Quick Annotation Overview
+
+#### Metadata Locator
+
+##### Metadata Reader
+
+###### Metadata Validator
