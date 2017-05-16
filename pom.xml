@@ -32,7 +32,7 @@
 			<organization></organization>
 			<organizationUrl></organizationUrl>
 		</developer>
-				<developer>
+		<developer>
 			<name>Jose Lazaro de Siqueira Junior</name>
 			<email>joselazarosiqueira@gmail.com</email>
 			<organization></organization>
@@ -131,9 +131,9 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-</plugins>
+		</plugins>
 	</build>
-	
+
 
 	<dependencies>
 		<dependency>
