@@ -63,7 +63,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 		}
 		else
 		{
-			
+			//Criar Um enum
 			Field field = (Field) elementWithMetadata;
 			Class<?> clazz = field.getDeclaringClass();
 			Method method;
