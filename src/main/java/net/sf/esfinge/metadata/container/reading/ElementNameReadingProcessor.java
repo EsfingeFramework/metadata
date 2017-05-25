@@ -24,16 +24,17 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget target) throws AnnotationReadingException {
 		try {
-			FindFields(elementWithMetadata, container, target);
+			findFields(elementWithMetadata, container, target);
 			//
 		} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the element name:",e);
 		}
 	}
 
-	private void FindFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
+	private void findFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(target == ContainerTarget.TYPE){
+			
 			Class<?> class1 = (Class<?>) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,class1.getName());
 		}

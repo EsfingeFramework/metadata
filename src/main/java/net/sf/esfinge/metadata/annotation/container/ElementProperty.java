@@ -6,10 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import net.sf.esfinge.metadata.container.reading.ElementPropertyReadingProcessor;
+import net.sf.esfinge.metadata.container.reading.ElementPropertyReadingProcessorNew;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@AnnotationReadingConfig(ElementPropertyReadingProcessor.class)
+@AnnotationReadingConfig(ElementPropertyReadingProcessorNew.class)
 public @interface ElementProperty {
-	
+	AnnotationPropertyLocation property() default AnnotationPropertyLocation.ALL;	
 }
