@@ -11,7 +11,7 @@ import net.sf.esfinge.metadata.properties.annotation.PropertyAnnotation;
 
 import java.util.List;
 
-@ContainerFor(ContainerTarget.ALL)
+@ContainerFor(ContainerTarget.PROPERTY)
 public class PropertyDescriptorAnnoted {
 
 	@ElementName
@@ -20,7 +20,7 @@ public class PropertyDescriptorAnnoted {
 	@PropertyContainsAnnotation(PropertyAnnotation.class)
 	private boolean annoted;
 
-	@PropertyProcessors(ProcessorAnnotation.class)
+	//@PropertyProcessors(ProcessorAnnotation.class)
 	private List<ProcessorInterface> m1;
 	
 	

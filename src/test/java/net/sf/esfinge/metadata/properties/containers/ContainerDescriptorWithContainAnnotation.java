@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.properties.containers;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.annotation.container.AnnotationPropertyLocation;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.annotation.container.ElementProperty;
@@ -10,7 +11,7 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.TYPE)
 public class ContainerDescriptorWithContainAnnotation {
-	@ElementProperty
+	@ElementProperty(property = AnnotationPropertyLocation.ALL)
 	private Map<String,PropertyDescriptorAnnoted> properties;
 	
 	

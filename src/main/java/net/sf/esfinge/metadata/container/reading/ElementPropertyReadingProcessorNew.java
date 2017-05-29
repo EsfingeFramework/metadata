@@ -53,7 +53,7 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 			Class<?> annotedClass =null;
 			Class<?> genericType = null;
 			Object containerElement = null;
-
+			System.out.println("AQUIIII");
 			if(elementWithMetadata instanceof Class)
 			{
 				 annotedClass = (Class<?>) elementWithMetadata;
@@ -63,20 +63,39 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 					genericType = (Class<?>) fieldGenericType.getActualTypeArguments()[0];
 					containerElement = genericType.newInstance();
 				}
+				else if(fieldGenericType.getRawType().equals(Map.class))
+				{
+					System.out.println("=============================");
+					genericType = (Class<?>) fieldGenericType.getActualTypeArguments()[1];
+					System.out.println(genericType);
+					containerElement = genericType.newInstance();
+					System.out.println("=============================");
+				}
 				
 			}
 			
 			if (target == ContainerTarget.TYPE) {
 				AnnotationPropertyLocation property = annotation.property();
-				
+				System.out.println("IF TYPE");
 				if(property.isSearchField())
 				{
+					System.out.println("IF isSearchField");
 					for (Field annotedField : annotedClass.getDeclaredFields()) {
+				
+						
+						System.out.println("==isSearchField=");
+						System.out.println(annotedField);
+						System.out.println(annotedField.getDeclaredAnnotations().length);
+						System.out.println("==isSearchField=");
+						
 						for(Annotation annotations:annotedField.getDeclaredAnnotations())
 						{
+							
+
 							containerElement = ar.readingAnnotationsTo(annotedField, genericType);
 							listOfProperty.add(containerElement);
-						
+							set.add(containerElement);
+							map.put(annotedField.getName(), containerElement);
 						}
 					}
 					
@@ -85,11 +104,26 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 				{
 					for(Method annotedMethod: annotedClass.getDeclaredMethods())
 					{
+
+
 						if((annotedMethod.getName().contains("get"))||(annotedMethod.getName().contains("is")))
 						{
-							containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
-							listOfProperty.add(containerElement);
-						
+							System.out.println("==isSearchMethod=");
+							System.out.println(annotedMethod);
+							System.out.println(annotedMethod.getDeclaredAnnotations().length);
+							System.out.println("==isSearchMethod=");
+
+							for(Annotation annotations:annotedMethod.getDeclaredAnnotations())
+							{
+								System.out.println("--------------------------------------------");
+								containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
+
+								listOfProperty.add(containerElement);
+								set.add(containerElement);
+								map.put(annotedMethod.getName(), containerElement);
+								System.out.println(map.toString());
+							}
+							
 						}
 						
 						
@@ -101,8 +135,14 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 					{
 						if(annotedMethod.getName().contains("set"))
 						{
-							containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
-							listOfProperty.add(containerElement);						}
+							for(Annotation annotations:annotedMethod.getDeclaredAnnotations())
+							{
+								containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
+								listOfProperty.add(containerElement);
+								set.add(containerElement);
+								map.put(annotedMethod.getName(), containerElement);
+							}
+						}
 						
 						
 					}

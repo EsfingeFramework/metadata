@@ -16,10 +16,10 @@ public class PropertyInMethod {
 	
 	@PropertyContrainAnnotation
 	public int getProp2() {
-		return prop1;
+		return prop2;
 	}
-	public void setProp2(int prop1) {
-		this.prop1 = prop1;
+	public void setProp2(int prop2) {
+		this.prop2 = prop2;
 	}
 
 
