@@ -47,6 +47,17 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 			Method method = (Method) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,method.getName());
 		}
+		else if(target == ContainerTarget.PROPERTY)
+		{
+			if(elementWithMetadata.getClass().equals(Method.class)){
+				Method method = (Method) elementWithMetadata;
+				setProperty(container,containerAnnotatedField,method.getName());
+			}
+			else if(elementWithMetadata.getClass().equals(Field.class)){
+				Field field = (Field) elementWithMetadata;
+				setProperty(container,containerAnnotatedField,field.getName());
+			}
+		}
 		else if(target == ContainerTarget.ALL)
 		{
 			if(elementWithMetadata.getClass().equals(Method.class)){

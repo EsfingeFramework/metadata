@@ -6,6 +6,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -28,16 +29,16 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 public class ElementPropertyReadingProcessorNew implements AnnotationReadingProcessor {
 
 	private Field fieldAnnoted;
-	private List<Object> lista;
+	private List<Object> listOfProperty;
 	private Set<Object> set;
 	private Map<Object, Object> map;
 	private ParameterizedType fieldGenericType;
 	private ElementProperty annotation;
 	@Override
-	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
+	public void initAnnotation(Annotation an, AnnotatedElement fieldWithMetadata) throws AnnotationValidationException {
 
-		fieldAnnoted = (Field) elementWithMetadata;
-		lista = new ArrayList<Object>();
+		fieldAnnoted = (Field) fieldWithMetadata;
+		listOfProperty = new ArrayList<Object>();
 		set = new HashSet<Object>();
 		map = new HashMap<>();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
@@ -48,39 +49,68 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
 		try {
+			AnnotationReader ar = new AnnotationReader();
+			Class<?> annotedClass =null;
+			Class<?> genericType = null;
+			Object containerElement = null;
+
+			if(elementWithMetadata instanceof Class)
+			{
+				 annotedClass = (Class<?>) elementWithMetadata;
+
+				if(fieldGenericType.getRawType().equals(List.class))
+				{
+					genericType = (Class<?>) fieldGenericType.getActualTypeArguments()[0];
+					containerElement = genericType.newInstance();
+				}
+				
+			}
+			
 			if (target == ContainerTarget.TYPE) {
-				Class<?> clazz = (Class<?>) elementWithMetadata;
-				for (Type t1 : fieldGenericType.getActualTypeArguments()) {
-					
-					Class<?> outputClass = (Class<?>) t1;
-					if(annotation.property()== AnnotationPropertyLocation.ALL){
-						if (!outputClass.equals(String.class)) {
-							for (Annotation ann : AnnotationFinder.findAnnotation(outputClass, ContainerFor.class)) {
-								ContainerFor containerFor = (ContainerFor) ann;
-								if (!containerFor.value().equals(ContainerTarget.ALL)) {
-									throw new Exception("ContainerFor: " + containerFor.value() + " no same of ALL");
-								}
-
-								for (Field field : clazz.getDeclaredFields()) {
-
-									AnnotationReader metadataReader = new AnnotationReader();
-									Object containerField = outputClass.newInstance();
-									containerField = metadataReader.readingAnnotationsTo(field, outputClass);
-									lista.add(containerField);
-									set.add(containerField);
-									map.put(field.getName(), containerField);
-
-								}
-								
-								
-								addToContainer(container);
-
-							}
+				AnnotationPropertyLocation property = annotation.property();
+				
+				if(property.isSearchField())
+				{
+					for (Field annotedField : annotedClass.getDeclaredFields()) {
+						for(Annotation annotations:annotedField.getDeclaredAnnotations())
+						{
+							containerElement = ar.readingAnnotationsTo(annotedField, genericType);
+							listOfProperty.add(containerElement);
+						
 						}
 					}
 					
 				}
+				if(property.isSearchGetter())
+				{
+					for(Method annotedMethod: annotedClass.getDeclaredMethods())
+					{
+						if((annotedMethod.getName().contains("get"))||(annotedMethod.getName().contains("is")))
+						{
+							containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
+							listOfProperty.add(containerElement);
+						
+						}
+						
+						
+					}
+				}
+				if(property.isSearchSetter())
+				{
+					for(Method annotedMethod: annotedClass.getDeclaredMethods())
+					{
+						if(annotedMethod.getName().contains("set"))
+						{
+							containerElement = ar.readingAnnotationsTo(annotedMethod, genericType);
+							listOfProperty.add(containerElement);						}
+						
+						
+					}
+				}
+				addToContainer(container);
 			}
+			
+			
 		} catch (Exception e) {
 			throw new AnnotationReadingException(
 					"Cannot read and record the ElementPropertyReadingProcessor in the field " + fieldAnnoted.getName(),
@@ -88,10 +118,13 @@ public class ElementPropertyReadingProcessorNew implements AnnotationReadingProc
 		}
 	}
 
+	
+	
+		
 	private void addToContainer(Object container)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if (fieldAnnoted.getType().equals(List.class)) {
-			setProperty(container, fieldAnnoted.getName(), lista);
+			setProperty(container, fieldAnnoted.getName(), listOfProperty);
 		} else if (fieldAnnoted.getType().equals(Set.class)) {
 			setProperty(container, fieldAnnoted.getName(), set);
 		} else if (fieldAnnoted.getType().equals(Map.class)) {
