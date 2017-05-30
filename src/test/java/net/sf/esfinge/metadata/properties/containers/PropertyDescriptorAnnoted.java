@@ -3,7 +3,9 @@ package net.sf.esfinge.metadata.properties.containers;
 import net.sf.esfinge.container.processor.method.ProcessorAnnotation;
 import net.sf.esfinge.container.processor.method.ProcessorInterface;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
+import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
 import net.sf.esfinge.metadata.container.ContainerTarget;
@@ -11,7 +13,7 @@ import net.sf.esfinge.metadata.properties.annotation.PropertyAnnotation;
 
 import java.util.List;
 
-@ContainerFor(ContainerTarget.PROPERTY)
+@ContainerFor(ContainerTarget.ALL)
 public class PropertyDescriptorAnnoted {
 
 	@ElementName
@@ -20,7 +22,7 @@ public class PropertyDescriptorAnnoted {
 	@PropertyContainsAnnotation(PropertyAnnotation.class)
 	private boolean annoted;
 
-	//@PropertyProcessors(ProcessorAnnotation.class)
+	@CustomReader(configAnnotation=ProcessorAnnotation.class,type = ProcessorType.READER_IS_PROCESSOR)
 	private List<ProcessorInterface> m1;
 	
 	

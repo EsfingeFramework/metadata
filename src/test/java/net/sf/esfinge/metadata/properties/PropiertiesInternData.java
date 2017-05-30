@@ -28,7 +28,9 @@ public class PropiertiesInternData {
 		ContainerDescriptorWithContainAnnotation container= new ContainerDescriptorWithContainAnnotation();
 		container = ar.readingAnnotationsTo(PropertyInClass.class, container.getClass());
 		
-		assertFalse(container.getProperties().isEmpty());
+		
+		//fail("verificar o comportamento da classe");
+		//assertFalse(container.getProperties().isEmpty());
 		assertEquals(1, container.getProperties().size());
 		//assertTrue("FALSO",container.getPropertyDescriptor("prop1").isAnnoted());
 		
@@ -42,6 +44,7 @@ public class PropiertiesInternData {
 		ContainerDescriptorWithContainAnnotation container= new ContainerDescriptorWithContainAnnotation();
 		container = ar.readingAnnotationsTo(PropertyInField.class, container.getClass());
 		
+		//fail("verificar o comportamento da classe");
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(2, container.getProperties().size());
 		//assertTrue("FALSO",container.getPropertyDescriptor("prop2").isAnnoted());
@@ -52,7 +55,7 @@ public class PropiertiesInternData {
 		AnnotationReader ar = new AnnotationReader();
 		ContainerDescriptorWithContainAnnotation container= new ContainerDescriptorWithContainAnnotation();
 		container = ar.readingAnnotationsTo(PropertyInMethod.class, container.getClass());
-		
+		//fail("verificar o comportamento da classe");
 		assertFalse(container.getProperties().isEmpty());
 		assertEquals(2, container.getProperties().size());
 		//assertTrue("FALSO",container.getPropertyDescriptor("prop2").isAnnoted());
