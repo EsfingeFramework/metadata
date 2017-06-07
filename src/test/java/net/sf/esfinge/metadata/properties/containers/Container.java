@@ -12,13 +12,13 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.TYPE)
 public class Container {
-	@ElementProperty(property = AnnotationPropertyLocation.ALL)
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private Map<String,PropertyDescriptor> properties;
 
-	@ElementProperty(property = AnnotationPropertyLocation.ALL)
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private Set<PropertyDescriptor> propertiesSet;
 
-	@ElementProperty(property = AnnotationPropertyLocation.ALL)
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private List<PropertyDescriptor> propertiesList;
 
 	
@@ -50,12 +50,17 @@ public class Container {
 	public Map<String, PropertyDescriptor> getProperties() {
 		return properties;
 	}
+
+	
+	
 	public Set<PropertyDescriptor> getPropertiesSet() {
 		return propertiesSet;
 	}
 	public void setPropertiesSet(Set<PropertyDescriptor> propertiesSet) {
 		this.propertiesSet = propertiesSet;
 	}
+	
+	
 	public List<PropertyDescriptor> getPropertiesList() {
 		return propertiesList;
 	}

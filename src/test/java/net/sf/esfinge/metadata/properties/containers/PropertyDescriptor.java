@@ -3,7 +3,7 @@ package net.sf.esfinge.metadata.properties.containers;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.container.ContainerTarget;
-@ContainerFor(ContainerTarget.ALL)
+@ContainerFor(ContainerTarget.PROPERTY)
 public class PropertyDescriptor {
 
 	@ElementName

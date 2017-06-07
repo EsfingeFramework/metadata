@@ -65,6 +65,8 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 								lista.add(containerField);
 								set.add(containerField);
 								map.put(field.getName(), containerField);
+								
+								
 
 							}
 							if (fieldAnnoted.getType().equals(List.class)) {
