@@ -30,9 +30,8 @@ public class PropiertiesInternData {
 		
 		
 		//fail("verificar o comportamento da classe");
-		assertTrue(container.getProperties().isEmpty());
-		//assertEquals(1, container.getProperties().size());
-		//assertTrue("FALSO",container.getPropertyDescriptor("prop1").isAnnoted());
+		assertEquals(3, container.getProperties().size());
+		assertTrue("FALSO",container.getPropertyDescriptor("prop1").isAnnoted());
 		
 
 	}
@@ -46,8 +45,8 @@ public class PropiertiesInternData {
 		
 		//fail("verificar o comportamento da classe");
 		assertFalse(container.getProperties().isEmpty());
-		assertEquals(1, container.getProperties().size());
-		//assertTrue("FALSO",container.getPropertyDescriptor("prop2").isAnnoted());
+		assertEquals(6, container.getProperties().size());
+		assertTrue("FALSO",container.getPropertyDescriptor("prop2").isAnnoted());
 	}
 
 	@Test
@@ -57,7 +56,7 @@ public class PropiertiesInternData {
 		container = ar.readingAnnotationsTo(PropertyInMethod.class, container.getClass());
 		//fail("verificar o comportamento da classe");
 		assertFalse(container.getProperties().isEmpty());
-		assertEquals(1, container.getProperties().size());
+		assertEquals(6, container.getProperties().size());
 		//assertTrue("FALSO",container.getPropertyDescriptor("prop2").isAnnoted());
 	}
 
