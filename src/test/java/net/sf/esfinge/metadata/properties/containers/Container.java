@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.annotation.container.AnnotationPropertyLocation;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;
 import net.sf.esfinge.metadata.annotation.container.ElementProperty;
@@ -11,13 +12,13 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.TYPE)
 public class Container {
-	@ElementProperty
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private Map<String,PropertyDescriptor> properties;
 
-	@ElementProperty
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private Set<PropertyDescriptor> propertiesSet;
 
-	@ElementProperty
+	@ElementProperty(property = AnnotationPropertyLocation.ATTRIBUTE_ONLY)
 	private List<PropertyDescriptor> propertiesList;
 
 	
@@ -49,12 +50,17 @@ public class Container {
 	public Map<String, PropertyDescriptor> getProperties() {
 		return properties;
 	}
+
+	
+	
 	public Set<PropertyDescriptor> getPropertiesSet() {
 		return propertiesSet;
 	}
 	public void setPropertiesSet(Set<PropertyDescriptor> propertiesSet) {
 		this.propertiesSet = propertiesSet;
 	}
+	
+	
 	public List<PropertyDescriptor> getPropertiesList() {
 		return propertiesList;
 	}

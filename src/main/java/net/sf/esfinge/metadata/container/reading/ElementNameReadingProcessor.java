@@ -24,16 +24,17 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget target) throws AnnotationReadingException {
 		try {
-			FindFields(elementWithMetadata, container, target);
+			findFields(elementWithMetadata, container, target);
 			//
 		} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the element name:",e);
 		}
 	}
 
-	private void FindFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
+	private void findFields(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		if(target == ContainerTarget.TYPE){
+			
 			Class<?> class1 = (Class<?>) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,class1.getName());
 		}
@@ -45,6 +46,17 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 		else if(target == ContainerTarget.METHODS){
 			Method method = (Method) elementWithMetadata;
 			setProperty(container,containerAnnotatedField,method.getName());
+		}
+		else if(target == ContainerTarget.PROPERTY)
+		{
+			if(elementWithMetadata.getClass().equals(Method.class)){
+				Method method = (Method) elementWithMetadata;
+				setProperty(container,containerAnnotatedField,method.getName());
+			}
+			else if(elementWithMetadata.getClass().equals(Field.class)){
+				Field field = (Field) elementWithMetadata;
+				setProperty(container,containerAnnotatedField,field.getName());
+			}
 		}
 		else if(target == ContainerTarget.ALL)
 		{

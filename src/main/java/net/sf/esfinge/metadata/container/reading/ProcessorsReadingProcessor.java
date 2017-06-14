@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
+import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
+import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.CustomReader;
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
@@ -50,7 +52,9 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
-		try{		
+		try{
+						
+			
 			this.target = target;
 			annotationSearch(elementWithMetadata, container);
 			if(processors.type()!=ProcessorType.READER_ADDS_METADATA)
@@ -65,7 +69,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	}
 
 	private void annotationSearch(AnnotatedElement elementWithMetadata, Object container)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws Exception {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {
 			if(AnnotationFinder.existAnnotation(annotation.annotationType(),processorsAnnotationClass)){
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
@@ -74,13 +78,26 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 				
 				//O ERRO ESTÁ AQUIII
 				Object objectToInvoke = valueClass.newInstance();
-
+				
+				
+			
+				if(AnnotationFinder.existAnnotation(objectToInvoke.getClass(), ContainerFor.class))
+				{
+					AnnotationReader ar = new AnnotationReader();
+					objectToInvoke = ar.readingAnnotationsTo(elementWithMetadata, objectToInvoke.getClass());
+				}
+					
+				
 				
 				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
 						objectToInvoke);
 				
+				
+				
 				if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
+					
 					list.add(objectToInvoke);
+
 
 				}
 				else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
@@ -91,10 +108,14 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 	}
 
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
-			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
-			throws IllegalAccessException, InvocationTargetException {
+			Annotation annotation, Class<?> valueClass, Object objectToInvoke) throws Exception
+			 {
 		for(Class<?> interfaces : valueClass.getInterfaces())
 		{
+			if(interfaces.getDeclaredMethods().length ==0)
+			{
+				returnInvoke = objectToInvoke;
+			}
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())
 			{
 				//Retorna um array list com os metodos anotados com o @InitProcessor

@@ -27,7 +27,6 @@ public class PropertyContainsAnnotationProcessor implements AnnotationReadingPro
 	@Override
 	public void read(AnnotatedElement elementWithMetadata, Object container,ContainerTarget enumStr) throws AnnotationReadingException {
 		try {
-			
 			Class<? extends Annotation> annotationThatNeedToContains = annot.value();
 			
 			if(AnnotationFinder.existAnnotation(elementWithMetadata,annotationThatNeedToContains))

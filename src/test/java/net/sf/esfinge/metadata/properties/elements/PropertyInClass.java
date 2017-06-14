@@ -5,6 +5,7 @@ import net.sf.esfinge.metadata.properties.annotation.PropertyContrainAnnotation;
 
 @PropertyContrainAnnotation
 public class PropertyInClass {
+	
 	int prop1;
 
 	

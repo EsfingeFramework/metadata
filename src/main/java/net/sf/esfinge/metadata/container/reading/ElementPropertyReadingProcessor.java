@@ -19,6 +19,7 @@ import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
+import net.sf.esfinge.metadata.annotation.container.ElementProperty;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
@@ -29,7 +30,7 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 	private Set<Object> set;
 	private Map<Object, Object> map;
 	private ParameterizedType fieldGenericType;
-
+	private ElementProperty elementProperty;
 	@Override
 	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
 
@@ -38,7 +39,7 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 		set = new HashSet<Object>();
 		map = new HashMap<>();
 		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
-
+		elementProperty = (ElementProperty) an;
 	}
 
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
@@ -64,6 +65,8 @@ public class ElementPropertyReadingProcessor implements AnnotationReadingProcess
 								lista.add(containerField);
 								set.add(containerField);
 								map.put(field.getName(), containerField);
+								
+								
 
 							}
 							if (fieldAnnoted.getType().equals(List.class)) {
