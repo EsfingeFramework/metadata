@@ -1,6 +1,7 @@
 package TesteProvisorioPorcessorEmContainer;
 
 import java.awt.Container;
+import java.lang.reflect.AnnotatedElement;
 
 public class ImplementedInterface implements InterfaceCustom {
 
@@ -8,16 +9,22 @@ public class ImplementedInterface implements InterfaceCustom {
 	public void validContainer(AnnotedContainer conteiner) {
 		// TODO Auto-generated method stub
 
-
 		conteiner.setEnabled(true);
 		
 
 	}
 
 	@Override
-	public void setClassName(AnnotedContainer conteiner, Class annotedClass) {
+	public void setClassName(AnnotedContainer conteiner, AnnotatedElement annotedClass) {
 		// TODO Auto-generated method stub
-		conteiner.setClassName(annotedClass.getName());
+		Class setClass = null;
+		
+		if(annotedClass instanceof Class)
+		{
+			setClass = (Class) annotedClass;
+		}
+		
+		conteiner.setClassName(setClass.getName());
 
 	}
 

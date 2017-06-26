@@ -1,5 +1,7 @@
 package TesteProvisorioPorcessorEmContainer;
 
+import java.lang.reflect.AnnotatedElement;
+
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 
 public interface InterfaceCustom {
@@ -8,5 +10,5 @@ public interface InterfaceCustom {
 	public void validContainer(AnnotedContainer annot);
 	
 	@ExecuteProcessor
-	public void setClassName(AnnotedContainer conteiner, Class annotedClass);
+	public void setClassName(AnnotedContainer conteiner, AnnotatedElement annotedClass);
 }
