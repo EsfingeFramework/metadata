@@ -2,11 +2,18 @@ package net.sf.esfinge.metadata;
 
 import java.lang.reflect.AnnotatedElement;
 
+import org.hamcrest.core.IsInstanceOf;
+
 import net.sf.esfinge.metadata.container.MetadataRepository;
+import net.sf.esfinge.metadata.validate.MetadataValidator;
 
 public class AnnotationReader {
 	
 	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<?> outputClass) throws Exception {
+		if(elementWithMetadata instanceof Class)
+		{
+			MetadataValidator.validateMetadataOn((Class)elementWithMetadata);
+		}
 		MetadataRepository metadataRepository = MetadataRepository.initializeRepository();
 		Object container  = metadataRepository.getContainer(outputClass, elementWithMetadata);
 		return (E) container;
