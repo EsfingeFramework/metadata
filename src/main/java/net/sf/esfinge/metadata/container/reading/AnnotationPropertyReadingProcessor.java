@@ -34,6 +34,7 @@ public class AnnotationPropertyReadingProcessor implements AnnotationReadingProc
 			throws AnnotationReadingException {
 		try {
 			if (AnnotationFinder.existAnnotation(elementWithMetadata, annotationThatNeedToContains)) {
+				
 
 				for (Annotation annotation : AnnotationFinder.findAnnotation(elementWithMetadata,
 						annotationThatNeedToContains)) {

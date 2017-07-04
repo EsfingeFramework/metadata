@@ -22,9 +22,22 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 	}
 
 	@Override
-	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget enumStr) throws AnnotationReadingException {
+	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target) throws AnnotationReadingException {
 		try {
-			setProperty(container, containerAnnotatedField,elementWithMetadata);
+			if(target == ContainerTarget.FIELDS)
+			{
+				Field field= (Field)elementWithMetadata;
+				setProperty(container, containerAnnotatedField,field);
+			}
+			else if(target == ContainerTarget.TYPE) {
+				Class clazz= (Class)elementWithMetadata;
+				setProperty(container, containerAnnotatedField,clazz);
+			}
+			else
+			{
+				setProperty(container, containerAnnotatedField,elementWithMetadata);
+			}
+			
 		
 		} catch (Exception e) {
 			throw new AnnotationReadingException("Cannot read and record the file "+elementWithMetadata+"in "+containerAnnotatedField,e);

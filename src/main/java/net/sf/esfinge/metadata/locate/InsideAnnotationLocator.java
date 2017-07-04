@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.util.List;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
@@ -31,6 +32,14 @@ public class InsideAnnotationLocator extends MetadataLocator {
 					an = a;
 					return an;
 				}else {
+					boolean exist = AnnotationFinder.existAnnotation(c, annotationClass);
+					List<Annotation> value = AnnotationFinder.findAnnotation(c, annotationClass);
+					
+					if(exist == true)
+					{
+						return value.get(0);
+					}
+										
 					return findMetadata(c, annotationClass);
 				}							
 			}
