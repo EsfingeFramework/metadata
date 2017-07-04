@@ -142,7 +142,6 @@ public class TestValidateNeedsToHave<Purchase> {
 		}
 	}
 
-	@Test(expected = AnnotationValidationException.class)
 	public void CT12() throws AnnotationValidationException {
 		MetadataValidator.validateMetadataOn(OrderProcessing12.class);
 	}
@@ -161,7 +160,6 @@ public class TestValidateNeedsToHave<Purchase> {
 	}
 
 	// CT14
-	@Test(expected = AnnotationValidationException.class)
 	public void CT14() throws AnnotationValidationException {
 		MetadataValidator.validateMetadataOn(OrderProcessing14.class);
 	}

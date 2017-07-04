@@ -5,7 +5,7 @@ import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 import java.lang.annotation.Retention;
 
-@SearchOnEnclosingElements
+
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Transaction02 {
 

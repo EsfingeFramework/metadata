@@ -26,21 +26,19 @@ public class InsideAnnotationLocator extends MetadataLocator {
 		for (Annotation a : ans) {	
 			Class<?>c = a.annotationType();
 			// exclui anotacoes predefinidas do Java e do Esfinge Metadata
-			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c) &&			
-				  searchInsideAnnotation(c)) {					
-				if (c.equals(annotationClass)) {											
+			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c)) {					
+				if (c.equals(annotationClass)) {
+
 					an = a;
 					return an;
 				}else {
 					boolean exist = AnnotationFinder.existAnnotation(c, annotationClass);
 					List<Annotation> value = AnnotationFinder.findAnnotation(c, annotationClass);
-					
 					if(exist == true)
 					{
-						return value.get(0);
+						an = value.get(0);
 					}
 										
-					return findMetadata(c, annotationClass);
 				}							
 			}
 		}
