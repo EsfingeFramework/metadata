@@ -7,8 +7,6 @@ public class AnnotedClass {
 	@AnnotationWithAnnotations
 	private int field1;
 	
-	private int field2;
-
 	public int getField1() {
 		return field1;
 	}
@@ -17,13 +15,6 @@ public class AnnotedClass {
 		this.field1 = field1;
 	}
 
-	public int getField2() {
-		return field2;
-	}
-
-	public void setField2(int field2) {
-		this.field2 = field2;
-	}
 	
 	
 
