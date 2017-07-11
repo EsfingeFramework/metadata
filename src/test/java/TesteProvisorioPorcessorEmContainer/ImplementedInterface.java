@@ -1,6 +1,5 @@
 package TesteProvisorioPorcessorEmContainer;
 
-import java.awt.Container;
 import java.lang.reflect.AnnotatedElement;
 
 public class ImplementedInterface implements InterfaceCustom {

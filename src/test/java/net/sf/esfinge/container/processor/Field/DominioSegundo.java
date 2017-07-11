@@ -1,7 +1,6 @@
 package net.sf.esfinge.container.processor.Field;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
 
 
 public class DominioSegundo implements ProcessorInterface {

@@ -4,8 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import net.sf.esfinge.metadata.container.reading.MethodProcessorsReadingProcessor;
 import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.container.reading.MethodProcessorsReadingProcessor;
 
 @Retention(RetentionPolicy.RUNTIME)
 @AnnotationReadingConfig(MethodProcessorsReadingProcessor.class)

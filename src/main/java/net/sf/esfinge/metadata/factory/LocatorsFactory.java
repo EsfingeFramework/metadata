@@ -5,8 +5,8 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.EnclosingElementLocator;
+import net.sf.esfinge.metadata.locate.InsideAnnotationLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 

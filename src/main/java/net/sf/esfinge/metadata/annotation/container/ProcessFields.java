@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 import net.sf.esfinge.metadata.annotation.validator.ValidFieldType;
 import net.sf.esfinge.metadata.container.reading.ProcessFieldsReadingProcessor;
-import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

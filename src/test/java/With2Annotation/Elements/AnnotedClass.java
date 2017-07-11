@@ -1,7 +1,5 @@
 package With2Annotation.Elements;
 
-import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
-
 public class AnnotedClass {
 	
 	@AnnotationWithAnnotations

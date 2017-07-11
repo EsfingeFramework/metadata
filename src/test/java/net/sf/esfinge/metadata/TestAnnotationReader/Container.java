@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.TestAnnotationReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
+
 import net.sf.esfinge.metadata.annotation.container.AllFieldsWith;
 import net.sf.esfinge.metadata.annotation.container.AllMethodsWith;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;

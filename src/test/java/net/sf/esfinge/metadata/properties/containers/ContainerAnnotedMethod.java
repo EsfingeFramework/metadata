@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.properties.containers;
 
 import java.util.List;
+
 import net.sf.esfinge.metadata.annotation.container.AnnotedMethods;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ElementName;

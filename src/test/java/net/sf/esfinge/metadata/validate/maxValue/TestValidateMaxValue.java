@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
-import net.sf.esfinge.metadata.validate.MetadataValidatorB;
 import net.sf.esfinge.metadata.validate.minValue.PointsToUser;
 
 public class TestValidateMaxValue {

@@ -1,18 +1,20 @@
 package net.sf.esfinge.metadata.properties;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.properties.containers.*;
+import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
+import net.sf.esfinge.metadata.properties.containers.ContainerIgnore;
 import net.sf.esfinge.metadata.properties.elements.IgnoraInterno;
 import net.sf.esfinge.metadata.properties.elements.IgnoreOneField;
 import net.sf.esfinge.metadata.properties.elements.IgnoreOneFieldAndReturnTwo;
 import net.sf.esfinge.metadata.properties.elements.PropertyEmpty;
 import net.sf.esfinge.metadata.properties.elements.WinouthIgnore;
-import net.sf.esfinge.metadata.AnnotationReader;
-import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class PropiertiesIgnoreTest {
 	@Before

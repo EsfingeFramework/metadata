@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.validate.prohibits;
 
 import org.junit.Test;
+
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
 

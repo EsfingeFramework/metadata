@@ -1,11 +1,10 @@
 package testMethodReading;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import testMethodReading.Dominio;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 

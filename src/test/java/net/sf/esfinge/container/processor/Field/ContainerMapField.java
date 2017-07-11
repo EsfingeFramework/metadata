@@ -1,12 +1,10 @@
 package net.sf.esfinge.container.processor.Field;
 
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ProcessorPerField;
-import net.sf.esfinge.metadata.annotation.container.ProcessFields;
 import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(value = ContainerTarget.TYPE)

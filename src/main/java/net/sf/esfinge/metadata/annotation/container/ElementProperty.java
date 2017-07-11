@@ -5,7 +5,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import net.sf.esfinge.metadata.container.reading.ElementPropertyReadingProcessor;
 import net.sf.esfinge.metadata.container.reading.ElementPropertyReadingProcessorNew;
 
 @Retention(RetentionPolicy.RUNTIME)

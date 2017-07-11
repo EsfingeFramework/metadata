@@ -1,6 +1,7 @@
 package Test.containers;
 
 import java.util.List;
+
 import Test.annotations.FieldAnnoted;
 import net.sf.esfinge.metadata.annotation.container.AllFieldsWith;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;

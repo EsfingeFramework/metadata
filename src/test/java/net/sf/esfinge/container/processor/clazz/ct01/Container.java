@@ -1,9 +1,10 @@
 package net.sf.esfinge.container.processor.clazz.ct01;
 
 import java.util.List;
+
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
-import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.CustomReader;
+import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 @ContainerFor(value = ContainerTarget.TYPE)
 

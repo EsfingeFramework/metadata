@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.TestAnnotationReader;
 
 import java.util.List;
+
 import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
 import net.sf.esfinge.metadata.annotation.container.ContainsAnnotation;

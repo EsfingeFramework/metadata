@@ -6,8 +6,8 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
-import net.sf.esfinge.metadata.container.reading.PropertyProcessorsReadingProcessor;
 import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.container.reading.PropertyProcessorsReadingProcessor;
 
 
 

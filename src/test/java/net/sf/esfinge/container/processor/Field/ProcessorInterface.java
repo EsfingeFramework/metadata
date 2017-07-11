@@ -1,7 +1,6 @@
 package net.sf.esfinge.container.processor.Field;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
 
 import net.sf.esfinge.metadata.annotation.container.ExecuteProcessor;
 

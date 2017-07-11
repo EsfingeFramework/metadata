@@ -1,16 +1,18 @@
 package net.sf.esfinge.metadata.properties;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.properties.containers.*;
+import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.container.MetadataRepository;
+import net.sf.esfinge.metadata.properties.containers.ContainerDescriptorWithContainAnnotation;
 import net.sf.esfinge.metadata.properties.elements.PropertyInClass;
 import net.sf.esfinge.metadata.properties.elements.PropertyInField;
 import net.sf.esfinge.metadata.properties.elements.PropertyInMethod;
-import net.sf.esfinge.metadata.AnnotationReader;
-import net.sf.esfinge.metadata.container.MetadataRepository;
 
 public class PropiertiesInternData {
 	

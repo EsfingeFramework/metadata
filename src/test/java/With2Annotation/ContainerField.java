@@ -4,7 +4,6 @@ import With2Annotation.Elements.Annotation1;
 import With2Annotation.Elements.Annotation2;
 import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
-import net.sf.esfinge.metadata.annotation.container.ReflectionReference;
 import net.sf.esfinge.metadata.container.ContainerTarget;
 
 @ContainerFor(ContainerTarget.FIELDS)

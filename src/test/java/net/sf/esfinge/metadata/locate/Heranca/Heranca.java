@@ -1,19 +1,19 @@
 package net.sf.esfinge.metadata.locate.Heranca;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.annotation.Annotation;
 
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.locate.annotationLocator.Transaction01;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.locate.InheritanceLocator;
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
-import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.Heranca.Interfaces.ClassNotAnnotation;
 import net.sf.esfinge.metadata.locate.Heranca.Interfaces.ClassWithAnnotation;
-import net.sf.esfinge.metadata.locate.annotationLocator.TestAnnotationLocator.CT01;
 
 public class Heranca {
 	

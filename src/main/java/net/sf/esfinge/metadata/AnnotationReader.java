@@ -2,8 +2,6 @@ package net.sf.esfinge.metadata;
 
 import java.lang.reflect.AnnotatedElement;
 
-import org.hamcrest.core.IsInstanceOf;
-
 import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.validate.MetadataValidator;
 
