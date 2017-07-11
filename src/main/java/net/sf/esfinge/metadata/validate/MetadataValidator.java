@@ -15,13 +15,15 @@ import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 
 public class MetadataValidator {
 	public static void validateMetadataOn(Class<?> clazz) throws AnnotationValidationException{
-
+	
 		for(Annotation an : clazz.getAnnotations()){
 			validateAnnotation(an, clazz);
+			
 		}
 		
 		Class<?> currentClazz = clazz;
 		while(currentClazz != Object.class && currentClazz!=null){
+			
 			for(Method m : currentClazz.getDeclaredMethods()){
 				for(Annotation an : m.getAnnotations()){
 					validateAnnotation(an, m);
@@ -48,8 +50,8 @@ public class MetadataValidator {
 	
 	private static void validateAnnotation(Annotation target, AnnotatedElement ae) throws AnnotationValidationException{				
 		
-		for(Annotation an: target.annotationType().getAnnotations()){			
-			if(an.annotationType().isAnnotationPresent(ToValidate.class)){				
+		for(Annotation an: target.annotationType().getAnnotations()){	
+			if(an.annotationType().isAnnotationPresent(ToValidate.class)){
 				executeValidation(target, ae, an);								
 			}else if(!isJavaAnnotation(an) && !isEsfingeMetadataAnnotation(an)){				
 				validateAnnotation(an, ae);						
@@ -58,9 +60,7 @@ public class MetadataValidator {
 		
 		for(Method m : target.annotationType().getMethods()){
 			for(Annotation an: m.getAnnotations()){	
-				if(isEsfingeMetadataAnnotation(an)){
 					executePropertyValidation(target, ae, an, m);
-				}
 			}
 		}
 	}

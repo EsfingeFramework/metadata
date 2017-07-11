@@ -22,13 +22,7 @@ public class TestWith2AnnotationsInAnnotation {
 		assertTrue(x);
 		assertTrue(y);
 		
-		ContainerClass ct = ar.readingAnnotationsTo(AnnotedClass.class, ContainerClass.class);
 		
-		for(ContainerField fl :ct.getFieldList()){
-
-			System.out.println(fl.getA());
-			System.out.println(fl.getB());
-		}
 	}
 	
 
