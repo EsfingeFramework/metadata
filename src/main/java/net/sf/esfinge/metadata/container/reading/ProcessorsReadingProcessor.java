@@ -46,7 +46,6 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			fieldAnnoted = (Field) elementAnnoted;
 			fieldGenericType =  fieldAnnoted.getGenericType();
 		}
-		list = new ArrayList<Object>();		
 	}
 
 	@Override
@@ -54,7 +53,8 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			throws AnnotationReadingException {
 		try{
 						
-			
+			list = new ArrayList<Object>();		
+
 			this.target = target;
 			annotationSearch(elementWithMetadata, container);
 			if(processors.type()!=ProcessorType.READER_ADDS_METADATA)
