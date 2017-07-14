@@ -8,6 +8,7 @@ import net.sf.esfinge.metadata.validate.MetadataValidator;
 public class AnnotationReader {
 	
 	public <E> E readingAnnotationsTo(AnnotatedElement elementWithMetadata, Class<?> outputClass) throws Exception {
+		MetadataRepository.destroy();
 		if(elementWithMetadata instanceof Class)
 		{
 			MetadataValidator.validateMetadataOn((Class)elementWithMetadata);
