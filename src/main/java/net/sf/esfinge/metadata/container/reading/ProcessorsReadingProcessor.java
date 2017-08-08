@@ -141,7 +141,7 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 			{
 				args[cont] = elementWithMetadata;
 			}
-			else if(parameterMethod.getType().equals(container.getClass()))
+			else if(parameterMethod.getType().equals(Object.class))
 			{
 				args[cont] = container;
 
