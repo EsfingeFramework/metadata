@@ -23,19 +23,25 @@ import net.sf.esfinge.metadata.container.ContainerTarget;
 
 public class MethodProcessorsReadingProcessor implements AnnotationReadingProcessor {
 
-	private Field fieldAnnoted;
+	private AnnotatedElement elementAnnoted;
 	private Map<Object, Object> mapReturn,map;
 	private ProcessorPerMethod processors;
 	private Class<? extends Annotation> processorsAnnotationClass;
 	ParameterizedType fieldGenericType;
-	private Object returnInvoke;
+	private Object methodReturn, invoke;;
 
 	@Override
 	public void initAnnotation(Annotation an, AnnotatedElement elementWithMetadata) throws AnnotationValidationException {
-		fieldAnnoted = (Field) elementWithMetadata;
+		elementAnnoted = elementWithMetadata;
 		processors = (ProcessorPerMethod) an;
 		processorsAnnotationClass = processors.configAnnotation();
-		fieldGenericType = (ParameterizedType) fieldAnnoted.getGenericType();
+		
+		if(elementAnnoted.getClass().equals(Field.class))
+		{
+			fieldGenericType = (ParameterizedType) ((Field)elementAnnoted).getGenericType();
+
+		}
+		
 		map = new HashMap<>();
 		mapReturn = new HashMap<>();
 	} 
@@ -44,73 +50,141 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	public void read(AnnotatedElement elementWithMetadata, Object container, ContainerTarget target)
 			throws AnnotationReadingException {
 		try {
-			if (elementWithMetadata instanceof Class) {
-				Class clazz = (Class) elementWithMetadata;
-				Class[] inter = clazz.getInterfaces();
-				if (inter.length > 0) {
-					for (Class class1 : inter) {
-						for (Method methodOfClazz : class1.getDeclaredMethods()) {
-							for (Annotation annotation : methodOfClazz.getDeclaredAnnotations()) {
-								// TODO Refactor total
-								for (Annotation processorAnnotation : AnnotationFinder
-										.findAnnotation(annotation.annotationType(), processorsAnnotationClass)) {
-									// pega o class do value dessa anotation
-									Class<?> valueClass = (Class<?>) processorAnnotation.getClass()
-											.getDeclaredMethod("value").invoke(processorAnnotation);
-									// cria um objeto dessa classe e invoca o
-									// @InitProcessor
-									Object objectToInvoke = valueClass.newInstance();
-									findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation,
-											valueClass, objectToInvoke);
-									map.put(methodOfClazz, objectToInvoke);
+			if(target.equals(ContainerTarget.METHODS)){
+				if (elementWithMetadata instanceof Class) {
+					Class clazz = (Class) elementWithMetadata;
+					for (Field fieldOfClazz : clazz.getDeclaredFields()) {
+						for (Annotation annotation : fieldOfClazz.getDeclaredAnnotations()) {
+							// TODO REFACTOR TOTAL
+							setFieldOnMapWithFieldContainer(elementWithMetadata, container, fieldOfClazz, annotation);
 
-										mapReturn.put(methodOfClazz,returnInvoke);
-
-
+						}
+					}
+				} else if (elementWithMetadata instanceof Method) {
+					Field fieldOfClazz = (Field) elementWithMetadata;
+					for (Annotation annotation : fieldOfClazz.getDeclaredAnnotations()) {
+						// TODO REFACTOR TOTAL
+						setFieldOnMapWithFieldContainer(elementWithMetadata, container, fieldOfClazz, annotation);
+					}
+				}
+				
+					if(processors.type() != ProcessorType.READER_ADDS_METADATA)
+					{
+						setProperty(container, ((Field)elementAnnoted).getName(), map);
+					}
+					
+				
+			}
+				else if(target.equals(ContainerTarget.TYPE))
+				{
+					if(elementWithMetadata instanceof Class)
+					{
+						Class clazz = (Class) elementWithMetadata;
+						for(Method methodOfClazz: clazz.getDeclaredMethods())
+						{
+							
+							
+							
+							boolean existAnnotation = AnnotationFinder.existAnnotation(methodOfClazz, processorsAnnotationClass);
+							
+							if(existAnnotation)
+							{
+								for (Annotation annotation : methodOfClazz.getDeclaredAnnotations())
+								{
+									setFieldOnMapWithTypeContainer(elementWithMetadata, container, methodOfClazz, annotation);
 								}
 							}
-						}
+							else
+							{
+								 
+								for(Class superClass : clazz.getInterfaces())
+								{
 
-					}
+									for(Method methodOfSuperClazz: superClass.getDeclaredMethods())
+									{
+										for (Annotation annotation : methodOfSuperClazz.getAnnotations())
+										{
+											setFieldOnMapWithTypeContainer(elementWithMetadata, container, methodOfSuperClazz, annotation);
+										}
+									}
 
-				} else {
-					for (Method methodOfClazz : clazz.getDeclaredMethods()) {
-						for (Annotation annotation : methodOfClazz.getDeclaredAnnotations()) {
-							Annotation processorAnnotation = annotation.annotationType()
-									.getAnnotation(processorsAnnotationClass);
-							Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value")
-									.invoke(processorAnnotation);
-							// cria um objeto dessa classe e invoca o
-							// @InitProcessor
-							Object objectToInvoke = valueClass.newInstance();
-							findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
-									objectToInvoke);
+								}
 
-								map.put(methodOfClazz, objectToInvoke);
-
-
-								mapReturn.put(methodOfClazz,returnInvoke);
-
-
+							}
+							
+							
 						}
 					}
-
+					
+					//
 				}
-
-			}
 			
-			if(processors.type() == ProcessorType.READER_IS_PROCESSOR){
-				setProperty(container, fieldAnnoted.getName(), map);
-
-			}
-			else if(processors.type() == ProcessorType.READER_RETURNS_PROCESSOR){
-				setProperty(container, fieldAnnoted.getName(), mapReturn);
-			}
 			
+
 		} catch (Exception e) {
-			throw new AnnotationReadingException("===========" + e);
+			throw new AnnotationReadingException("ERRO NA FUNCAO "+elementWithMetadata+", "+container+", "+e);
 		}
 
+	}
+
+	private void setFieldOnMapWithTypeContainer(AnnotatedElement elementWithMetadata, Object container,
+			Method methodOfClazz, Annotation annotation) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+		// TODO Auto-generated method stub
+		for (Annotation processorAnnotation : AnnotationFinder
+				.findAnnotation(annotation.annotationType(), processorsAnnotationClass))
+			
+		{
+			Class<?> valueClass = getElementAnnoted(processorAnnotation);
+			if (processors.type() == ProcessorType.READER_ADDS_METADATA) {
+				
+				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+						invoke);
+				
+			} else if (processors.type() == ProcessorType.READER_IS_PROCESSOR) {
+				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+						invoke);
+				map.put(methodOfClazz, invoke);
+				setProperty(container, ((Field)elementAnnoted).getName(), map);
+
+			}
+
+			else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
+				findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+						invoke);
+				map.put(methodOfClazz, methodReturn);
+				setProperty(container, ((Field)elementAnnoted).getName(), map);
+
+			}
+		}
+		
+		
+		
+	}
+
+	private void setFieldOnMapWithFieldContainer(AnnotatedElement elementWithMetadata, Object container, Field fieldOfClazz,
+			Annotation annotation)
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+		for (Annotation processorAnnotation : AnnotationFinder
+				.findAnnotation(annotation.annotationType(), processorsAnnotationClass)) {
+			Class<?> valueClass = getElementAnnoted(processorAnnotation);
+			findDeclaredAnnotationOnInterface(elementWithMetadata, container, annotation, valueClass,
+					invoke);
+			if (processors.type() == ProcessorType.READER_IS_PROCESSOR) {
+				map.put(fieldOfClazz, invoke);
+
+			} else if (processors.type() == ProcessorType.READER_RETURNS_PROCESSOR) {
+				map.put(fieldOfClazz, methodReturn);
+			}
+		}
+	}
+
+	private Class<?> getElementAnnoted(Annotation processorAnnotation)
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+		Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value")
+				.invoke(processorAnnotation);
+
+		invoke = valueClass.newInstance();
+		return valueClass;
 	}
 
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
@@ -128,15 +202,24 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for (Parameter p1 : methodToInvoke.getParameters()) {
-			if (p1.getType().equals(Annotation.class)) {
+
+			
+			if (p1.getType().equals(Annotation.class)) 
+			{ 
 				args[cont] = annotation;
-			} else if (p1.getType().equals(AnnotatedElement.class)) {
-				args[cont] = elementWithMetadata;
-			} else if (p1.getType().equals(container.getClass())) {
-				args[cont] = container;
 			}
+			else if (p1.getType().equals(Object.class)){
+				args[cont] = container;
+
+			} else if (p1.getType().equals(AnnotatedElement.class) ) {
+				args[cont] = elementWithMetadata;
+			}
+			
 			cont++;
 		}
-		returnInvoke = methodToInvoke.invoke(objectToInvoke, args);
+		if(methodToInvoke.invoke(objectToInvoke, args)!=null){
+			methodReturn = methodToInvoke.invoke(objectToInvoke, args);
+		}		
 	}
+
 }
