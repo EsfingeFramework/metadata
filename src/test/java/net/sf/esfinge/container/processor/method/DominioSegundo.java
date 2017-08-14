@@ -21,8 +21,7 @@ public class DominioSegundo implements ProcessorInterface {
 	}
 	
 	@Override
-	public void entidade2(Annotation ann, 
-			AnnotatedElement ael, Container annotc){
+	public void entidade2(Annotation ann, AnnotatedElement ael, Container annotc){
 	}
 
 }

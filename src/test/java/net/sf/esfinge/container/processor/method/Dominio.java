@@ -7,7 +7,7 @@ public class Dominio implements OldDommi{
 	
 	private int field2;
 	
-	
+
 	public void entidade1(){}
 	
 	
