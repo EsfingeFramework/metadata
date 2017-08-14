@@ -43,7 +43,7 @@
 		<connection>scm:git:git://github.com/EsfingeFramework/metadata.git</connection>
 		<developerConnection>scm:git:ssh://github.com:EsfingeFramework/metadata.git</developerConnection>
 		<url>http://github.com/EsfingeFramework/metadata</url>
-		<tag>metadata-1.4</tag>
+		<tag>metadata-1.5.6</tag>
 	</scm>
 
 
