@@ -11,7 +11,7 @@ public class MetadataRepository {
 	
 	private Map<Class<?>,Map<AnnotatedElement, Object>> repository = new HashMap<>();
 	
-	public static void destroy()
+	public static void destroyRepository()
 	{
 			 instance = null ;
 		

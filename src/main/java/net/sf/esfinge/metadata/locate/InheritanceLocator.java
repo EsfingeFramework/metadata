@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
 
 //TODO Refatorar o locator para usar o locator.....
@@ -12,8 +13,8 @@ public class InheritanceLocator extends MetadataLocator {
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
-		
-		originalElement = element;
+		originalElement =  element;
+
 		if(originalElement instanceof Class)
 		{
 			return forClassAnnotation(annotationClass);
@@ -23,18 +24,23 @@ public class InheritanceLocator extends MetadataLocator {
 		{
 			Method methodElement = (Method) originalElement;
 			Class<?> classWithElement= methodElement.getDeclaringClass();
-			//Implements methods in class
 				for(Class<?> interfaceWithMethods: classWithElement.getInterfaces())
 					{
 						try {
-							Method interfaceMethod = interfaceWithMethods.getMethod(methodElement.getName());
-							if(interfaceMethod.isAnnotationPresent(annotationClass))
+							for(Method m1 : interfaceWithMethods.getDeclaredMethods())
 							{
-								return interfaceMethod.getAnnotation(annotationClass);
+							
+								if(m1.getName()==methodElement.getName())
+								{
+									if(m1.isAnnotationPresent(annotationClass))
+									{
+										return m1.getAnnotation(annotationClass);
+									}	
+								}
 							}
+	
 							
-							
-						} catch (NoSuchMethodException | SecurityException e) {
+						} catch (SecurityException e) {
 							e.printStackTrace();
 						}
 					}
@@ -59,7 +65,7 @@ public class InheritanceLocator extends MetadataLocator {
 				
 
 			}
-			
+
 		}
 		
 		return null;

@@ -76,6 +76,25 @@ public class ProcessorsReadingProcessor implements AnnotationReadingProcessor{
 				//O ERRO ESTÁ AQUIII
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod(processors.readerConfig()).invoke(processorAnnotation);
 				
+				
+				boolean valid = false;
+				if(AnnotationFinder.existAnnotation(valueClass, ContainerFor.class))
+				{
+					valid = true;
+				}
+				
+				for(Method annotedMethod: valueClass.getDeclaredMethods())
+				{
+					if(AnnotationFinder.existAnnotation(annotedMethod, ExecuteProcessor.class))
+					{
+						valid = true;
+					}
+				}
+				if(!valid)
+				{
+					throw new AnnotationReadingException("Can not @ContainterFor in the Class or @ExecuteProcessor on a Method in" + valueClass);
+				}
+				
 				//O ERRO ESTÁ AQUIII
 				Object objectToInvoke = valueClass.newInstance();
 				

@@ -26,7 +26,7 @@ public class PropiertiesTest {
 	@Before
 	public void destroyAnnotation() throws Exception
 	{
-		MetadataRepository.destroy();
+		MetadataRepository.destroyRepository();
 	}
 
 	@Test

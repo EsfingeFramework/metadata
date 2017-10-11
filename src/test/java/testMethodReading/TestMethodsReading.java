@@ -13,7 +13,7 @@ public class TestMethodsReading {
 	@Before
 	public void destroyAnnotation() throws Exception
 	{
-		MetadataRepository.destroy();
+		MetadataRepository.destroyRepository();
 	}
 
 	@Test
