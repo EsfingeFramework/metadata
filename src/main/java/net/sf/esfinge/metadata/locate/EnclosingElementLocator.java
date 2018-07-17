@@ -43,7 +43,7 @@ public class EnclosingElementLocator extends MetadataLocator {
 			} else if (element instanceof Field) {
 				return findMetadata(((Field) element).getDeclaringClass(),
 						annotationClass);
-			} else if (element instanceof Class) {
+			} else if (element instanceof Class && ((Class) element).getPackage() != null) {
 				return findMetadata(((Class) element).getPackage(),
 						annotationClass);
 			}
