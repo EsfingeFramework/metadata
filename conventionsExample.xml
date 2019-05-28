@@ -1,0 +1,14 @@
+<conventions>
+	<convention annotation="net.sf.esfinge.metadata.locate.convention.ExampleXML">
+		<endswith posfix="example"/>
+	</convention>
+	<convention annotation="net.sf.esfinge.metadata.locate.convention.ExampleXML">
+		<startswith prefix="test"/>
+	</convention>
+	<convention annotation="net.sf.esfinge.metadata.locate.convention.ExampleXML">
+		<contain contains="testing"/>
+	</convention>
+	<convention annotation="net.sf.esfinge.metadata.locate.convention.ExampleXML">
+		<endswith posfix="anotherExample"/>
+	</convention>
+</conventions>
