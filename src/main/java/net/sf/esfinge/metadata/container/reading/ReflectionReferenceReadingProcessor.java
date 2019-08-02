@@ -5,6 +5,7 @@ import static org.apache.commons.beanutils.PropertyUtils.setProperty;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+import java.lang.reflect.Parameter;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
@@ -28,6 +29,11 @@ public class ReflectionReferenceReadingProcessor implements AnnotationReadingPro
 			{
 				Field field= (Field)elementWithMetadata;
 				setProperty(container, containerAnnotatedField,field);
+			}
+			else if (target == ContainerTarget.PARAMETER)
+			{
+				Parameter parameter=(Parameter) elementWithMetadata;
+				setProperty(container, containerAnnotatedField, parameter);
 			}
 			else if(target == ContainerTarget.TYPE) {
 				Class clazz= (Class)elementWithMetadata;
