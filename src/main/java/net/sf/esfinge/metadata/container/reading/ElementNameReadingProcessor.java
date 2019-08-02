@@ -7,6 +7,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
@@ -57,6 +58,11 @@ public class ElementNameReadingProcessor implements AnnotationReadingProcessor {
 				Field field = (Field) elementWithMetadata;
 				setProperty(container,containerAnnotatedField,field.getName());
 			}
+		}
+		if (target == ContainerTarget.PARAMETER)
+		{
+			Parameter parameter = (Parameter) elementWithMetadata;
+				setProperty(container, containerAnnotatedField, parameter.getName());
 		}
 		else if(target == ContainerTarget.ALL)
 		{
