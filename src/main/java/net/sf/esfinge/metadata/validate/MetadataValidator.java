@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationPropertyValidator;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.AnnotationValidator;
@@ -26,7 +27,7 @@ public class MetadataValidator {
 			
 			for(Method m : currentClazz.getDeclaredMethods()){
 				for(Annotation an : m.getAnnotations()){
-					validateAnnotation(an, m);
+						validateAnnotation(an, m);
 				}
 			}
 			for(Field f : currentClazz.getDeclaredFields()){
@@ -54,7 +55,7 @@ public class MetadataValidator {
 			if(an.annotationType().isAnnotationPresent(ToValidate.class)){
 				executeValidation(target, ae, an);								
 			}else if(!isJavaAnnotation(an) && !isEsfingeMetadataAnnotation(an)){				
-				validateAnnotation(an, ae);						
+				//validateAnnotation(an, ae);						
 			}
 		}
 		
