@@ -55,12 +55,13 @@ public class MetadataValidator {
 			if(an.annotationType().isAnnotationPresent(ToValidate.class)){
 				executeValidation(target, ae, an);								
 			}else if(!isJavaAnnotation(an) && !isEsfingeMetadataAnnotation(an)){				
-				//validateAnnotation(an, ae);						
+				validateAnnotation(an, ae);						
 			}
 		}
 		
 		for(Method m : target.annotationType().getMethods()){
 			for(Annotation an: m.getAnnotations()){	
+				if(an.annotationType().isAnnotationPresent(ToValidateProperty.class))
 					executePropertyValidation(target, ae, an, m);
 			}
 		}
