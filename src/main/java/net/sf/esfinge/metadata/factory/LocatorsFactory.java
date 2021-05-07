@@ -18,16 +18,16 @@ public class LocatorsFactory {
 		if (element instanceof Method 
 				|| element instanceof Class
 				|| element instanceof Field) {
+			
 			locator = new EnclosingElementLocator();
 			locator.setNextLocator(new InsideAnnotationLocator());
 			locator.setNextLocator(new RegularLocator());
+			
 		} else if (element instanceof Annotation 
 				|| element instanceof Package) {
 			locator = new InsideAnnotationLocator();
 			locator.setNextLocator(new RegularLocator());
 		}
-		 
-		
 		
 		return locator;
 	}

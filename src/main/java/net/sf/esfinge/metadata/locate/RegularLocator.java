@@ -21,15 +21,6 @@ public class RegularLocator extends MetadataLocator {
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
-		Annotation a = null;
-		Object o = null;
-		Class<? extends Annotation> c = annotationClass;
-		a = c.getAnnotation(annotationClass);
-		
-		if (a != null) {
-			Method [] m = c.getDeclaredMethods();
-			if(m.length > 0) return true;
-		}
-		return false;
+		return element.isAnnotationPresent(annotationClass);
 	}
 }

@@ -14,6 +14,9 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	@Override
 	public Annotation findMetadata(AnnotatedElement element,
 			Class<? extends Annotation> annotationClass) {
+		
+		
+		
 		if (contador == 0)
 			OriginalElement = element;
 
@@ -63,6 +66,19 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	@Override
 	public boolean hasMetadata(AnnotatedElement element,
 			Class<? extends Annotation> annotationClass) {
-		return false;
+		
+		boolean nextReturn = nextLocator.hasMetadata(element, annotationClass);
+		
+		if(!nextReturn) {
+			for(Annotation a : element.getAnnotations()) {
+				if(a.annotationType().isAnnotationPresent(annotationClass)) {
+					return true;
+				}
+			}
+			return false;
+		}else {
+			return true;
+		}
+
 	}
 }
