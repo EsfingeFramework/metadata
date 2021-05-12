@@ -4,6 +4,10 @@ public class ForTestingConventions {
 	
 	public void prefixMethod() {}
 	
+	public void methodSuffix() {
+		
+	}
+	
 	@ForTesting
 	public void withAnnotationMethod() {}
 	

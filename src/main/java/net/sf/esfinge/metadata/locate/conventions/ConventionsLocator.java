@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
@@ -16,13 +17,41 @@ public class ConventionsLocator extends MetadataLocator {
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
-		// TODO Auto-generated method stub
-		return nextLocator.hasMetadata(element, annotationClass);
 		
+		if (!nextLocator.hasMetadata(element, annotationClass)) {
+			
+			Annotation annotations[] = annotationClass.getAnnotations();
+			for(Annotation annot: annotations) { 
+				
+				if(annot instanceof PrefixConvention){
+					  String prefix = ((PrefixConvention) annot).value();
+					  
+					  if(((Method) element).getName().startsWith(prefix)) {
+						  return true;
+					  }
+					  
+				} else if(annot instanceof SuffixConvention) {
+					
+					String suffix = ((SuffixConvention) annot).value();
+					String firstLetStr = suffix.substring(0, 1);
+					String remLetStr = suffix.substring(1);
+					firstLetStr = firstLetStr.toUpperCase();
+					suffix = firstLetStr + remLetStr;
+					
+					if(((Method) element).getName().endsWith(suffix)) {
+						  return true;
+					  }
+				}
+			}
+			
+		}
+		
+		return nextLocator.hasMetadata(element, annotationClass);
 		//if false
 		//see if the annotation has a prefix annotation
 		//get the prefix value if available
 		//if the element has the prefix, return true
+		
 	}
 
 }
