@@ -3,9 +3,11 @@ package net.sf.esfinge.metadata.locate;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 
 public class EnclosingElementLocator extends MetadataLocator {
+	
 	private int contador=0;
 	private AnnotatedElement OriginalElement;
 	
@@ -54,7 +56,13 @@ public class EnclosingElementLocator extends MetadataLocator {
 	@Override
 	public boolean hasMetadata(AnnotatedElement element,
 			Class<? extends Annotation> annotationClass) {
-		return false;
+		boolean nextResult = getNextLocator().hasMetadata(element, annotationClass);
+		if(!nextResult) {
+			if(element instanceof Member) {
+				return getNextLocator().hasMetadata(((Member)element).getDeclaringClass(), annotationClass);
+			} 
+		}
+		return nextResult;
 	}
 
 }

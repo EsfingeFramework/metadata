@@ -7,17 +7,27 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.annotation.Annotation;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import net.sf.esfinge.metadata.locate.RegularLocator;
-import net.sf.esfinge.metadata.locate.regularLocator01.ForTestRegularLocatorWithoutAnnotations;
+import net.sf.esfinge.metadata.AnnotationReadingException;
+import net.sf.esfinge.metadata.factory.LocatorsFactory;
+import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.regularLocator.nopackageannotation.ForTestRegularLocatorWithoutAnnotations;
 
 public class TestRegularLocator {
-	private RegularLocator locator = new RegularLocator();	
+	
+	private static MetadataLocator locator;
+	
+	@BeforeClass
+	public static void initLocator() throws AnnotationReadingException {
+		locator = LocatorsFactory.createLocatorsChain(Transaction.class);
+	}
 	
 	//CT01
 	@Test
 	public void CT01() {
+		
 		Annotation an = locator.findMetadata(ForTestRegularLocatorWithoutAnnotations.class, Transaction.class);
 		assertNull(an);
 		assertFalse(an instanceof Transaction);

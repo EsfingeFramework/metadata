@@ -6,6 +6,8 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
+import net.sf.esfinge.metadata.locate.conventions.annotations.SuffixConvention;
 
 public class ConventionsLocator extends MetadataLocator {
 
@@ -26,7 +28,7 @@ public class ConventionsLocator extends MetadataLocator {
 				if(annot instanceof PrefixConvention){
 					  String prefix = ((PrefixConvention) annot).value();
 					  
-					  if(((Method) element).getName().startsWith(prefix)) {
+					  if(getElementName(element).startsWith(prefix)) {
 						  return true;
 					  }
 					  
@@ -38,7 +40,7 @@ public class ConventionsLocator extends MetadataLocator {
 					firstLetStr = firstLetStr.toUpperCase();
 					suffix = firstLetStr + remLetStr;
 					
-					if(((Method) element).getName().endsWith(suffix)) {
+					if(getElementName(element).endsWith(suffix)) {
 						  return true;
 					  }
 				}
@@ -52,6 +54,15 @@ public class ConventionsLocator extends MetadataLocator {
 		//get the prefix value if available
 		//if the element has the prefix, return true
 		
+	}
+
+	private String getElementName(AnnotatedElement element) {
+		//TODO: suport other kinds of element
+		//All Known Subinterfaces:
+		//AnnotatedArrayType, AnnotatedParameterizedType, AnnotatedType, AnnotatedTypeVariable, AnnotatedWildcardType, GenericDeclaration, TypeVariable<D>
+		//All Known Implementing Classes:
+		//AccessibleObject, Class, Constructor, Executable, Field, Method, Package, Parameter
+		return ((Method) element).getName();
 	}
 
 }

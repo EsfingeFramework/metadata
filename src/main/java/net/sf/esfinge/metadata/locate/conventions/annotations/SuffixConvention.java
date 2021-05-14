@@ -1,4 +1,4 @@
-package net.sf.esfinge.metadata.locate.conventions;
+package net.sf.esfinge.metadata.locate.conventions.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

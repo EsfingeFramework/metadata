@@ -1,3 +1,3 @@
-@Transaction01
+@TransactionSearchOnEnclosing
 package net.sf.esfinge.metadata.locate.levelLocator.CTAux1;
-import net.sf.esfinge.metadata.locate.levelLocator.Transaction01;
+import net.sf.esfinge.metadata.locate.levelLocator.TransactionSearchOnEnclosing;
