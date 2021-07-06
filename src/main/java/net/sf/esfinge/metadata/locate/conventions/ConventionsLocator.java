@@ -25,6 +25,11 @@ public class ConventionsLocator extends MetadataLocator {
 			Annotation annotations[] = annotationClass.getAnnotations();
 			for(Annotation annot: annotations) { 
 				
+				//see if there is an annotation with @Verifier
+				//create the processor with the class configured using reflection
+				//initialize with the annotation
+				//execute if Convention is Present
+				
 				if(annot instanceof PrefixConvention){
 					  String prefix = ((PrefixConvention) annot).value();
 					  
@@ -44,6 +49,12 @@ public class ConventionsLocator extends MetadataLocator {
 						  return true;
 					  }
 				}
+				
+				//all the test should execute
+				//this class should not have dependence to any specific convention
+				
+				//bonus: create a new convention using the new structure
+				//RegularExpression
 			}
 			
 		}
