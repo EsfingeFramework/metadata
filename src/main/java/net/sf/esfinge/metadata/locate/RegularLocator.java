@@ -9,7 +9,7 @@ public class RegularLocator extends MetadataLocator {
 	@Override
 	public void setNextLocator(MetadataLocator locator) {
 		throw new UnsupportedOperationException(
-				"This is a final locator and should not receive another one");
+				"RegularLocator should be the final locator and should not receive another one");
 	}
 
 	@Override

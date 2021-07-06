@@ -5,11 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import net.sf.esfinge.metadata.locate.conventions.PrefixConventionVerifier;
+import net.sf.esfinge.metadata.locate.conventions.ConventionVerifier;
 
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
-@Verifier(PrefixConventionVerifier.class)
-public @interface PrefixConvention {
-	String value();
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Verifier {
+	Class<? extends ConventionVerifier> value();
 }
