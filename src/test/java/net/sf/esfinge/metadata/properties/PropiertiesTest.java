@@ -9,18 +9,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.sf.esfinge.classmock.ClassMock;
+import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
 import net.sf.esfinge.metadata.properties.containers.Container;
 
 public class PropiertiesTest {
-	private ClassMock mockBean;
+	private IClassWriter mockBean;
 	private Class clazz;
 
 	@Before
 	public void createClasses(){
-		mockBean = new ClassMock("Bean");
+		mockBean = ClassMock.of("Bean");
 	}
 	
 	@Before
@@ -31,7 +32,7 @@ public class PropiertiesTest {
 
 	@Test
 	public void testNull() throws Exception {
-		clazz = mockBean.createClass();
+		clazz = mockBean.build();
 		
 		Object beanA = clazz.newInstance();
 		set(beanA, "prop1", 100);
@@ -48,9 +49,9 @@ public class PropiertiesTest {
 	
 	@Test
 	public void testIgnoreProperty() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		clazz = mockBean.createClass();
+		//mockBean..property("prop1", int.class);
+		//mockBean.addAnnotation("prop1", IgnoreInComparison.class);
+		//clazz = mockBean.createClass();
 		
 		Object beanA = clazz.newInstance();
 		set(beanA, "prop1", 100);
@@ -68,11 +69,11 @@ public class PropiertiesTest {
 
 	@Test
 	public void testNaoIgnorandoUmObjeto() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		mockBean.addProperty("prop2", int.class);
+		//mockBean.addProperty("prop1", int.class);
+		//mockBean.addAnnotation("prop1", IgnoreInComparison.class);
+		//mockBean.addProperty("prop2", int.class);
 		
-		clazz = mockBean.createClass();
+		//clazz = mockBean.createClass();
 				
 		AnnotationReader ar = new AnnotationReader();
 		
@@ -89,11 +90,11 @@ public class PropiertiesTest {
 
 	@Test
 	public void testRetornaTres() throws Exception {
-		mockBean.addProperty("prop1", int.class);
-		mockBean.addProperty("prop2", int.class);
-		mockBean.addProperty("prop3", String.class);
+		//mockBean.addProperty("prop1", int.class);
+		//mockBean.addProperty("prop2", int.class);
+		//mockBean.addProperty("prop3", String.class);
 
-		clazz = mockBean.createClass();
+		//clazz = mockBean.createClass();
 		
 		AnnotationReader ar = new AnnotationReader();
 		

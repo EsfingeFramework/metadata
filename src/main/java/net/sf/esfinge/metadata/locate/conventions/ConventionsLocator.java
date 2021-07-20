@@ -1,13 +1,17 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.annotation.Annotation;
+import java.lang.annotation.AnnotationFormatError;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 import net.sf.esfinge.metadata.locate.conventions.annotations.SuffixConvention;
+import net.sf.esfinge.metadata.locate.conventions.annotations.Verifier;
 
 public class ConventionsLocator extends MetadataLocator {
 
@@ -18,40 +22,31 @@ public class ConventionsLocator extends MetadataLocator {
 	}
 
 	@Override
-	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException{
 		
 		if (!nextLocator.hasMetadata(element, annotationClass)) {
 			
-			Annotation annotations[] = annotationClass.getAnnotations();
-			for(Annotation annot: annotations) { 
+			for(Annotation annot: annotationClass.getAnnotations()) { 
 				
-				//see if there is an annotation with @Verifier
-				//create the processor with the class configured using reflection
-				//initialize with the annotation
-				//execute if Convention is Present
-				
-				if(annot instanceof PrefixConvention){
-					  String prefix = ((PrefixConvention) annot).value();
-					  
-					  if(getElementName(element).startsWith(prefix)) {
-						  return true;
-					  }
-					  
-				} else if(annot instanceof SuffixConvention) {
-					
-					String suffix = ((SuffixConvention) annot).value();
-					String firstLetStr = suffix.substring(0, 1);
-					String remLetStr = suffix.substring(1);
-					firstLetStr = firstLetStr.toUpperCase();
-					suffix = firstLetStr + remLetStr;
-					
-					if(getElementName(element).endsWith(suffix)) {
-						  return true;
-					  }
+				try {
+					//see if there is an annotation with @Verifier
+					if(annot.annotationType().isAnnotationPresent(Verifier.class)) {
+						//create the processor with the class configured using reflection
+						Verifier v = annot.annotationType().getAnnotation(Verifier.class);
+						Class<? extends ConventionVerifier> convClazz = v.value();
+						ConventionVerifier convVer = convClazz.getConstructor().newInstance();
+						
+						//initialize with the annotation
+						convVer.init(annot);
+						
+						//execute if Convention is Present
+						boolean hasConv = convVer.isConventionPresent(element);
+						if(hasConv)
+							return true;
+					}
+				} catch (Exception e) {
+					throw new MetadataLocationException(e);
 				}
-				
-				//all the test should execute
-				//this class should not have dependence to any specific convention
 				
 				//bonus: create a new convention using the new structure
 				//RegularExpression
