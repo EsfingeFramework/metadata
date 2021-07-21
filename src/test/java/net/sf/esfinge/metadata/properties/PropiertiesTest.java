@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.classmock.api.IClassWriter;
+import net.sf.esfinge.classmock.api.enums.LocationEnum;
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.container.MetadataRepository;
 import net.sf.esfinge.metadata.properties.annotation.IgnoreInComparison;
@@ -18,11 +19,6 @@ import net.sf.esfinge.metadata.properties.containers.Container;
 public class PropiertiesTest {
 	private IClassWriter mockBean;
 	private Class clazz;
-
-	@Before
-	public void createClasses(){
-		mockBean = ClassMock.of("Bean");
-	}
 	
 	@Before
 	public void destroyAnnotation() throws Exception
@@ -32,6 +28,7 @@ public class PropiertiesTest {
 
 	@Test
 	public void testNull() throws Exception {
+		IClassWriter mockBean = ClassMock.of("Bean0");
 		clazz = mockBean.build();
 		
 		Object beanA = clazz.newInstance();
@@ -49,11 +46,13 @@ public class PropiertiesTest {
 	
 	@Test
 	public void testIgnoreProperty() throws Exception {
-		//mockBean..property("prop1", int.class);
-		//mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		//clazz = mockBean.createClass();
+		IClassWriter mockBean = ClassMock.of("Bean1");
+		mockBean.field("prop1", int.class)
+			.annotation(IgnoreInComparison.class, LocationEnum.GETTER);
 		
-		Object beanA = clazz.newInstance();
+		clazz = mockBean.build();
+		
+		Object beanA = clazz.getConstructor().newInstance();
 		set(beanA, "prop1", 100);
 		
 		AnnotationReader ar = new AnnotationReader();
@@ -69,11 +68,11 @@ public class PropiertiesTest {
 
 	@Test
 	public void testNaoIgnorandoUmObjeto() throws Exception {
-		//mockBean.addProperty("prop1", int.class);
-		//mockBean.addAnnotation("prop1", IgnoreInComparison.class);
-		//mockBean.addProperty("prop2", int.class);
-		
-		//clazz = mockBean.createClass();
+		IClassWriter mockBean = ClassMock.of("Bean2");
+		mockBean.field("prop1", int.class)
+			.annotation(IgnoreInComparison.class, LocationEnum.GETTER);
+		mockBean.field("prop2", int.class);
+		clazz = mockBean.build();
 				
 		AnnotationReader ar = new AnnotationReader();
 		
@@ -90,11 +89,11 @@ public class PropiertiesTest {
 
 	@Test
 	public void testRetornaTres() throws Exception {
-		//mockBean.addProperty("prop1", int.class);
-		//mockBean.addProperty("prop2", int.class);
-		//mockBean.addProperty("prop3", String.class);
-
-		//clazz = mockBean.createClass();
+		IClassWriter mockBean = ClassMock.of("Bean3");
+		mockBean.field("prop1", int.class);
+		mockBean.field("prop2", int.class);
+		mockBean.field("prop3", String.class);
+		clazz = mockBean.build();
 		
 		AnnotationReader ar = new AnnotationReader();
 		
