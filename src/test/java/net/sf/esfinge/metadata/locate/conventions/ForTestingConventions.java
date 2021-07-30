@@ -8,6 +8,14 @@ public class ForTestingConventions {
 		
 	}
 	
+	public void methodContainsRegex() {
+		
+	}
+	
+	public void regexAnywhereInMehod() {
+		
+	}
+	
 	@ForTesting
 	public void withAnnotationMethod() {}
 	

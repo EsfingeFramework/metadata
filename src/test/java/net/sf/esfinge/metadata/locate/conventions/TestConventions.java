@@ -8,6 +8,8 @@ import java.lang.reflect.Method;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import net.sf.esfinge.classmock.ClassMock;
+import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
@@ -56,5 +58,36 @@ public class TestConventions {
 		assertTrue(result);
 	}
 	
+	@Test
+	public void testWithConventionsRegex() throws NoSuchMethodException, SecurityException {
+		Method m = ForTestingConventions.class.getMethod("methodContainsRegex");
+		
+		boolean result = l.hasMetadata(m, ForTesting.class);
+		
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testWithConventionsRegexAnyWhere() throws NoSuchMethodException, SecurityException {
+		Method m = ForTestingConventions.class.getMethod("regexAnywhereInMehod");
+		
+		boolean result = l.hasMetadata(m, ForTesting.class);
+		
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testWithConventionsRegexAnyWherewithMock() throws NoSuchMethodException, SecurityException {
+		final IClassWriter mock = ClassMock.of("ForTestingConvention");
+		mock.method("regexAnywhereInMehod")                                        // The method name
+        .returnTypeAsVoid();
+		
+		
+		Method m = ForTestingConventions.class.getMethod("regexAnywhereInMehod");
+		
+		//boolean result = l.hasMetadata(ForTestingConvention.class.getMethod("regexAnywhereInMehod"), ForTesting.class);
+		
+		//assertTrue(result);
+	}
 
 }
