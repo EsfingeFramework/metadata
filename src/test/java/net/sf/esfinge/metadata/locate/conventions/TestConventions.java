@@ -1,8 +1,11 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.junit.BeforeClass;
@@ -13,7 +16,6 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.RegularLocator;
 
 public class TestConventions {
 	
@@ -29,6 +31,9 @@ public class TestConventions {
 		Method m = ForTestingConventions.class.getMethod("withAnnotationMethod");
 		boolean result = l.hasMetadata(m, ForTesting.class);
 		assertTrue(result);
+		
+		Annotation an = l.findMetadata(m, ForTesting.class);
+		assertEquals(an.annotationType(), ForTesting.class);
 	}
 	
 	@Test
@@ -74,6 +79,28 @@ public class TestConventions {
 		boolean result = l.hasMetadata(m, ForTesting.class);
 		
 		assertTrue(result);
+	}
+	
+	@Test
+	public void testWithFieldTypeConvention() throws NoSuchFieldException, SecurityException  {
+		Field f1 = ForTestingConventions.class.getField("field1");
+		Field f2 = ForTestingConventions.class.getField("field2");
+		Field f3 = ForTestingConventions.class.getField("field3");
+		
+		assertTrue("Type Number has the convention", l.hasMetadata(f1, AsNumberInField.class));
+		assertTrue("Type Integer is subclass of Number and has the convention", l.hasMetadata(f2, AsNumberInField.class));
+		assertFalse("Type String does not hve the convention", l.hasMetadata(f3, AsNumberInField.class));
+	}
+	
+	@Test
+	public void whenTwoConventionsNeedToBeTrue() throws NoSuchFieldException, SecurityException  {
+		Field f1 = ClassToTestAnnotationsWithTwoConventions.class.getField("intField");
+		Field f2 = ClassToTestAnnotationsWithTwoConventions.class.getField("nointField");
+		Field f3 = ClassToTestAnnotationsWithTwoConventions.class.getField("intOtherField");
+		
+		assertTrue("Has two conventions", l.hasMetadata(f1, WithTwoConventions.class));
+		assertFalse("Has only the type convention", l.hasMetadata(f2, WithTwoConventions.class));
+		assertFalse("Has only the prefix", l.hasMetadata(f3, WithTwoConventions.class));
 	}
 	
 	@Test

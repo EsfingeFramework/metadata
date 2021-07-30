@@ -1,13 +1,6 @@
 package net.sf.esfinge.metadata.locate.conventions.classmock;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import net.sf.esfinge.classmock.ClassMock;
-import net.sf.esfinge.classmock.api.IClassWriter;
-import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 
 public class ClassMockTest {
 

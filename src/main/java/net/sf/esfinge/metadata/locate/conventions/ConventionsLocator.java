@@ -2,52 +2,34 @@ package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import net.sf.esfinge.classmock.ClassMock;
-import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.locate.MetadataLocationException;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.AllConventionsNeedToApply;
 import net.sf.esfinge.metadata.locate.conventions.annotations.Verifier;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 public class ConventionsLocator extends MetadataLocator {
+
+	private static Map<Class<?>, ConventionsMetadataContainer> conventionsDefinitions = new HashMap<>();
+
+	// the parameter can be inputstring etc...
+	public static void loadConventions(String filename) {
+		// get the conventions from the file
+		// store them in a static variable
+	}
 
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
 
-		if (hasMetadata(element, annotationClass)) {
-
-			for (Annotation annot : annotationClass.getAnnotations()) {
-
-				try {
-					// see if there is an annotation with @Verifier
-					if (annot.annotationType().isAnnotationPresent(Verifier.class)) {
-						// create the processor with the class configured using reflection
-						Verifier v = annot.annotationType().getAnnotation(Verifier.class);
-						Class<? extends ConventionVerifier> convClazz = v.value();
-						ConventionVerifier convVer = convClazz.getConstructor().newInstance();
-
-						// initialize with the annotation
-						convVer.init(annot);
-
-						// execute if Convention is Present
-						boolean hasConv = convVer.isConventionPresent(element);
-						if (hasConv) {
-
-							IClassWriter mock = ClassMock.of("SingleClassName");
-							mock.annotation(annot.getClass()).property("value", ((Verifier) annot).value());
-							Class<?> yourClass = mock.build();
-
-							return yourClass.getAnnotation(annot.getClass());
-						}
-
-					}
-				} catch (Exception e) {
-					throw new MetadataLocationException(e);
-				}
-
-			}
+		if (!nextLocator.hasMetadata(element, annotationClass) && isConventionsPresent(element, annotationClass)) {
+			Annotation an = AnnotatedElementUtils.instantiateAnnotation(annotationClass);
+			return an;
 		}
 
 		return nextLocator.findMetadata(element, annotationClass);
@@ -58,54 +40,49 @@ public class ConventionsLocator extends MetadataLocator {
 			throws MetadataLocationException {
 
 		if (!nextLocator.hasMetadata(element, annotationClass)) {
+			return isConventionsPresent(element, annotationClass);
+		}
 
+		return nextLocator.hasMetadata(element, annotationClass);
+	}
+
+	private boolean isConventionsPresent(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+
+		ConventionsMetadataContainer cmc = getConventions(annotationClass);
+		boolean result = cmc.isAllConventionsNeedToApply();
+
+		for (ConventionVerifier convVer : cmc.getVerifiers()) {
+			boolean hasConv = convVer.isConventionPresent(element);
+			if (cmc.isAllConventionsNeedToApply())
+				result = result && hasConv;
+			else
+				result = result || hasConv;
+		}
+		return result;
+	}
+
+	private ConventionsMetadataContainer getConventions(Class<? extends Annotation> annotationClass) {
+		if (conventionsDefinitions.containsKey(annotationClass)) {
+			return conventionsDefinitions.get(annotationClass);
+		} else {
+			ConventionsMetadataContainer cmc = new ConventionsMetadataContainer();
+			cmc.setAllConventionsNeedToApply(annotationClass.isAnnotationPresent(AllConventionsNeedToApply.class));
 			for (Annotation annot : annotationClass.getAnnotations()) {
-
 				try {
-					// see if there is an annotation with @Verifier
 					if (annot.annotationType().isAnnotationPresent(Verifier.class)) {
-						// create the processor with the class configured using reflection
 						Verifier v = annot.annotationType().getAnnotation(Verifier.class);
 						Class<? extends ConventionVerifier> convClazz = v.value();
-						System.out.println(convClazz);
 						ConventionVerifier convVer = convClazz.getConstructor().newInstance();
-
-						// initialize with the annotation
 						convVer.init(annot);
-
-						// execute if Convention is Present
-						boolean hasConv = convVer.isConventionPresent(element);
-						if (hasConv)
-							return true;
+						cmc.getVerifiers().add(convVer);
 					}
 				} catch (Exception e) {
 					throw new MetadataLocationException(e);
 				}
-
-				// bonus: create a new convention using the new structure
-				// RegularExpression
 			}
-
+			conventionsDefinitions.put(annotationClass, cmc);
+			return cmc;
 		}
-
-		return nextLocator.hasMetadata(element, annotationClass);
-		// if false
-		// see if the annotation has a prefix annotation
-		// get the prefix value if available
-		// if the element has the prefix, return true
-
-	}
-
-	private String getElementName(AnnotatedElement element) {
-		// TODO: suport other kinds of element
-		// All Known Subinterfaces:
-		// AnnotatedArrayType, AnnotatedParameterizedType, AnnotatedType,
-		// AnnotatedTypeVariable, AnnotatedWildcardType, GenericDeclaration,
-		// TypeVariable<D>
-		// All Known Implementing Classes:
-		// AccessibleObject, Class, Constructor, Executable, Field, Method, Package,
-		// Parameter
-		return ((Method) element).getName();
 	}
 
 }

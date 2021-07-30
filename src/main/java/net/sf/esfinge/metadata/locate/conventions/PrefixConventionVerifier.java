@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
