@@ -31,7 +31,7 @@ public class TestConventions {
 		Method m = ForTestingConventions.class.getMethod("withAnnotationMethod");
 		boolean result = l.hasMetadata(m, ForTesting.class);
 		assertTrue(result);
-		
+		// find metadata
 		Annotation an = l.findMetadata(m, ForTesting.class);
 		assertEquals(an.annotationType(), ForTesting.class);
 	}
