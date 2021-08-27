@@ -11,6 +11,7 @@ import net.sf.esfinge.metadata.locate.conventions.MethodTypeConventionVerifier;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
 @Verifier(MethodTypeConventionVerifier.class)
-public @interface MethodTypeConvention {
+public @interface ExactlyParameterTypesConvention {
 	Class<?>[] parameters();
 }
+

@@ -17,4 +17,7 @@ public class ConventionsMetadataContainer {
 	public void setAllConventionsNeedToApply(boolean allConventionsNeedToApply) {
 		this.allConventionsNeedToApply = allConventionsNeedToApply;
 	}
+	public void addVerifier(ConventionVerifier verifier) {
+		verifiers.add(verifier);
+	}
 }

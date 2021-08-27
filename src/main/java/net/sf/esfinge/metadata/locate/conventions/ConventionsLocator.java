@@ -36,7 +36,7 @@ public class ConventionsLocator extends MetadataLocator {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 
 			// Get Document
-			Document doc = builder.parse(new File("src/main/java/conventions.config"));
+			Document doc = builder.parse(new File(filename));
 
 			// Normalize the xml structure
 			doc.getDocumentElement().normalize();
@@ -64,54 +64,72 @@ public class ConventionsLocator extends MetadataLocator {
 					if (count == 0) {
 						count++;
 						String theAnnotation = annotationElement.getAttribute("name");
+						Class<?> annotationClass = Class.forName(theAnnotation);// map key
 						System.out.println("the main annotation is: " + theAnnotation);
+
+						ConventionsMetadataContainer container = new ConventionsMetadataContainer();
+
 						String isApplytoAll = annotationElement.getAttribute("allConventionsNeedToApply");
 						boolean allConventionsNeedToApply = false;
 						if (isApplytoAll == "true") {
 							allConventionsNeedToApply = true;
 						}
+						container.setAllConventionsNeedToApply(allConventionsNeedToApply);
 
 						System.out.println("all Conventions needs to apply value is: " + isApplytoAll);
 						System.out.println();
-					}
 
-					// then getting the conventions that annotation has
-					NodeList convention = annotationNode.getChildNodes();
+						// then getting the conventions that annotation has
+						NodeList convention = annotationNode.getChildNodes();
 
-					for (int j = 0; j < convention.getLength(); j++) {
-						Node conventionNode = convention.item(j);
+						for (int j = 0; j < convention.getLength(); j++) {
+							Node conventionNode = convention.item(j);
 
-						if (conventionNode.getNodeType() == Node.ELEMENT_NODE) {
-							Element conventionElement = (Element) conventionNode;
+							if (conventionNode.getNodeType() == Node.ELEMENT_NODE) {
+								Element conventionElement = (Element) conventionNode;
 
-							// getting the verifier first
-							String verifier = conventionElement.getAttribute("verifier");
-							System.out.println("///////----------------------------------------------");
-							System.out.println();
-							System.out.println("the Verifier is: " + verifier);
-							System.out.println();
+								// getting the verifier first
+								String verifier = conventionElement.getAttribute("verifier");
+								System.out.println("///////----------------------------------------------");
+								System.out.println();
+								System.out.println("the Verifier is: " + verifier);
+								System.out.println();
+								Class<?> verifierClass = Class.forName(verifier);
+								ConventionVerifier verifierInstance = (ConventionVerifier) verifierClass
+										.getConstructor().newInstance();
 
-							// then getting the parameters of the verifier , which is the convention and its
-							// value
-							NodeList parameter = conventionNode.getChildNodes();
+								// then getting the parameters of the verifier , which is the convention and its
+								// value
+								NodeList parameter = conventionNode.getChildNodes();
 
-							for (int k = 0; k < parameter.getLength(); k++) {
-								Node parameterNode = parameter.item(k);
+								Map<String, String> parameters = new HashMap<String, String>();
 
-								if (parameterNode.getNodeType() == Node.ELEMENT_NODE) {
-									Element parameterElement = (Element) parameterNode;
+								for (int k = 0; k < parameter.getLength(); k++) {
+									Node parameterNode = parameter.item(k);
 
-									// the conventions and its value
-									String theConvention = parameterElement.getAttribute("name");
-									System.out
-											.println("the Convention parameter for the verifier is: " + theConvention);
-									String conventionValue = parameterElement.getAttribute("value");
-									System.out.println("the Convention value is: " + conventionValue);
-									System.out.println();
+									if (parameterNode.getNodeType() == Node.ELEMENT_NODE) {
+										Element parameterElement = (Element) parameterNode;
+
+										// the conventions and its value
+										String theConvention = parameterElement.getAttribute("name");
+										System.out.println(
+												"the Convention parameter for the verifier is: " + theConvention);
+										String conventionValue = parameterElement.getAttribute("value");
+										System.out.println("the Convention value is: " + conventionValue);
+										System.out.println();
+										parameters.put(theConvention, conventionValue);
+
+									}
 								}
+
+								verifierInstance.init(parameters);
+								container.addVerifier(verifierInstance);
+
 							}
 
 						}
+						
+						conventionsDefinitions.put(annotationClass, container);
 
 					}
 				}
