@@ -19,7 +19,7 @@ public class ClassTypeConventionVerifier implements ConventionVerifier<ClassType
 	public boolean isConventionPresent(AnnotatedElement element) {
 		if (element instanceof Class<?>) {
 			Class<?> clazz = (Class<?>) element;
-		return superClass == clazz.getSuperclass();
+			return superClass == clazz.getSuperclass();
 		}
 		return false;
 	}

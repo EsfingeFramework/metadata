@@ -1,7 +1,7 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Field;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -25,10 +25,14 @@ public class MethodTypeConventionVerifier implements ConventionVerifier<MethodTy
 			Method method = (Method) element;
 			Parameter[] params = method.getParameters();
 			for (int i = 0; i < params.length; i++) {
-				if (params[i].getClass() == parameters[i]) {
-					return true;
+				for(int j=0;j<parameters.length;j++){
+					if (params[j].getClass() == parameters[i]) {
+						return true;
+					}
 				}
+
 			}
+			return false;
 		}
 		return false;
 	}
