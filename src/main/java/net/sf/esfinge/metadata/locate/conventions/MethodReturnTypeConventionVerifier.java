@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 
@@ -24,6 +25,7 @@ public class MethodReturnTypeConventionVerifier implements ConventionVerifier<Me
             }else{
                     return returnType == method.getReturnType();
             }
+
         }
         return false;
     }

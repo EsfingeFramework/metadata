@@ -18,8 +18,9 @@ public class ClassOfGivenTypeConventionVerifier implements ConventionVerifier<Cl
     public boolean isConventionPresent(AnnotatedElement element) {
         if (element instanceof Class<?>) {
             Class<?> clazz = element.getClass();
+
             if(canBeSubtype){
-                return superClass.isAssignableFrom(clazz);
+                return superClass.isAssignableFrom(((Class<?>) element).getSuperclass());
             }else
 
                 return superClass.equals(clazz);

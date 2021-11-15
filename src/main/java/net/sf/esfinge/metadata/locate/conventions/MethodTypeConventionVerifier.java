@@ -10,12 +10,15 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.MethodTypeConventi
 public class MethodTypeConventionVerifier implements ConventionVerifier<MethodTypeConvention> {
 
 	private Class<?>[] parameters;
-
+	private boolean canBeSubtype;
 	@Override
 	public void init(MethodTypeConvention conventionAnnotation) {
+		parameters = new Class<?>[conventionAnnotation.parameters().length];
 		for (int i = 0; i < conventionAnnotation.parameters().length; i++) {
 			parameters[i] = conventionAnnotation.parameters()[i];
+
 		}
+		canBeSubtype = conventionAnnotation.canBeSubtype();
 
 	}
 
@@ -24,10 +27,14 @@ public class MethodTypeConventionVerifier implements ConventionVerifier<MethodTy
 		if (element instanceof Method) {
 			Method method = (Method) element;
 			Parameter[] params = method.getParameters();
-			for (int i = 0; i < params.length; i++) {
-				for(int j=0;j<parameters.length;j++){
-					if (params[j].getClass() == parameters[i]) {
+			for (int i = 0; i < parameters.length; i++) {
+				for(int j=0;j<params.length;j++){
+					if (params[j].getType() == parameters[i]) {
 						return true;
+					}else if (canBeSubtype){
+						if (parameters[i].isAssignableFrom(params[j].getType())) {
+							return true;
+						}
 					}
 				}
 

@@ -11,7 +11,7 @@ import net.sf.esfinge.metadata.AnnotationReader;
 public class TestConventionsWithMapping {
 
 	@Test
-
+	@Ignore
 	public void conventionsWithMapping() throws Exception {
 		AnnotationReader reader = new AnnotationReader();
 		

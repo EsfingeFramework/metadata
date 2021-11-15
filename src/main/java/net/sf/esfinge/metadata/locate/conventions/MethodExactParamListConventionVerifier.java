@@ -13,6 +13,7 @@ public class MethodExactParamListConventionVerifier implements ConventionVerifie
 
     @Override
     public void init(MethodExactParamListConvention conventionAnnotation) {
+        parameters = new Class<?>[conventionAnnotation.parameters().length];
         for (int i = 0; i < conventionAnnotation.parameters().length; i++) {
             parameters[i] = conventionAnnotation.parameters()[i];
         }
@@ -21,17 +22,21 @@ public class MethodExactParamListConventionVerifier implements ConventionVerifie
 
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
+
         if (element instanceof Method) {
             Method method = (Method) element;
             Parameter[] params = method.getParameters();
+
             for (int i = 0; i < params.length; i++) {
+
                 for(int j=0;j< parameters.length;j++){
-                    if (params[i].getClass() != parameters[j]) {
+                    if (params[i].getType() != parameters[j]) {
                         return false;
                     }
                 }
 
             }
+            return true;
         }
         return false;
     }

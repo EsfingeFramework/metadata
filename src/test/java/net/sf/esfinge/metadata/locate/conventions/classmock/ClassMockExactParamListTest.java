@@ -8,6 +8,7 @@ import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.MethodExactParamListConvention;
+import net.sf.esfinge.metadata.locate.conventions.annotations.MethodHasParamList;
 
 
 import java.lang.annotation.Annotation;
@@ -15,7 +16,7 @@ import java.lang.annotation.Annotation;
 public class ClassMockExactParamListTest {
     public static void main(String[] args) throws NoSuchMethodException {
 
-        final Class<? extends Annotation> annotation =  MethodExactParamListConvention.class;
+        final Class<? extends Annotation> annotation =  MethodHasParamList.class;
 
 
 
@@ -32,10 +33,9 @@ public class ClassMockExactParamListTest {
 //Creating the class with annotation
 
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
-        mockC1.method("setId").parameter("id",Integer.class);
-
+        mockC1.method("setId").annotation(annotation);
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for c1 "+ml.hasMetadata(c1.getMethod("setId",Integer.class), annotation));
+        System.out.println("result for c1 "+ml.hasMetadata(c1.getMethod("setId"), annotation));
 
 
 

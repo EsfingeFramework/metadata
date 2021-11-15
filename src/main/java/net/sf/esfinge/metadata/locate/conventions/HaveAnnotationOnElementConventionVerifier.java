@@ -22,22 +22,29 @@ public class HaveAnnotationOnElementConventionVerifier implements ConventionVeri
 
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
-        if(elementClass==((Field) element).getClass()){
-            Annotation[] fieldAnnotations = ((Field) element).getDeclaredAnnotations();
-            for(int i=0;i<fieldAnnotations.length;i++){
-                if(fieldAnnotations[i].getClass()==annotationClass){
-                    return true;
+
+        if(element instanceof Field){
+            if(elementClass==((Field) element).getClass()) {
+
+                Annotation[] fieldAnnotations = ((Field) element).getDeclaredAnnotations();
+                for (int i = 0; i < fieldAnnotations.length; i++) {
+
+                    if (fieldAnnotations[i].getClass() == annotationClass && elementClass==element.getClass()) {
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
-        }else if (elementClass==((Method) element).getClass()){
-            Annotation[] methodAnnotations = ((Method) element).getDeclaredAnnotations();
-            for(int i=0;i<methodAnnotations.length;i++){
-                if(methodAnnotations[i].getClass()==annotationClass){
-                    return true;
+        }else if (element instanceof Method){
+
+                Annotation[] methodAnnotations = ((Method) element).getDeclaredAnnotations();
+                System.out.println(element.getAnnotations().length);
+                for(int i=0;i<methodAnnotations.length;i++){
+                    if(methodAnnotations[i].getClass()==annotationClass  && elementClass==element.getClass()){
+                        return true;
+                    }
                 }
-            }
-            return false;
+                return false;
         }
         return false;
     }

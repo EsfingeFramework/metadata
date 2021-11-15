@@ -14,6 +14,7 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
 
     @Override
     public void init(ClassHaveAnnotationConvention conventionAnnotation) {
+        classAnnotations = new Class<?>[conventionAnnotation.classAnnotations().length];
         for (int i = 0; i < conventionAnnotation.classAnnotations().length; i++) {
             classAnnotations[i] = conventionAnnotation.classAnnotations()[i];
         }
@@ -37,8 +38,11 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
             Method method = (Method) element;
             Class<?> methodDeclaredClass = method.getDeclaringClass();
             Annotation[] classDeclaredAnnotations = methodDeclaredClass.getDeclaredAnnotations();
+            System.out.println(classDeclaredAnnotations.length);
             for(int i=0;i< classDeclaredAnnotations.length;i++){
+
                 for(int j=0;j< classAnnotations.length;j++){
+                    System.out.println(classDeclaredAnnotations[i].getClass());
                     if(classDeclaredAnnotations[i].getClass().equals(classAnnotations[j].getClass())){
                         return true;
                     }

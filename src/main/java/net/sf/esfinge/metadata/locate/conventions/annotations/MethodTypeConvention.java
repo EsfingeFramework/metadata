@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 @Verifier(MethodTypeConventionVerifier.class)
 public @interface MethodTypeConvention {
     Class<?>[] parameters();
+    boolean canBeSubtype() default false;
 }

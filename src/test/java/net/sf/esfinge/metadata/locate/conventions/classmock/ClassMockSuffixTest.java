@@ -5,15 +5,19 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.conventions.annotations.SuffixConvention;
-
+import net.sf.esfinge.metadata.locate.conventions.annotations.HasSuffix;
 import java.lang.annotation.Annotation;
 
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class ClassMockSuffixTest {
-    public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
 
 
-        final Class<? extends Annotation> annotation =  SuffixConvention.class;
+    public void conventionsWithMapping() throws Exception {
+
+        final Class<? extends Annotation> annotation =  HasSuffix.class;
 
         MetadataLocator ml = null;
         try {
@@ -22,42 +26,25 @@ public class ClassMockSuffixTest {
             e.printStackTrace();
         }
 
-
-//Creating the class with annotation
-
-        final IClassWriter mockC1 = ClassMock.of("ClassEndsWithId");
-        mockC1.method("methodEndsWithId").annotation(annotation);
-        mockC1.field("FieldEndsWithId").annotation(annotation);
+        final IClassWriter mockC1 = ClassMock.of("ClassEndsWithSuffix");
+        mockC1.annotation(annotation);
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for annotated class "+ml.hasMetadata(c1, annotation));
-        System.out.println("result for annotated method "+ml.hasMetadata(c1.getMethod("getId"), annotation));
-        System.out.println("result for annotated field "+ml.hasMetadata(c1.getField("id"), annotation));
-
-
-
-
+        //assertTrue(ml.hasMetadata(c1, annotation));
+        System.out.println(ml.hasMetadata(c1, annotation));
 //Creating the class without prefix and without annotation
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         mockC2.method("methodDontEndsWith");
         mockC2.field("FieldDontEndsWith");
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for annotated class "+ml.hasMetadata(c2, annotation));
-        System.out.println("result for annotated method "+ml.hasMetadata(c2.getMethod("methodEndsWith"), annotation));
-        System.out.println("result for annotated field "+ml.hasMetadata(c2.getField("FieldDontEndsWith"), annotation));
-
-
-
+        //assertFalse(ml.hasMetadata(c1, annotation));
+        System.out.println(ml.hasMetadata(c2, annotation));
 
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("WithoutAnnotationClassEndsWithId");
-        mockC3.method("methodEndsWithId");
-        mockC3.field("FieldEmdsWithId");
+        final IClassWriter mockC3 = ClassMock.of("WithoutAnnotationClassEndsWithSuffix");
         final Class<?> c3 = mockC3.build();
-        System.out.println("result for annotated class "+ml.hasMetadata(c3, annotation));
-        System.out.println("result for annotated method "+ml.hasMetadata(c3.getMethod("methodEndsWithId"), annotation));
-        System.out.println("result for annotated field "+ml.hasMetadata(c3.getField("FieldEmdsWithId"), annotation));
-
+        //assertTrue(ml.hasMetadata(c3, annotation));
+        System.out.println(ml.hasMetadata(c3, annotation));
     }
 }

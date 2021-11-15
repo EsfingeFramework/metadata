@@ -5,6 +5,7 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.HasMethodReturnType;
 import net.sf.esfinge.metadata.locate.conventions.annotations.MethodReturnTypeConvention;
 import java.lang.annotation.Annotation;
 
@@ -20,7 +21,7 @@ public class ClassMockMethodReturnTypeTest {
 //        mockAnot.annotation(Retention.class).property(RetentionPolicy.RUNTIME);
 //        mockAnot.annotation(MethodReturnTypeConvention.class).property("returnType", Collection.class).property("canBeSubtype",true);
 //        final Class<? extends Annotation> annotation = (Class<? extends Annotation>)mockAnot.build();
-          final Class<? extends Annotation> annotation =  MethodReturnTypeConvention.class;
+          final Class<? extends Annotation> annotation =  HasMethodReturnType.class;
           
 
 
@@ -55,7 +56,7 @@ public class ClassMockMethodReturnTypeTest {
 //Creating the class with prefix and without annotation
 
         final IClassWriter mockC3 = ClassMock.of("MethodReturnTypeWithoutAnnotation");
-        mockC3.method("id").returnType(List.class);
+        mockC3.method("id").returnType(Integer.class);
         final Class<?> c3 = mockC3.build();
         System.out.println("result for c3 "+ml.hasMetadata(c3.getMethod("id"), annotation));
     }

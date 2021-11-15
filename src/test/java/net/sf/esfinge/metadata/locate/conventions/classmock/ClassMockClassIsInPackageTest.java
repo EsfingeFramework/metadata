@@ -5,6 +5,7 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.ClassInPackage;
 import net.sf.esfinge.metadata.locate.conventions.annotations.ClassIsInPackageConvention;
 
 
@@ -13,7 +14,7 @@ import java.lang.annotation.Annotation;
 public class ClassMockClassIsInPackageTest {
     public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
 
-        final Class<? extends Annotation> annotation = ClassIsInPackageConvention.class;
+        final Class<? extends Annotation> annotation = ClassInPackage.class;
 
 
 
@@ -31,7 +32,7 @@ public class ClassMockClassIsInPackageTest {
 
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
         mockC1.annotation(annotation);
-        mockC1.asClass();
+
         final Class<?> c1 = mockC1.build();
         System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
 
@@ -48,8 +49,11 @@ public class ClassMockClassIsInPackageTest {
 
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement");
+        final IClassWriter mockC3 = ClassMock.of("ClassWithoutAnnotation");
+        mockC3.method("setId");
+
         final Class<?> c3 = mockC3.build();
+        System.out.println(c3.getPackage());
         System.out.println("result for c3 "+ml.hasMetadata(c3, annotation));
     }
 }

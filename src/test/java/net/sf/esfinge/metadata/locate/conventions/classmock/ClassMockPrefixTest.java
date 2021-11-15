@@ -4,6 +4,7 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.HasPrefix;
 import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 import net.sf.esfinge.metadata.locate.conventions.annotations.SuffixConvention;
 
@@ -11,7 +12,7 @@ import java.lang.annotation.Annotation;
 
 public class ClassMockPrefixTest {
     public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException, AnnotationReadingException {
-        final Class<? extends Annotation> annotation = PrefixConvention.class;
+        final Class<? extends Annotation> annotation = HasPrefix.class;
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
