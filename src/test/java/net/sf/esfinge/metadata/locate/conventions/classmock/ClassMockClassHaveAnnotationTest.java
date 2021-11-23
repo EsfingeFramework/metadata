@@ -7,10 +7,15 @@ import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.ClassHaveAnnotation;
 
-import java.lang.annotation.Annotation;
 
+import java.lang.annotation.Annotation;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 public class ClassMockClassHaveAnnotationTest {
-    public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
+
+    @Test
+    public  void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
         final Class<? extends Annotation> annotation = ClassHaveAnnotation.class;
 
@@ -18,12 +23,8 @@ public class ClassMockClassHaveAnnotationTest {
 
 //Locator
 
-        MetadataLocator ml = null;
-        try {
-            ml = LocatorsFactory.createLocatorsChain(annotation);
-        } catch (AnnotationReadingException e) {
-            e.printStackTrace();
-        }
+        MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
+
 
 
 //Creating the class with annotation
@@ -31,7 +32,7 @@ public class ClassMockClassHaveAnnotationTest {
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
         mockC1.annotation(annotation);
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
+        assertTrue(ml.hasMetadata(c1, annotation));
 
 
 
@@ -39,18 +40,21 @@ public class ClassMockClassHaveAnnotationTest {
 //Creating the class without prefix and without annotation
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
-        mockC2.annotation(Deprecated.class);
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
+        assertFalse(ml.hasMetadata(c2, annotation));
 
 
 
 //Creating the class with prefix and without annotation
 
         final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement");
+
+        mockC3.annotation(Deprecated.class);
+
         mockC3.method("oldMethod");
-        mockC3.annotation(SuppressWarnings.class);
+
         final Class<?> c3 = mockC3.build();
-        System.out.println("result for c3 "+ml.hasMetadata(c3.getMethod("oldMethod"), annotation));
+
+        assertTrue(ml.hasMetadata(c3.getMethod("oldMethod"), annotation));
     }
 }

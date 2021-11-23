@@ -8,11 +8,12 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.MethodThrowsExcept
 public class MethodThrowsExceptionConventionVerifier implements ConventionVerifier<MethodThrowsExceptionConvention>{
 	
 	private Class<?> exceptionType;
-
+	private boolean canBeSubtype;
 	@Override
 	public void init(MethodThrowsExceptionConvention conventionAnnotation) {
 
 		exceptionType = conventionAnnotation.thrownException();
+		canBeSubtype = conventionAnnotation.canBeSubtype();
 	}
 
 	@Override
@@ -21,8 +22,11 @@ public class MethodThrowsExceptionConventionVerifier implements ConventionVerifi
 			Class<?>[] declaredExceptions = ((Method) element).getExceptionTypes();
 
 			for(Class e : declaredExceptions){
+				System.out.println(e+" "+exceptionType);
 				if(exceptionType.equals(e)){
 					return true;					
+				}else if(canBeSubtype){
+					return exceptionType.isAssignableFrom(e);
 				}
 			}
 

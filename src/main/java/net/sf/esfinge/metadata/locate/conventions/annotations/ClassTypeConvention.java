@@ -12,5 +12,6 @@ import net.sf.esfinge.metadata.locate.conventions.ClassTypeConventionVerifier;
 @Verifier(ClassTypeConventionVerifier.class)
 public @interface ClassTypeConvention {
 	Class<?> superClass();
+	boolean canBeSubtype() default false;
 }
 

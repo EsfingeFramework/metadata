@@ -21,19 +21,36 @@ public class ClassHaveTypeConventionVerifier implements ConventionVerifier<Class
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
         if (element instanceof Field) {
-            Class<?> fieldType = ((Field) element).getDeclaringClass();
             if(canBeSubtype){
-                return classType.isAssignableFrom(fieldType);
-            }else{
-                return classType.equals(fieldType);
-            }
 
-        }else if (element instanceof Method){
-            Class<?> methodType = ((Method) element).getDeclaringClass();
-            if(canBeSubtype){
-                return classType.isAssignableFrom(methodType);
+                for(int i=0;i<((Field) element).getDeclaringClass().getInterfaces().length;i++){
+
+                    if(((Field) element).getDeclaringClass().getInterfaces()[i].isAssignableFrom(classType)) {
+                        return true;
+                    }
+                }
+
+                return classType.isAssignableFrom(((Field) element).getDeclaringClass().getSuperclass());
+
             }else{
-                return classType.equals(methodType);
+
+                return classType.equals(((Field) element).getDeclaringClass().getClass());
+            }
+        }else if (element instanceof Method){
+            if(canBeSubtype){
+
+                for(int i=0;i<((Method) element).getDeclaringClass().getInterfaces().length;i++){
+
+                    if(((Method) element).getDeclaringClass().getInterfaces()[i].isAssignableFrom(classType)) {
+                        return true;
+                    }
+                }
+
+                return classType.isAssignableFrom(((Method) element).getDeclaringClass().getSuperclass());
+
+            }else{
+
+                return classType.equals(((Method) element).getDeclaringClass().getClass());
             }
         }
         return false;

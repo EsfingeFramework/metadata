@@ -26,14 +26,13 @@ public class MethodExactParamListConventionVerifier implements ConventionVerifie
         if (element instanceof Method) {
             Method method = (Method) element;
             Parameter[] params = method.getParameters();
-
+            if(params.length!= parameters.length)
+                return false;
             for (int i = 0; i < params.length; i++) {
-
-                for(int j=0;j< parameters.length;j++){
-                    if (params[i].getType() != parameters[j]) {
+                    if (params[i].getType() != parameters[i]) {
                         return false;
                     }
-                }
+
 
             }
             return true;

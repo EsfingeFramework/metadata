@@ -5,6 +5,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.Collection;
 
 @Retention(RetentionPolicy.RUNTIME)
-@MethodTypeConvention(parameters={Integer.class,Long.class, Collection.class},canBeSubtype = true)
+@MethodParamOfTypeConvention(parameters={Integer.class,Long.class,Collection.class},canBeSubtype = true)
 public @interface HasMethodType {
 }

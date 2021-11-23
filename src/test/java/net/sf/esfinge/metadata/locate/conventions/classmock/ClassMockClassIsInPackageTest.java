@@ -11,8 +11,13 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.ClassIsInPackageCo
 
 import java.lang.annotation.Annotation;
 
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 public class ClassMockClassIsInPackageTest {
-    public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
+
+    @Test
+    public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
         final Class<? extends Annotation> annotation = ClassInPackage.class;
 
@@ -20,21 +25,16 @@ public class ClassMockClassIsInPackageTest {
 
 //Locator
 
-        MetadataLocator ml = null;
-        try {
-            ml = LocatorsFactory.createLocatorsChain(annotation);
-        } catch (AnnotationReadingException e) {
-            e.printStackTrace();
-        }
+        MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
+
 
 
 //Creating the class with annotation
 
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
         mockC1.annotation(annotation);
-
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
+        assertTrue(ml.hasMetadata(c1, annotation));
 
 
 
@@ -43,17 +43,18 @@ public class ClassMockClassIsInPackageTest {
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
+        assertFalse(ml.hasMetadata(c2, annotation));
 
 
 
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC3 = ClassMock.of("net.sf.esfinge.metadata.locate.conventions.ClassWithoutAnnotation");
         mockC3.method("setId");
 
         final Class<?> c3 = mockC3.build();
-        System.out.println(c3.getPackage());
-        System.out.println("result for c3 "+ml.hasMetadata(c3, annotation));
+        Class c = ClassMockClassIsInPackageTest.class;
+        //System.out.println("a "+c.getCanonicalName());
+        assertTrue(ml.hasMetadata(c3, annotation));
     }
 }

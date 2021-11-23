@@ -1,12 +1,9 @@
 package net.sf.esfinge.metadata.locate.conventions.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.ANNOTATION_TYPE)
-@ClassHaveAnnotationConvention(classAnnotations = {SuppressWarnings.class})
+@ClassHaveAnnotationConvention(classAnnotations = {Annotation.class},canBeSubtype = true)
 public @interface ClassHaveAnnotation {
 }

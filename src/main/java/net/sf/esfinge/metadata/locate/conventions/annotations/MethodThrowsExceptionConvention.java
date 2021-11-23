@@ -12,5 +12,5 @@ import net.sf.esfinge.metadata.locate.conventions.MethodThrowsExceptionConventio
 @Verifier(MethodThrowsExceptionConventionVerifier.class)
 public @interface MethodThrowsExceptionConvention {
 	Class<?> thrownException();
-
+	boolean canBeSubtype() default false;
 }

@@ -3,18 +3,23 @@ package net.sf.esfinge.metadata.locate.conventions.classmock;
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.classmock.api.IMethodWriter;
-import net.sf.esfinge.classmock.imp.MethodImp;
+
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.conventions.annotations.MethodExactParamListConvention;
+
 import net.sf.esfinge.metadata.locate.conventions.annotations.MethodHasParamList;
 
 
 import java.lang.annotation.Annotation;
 
+import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 public class ClassMockExactParamListTest {
-    public static void main(String[] args) throws NoSuchMethodException {
+    @Test
+    public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException {
 
         final Class<? extends Annotation> annotation =  MethodHasParamList.class;
 
@@ -22,20 +27,20 @@ public class ClassMockExactParamListTest {
 
 //Locator
 
-        MetadataLocator ml = null;
-        try {
-            ml = LocatorsFactory.createLocatorsChain(annotation);
-        } catch (AnnotationReadingException e) {
-            e.printStackTrace();
-        }
+        MetadataLocator ml =  LocatorsFactory.createLocatorsChain(annotation);
+
 
 
 //Creating the class with annotation
 
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
-        mockC1.method("setId").annotation(annotation);
+        IMethodWriter m0 = mockC1.method("setId");
+        m0.parameter("id",Integer.class);
+        mockC1.annotation(annotation);
+        //mockC1.method("setId").annotation(annotation);
+
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for c1 "+ml.hasMetadata(c1.getMethod("setId"), annotation));
+        assertTrue(ml.hasMetadata(c1, annotation));
 
 
 
@@ -43,17 +48,19 @@ public class ClassMockExactParamListTest {
 //Creating the class without prefix and without annotation
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        mockC2.method("setName").parameter("name",String.class);
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
+        assertFalse(ml.hasMetadata(c2.getDeclaredMethod("setName",String.class), annotation));
 
 
 
 //Creating the class with prefix and without annotation
 
         final IClassWriter mockC3 = ClassMock.of("MethodHasParameterOfTypeWithoutAnnotation");
-        mockC3.method("setId").parameter("id",Integer.class);
-
+        IMethodWriter m1 = mockC3.method("setId");
+        m1.parameter("id",Integer.class);
+        m1.parameter("nome",String.class);
         final Class<?> c3 = mockC3.build();
-        System.out.println("result for c3 "+ml.hasMetadata(c3.getMethod("setId",Integer.class), annotation));
+        assertTrue(ml.hasMetadata(c3.getDeclaredMethod("setId",Integer.class,String.class), annotation));
     }
 }

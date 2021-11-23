@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 
 public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier<ClassHaveAnnotationConvention>{
     private Class<?>[] classAnnotations;
-
+    private boolean canBeSubtype;
 
     @Override
     public void init(ClassHaveAnnotationConvention conventionAnnotation) {
@@ -18,18 +18,24 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
         for (int i = 0; i < conventionAnnotation.classAnnotations().length; i++) {
             classAnnotations[i] = conventionAnnotation.classAnnotations()[i];
         }
+        canBeSubtype = conventionAnnotation.canBeSubtype();
 
     }
 
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
+
         if(element instanceof Field) {
+
             Field field = (Field) element;
             Class<?> fieldDeclaredClass = field.getDeclaringClass();
+
             Annotation[] classDeclaredAnnotations = fieldDeclaredClass.getDeclaredAnnotations();
             for(int i=0;i< classDeclaredAnnotations.length;i++){
                 for(int j=0;j< classAnnotations.length;j++){
-                    if(classDeclaredAnnotations[i].getClass().equals(classAnnotations[j].getClass())){
+                    if(canBeSubtype){
+                        return classAnnotations[j].isAssignableFrom(classDeclaredAnnotations[i].annotationType());
+                    }else if(classDeclaredAnnotations[i].annotationType().equals(classAnnotations[j])){
                         return true;
                     }
                 }
@@ -37,13 +43,15 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
         }else if (element instanceof Method){
             Method method = (Method) element;
             Class<?> methodDeclaredClass = method.getDeclaringClass();
+
             Annotation[] classDeclaredAnnotations = methodDeclaredClass.getDeclaredAnnotations();
             System.out.println(classDeclaredAnnotations.length);
             for(int i=0;i< classDeclaredAnnotations.length;i++){
 
                 for(int j=0;j< classAnnotations.length;j++){
-                    System.out.println(classDeclaredAnnotations[i].getClass());
-                    if(classDeclaredAnnotations[i].getClass().equals(classAnnotations[j].getClass())){
+                    if(canBeSubtype){
+                        return classAnnotations[j].isAssignableFrom(classDeclaredAnnotations[i].annotationType());
+                    }else if(classDeclaredAnnotations[i].annotationType().equals(classAnnotations[j])){
                         return true;
                     }
                 }

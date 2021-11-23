@@ -5,27 +5,29 @@ import net.sf.esfinge.classmock.api.IClassWriter;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.conventions.annotations.ClassTypeConvention;
+import net.sf.esfinge.metadata.locate.conventions.annotations.ClassOfType;
+
 
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 public class ClassMockClassTypeTest {
 
-        public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
+    @Test
+    public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
-            final Class<? extends Annotation> annotation =  ClassTypeConvention.class;
+        final Class<? extends Annotation> annotation =  ClassOfType.class;
 
 
 
 //Locator
 
-            MetadataLocator ml = null;
-            try {
-                ml = LocatorsFactory.createLocatorsChain(annotation);
-            } catch (AnnotationReadingException e) {
-                e.printStackTrace();
-            }
+            MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
+
 
 
 //Creating the class with annotation
@@ -34,7 +36,7 @@ public class ClassMockClassTypeTest {
             mockC1.annotation(annotation);
             mockC1.asClass();
             final Class<?> c1 = mockC1.build();
-            System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
+            assertTrue(ml.hasMetadata(c1, annotation));
 
 
 
@@ -43,15 +45,17 @@ public class ClassMockClassTypeTest {
 
             final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
             final Class<?> c2 = mockC2.build();
-            System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
+            assertFalse(ml.hasMetadata(c2, annotation));
 
 
 
 //Creating the class with prefix and without annotation
 
             final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement");
-            mockC3.field("name").type(String.class).annotation(annotation);
+            mockC3.asClass();
+            mockC3.superclass(ArrayList.class);
+
             final Class<?> c3 = mockC3.build();
-            System.out.println("result for c3 "+ml.hasMetadata(c3, annotation));
+            assertTrue(ml.hasMetadata(c3, annotation));
         }
 }

@@ -28,8 +28,7 @@ public class ClassIsInPackageConventionVerifier implements ConventionVerifier<Cl
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
             Class<?> clazz = (Class<?>) element;
-            System.out.println(regex);
-            System.out.println(clazz.getName());
+
             String declaredClassPackageName = clazz.getName();
             if(declaredClassPackageName.matches(".*"+ regex +".*") || declaredClassPackageName.matches(".*"+ upperCaseRegex +".*")) {
                 return true;
