@@ -13,12 +13,14 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.MethodHasParamList
 
 import java.lang.annotation.Annotation;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class ClassMockExactParamListTest {
     @Test
+
     public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException {
 
         final Class<? extends Annotation> annotation =  MethodHasParamList.class;

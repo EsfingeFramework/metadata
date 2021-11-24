@@ -22,7 +22,7 @@ public class MethodThrowsExceptionConventionVerifier implements ConventionVerifi
 			Class<?>[] declaredExceptions = ((Method) element).getExceptionTypes();
 
 			for(Class e : declaredExceptions){
-				System.out.println(e+" "+exceptionType);
+
 				if(exceptionType.equals(e)){
 					return true;					
 				}else if(canBeSubtype){

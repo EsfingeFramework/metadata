@@ -6,6 +6,7 @@ import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.HasSuffix;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertFalse;
 public class ClassMockSuffixTest {
 
     @Test
+
     public void conventionsWithMapping() throws AnnotationReadingException {
 
         final Class<? extends Annotation> annotation =  HasSuffix.class;

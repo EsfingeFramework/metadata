@@ -10,11 +10,14 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.ClassHaveAnnotatio
 
 import java.lang.annotation.Annotation;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 public class ClassMockClassHaveAnnotationTest {
 
     @Test
+
     public  void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
         final Class<? extends Annotation> annotation = ClassHaveAnnotation.class;

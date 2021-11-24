@@ -9,12 +9,15 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.HasRegex;
 
 
 import java.lang.annotation.Annotation;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class ClassMockRegularExpressionTest {
     @Test
+
     public void conventionsWithMapping() throws AnnotationReadingException {
 
 

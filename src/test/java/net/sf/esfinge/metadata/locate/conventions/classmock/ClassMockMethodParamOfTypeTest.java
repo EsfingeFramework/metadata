@@ -10,6 +10,8 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.HasMethodType;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -17,17 +19,12 @@ import static org.junit.Assert.assertFalse;
 
 public class ClassMockMethodParamOfTypeTest {
     @Test
+
     public  void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
         final Class<? extends Annotation> annotation =  HasMethodType.class;
 
-
-
-//Locator
-
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
-
-
 
 //Creating the class with annotation
 
@@ -35,9 +32,6 @@ public class ClassMockMethodParamOfTypeTest {
         mockC1.annotation(annotation);
         mockC1.method("setId").parameter("id",Integer.class);
         final Class<?> c1 = mockC1.build();
-        System.out.print("MÉTODOS ========== "+c1.getDeclaredMethods().length);
-        System.out.println("\n "+c1.getDeclaredMethods()[0].getName());
-        System.out.println(ml.hasMetadata(c1.getDeclaredMethod("setId",Integer.class), annotation));
         assertTrue(ml.hasMetadata(c1.getDeclaredMethod("setId",Integer.class), annotation));
         //System.out.print(ml.hasMetadata(c1.getDeclaredMethod("setId"), annotation));
 //Creating the class without prefix and without annotation

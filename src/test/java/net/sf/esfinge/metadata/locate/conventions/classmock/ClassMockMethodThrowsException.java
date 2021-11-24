@@ -12,10 +12,13 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.HaveAnnotationOnEl
 
 
 import java.lang.annotation.Annotation;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 public class ClassMockMethodThrowsException {
+
     @Test
     public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException {
 
@@ -34,6 +37,7 @@ public class ClassMockMethodThrowsException {
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
         mockC1.method("setId").annotation(annotation);
         final Class<?> c1 = mockC1.build();
+
         assertTrue(ml.hasMetadata(c1.getDeclaredMethod("setId"), annotation));
 
 
@@ -54,6 +58,7 @@ public class ClassMockMethodThrowsException {
         IMethodWriter m1 = mockC3.method("setId");
         m1.exceptions(NullPointerException.class,RuntimeException.class);
         final Class<?> c3 = mockC3.build();
+
         assertTrue(ml.hasMetadata(c3.getDeclaredMethod("setId"), annotation));
     }
 }

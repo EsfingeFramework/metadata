@@ -8,6 +8,8 @@ import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.ClassHaveType;
 
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class ClassMockClassHaveTypeTest {
 
     @Test
+
     public  void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException{
 
         final Class<? extends Annotation> annotation = ClassHaveType.class;

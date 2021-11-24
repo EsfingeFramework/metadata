@@ -7,11 +7,14 @@ import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.HasPrefix;
 
 import java.lang.annotation.Annotation;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 public class ClassMockPrefixTest {
     @Test
+
     public void conventionsWithMapping() throws  NoSuchMethodException, NoSuchFieldException, AnnotationReadingException {
         final Class<? extends Annotation> annotation = HasPrefix.class;
 

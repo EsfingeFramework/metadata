@@ -38,9 +38,10 @@ public class HaveAnnotationOnElementConventionVerifier implements ConventionVeri
         }else if (element instanceof Method){
 
                 Annotation[] methodAnnotations = ((Method) element).getDeclaredAnnotations();
-                System.out.println(element.getAnnotations().length);
+
                 for(int i=0;i<methodAnnotations.length;i++){
-                    if(methodAnnotations[i].getClass()==annotationClass  && elementClass==element.getClass()){
+
+                    if(methodAnnotations[i].annotationType()==annotationClass  && elementClass==element.getClass()){
                         return true;
                     }
                 }

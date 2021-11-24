@@ -45,7 +45,7 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
             Class<?> methodDeclaredClass = method.getDeclaringClass();
 
             Annotation[] classDeclaredAnnotations = methodDeclaredClass.getDeclaredAnnotations();
-            System.out.println(classDeclaredAnnotations.length);
+
             for(int i=0;i< classDeclaredAnnotations.length;i++){
 
                 for(int j=0;j< classAnnotations.length;j++){

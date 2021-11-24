@@ -6,6 +6,7 @@ import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.HasMethodReturnType;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -15,7 +16,7 @@ import java.util.List;
 
 
 public class ClassMockMethodReturnTypeTest {
-
+    @Test
     public void conventionsWithMapping() throws AnnotationReadingException, NoSuchMethodException{
 
 
@@ -32,7 +33,7 @@ public class ClassMockMethodReturnTypeTest {
 //Creating the class with annotation
 
         final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
-        mockC1.method("id").returnType(List.class).annotation(annotation);
+        mockC1.method("setId").returnType(List.class).annotation(annotation);
         final Class<?> c1 = mockC1.build();
         //System.out.println(ml.hasMetadata(c1.getMethod("id"), annotation));
         assertTrue(ml.hasMetadata(c1.getMethod("setId"), annotation));
