@@ -23,6 +23,7 @@ public class PrefixConventionVerifier implements ConventionVerifier<PrefixConven
 
 	@Override
 	public boolean isConventionPresent(AnnotatedElement element) {
+
 		String name = AnnotatedElementUtils.getName(element);
 		return name.startsWith(prefix);
 	}

@@ -1,3 +1,4 @@
+
 package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
@@ -13,7 +14,8 @@ public class EnclosingElementLocator extends MetadataLocator {
 	
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
-			throws MetadataLocationException {				
+			throws MetadataLocationException {
+
 		if(contador==0) OriginalElement = element;		
 		
 		contador++;
@@ -54,15 +56,22 @@ public class EnclosingElementLocator extends MetadataLocator {
 	}
 	
 	@Override
-	public boolean hasMetadata(AnnotatedElement element,
-			Class<? extends Annotation> annotationClass) {
-		boolean nextResult = getNextLocator().hasMetadata(element, annotationClass);
-		if(!nextResult) {
-			if(element instanceof Member) {
-				return getNextLocator().hasMetadata(((Member)element).getDeclaringClass(), annotationClass);
-			} 
+	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+
+		boolean nextLocatorFound = getNextLocator().hasMetadata(element, annotationClass);
+		if(!nextLocatorFound){
+			if(element instanceof Method ||element instanceof Field ){
+				Class clazz = ((Member) element).getDeclaringClass();
+
+				for(Annotation an : clazz.getDeclaredAnnotations()){
+
+					if(an.annotationType().isAssignableFrom(annotationClass)){
+						return true;
+					}
+				}
+			}
 		}
-		return nextResult;
+		return nextLocatorFound;
 	}
 
 }

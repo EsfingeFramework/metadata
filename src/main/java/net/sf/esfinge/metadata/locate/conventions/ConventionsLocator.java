@@ -65,7 +65,7 @@ public class ConventionsLocator extends MetadataLocator {
 						count++;
 						String theAnnotation = annotationElement.getAttribute("name");
 						Class<?> annotationClass = Class.forName(theAnnotation);// map key
-						System.out.println("the main annotation is: " + theAnnotation);
+						//System.out.println("the main annotation is: " + theAnnotation);
 
 						ConventionsMetadataContainer container = new ConventionsMetadataContainer();
 
@@ -76,8 +76,8 @@ public class ConventionsLocator extends MetadataLocator {
 						}
 						container.setAllConventionsNeedToApply(allConventionsNeedToApply);
 
-						System.out.println("all Conventions needs to apply value is: " + isApplytoAll);
-						System.out.println();
+						//System.out.println("all Conventions needs to apply value is: " + isApplytoAll);
+						//System.out.println();
 
 						// then getting the conventions that annotation has
 						NodeList convention = annotationNode.getChildNodes();
@@ -90,10 +90,10 @@ public class ConventionsLocator extends MetadataLocator {
 
 								// getting the verifier first
 								String verifier = conventionElement.getAttribute("verifier");
-								System.out.println("///////----------------------------------------------");
-								System.out.println();
-								System.out.println("the Verifier is: " + verifier);
-								System.out.println();
+						//		System.out.println("///////----------------------------------------------");
+						//		System.out.println();
+						//		System.out.println("the Verifier is: " + verifier);
+						//		System.out.println();
 								Class<?> verifierClass = Class.forName(verifier);
 								ConventionVerifier verifierInstance = (ConventionVerifier) verifierClass
 										.getConstructor().newInstance();
@@ -158,11 +158,14 @@ public class ConventionsLocator extends MetadataLocator {
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
 
-		if (!nextLocator.hasMetadata(element, annotationClass)) {
+		boolean nextFoundMetadata = getNextLocator().hasMetadata(element, annotationClass);
+
+		if (!nextFoundMetadata) {
+
 			return isConventionsPresent(element, annotationClass);
 		}
 
-		return nextLocator.hasMetadata(element, annotationClass);
+		return nextFoundMetadata;
 	}
 
 	private boolean isConventionsPresent(AnnotatedElement element, Class<? extends Annotation> annotationClass) {

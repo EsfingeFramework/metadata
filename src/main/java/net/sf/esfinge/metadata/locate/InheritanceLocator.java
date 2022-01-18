@@ -97,7 +97,16 @@ public class InheritanceLocator extends MetadataLocator {
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
-		return false;
+		boolean nextLocatorFound = getNextLocator().hasMetadata(element, annotationClass);
+		if(!nextLocatorFound){
+			for(Annotation annotation : element.getDeclaredAnnotations()){
+				if(annotation.annotationType().isAssignableFrom(annotationClass)){
+					return true;
+				}
+			}
+		}
+
+		return nextLocatorFound;
 	}
 
 }

@@ -21,6 +21,7 @@ public class RegularLocator extends MetadataLocator {
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+
 		return element.isAnnotationPresent(annotationClass);
 	}
 }
