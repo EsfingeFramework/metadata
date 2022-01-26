@@ -1,8 +1,11 @@
 package net.sf.esfinge.metadata.locate;
 
+import net.sf.esfinge.metadata.annotation.finder.SearchOnAbstractions;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.AnnotatedType;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 
 //TODO Refatorar o locator para usar o locator.....
@@ -98,11 +101,53 @@ public class InheritanceLocator extends MetadataLocator {
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		boolean nextLocatorFound = getNextLocator().hasMetadata(element, annotationClass);
-		if(!nextLocatorFound){
-			for(Annotation annotation : element.getDeclaredAnnotations()){
-				if(annotation.annotationType().isAssignableFrom(annotationClass)){
-					return true;
+		if(!nextLocatorFound && annotationClass.isAnnotationPresent(SearchOnAbstractions.class)){
+			if(element instanceof Class){
+				Class clazz = (Class) element;
+
+				Class superClazz = clazz.getSuperclass();
+
+				boolean result = false;
+				if(superClazz != Object.class){
+					result = result || hasMetadata(superClazz,annotationClass);
+
 				}
+				Class[] interfaces = clazz.getInterfaces();
+				for(Class ainterface : interfaces){
+
+					result = result || hasMetadata(ainterface,annotationClass);
+				}
+				return result;
+			}else if(element instanceof Method){
+				Method method = (Method) element;
+				Class clazz = method.getDeclaringClass();
+				Class superClazz = clazz.getSuperclass();
+
+				boolean result = false;
+				if(superClazz != Object.class){
+
+					try {
+						Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());
+						result = result || hasMetadata(superMethod,annotationClass);
+					} catch (NoSuchMethodException e) {
+						// continue if there is no method
+					}
+
+				}
+				//procurar método nas interfaces
+				Class[] interfaces = clazz.getInterfaces();
+				for(Class ainterface : interfaces){
+
+					try{
+
+						Method methodOfInterface = ainterface.getMethod(method.getName(),method.getParameterTypes());
+
+						result = result || hasMetadata(methodOfInterface,annotationClass);
+					}catch(NoSuchMethodException nsmex){
+						//continue if there is no method...
+					}
+				}
+				return result;
 			}
 		}
 

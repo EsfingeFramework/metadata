@@ -2,10 +2,12 @@ package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Member;
 import java.util.List;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 public class InsideAnnotationLocator extends MetadataLocator {
 	private int contador = 0;
@@ -67,13 +69,15 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 
 		boolean nextLocatorFound  = getNextLocator().hasMetadata(element, annotationClass);
-		if(!nextLocatorFound) {
+		if(!nextLocatorFound && annotationClass.isAnnotationPresent(SearchInsideAnnotations.class)) {
+			boolean result = false;
+
 			for(Annotation a : element.getAnnotations()) {
-				if(a.annotationType().isAnnotationPresent(annotationClass)) {
-					return true;
-				}
+
+				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation"))
+					result = result && hasMetadata(a.annotationType(),annotationClass);
 			}
-			return false;
+			return result;
 		}
 
 		return nextLocatorFound;
