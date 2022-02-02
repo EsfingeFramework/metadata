@@ -1,1 +1,0 @@
-package net.sf.esfinge.metadata.locate.locators.WithoutAnnotation;

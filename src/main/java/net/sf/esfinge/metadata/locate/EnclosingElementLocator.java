@@ -15,47 +15,24 @@ public class EnclosingElementLocator extends MetadataLocator {
 	private AnnotatedElement OriginalElement;
 	
 	@Override
-	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
-			throws MetadataLocationException {
+	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {
+		Annotation nextLocatorFound = getNextLocator().findMetadata(element, annotationClass);
 
-		if(contador==0) OriginalElement = element;		
-		
-		contador++;
-		
-		Annotation an=null;		
-		
-		Annotation[] ans = element.getAnnotations();
-		
-		for (Annotation a : ans) {
-			Class<?extends Annotation> c = a.annotationType();
-			
-				if(c.equals(annotationClass)){
-					an = a;
-					return an;					
-					
-				}else{
-					InsideAnnotationLocator ll = new InsideAnnotationLocator();
-					an = ll.findMetadata(c, annotationClass);
+		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchOnEnclosingElements.class)){
 
-				}
-		
-		}	
-		
-		//Button-up Searching 
-		if(ans.length <= 0 || an==null) {			
-			if (element instanceof Method) {
-				return findMetadata(((Method) element).getDeclaringClass(),
-						annotationClass);
-			} else if (element instanceof Field) {
-				return findMetadata(((Field) element).getDeclaringClass(),
-						annotationClass);
-			} else if (element instanceof Class && ((Class) element).getPackage() != null) {
-				return findMetadata(((Class) element).getPackage(),
-						annotationClass);
+			if(element instanceof Method || element instanceof Field ){
+				Class clazz = ((Member) element).getDeclaringClass();
+				return findMetadata(clazz,annotationClass);
+			}else if (element instanceof Class){
+
+				Package apackage = ((Class) element).getPackage();
+
+				return findMetadata(apackage,annotationClass);
 			}
-		}		
-		return an;
+		}
+		return nextLocatorFound;
 	}
+
 	
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {

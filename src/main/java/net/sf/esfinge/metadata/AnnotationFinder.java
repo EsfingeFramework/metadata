@@ -10,74 +10,84 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.esfinge.metadata.annotation.finder.Locator;
+import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 
 public class AnnotationFinder {
 	
-	
-	public static  List<Annotation> findAllAnnotations(AnnotatedElement element) throws NoSuchMethodException, SecurityException
-	{
-		List<Annotation> list = new ArrayList<Annotation>();
-		
-		list.addAll(findAll(element, element));
-		return list;
-	}
-	
-	private static List<Annotation> findAll(AnnotatedElement element,AnnotatedElement originalElement ) throws NoSuchMethodException, SecurityException
-	{
-		List<Annotation> list = new ArrayList<Annotation>();
 
-		if(!(element.equals(Object.class)))
-		{
-			for(Annotation annotations: element.getDeclaredAnnotations())
-			{
-				list.add(annotations);
+//	public static  List<Annotation> findAllAnnotations(AnnotatedElement element) throws NoSuchMethodException, SecurityException
+//	{
+//		List<Annotation> list = new ArrayList<Annotation>();
+//
+//		list.addAll(findAll(element, element));
+//		return list;
+//	}
+	
+	private static List<Annotation> findAll(AnnotatedElement element,AnnotatedElement originalElement ) throws NoSuchMethodException, SecurityException, AnnotationReadingException {
+		List<Annotation> list = new ArrayList<Annotation>();
+		MetadataLocator ml;
+		Annotation[] annotations = element.getDeclaredAnnotations();
+		for(Annotation annotation : annotations){
+			ml = LocatorsFactory.createLocatorsChain(annotation.getClass());
+			Annotation an = ml.findMetadata(element,annotation.annotationType());
+			if(an!=null){
+				list.add(an);
 			}
-			
-			if(element instanceof Method)
-			{
-				Method method = (Method) element;
-				Class<?> clazz= method.getDeclaringClass();
-					list.addAll(findAll(clazz,originalElement));
-			}
-			else if(element instanceof Field)
-			{
-				Field fieldWithElement  = (Field) element;
-				Class<?> clazz= fieldWithElement.getDeclaringClass();
-					list.addAll(findAll(clazz,originalElement));;
-						
-			}
-			else if(element instanceof Class)
-			{
-				Class<?> clazz = (Class)element;
-				Class<?> superclassWithMetadata = clazz.getSuperclass();
-				
-				if(superclassWithMetadata!=null){
-
-					for(Class<?> interfacesWithAnnotation: clazz.getInterfaces())
-					{
-						if(originalElement instanceof Method)
-						{
-							Method original = (Method) originalElement;
-							list.addAll(findAll(interfacesWithAnnotation.getDeclaredMethod(original.getName()),originalElement));
-						}
-						else
-						{
-							list.addAll(findAll(interfacesWithAnnotation,originalElement));
-						}
-					}
-					if(!(superclassWithMetadata.equals(Object.class))){
-						list.addAll(findAll(superclassWithMetadata,originalElement));
-					}
-				}
-				
-				
-			}
-			
-		}		
-		
+		}
 		return list;
+
+//		if(!(element.equals(Object.class)))
+//		{
+//			for(Annotation annotations: element.getDeclaredAnnotations())
+//			{
+//				list.add(annotations);
+//			}
+//
+//			if(element instanceof Method)
+//			{
+//				Method method = (Method) element;
+//				Class<?> clazz= method.getDeclaringClass();
+//					list.addAll(findAll(clazz,originalElement));
+//			}
+//			else if(element instanceof Field)
+//			{
+//				Field fieldWithElement  = (Field) element;
+//				Class<?> clazz= fieldWithElement.getDeclaringClass();
+//					list.addAll(findAll(clazz,originalElement));;
+//
+//			}
+//			else if(element instanceof Class)
+//			{
+//				Class<?> clazz = (Class)element;
+//				Class<?> superclassWithMetadata = clazz.getSuperclass();
+//
+//				if(superclassWithMetadata!=null){
+//
+//					for(Class<?> interfacesWithAnnotation: clazz.getInterfaces())
+//					{
+//						if(originalElement instanceof Method)
+//						{
+//							Method original = (Method) originalElement;
+//							list.addAll(findAll(interfacesWithAnnotation.getDeclaredMethod(original.getName()),originalElement));
+//						}
+//						else
+//						{
+//							list.addAll(findAll(interfacesWithAnnotation,originalElement));
+//						}
+//					}
+//					if(!(superclassWithMetadata.equals(Object.class))){
+//						list.addAll(findAll(superclassWithMetadata,originalElement));
+//					}
+//				}
+//
+//
+//			}
+//
+//		}
+		
+
 	}
 	
 

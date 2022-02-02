@@ -1,4 +1,4 @@
-package net.sf.esfinge.metadata.locate.locators;
+package net.sf.esfinge.metadata.locate.locators.HasMetadata;
 
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 

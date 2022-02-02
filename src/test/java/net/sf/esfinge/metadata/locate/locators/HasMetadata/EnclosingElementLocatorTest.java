@@ -1,18 +1,21 @@
-package net.sf.esfinge.metadata.locate.locators;
+package net.sf.esfinge.metadata.locate.locators.HasMetadata;
+
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.locators.WithoutAnnotation.ClassWithoutAnnotation;
+import net.sf.esfinge.metadata.locate.locators.HasMetadata.WithoutAnnotation.ClassWithoutAnnotation;
+
 
 import java.lang.annotation.Annotation;
 
-public class InsideAnnotationLocatorTest {
+public class EnclosingElementLocatorTest {
+
     public static void main(String args[]) throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
 
 
 
-        final Class<? extends Annotation> annotation = ToTestInside.class;
+        final Class<? extends Annotation> annotation = ToTestEnclosing.class;
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
@@ -20,7 +23,7 @@ public class InsideAnnotationLocatorTest {
         System.out.println(ml.hasMetadata(c1, annotation)+" "+c1.getName());
         //assertTrue(ml.hasMetadata(c1, annotation));
         System.out.println(ml.hasMetadata(c1.getMethod("setId"), annotation)+" "+c1.getName());
-        // assertTrue(ml.hasMetadata(c3, annotation));
+         //assertTrue(ml.hasMetadata(c3, annotation));
 
         System.out.println(ml.hasMetadata(c1.getDeclaredField("id"), annotation)+" "+c1.getName());
 

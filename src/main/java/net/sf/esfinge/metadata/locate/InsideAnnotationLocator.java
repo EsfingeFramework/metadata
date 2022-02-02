@@ -10,45 +10,20 @@ import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
 
 public class InsideAnnotationLocator extends MetadataLocator {
-	private int contador = 0;
-	private AnnotatedElement OriginalElement;
+
 
 	@Override
-	public Annotation findMetadata(AnnotatedElement element,
-			Class<? extends Annotation> annotationClass) {
-
-		
-		
-		if (contador == 0)
-			OriginalElement = element;
-
-		contador++;		
-		
-		Annotation an=null;	
-		
-		Annotation[] ans = element.getAnnotations();		
-		
-		for (Annotation a : ans) {	
-			Class<?>c = a.annotationType();
-			// exclui anotacoes predefinidas do Java e do Esfinge Metadata
-			if (!isJavaAnnotation(c) &&	!isEsfingeMetadataAnnotation(c)) {					
-				if (c.equals(annotationClass)) {
-
-					an = a;
-					return an;
-				}else {
-					boolean exist = AnnotationFinder.existAnnotation(c, annotationClass);
-					List<Annotation> value = AnnotationFinder.findAnnotation(c, annotationClass);
-					if(exist == true)
-					{
-						an = value.get(0);
-					}
-										
-				}							
+	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+		Annotation nextLocatorFound  = getNextLocator().findMetadata(element, annotationClass);
+		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchInsideAnnotations.class)){
+			Annotation annotation = null;
+			for(Annotation a : element.getAnnotations()) {
+				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation"))
+					annotation =  findMetadata(a.annotationType(),annotationClass);
 			}
+			return annotation;
 		}
-
-		return an;	
+		return nextLocatorFound;
 	}
 
 	private boolean isEsfingeMetadataAnnotation(Class<?> c) {

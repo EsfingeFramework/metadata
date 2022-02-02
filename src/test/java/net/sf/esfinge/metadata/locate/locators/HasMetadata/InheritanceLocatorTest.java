@@ -1,4 +1,4 @@
-package net.sf.esfinge.metadata.locate.locators;
+package net.sf.esfinge.metadata.locate.locators.HasMetadata;
 
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.classmock.api.IClassWriter;
@@ -6,8 +6,6 @@ import net.sf.esfinge.classmock.api.enums.ModifierEnum;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.conventions.annotations.HasSuffix;
-import org.junit.Test;
 
 import java.lang.annotation.Annotation;
 

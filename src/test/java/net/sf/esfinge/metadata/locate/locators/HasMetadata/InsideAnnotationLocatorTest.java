@@ -1,21 +1,18 @@
-package net.sf.esfinge.metadata.locate.locators;
-
+package net.sf.esfinge.metadata.locate.locators.HasMetadata;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
-import net.sf.esfinge.metadata.locate.locators.WithoutAnnotation.ClassWithoutAnnotation;
-
+import net.sf.esfinge.metadata.locate.locators.HasMetadata.WithoutAnnotation.ClassWithoutAnnotation;
 
 import java.lang.annotation.Annotation;
 
-public class EnclosingElementLocatorTest {
-
+public class InsideAnnotationLocatorTest {
     public static void main(String args[]) throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
 
 
 
-        final Class<? extends Annotation> annotation = ToTestEnclosing.class;
+        final Class<? extends Annotation> annotation = ToTestInside.class;
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
