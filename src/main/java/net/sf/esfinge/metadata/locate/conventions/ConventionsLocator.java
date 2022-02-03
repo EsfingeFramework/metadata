@@ -26,97 +26,49 @@ public class ConventionsLocator extends MetadataLocator {
 
 	private static Map<Class<?>, ConventionsMetadataContainer> conventionsDefinitions = new HashMap<>();
 
-	// the parameter can be inputstring etc...
 	public static void loadConventions(String filename) {
-		// get the conventions from the file
-		// store them in a static variable
-
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
-
-			// Get Document
 			Document doc = builder.parse(new File(filename));
-
-			// Normalize the xml structure
 			doc.getDocumentElement().normalize();
-
-			// getting the convention first node to retrieve the data
 			NodeList conventionsList = doc.getElementsByTagName("conventions");
-
-			Node conventionsNode = conventionsList.item(0); // <conventions></conventions>
-
+			Node conventionsNode = conventionsList.item(0);
 			NodeList annotation = conventionsNode.getChildNodes();
 			int count = 0;
-			for (int i = 0; i < annotation.getLength(); i++) {
-
+			for (int i = 0; i < annotation.getLength(); i++){
 				Node annotationNode = annotation.item(i);
-
-				if (annotationNode.getNodeType() == Node.ELEMENT_NODE) {
+				if (annotationNode.getNodeType() == Node.ELEMENT_NODE){
 					Element annotationElement = (Element) annotationNode;
-
-					// there are two approaches,
-					// one could be getting all attributes and iterate through them to see what are
-					// the properties
-					// NamedNodeMap attributes = annotationElement.getAttributes();
-					// the next is getting the attributes by calling their names, which I have done
-					// in this approach
-					if (count == 0) {
+					if (count == 0){
 						count++;
 						String theAnnotation = annotationElement.getAttribute("name");
-						Class<?> annotationClass = Class.forName(theAnnotation);// map key
-						//System.out.println("the main annotation is: " + theAnnotation);
-
+						Class<?> annotationClass = Class.forName(theAnnotation);
 						ConventionsMetadataContainer container = new ConventionsMetadataContainer();
-
 						String isApplytoAll = annotationElement.getAttribute("allConventionsNeedToApply");
 						boolean allConventionsNeedToApply = false;
-						if (isApplytoAll == "true") {
+						if (isApplytoAll == "true"){
 							allConventionsNeedToApply = true;
 						}
 						container.setAllConventionsNeedToApply(allConventionsNeedToApply);
-
-						//System.out.println("all Conventions needs to apply value is: " + isApplytoAll);
-						//System.out.println();
-
-						// then getting the conventions that annotation has
 						NodeList convention = annotationNode.getChildNodes();
 
-						for (int j = 0; j < convention.getLength(); j++) {
+						for (int j = 0; j < convention.getLength(); j++){
 							Node conventionNode = convention.item(j);
-
-							if (conventionNode.getNodeType() == Node.ELEMENT_NODE) {
+							if (conventionNode.getNodeType() == Node.ELEMENT_NODE){
 								Element conventionElement = (Element) conventionNode;
-
-								// getting the verifier first
 								String verifier = conventionElement.getAttribute("verifier");
-						//		System.out.println("///////----------------------------------------------");
-						//		System.out.println();
-						//		System.out.println("the Verifier is: " + verifier);
-						//		System.out.println();
 								Class<?> verifierClass = Class.forName(verifier);
-								ConventionVerifier verifierInstance = (ConventionVerifier) verifierClass
-										.getConstructor().newInstance();
-
-								// then getting the parameters of the verifier , which is the convention and its
-								// value
+								ConventionVerifier verifierInstance = (ConventionVerifier) verifierClass.getConstructor().newInstance();
 								NodeList parameter = conventionNode.getChildNodes();
-
 								Map<String, String> parameters = new HashMap<String, String>();
 
-								for (int k = 0; k < parameter.getLength(); k++) {
+								for (int k = 0; k < parameter.getLength(); k++){
 									Node parameterNode = parameter.item(k);
-
 									if (parameterNode.getNodeType() == Node.ELEMENT_NODE) {
 										Element parameterElement = (Element) parameterNode;
-
-										// the conventions and its value
 										String theConvention = parameterElement.getAttribute("name");
-										System.out.println(
-												"the Convention parameter for the verifier is: " + theConvention);
 										String conventionValue = parameterElement.getAttribute("value");
-										System.out.println("the Convention value is: " + conventionValue);
-										System.out.println();
 										parameters.put(theConvention, conventionValue);
 
 									}
@@ -128,18 +80,14 @@ public class ConventionsLocator extends MetadataLocator {
 							}
 
 						}
-						
 						conventionsDefinitions.put(annotationClass, container);
 
 					}
 				}
 			}
-
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
