@@ -6,6 +6,7 @@ import net.sf.esfinge.classmock.api.enums.ModifierEnum;
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import org.junit.Test;
 
 import java.lang.annotation.Annotation;
 
@@ -14,19 +15,18 @@ import static org.junit.Assert.assertTrue;
 
 public class InheritanceLocatorTest {
 
-
-    public static void main(String args[]) throws AnnotationReadingException, NoSuchMethodException {
+    @Test
+    public static void hasMetadataOnInheritance() throws AnnotationReadingException, NoSuchMethodException {
 
 
 
         final Class<? extends Annotation> annotation = ToTestInheritance.class;
 
         final IClassWriter interfaceF1 = ClassMock.of("TestInterface");
-        //interfaceF1.method("setId").annotation(annotation);
+
 
         interfaceF1.asInterface().annotation(annotation);
-       // interfaceF1.asInterface().method("setId");
-        //interfaceF1.method("setId").annotation(annotation);
+
          Class<?> f1 = interfaceF1.build();
 
         final IClassWriter interfaceF2 = ClassMock.of("TestInterfaceWithMethod");
@@ -35,19 +35,18 @@ public class InheritanceLocatorTest {
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
-         IClassWriter mockC1 = ClassMock.of("TestInheritance");
+        IClassWriter mockC1 = ClassMock.of("TestInheritance");
         mockC1.annotation(annotation);
-         Class<?> c1 = mockC1.build();
-        System.out.println(ml.hasMetadata(c1, annotation)+" "+c1.getName());
-        //assertTrue(ml.hasMetadata(c1, annotation));
+        Class<?> c1 = mockC1.build();
+        assertTrue(ml.hasMetadata(c1, annotation));
 
 
 //Creating the class without annotation
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         final Class<?> c2 = mockC2.build();
-        System.out.println(ml.hasMetadata(c2, annotation)+" "+c2.getName());
-        //assertFalse(ml.hasMetadata(c2, annotation));
+
+        assertFalse(ml.hasMetadata(c2, annotation));
 
 
 //Creating the class to test annotation on method
