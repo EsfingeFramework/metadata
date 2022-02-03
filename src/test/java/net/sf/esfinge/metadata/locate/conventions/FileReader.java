@@ -20,7 +20,7 @@ public class FileReader {
 
 	public static void main(String[] args) throws Exception {
 		
-		//ConventionsLocator.loadConventions("src/main/java/conventions.config");
+		ConventionsLocator.loadConventions("src/main/java/conventions.config");
 		
 		MetadataLocator l = LocatorsFactory.createLocatorsChain(ForTestingFileConventions.class);
 		

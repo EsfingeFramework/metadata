@@ -7,11 +7,17 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.util.List;
 
 //TODO Refatorar o locator para usar o locator.....
 public class InheritanceLocator extends MetadataLocator {
 
 	private AnnotatedElement originalElement;
+
+	@Override
+	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+		return null;
+	}
 
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {

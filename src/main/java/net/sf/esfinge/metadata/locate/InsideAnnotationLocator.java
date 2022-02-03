@@ -13,6 +13,11 @@ public class InsideAnnotationLocator extends MetadataLocator {
 
 
 	@Override
+	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+		return null;
+	}
+
+	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		Annotation nextLocatorFound  = getNextLocator().findMetadata(element, annotationClass);
 		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchInsideAnnotations.class)){

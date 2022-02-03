@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.locate;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.util.List;
 
 public abstract class MetadataLocator {
 
@@ -14,7 +15,9 @@ public abstract class MetadataLocator {
 		}
 		currentLocator.nextLocator = locator;
 	}
-	
+	public abstract List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException;
+
+
 	public MetadataLocator getNextLocator() {
 		return nextLocator;
 	}

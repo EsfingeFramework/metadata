@@ -5,50 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f624b65-5285-48e4-aa14-5e68c020e25c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_9_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_9_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_5_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_javaparser_javaparser_core_3_5_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_3_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_all_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_dep_4_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_esfinge_classmock_1_1_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_esfinge_classmock_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jmock_jmock_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jmock_jmock_junit4_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_1_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metadata.iml" beforeDir="false" afterPath="$PROJECT_DIR$/metadata.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockFieldOfTypeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockFieldOfTypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/EnclosingElementLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/EnclosingElementLocatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/InheritanceLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InheritanceLocatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/InsideAnnotationLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InsideAnnotationLocatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/ToTestEnclosing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/ToTestEnclosing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/ToTestInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/ToTestInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/ToTestInside.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/ToTestInside.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/WithAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/WithAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/WithoutAnnotation/ClassWithoutAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/WithoutAnnotation/ClassWithoutAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/WithoutAnnotation/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/WithoutAnnotation/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/MetadataLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/MetadataLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ConventionsLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ConventionsLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/FileReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +132,7 @@
       <recent name="net.sf.esfinge.metadata.properties.containers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.InheritanceLocatorTest">
+  <component name="RunManager" selected="Application.FileReader">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -183,6 +148,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="net.sf.esfinge.metadata.locate.locators.FindMetadata.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.conventions.FileReader" />
+      <module name="metadata" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -220,15 +199,6 @@
       </method>
     </configuration>
     <configuration name="All in metadata (2)" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <module name="metadata" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in metadata (5)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="metadata" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -278,20 +248,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in metadata (2)" />
-      <item itemvalue="JUnit.All in metadata (1)" />
-      <item itemvalue="JUnit.All in metadata (5)" />
-      <item itemvalue="JUnit.All in metadata (6)" />
       <item itemvalue="Application.EnclosingElementLocatorTest" />
       <item itemvalue="Application.InheritanceLocatorTest" />
+      <item itemvalue="JUnit.All in metadata (2)" />
+      <item itemvalue="JUnit.All in metadata (1)" />
+      <item itemvalue="JUnit.All in metadata (6)" />
+      <item itemvalue="Application.FileReader" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FileReader" />
         <item itemvalue="Application.InheritanceLocatorTest" />
         <item itemvalue="Application.EnclosingElementLocatorTest" />
         <item itemvalue="JUnit.All in metadata (6)" />
         <item itemvalue="JUnit.All in metadata (1)" />
-        <item itemvalue="JUnit.All in metadata (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -306,6 +276,7 @@
       <workItem from="1643287175701" duration="815000" />
       <workItem from="1643802299025" duration="509000" />
       <workItem from="1643802866323" duration="4517000" />
+      <workItem from="1643896576647" duration="2662000" />
     </task>
     <servers />
   </component>
@@ -384,6 +355,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

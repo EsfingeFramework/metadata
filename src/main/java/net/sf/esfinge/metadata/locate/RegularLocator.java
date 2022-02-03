@@ -20,12 +20,13 @@ public class RegularLocator extends MetadataLocator {
 			throws MetadataLocationException {
 		return element.getAnnotation(annotationClass);
 	}
-
+	@Override
+	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+		return Arrays.asList(element.getAnnotations());
+	}
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		return element.isAnnotationPresent(annotationClass);
 	}
-	public List<Annotation> findAllMetadata(AnnotatedElement annotatedElement){
-		return Arrays.asList(annotatedElement.getAnnotations());
-	}
+
 }

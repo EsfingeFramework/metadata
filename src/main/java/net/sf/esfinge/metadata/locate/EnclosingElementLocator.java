@@ -2,18 +2,35 @@
 package net.sf.esfinge.metadata.locate;
 
 import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.util.List;
 
 public class EnclosingElementLocator extends MetadataLocator {
 	
 	private int contador=0;
 	private AnnotatedElement OriginalElement;
-	
+
+	@Override
+	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+		List<Annotation> annotations = nextLocator.findAllMetadata(element);
+		if(element instanceof Method || element instanceof Field ){
+			Class clazz = ((Member) element).getDeclaringClass();
+			for(Annotation a : clazz.getDeclaredAnnotations()){
+				if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
+					AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
+				}
+			}
+
+		}
+		return annotations;
+	}
+
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {
 		Annotation nextLocatorFound = getNextLocator().findMetadata(element, annotationClass);
