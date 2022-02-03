@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNull;
 public class InheritanceLocatorTest {
 
     @Test
-    public static void findMetadataOnInheritance() throws AnnotationReadingException, NoSuchMethodException {
+    public  void findMetadataOnInheritance() throws AnnotationReadingException, NoSuchMethodException {
 
 
 
@@ -37,13 +37,13 @@ public class InheritanceLocatorTest {
 //Creating the class without annotation
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         final Class<?> c2 = mockC2.build();
-        System.out.println(ml.findMetadata(c2, annotation)+" "+c2.getName());
+
         assertNull(ml.findMetadata(c2, annotation));
 //Creating the class to test annotation on method
         final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnMethod");
         mockC3.method("setId").annotation(annotation);
         Class<?> c3 = mockC3.build();
-        System.out.println(ml.findMetadata(c3.getMethod("setId"), annotation)+" "+c3.getName());
+
         assertNotNull(ml.findMetadata(c3.getMethod("setId"), annotation));
 //Creating the class with annotation on superclass
         final IClassWriter mockC4 = ClassMock.of("ClassWithAnnotationOnSuperCLass");

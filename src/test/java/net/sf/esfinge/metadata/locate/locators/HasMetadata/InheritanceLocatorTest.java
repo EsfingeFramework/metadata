@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class InheritanceLocatorTest {
 
     @Test
-    public static void hasMetadataOnInheritance() throws AnnotationReadingException, NoSuchMethodException {
+    public void hasMetadataOnInheritance() throws AnnotationReadingException, NoSuchMethodException {
 
 
 
@@ -54,33 +54,32 @@ public class InheritanceLocatorTest {
         final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnMethod");
         mockC3.method("setId").annotation(annotation);
         Class<?> c3 = mockC3.build();
-        System.out.println(ml.hasMetadata(c3.getMethod("setId"), annotation)+" "+c3.getName());
-        // assertTrue(ml.hasMetadata(c3, annotation));
+
+        assertTrue(ml.hasMetadata(c3.getMethod("setId"), annotation));
 
 //Creating the class with annotation on superclass
         final IClassWriter mockC4 = ClassMock.of("ClassWithAnnotationOnSuperCLass");
         mockC4.superclass(c1);
         final Class<?> c4 = mockC4.build();
-        System.out.println(ml.hasMetadata(c4, annotation)+" "+c4.getName());
-
+        assertTrue(ml.hasMetadata(c4, annotation));
 //Creating the class with annotation on interface
         final IClassWriter mockC5 = ClassMock.of("ClassWithAnnotationOnInterface");
         mockC5.interfaces(f1);
         final Class<?> c5 = mockC5.build();
-        System.out.println(ml.hasMetadata(c5, annotation)+" "+c5.getName());
-
+        assertTrue(ml.hasMetadata(c5, annotation));
 ////Creating the class with annotation on method of superclass
         final IClassWriter mockC6 = ClassMock.of("ClassWithAnnotationOnMethodOfSuperclass");
         mockC6.superclass(c3);
         mockC6.method("setId");
         final Class<?> c6 = mockC6.build();
-        System.out.println(ml.hasMetadata(c6.getMethod("setId"), annotation)+" "+c6.getName());
+        assertTrue(ml.hasMetadata(c6,annotation));
 
 //Creating the class with annotation on method of Interfaces
         final IClassWriter mockC7 = ClassMock.of("ClassWithAnnotationOnMethodOfInterfaces");
         mockC7.interfaces(f2);
         mockC7.method("setId");
         final Class<?> c7 = mockC7.build();
-        System.out.println(ml.hasMetadata(c7.getMethod("setId"), annotation)+" "+c7.getName());
+
+        assertTrue(ml.hasMetadata(c7.getMethod("setId"), annotation));
     }
 }

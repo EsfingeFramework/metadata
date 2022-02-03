@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 public class EnclosingElementLocatorTest {
     @Test
-    public static void findMetadataOnEnclosing() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
+    public  void findMetadataOnEnclosing() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
 
 
 

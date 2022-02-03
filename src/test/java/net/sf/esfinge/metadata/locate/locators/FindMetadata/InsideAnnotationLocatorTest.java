@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 public class InsideAnnotationLocatorTest {
     @Test
-    public static void findMetadataInsideAnnotation() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
+    public  void findMetadataInsideAnnotation() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
 
 
 
@@ -30,7 +30,7 @@ public class InsideAnnotationLocatorTest {
         assertNull(ml.hasMetadata(c2, annotation));
         assertNull(ml.hasMetadata(c2.getMethod("setId"), annotation));
         assertNull(ml.hasMetadata(c2.getDeclaredField("id"), annotation));
-        //assertFalse(ml.hasMetadata(c2, annotation));
+
 
     }
 }

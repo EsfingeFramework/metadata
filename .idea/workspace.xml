@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9f624b65-5285-48e4-aa14-5e68c020e25c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/EnclosingElementLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/EnclosingElementLocatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InheritanceLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InheritanceLocatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InsideAnnotationLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InsideAnnotationLocatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/EnclosingElementLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/EnclosingElementLocatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InheritanceLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InheritanceLocatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InsideAnnotationLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/HasMetadata/InsideAnnotationLocatorTest.java" afterDir="false" />
     </list>
@@ -118,7 +116,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -248,10 +246,10 @@
     <list>
       <item itemvalue="Application.EnclosingElementLocatorTest" />
       <item itemvalue="Application.InheritanceLocatorTest" />
+      <item itemvalue="Application.FileReader" />
       <item itemvalue="JUnit.All in metadata (2)" />
       <item itemvalue="JUnit.All in metadata (1)" />
       <item itemvalue="JUnit.All in metadata (6)" />
-      <item itemvalue="Application.FileReader" />
     </list>
     <recent_temporary>
       <list>
@@ -275,6 +273,7 @@
       <workItem from="1643802299025" duration="509000" />
       <workItem from="1643802866323" duration="4517000" />
       <workItem from="1643896576647" duration="6124000" />
+      <workItem from="1643907747678" duration="929000" />
     </task>
     <servers />
   </component>
