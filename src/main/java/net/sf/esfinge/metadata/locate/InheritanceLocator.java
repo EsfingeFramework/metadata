@@ -1,6 +1,8 @@
 package net.sf.esfinge.metadata.locate;
 
 import net.sf.esfinge.metadata.annotation.finder.SearchOnAbstractions;
+import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
@@ -16,7 +18,62 @@ public class InheritanceLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		return null;
+		List<Annotation> annotations = nextLocator.findAllMetadata(element);
+		if(element instanceof Class){
+			Class clazz = (Class) element;
+			Class superClazz = clazz.getSuperclass();
+			if(superClazz!= Object.class){
+				List<Annotation> superClazzAnnotations = findAllMetadata(superClazz);
+				for(Annotation a: superClazzAnnotations){
+					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+						AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+					}
+				}
+			}
+			Class[] interfaces = clazz.getInterfaces();
+			for(Class ainterface : interfaces){
+				List<Annotation> ClazzInterfaceAnnotations = findAllMetadata(ainterface);
+				for(Annotation a : ClazzInterfaceAnnotations){
+					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+						AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+					}
+				}
+			}
+			return annotations;
+		}else if(element instanceof Method){
+			Method method = (Method) element;
+			Class clazz = method.getDeclaringClass();
+			Class superClazz = clazz.getSuperclass();
+			if(superClazz!=Object.class){
+				try {
+					Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());
+					List<Annotation> superMethodAnnotations = findAllMetadata(superMethod);
+					for(Annotation a : superMethodAnnotations){
+						if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+							AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+						}
+					}
+				} catch (NoSuchMethodException e) {
+					// continue if there is no method
+				}
+				Class[] methodInterfaces = clazz.getInterfaces();
+				for(Class ainterface : methodInterfaces){
+					try {
+						Method methodOfInterface = ainterface.getMethod(method.getName(),method.getParameterTypes());
+						List<Annotation> methodOfInterfaceAnnotations = findAllMetadata(methodOfInterface);
+						for(Annotation a : methodOfInterfaceAnnotations){
+							if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+								AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+							}
+						}
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			return annotations;
+		}
+		return annotations;
 	}
 
 	@Override

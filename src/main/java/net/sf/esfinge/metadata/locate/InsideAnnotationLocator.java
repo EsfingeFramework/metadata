@@ -8,13 +8,25 @@ import java.util.List;
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.annotation.finder.SearchInsideAnnotations;
 import net.sf.esfinge.metadata.annotation.finder.SearchOnEnclosingElements;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 public class InsideAnnotationLocator extends MetadataLocator {
 
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		return null;
+		List<Annotation> annotations  = getNextLocator().findAllMetadata(element);
+		for(Annotation a: element.getAnnotations()){
+			if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
+				List<Annotation> AnnotationAnnotations = findAllMetadata(a.annotationType());
+				for(Annotation annotation : AnnotationAnnotations){
+					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+						AnnotatedElementUtils.addAnnotationIfNotInList(annotation, annotations);
+					}
+				}
+			}
+		}
+		return annotations;
 	}
 
 	@Override
