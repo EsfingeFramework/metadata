@@ -27,6 +27,13 @@ public class EnclosingElementLocator extends MetadataLocator {
 				}
 			}
 
+		}else if (element instanceof Class){
+			Package apackage = ((Class) element).getPackage();
+			for(Annotation a : apackage.getDeclaredAnnotations()){
+				if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
+					AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
+				}
+			}
 		}
 		return annotations;
 	}
