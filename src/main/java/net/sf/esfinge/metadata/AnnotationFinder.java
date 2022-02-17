@@ -13,6 +13,7 @@ import net.sf.esfinge.metadata.annotation.finder.Locator;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.RegularLocator;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 public class AnnotationFinder {
 	
@@ -24,17 +25,17 @@ public class AnnotationFinder {
 //		list.addAll(findAll(element, element));
 //		return list;
 //	}
-	
-	private static List<Annotation> findAll(AnnotatedElement element,AnnotatedElement originalElement ) throws NoSuchMethodException, SecurityException, AnnotationReadingException {
+
+	private static List<Annotation> findAll(AnnotatedElement element) throws AnnotationReadingException {
 		List<Annotation> list = new ArrayList<Annotation>();
 		MetadataLocator ml;
 		Annotation[] annotations = element.getDeclaredAnnotations();
 		for(Annotation annotation : annotations){
-			ml = LocatorsFactory.createLocatorsChain(annotation.getClass());
-			Annotation an = ml.findMetadata(element,annotation.annotationType());
-			if(an!=null){
-				list.add(an);
-			}
+			ml = LocatorsFactory.createLocatorsChain(annotation.annotationType());
+			List<Annotation> an = ml.findAllMetadata(element);
+			for(Annotation a : an)
+				AnnotatedElementUtils.addAnnotationIfNotInList(a, list);
+
 		}
 		return list;
 
@@ -86,36 +87,38 @@ public class AnnotationFinder {
 //			}
 //
 //		}
-		
+
 
 	}
-	
 
-	
-	
-	
-	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 
-		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
-		List<Annotation> annotations = new ArrayList<Annotation>();
-		for (Map.Entry<Integer, MetadataLocator> entry : locators.entrySet()) {
-			Annotation an = entry.getValue().findMetadata(element, annotationClass);
-			if(an != null) {
-				annotations.add(an);
+
+
+
+	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
+		MetadataLocator ml;
+		Annotation annotation = null;
+		Annotation[] annotations = element.getDeclaredAnnotations();
+		for(Annotation a : annotations){
+			ml = LocatorsFactory.createLocatorsChain(a.annotationType());
+			annotation = ml.findMetadata(element,a.annotationType());
+			if(annotation!=null){
+				return annotation;
 			}
+
 		}
-		return annotations;
+		return annotation;
 	}
 	
-	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		return !findAnnotation(element, annotationClass).isEmpty();		
+	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
+		return !(findAnnotation(element, annotationClass)==null);
 	}
 	
 	
 	private static Map<Integer, MetadataLocator> getAplicableLocatorChain(Class<? extends Annotation> annotationClass){
 		Map<Integer, MetadataLocator> locators = new LinkedHashMap<Integer, MetadataLocator>();
 			for(Annotation annotation:annotationClass.getAnnotations()){
-				if(annotation.annotationType().isAnnotationPresent(Locator.class))				{
+				if(annotation.annotationType().isAnnotationPresent(Locator.class)){
 					Locator chain = annotation.annotationType().getAnnotation(Locator.class);
 					try {
 						locators.put(chain.chainPriority(), chain.value().newInstance());
