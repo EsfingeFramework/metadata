@@ -18,6 +18,7 @@ public class InheritanceLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+
 		List<Annotation> annotations = nextLocator.findAllMetadata(element);
 		if(element instanceof Class){
 			Class clazz = (Class) element;

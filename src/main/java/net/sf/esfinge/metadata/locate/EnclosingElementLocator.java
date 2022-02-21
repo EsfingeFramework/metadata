@@ -9,6 +9,7 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EnclosingElementLocator extends MetadataLocator {
@@ -18,7 +19,12 @@ public class EnclosingElementLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		List<Annotation> annotations = nextLocator.findAllMetadata(element);
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		for(StackTraceElement e : stackTraceElements)
+			System.out.println(e.getMethodName());
+		List<Annotation> annotations;
+		System.out.println(((Class<?>) element).getName()+" here?");
+		annotations = nextLocator.findAllMetadata(element);
 		if(element instanceof Method || element instanceof Field ){
 			Class clazz = ((Member) element).getDeclaringClass();
 			for(Annotation a : clazz.getDeclaredAnnotations()){
@@ -28,6 +34,7 @@ public class EnclosingElementLocator extends MetadataLocator {
 			}
 
 		}else if (element instanceof Class){
+			System.out.println(((Class<?>) element).getName()+" here?");
 			Package apackage = ((Class) element).getPackage();
 			for(Annotation a : apackage.getDeclaredAnnotations()){
 				if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){

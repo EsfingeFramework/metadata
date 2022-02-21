@@ -18,15 +18,14 @@ import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 public class AnnotationFinder {
 	
 
-//	public static  List<Annotation> findAllAnnotations(AnnotatedElement element) throws NoSuchMethodException, SecurityException
-//	{
-//		List<Annotation> list = new ArrayList<Annotation>();
-//
-//		list.addAll(findAll(element, element));
-//		return list;
-//	}
+	public static  List<Annotation> findAllAnnotations(AnnotatedElement element) throws NoSuchMethodException, SecurityException, AnnotationReadingException {
+		List<Annotation> list = new ArrayList<Annotation>();
+		list.addAll(findAll(element));
+		return list;
+	}
 
 	private static List<Annotation> findAll(AnnotatedElement element) throws AnnotationReadingException {
+
 		List<Annotation> list = new ArrayList<Annotation>();
 		MetadataLocator ml;
 		Annotation[] annotations = element.getDeclaredAnnotations();
@@ -95,23 +94,21 @@ public class AnnotationFinder {
 
 
 
-	public static Annotation findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
-		MetadataLocator ml;
-		Annotation annotation = null;
-		Annotation[] annotations = element.getDeclaredAnnotations();
-		for(Annotation a : annotations){
-			ml = LocatorsFactory.createLocatorsChain(a.annotationType());
-			annotation = ml.findMetadata(element,a.annotationType());
-			if(annotation!=null){
-				return annotation;
-			}
+	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
 
+		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
+		List<Annotation> annotations = new ArrayList<Annotation>();
+		for (Map.Entry<Integer, MetadataLocator> entry : locators.entrySet()) {
+			Annotation an = entry.getValue().findMetadata(element, annotationClass);
+			if(an != null) {
+				annotations.add(an);
+			}
 		}
-		return annotation;
+		return annotations;
 	}
-	
-	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
-		return !(findAnnotation(element, annotationClass)==null);
+
+	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
+		return !findAnnotation(element, annotationClass).isEmpty();
 	}
 	
 	

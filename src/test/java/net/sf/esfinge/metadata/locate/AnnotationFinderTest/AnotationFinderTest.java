@@ -1,15 +1,19 @@
-package net.sf.esfinge.metadata.locate.locators.FindMetadata;
+package net.sf.esfinge.metadata.locate.AnnotationFinderTest;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.locate.locators.FindMetadata.ToTestInside;
+import net.sf.esfinge.metadata.locate.locators.FindMetadata.WithAnnotation;
 import net.sf.esfinge.metadata.locate.locators.FindMetadata.WithoutAnnotation.ClassWithoutAnnotation;
+import org.junit.Test;
 
 import java.lang.annotation.Annotation;
-import org.junit.Test;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-public class InsideAnnotationLocatorTest {
+
+public class AnotationFinderTest {
     @Test
     public  void findMetadataInsideAnnotation() throws AnnotationReadingException, NoSuchMethodException, NoSuchFieldException {
 
@@ -20,16 +24,16 @@ public class InsideAnnotationLocatorTest {
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
         final Class<?> c1 = WithAnnotation.class;
-        assertNotNull(ml.findMetadata(c1, annotation));
-        assertNotNull(ml.findMetadata(c1.getMethod("setId"), annotation));
-        assertNotNull(ml.findMetadata(c1.getDeclaredField("id"), annotation));
+        assertNotNull(ml.hasMetadata(c1, annotation));
+        assertNotNull(ml.hasMetadata(c1.getMethod("setId"), annotation));
+        assertNotNull(ml.hasMetadata(c1.getDeclaredField("id"), annotation));
 
 
         final Class<?> c2 = ClassWithoutAnnotation.class;
 
-        assertNull(ml.findMetadata(c2, annotation));
-        assertNull(ml.findMetadata(c2.getMethod("setId"), annotation));
-        assertNull(ml.findMetadata(c2.getDeclaredField("id"), annotation));
+        assertNull(ml.hasMetadata(c2, annotation));
+        assertNull(ml.hasMetadata(c2.getMethod("setId"), annotation));
+        assertNull(ml.hasMetadata(c2.getDeclaredField("id"), annotation));
 
 
     }

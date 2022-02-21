@@ -7,6 +7,11 @@
     <list default="true" id="9f624b65-5285-48e4-aa14-5e68c020e25c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InsideAnnotationLocatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata/InsideAnnotationLocatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +77,9 @@
     <option name="height" value="1003" />
   </component>
   <component name="ProjectId" id="24HUnDIGvvgnRdNadcVsgFdmyv7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -113,10 +121,11 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindAllMetadata" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindAllMetadata" />
       <recent name="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/locators/FindMetadata" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -125,7 +134,7 @@
       <recent name="net.sf.esfinge.metadata.properties.containers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FileReader">
+  <component name="RunManager" selected="Application.EnclosingElementLocatorTest (1)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -133,6 +142,20 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
       <method />
+    </configuration>
+    <configuration name="EnclosingElementLocatorTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.locators.FindAllMetadata.EnclosingElementLocatorTest" />
+      <module name="metadata" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.locators.FindAllMetadata.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="EnclosingElementLocatorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.locators.FindMetadata.EnclosingElementLocatorTest" />
@@ -178,15 +201,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in metadata (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="metadata" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -245,16 +259,16 @@
       <item itemvalue="Application.InheritanceLocatorTest" />
       <item itemvalue="Application.FileReader" />
       <item itemvalue="JUnit.All in metadata (2)" />
-      <item itemvalue="JUnit.All in metadata (1)" />
       <item itemvalue="JUnit.All in metadata (6)" />
+      <item itemvalue="Application.EnclosingElementLocatorTest (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EnclosingElementLocatorTest (1)" />
+        <item itemvalue="Application.EnclosingElementLocatorTest" />
         <item itemvalue="Application.FileReader" />
         <item itemvalue="Application.InheritanceLocatorTest" />
-        <item itemvalue="Application.EnclosingElementLocatorTest" />
         <item itemvalue="JUnit.All in metadata (6)" />
-        <item itemvalue="JUnit.All in metadata (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +287,8 @@
       <workItem from="1643907747678" duration="2784000" />
       <workItem from="1644505142895" duration="3902000" />
       <workItem from="1645024728306" duration="734000" />
-      <workItem from="1645122856900" duration="1603000" />
+      <workItem from="1645122856900" duration="2081000" />
+      <workItem from="1645448125827" duration="4156000" />
     </task>
     <servers />
   </component>

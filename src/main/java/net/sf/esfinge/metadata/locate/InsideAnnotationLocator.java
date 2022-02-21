@@ -15,6 +15,7 @@ public class InsideAnnotationLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
+		System.out.println(((Class<?>) element).getName()+" here?");
 		List<Annotation> annotations  = getNextLocator().findAllMetadata(element);
 		for(Annotation a: element.getAnnotations()){
 			if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
@@ -52,10 +53,10 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	}
 
 	// if true, searches inside other annotation
-	private boolean searchInsideAnnotation(Class<?> c) {
-		
-		return AnnotationFinder.existAnnotation(c, SearchInsideAnnotations.class);
-	}
+//	private boolean searchInsideAnnotation(Class<?> c) {
+//
+//		return AnnotationFinder.existAnnotation(c, SearchInsideAnnotations.class);
+//	}
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
