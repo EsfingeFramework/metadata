@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.lang.annotation.Annotation;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
@@ -48,7 +49,7 @@ public class Heranca {
 	//TODO Testes que retornam true
 	
 	@Test
-	public void testAnnotationFinder() {
+	public void testAnnotationFinder() throws AnnotationReadingException {
 		
 		//assertNull(an);
 		

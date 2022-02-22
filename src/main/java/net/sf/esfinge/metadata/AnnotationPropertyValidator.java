@@ -16,6 +16,6 @@ public interface AnnotationPropertyValidator {
 			AnnotatedElement annotatedWithMainAnnotation, 
 			Method annotatedWithValidation, 
 			Object annotationPropertyValue)
-			throws AnnotationValidationException;
+            throws AnnotationValidationException, AnnotationReadingException;
 	
 }

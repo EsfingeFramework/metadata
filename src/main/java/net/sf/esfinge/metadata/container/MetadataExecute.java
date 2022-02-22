@@ -10,6 +10,7 @@ import java.util.Set;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationReader;
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.container.AnnotationReadingConfig;
 import net.sf.esfinge.metadata.annotation.container.ContainerFor;
@@ -24,7 +25,7 @@ public class MetadataExecute {
 	
 	private Map<AnnotatedElement,Annotation> repositorio;
 	
-	public MetadataExecute(Class<?> containerClass) throws AnnotationValidationException {
+	public MetadataExecute(Class<?> containerClass) throws AnnotationValidationException, AnnotationReadingException {
 		this.containerClass = containerClass;
 		findMetadata(containerClass);
 		this.containerFor = this.containerClass.getDeclaredAnnotation(ContainerFor.class);

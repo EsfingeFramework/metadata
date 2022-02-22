@@ -56,7 +56,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 	}
 
 	private void annotationSearch(AnnotatedElement elementWithMetadata, Object container)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		if((elementWithMetadata.getClass().equals(Field.class)) && (elementWithMetadata.getAnnotations().length>0))
 		{
 			addObject(elementWithMetadata, container);
@@ -80,7 +80,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 	}
 
 	private void addObject(AnnotatedElement elementWithMetadata, Object container)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		for (Annotation annotation : elementWithMetadata.getAnnotations()) {			
 			//TODO Verificar essa parte Até 
 			if(AnnotationFinder.existAnnotation(annotation.annotationType(), processorsAnnotationClass)){
@@ -105,7 +105,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
 			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
-			throws IllegalAccessException, InvocationTargetException {
+			throws IllegalAccessException, InvocationTargetException, AnnotationReadingException {
 		for(Class<?> interfaces : valueClass.getInterfaces())
 		{
 			for(Method methodToInvoke: interfaces.getDeclaredMethods())

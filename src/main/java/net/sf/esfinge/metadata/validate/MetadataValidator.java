@@ -7,15 +7,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import net.sf.esfinge.metadata.AnnotationFinder;
-import net.sf.esfinge.metadata.AnnotationPropertyValidator;
+import net.sf.esfinge.metadata.*;
 import net.sf.esfinge.metadata.AnnotationValidationException;
-import net.sf.esfinge.metadata.AnnotationValidator;
 import net.sf.esfinge.metadata.annotation.validator.ToValidate;
 import net.sf.esfinge.metadata.annotation.validator.ToValidateProperty;
 
 public class MetadataValidator {
-	public static void validateMetadataOn(Class<?> clazz) throws AnnotationValidationException{
+	public static void validateMetadataOn(Class<?> clazz) throws AnnotationValidationException, AnnotationReadingException {
 	
 		for(Annotation an : clazz.getAnnotations()){
 			validateAnnotation(an, clazz);
@@ -49,7 +47,7 @@ public class MetadataValidator {
 		}		
 	}
 	
-	private static void validateAnnotation(Annotation target, AnnotatedElement ae) throws AnnotationValidationException{				
+	private static void validateAnnotation(Annotation target, AnnotatedElement ae) throws AnnotationValidationException, AnnotationReadingException {
 		
 		for(Annotation an: target.annotationType().getAnnotations()){	
 			if(an.annotationType().isAnnotationPresent(ToValidate.class)){
@@ -69,7 +67,7 @@ public class MetadataValidator {
 	
 	private static AnnotationPropertyValidator executePropertyValidation(Annotation target,
 			AnnotatedElement ae, Annotation an, Method m)
-			throws AnnotationValidationException {
+			throws AnnotationValidationException, AnnotationReadingException {
 		
 		ToValidateProperty tovalidate = an.annotationType().getAnnotation(ToValidateProperty.class);
 		
@@ -119,7 +117,7 @@ public class MetadataValidator {
 	
 	private static AnnotationValidator executeValidation(Annotation target,
 			AnnotatedElement ae, Annotation an)
-			throws AnnotationValidationException {
+			throws AnnotationValidationException, AnnotationReadingException {
 		ToValidate tovalidate = an.annotationType().getAnnotation(ToValidate.class);
 		
 		Class<? extends AnnotationValidator> validClazz = tovalidate.value();

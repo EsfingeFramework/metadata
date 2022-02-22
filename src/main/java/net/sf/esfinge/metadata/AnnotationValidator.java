@@ -8,6 +8,6 @@ public interface AnnotationValidator {
 	public void initialize(Annotation self);
 
 	public void validate(Annotation toValidate, AnnotatedElement annotated)
-			throws AnnotationValidationException;
+            throws AnnotationValidationException, AnnotationReadingException;
 
 }

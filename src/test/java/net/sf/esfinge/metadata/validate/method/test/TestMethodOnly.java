@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.method.test;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -13,67 +14,67 @@ public class TestMethodOnly {
 	}
 		
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorFinalMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorFinalMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorFinalMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorForbiddenMethodReturn() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorForbiddenMethodReturn() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorForbiddenMethodReturn.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorInstanceMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorInstanceMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorInstanceMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorMethodNamingConvention() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorMethodNamingConvention() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorMethodNamingConvention.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorMethodVisibilityForbidden() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorMethodVisibilityForbidden() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorMethodVisibilityForbidden.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorMethodVisibilityRequired() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorMethodVisibilityRequired() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorMethodVisibilityRequired.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorNoParametersMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorNoParametersMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorNoParametersMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorStaticMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorStaticMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorStaticMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorStrictfpMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorStrictfpMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorStrictfpMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorSynchronizedMethodOnly() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorSynchronizedMethodOnly() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorSynchronizedMethodOnly.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorValidMethodParameterTypes() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorValidMethodParameterTypes() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorValidMethodParameterTypes.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorValidMethodReturn() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorValidMethodReturn() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorValidMethodReturn.class);
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void testWithErrorPersonWithErrorValidNumberOfParameters() throws AnnotationValidationException {				
+	public void testWithErrorPersonWithErrorValidNumberOfParameters() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(PersonWithErrorValidNumberOfParameters.class);
 	}
 

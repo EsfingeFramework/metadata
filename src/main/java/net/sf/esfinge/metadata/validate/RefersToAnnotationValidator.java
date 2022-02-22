@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
 import net.sf.esfinge.metadata.AnnotationPropertyValidator;
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import net.sf.esfinge.metadata.AnnotationValidationException;
 import net.sf.esfinge.metadata.annotation.validator.RefersTo;
 
@@ -26,7 +27,7 @@ public class RefersToAnnotationValidator implements AnnotationPropertyValidator 
 	public void validate(Annotation annotationOnElement,
 			AnnotatedElement annotatedWithMainAnnotation,
 			Method annotatedWithValidation, Object annotationPropertyValue)
-			throws AnnotationValidationException {
+			throws AnnotationValidationException, AnnotationReadingException {
 		if (AnnotationFinder.findAnnotation(annotatedWithMainAnnotation,
 				annotationToSearch).size() > 0) {
 			String value = (String) annotationPropertyValue;

@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.transaction;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -15,7 +16,7 @@ public class TestValidateTransaction {
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT01.class);			
 	}
 	
@@ -27,7 +28,7 @@ public class TestValidateTransaction {
 	}
 	
 	@Test
-	public void CT02() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT02() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT02.class);			
 	}
 }

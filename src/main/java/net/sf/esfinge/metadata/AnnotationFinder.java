@@ -27,10 +27,9 @@ public class AnnotationFinder {
 	private static List<Annotation> findAll(AnnotatedElement element) throws AnnotationReadingException {
 
 		List<Annotation> list = new ArrayList<Annotation>();
-		MetadataLocator ml;
 		Annotation[] annotations = element.getDeclaredAnnotations();
 		for(Annotation annotation : annotations){
-			ml = LocatorsFactory.createLocatorsChain(annotation.annotationType());
+			MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation.annotationType());
 			List<Annotation> an = ml.findAllMetadata(element);
 			for(Annotation a : an)
 				AnnotatedElementUtils.addAnnotationIfNotInList(a, list);
@@ -94,27 +93,32 @@ public class AnnotationFinder {
 
 
 
-	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
+	public static List<Annotation> findAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
 
 		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
+		MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotationClass);
 		List<Annotation> annotations = new ArrayList<Annotation>();
-		for (Map.Entry<Integer, MetadataLocator> entry : locators.entrySet()) {
-			Annotation an = entry.getValue().findMetadata(element, annotationClass);
-			if(an != null) {
-				annotations.add(an);
-			}
-		}
+		Annotation an = ml.findMetadata(element,annotationClass);
+		if(an!=null)
+			annotations.add(an);
+
+
 		return annotations;
 	}
 
-	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass){
-		return !findAnnotation(element, annotationClass).isEmpty();
+	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
+		try {
+			return !findAnnotation(element, annotationClass).isEmpty();
+		}catch(AnnotationReadingException are){
+			return false;
+		}
 	}
 	
 	
 	private static Map<Integer, MetadataLocator> getAplicableLocatorChain(Class<? extends Annotation> annotationClass){
 		Map<Integer, MetadataLocator> locators = new LinkedHashMap<Integer, MetadataLocator>();
 			for(Annotation annotation:annotationClass.getAnnotations()){
+
 				if(annotation.annotationType().isAnnotationPresent(Locator.class)){
 					Locator chain = annotation.annotationType().getAnnotation(Locator.class);
 					try {

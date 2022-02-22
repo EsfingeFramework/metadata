@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.prohibits;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -15,7 +16,7 @@ public class TestValidateProhibits<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException {
+	public void CT01() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing01.class);
 	}
 
@@ -41,7 +42,7 @@ public class TestValidateProhibits<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT03() throws AnnotationValidationException {
+	public void CT03() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing03.class);
 	}
 

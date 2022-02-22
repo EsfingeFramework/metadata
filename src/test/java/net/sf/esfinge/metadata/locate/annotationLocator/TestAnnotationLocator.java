@@ -6,6 +6,9 @@ import static org.junit.Assert.assertTrue;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
+import net.sf.esfinge.metadata.factory.LocatorsFactory;
+import net.sf.esfinge.metadata.locate.MetadataLocator;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
@@ -18,7 +21,11 @@ import net.sf.esfinge.metadata.validate.needsToHave.Logging01;
 public class TestAnnotationLocator {
 	
 	private InsideAnnotationLocator locator = new InsideAnnotationLocator();
-	
+	private MetadataLocator ml= LocatorsFactory.createLocatorsChain(Transaction02.class);
+
+	public TestAnnotationLocator() throws AnnotationReadingException {
+	}
+
 	// CT01
 	public class CT01 {		
 		public void method() {
@@ -27,7 +34,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test 
-	public void CT01() throws NoSuchMethodException {
+	public void CT01() throws NoSuchMethodException, AnnotationReadingException {
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT01.class.getMethod("method", null), Transaction01.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT01.class.getMethod("method", null), Transaction01.class);
 		assertFalse(valid);
@@ -44,7 +51,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT02() throws NoSuchMethodException {
+	public void CT02() throws NoSuchMethodException, AnnotationReadingException {
 
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT02.class.getMethod("method", null), Transaction01.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT02.class.getMethod("method", null), Transaction01.class);
@@ -63,7 +70,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT03() {
+	public void CT03() throws AnnotationReadingException {
 		
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT03.class, Transaction01.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT03.class, Transaction01.class);
@@ -75,7 +82,7 @@ public class TestAnnotationLocator {
 	
 	//CT04 
 	@Test
-	public void CT04() {
+	public void CT04() throws AnnotationReadingException {
 		
 		
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT04.class.getPackage(), Transaction01.class);
@@ -96,8 +103,9 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT05() throws NoSuchMethodException {
-		Annotation an = locator.findMetadata(CT05.class.getMethod("method", null), Transaction02.class);
+	public void CT05() throws NoSuchMethodException, AnnotationReadingException {
+
+		Annotation an = ml.findMetadata(CT05.class.getMethod("method", null), Transaction02.class);
 		
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT05.class.getMethod("method", null), Transaction02.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT05.class.getMethod("method", null), Transaction02.class);
@@ -114,7 +122,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT06() {
+	public void CT06() throws AnnotationReadingException {
 				
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT06.class, Transaction02.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT06.class, Transaction02.class);
@@ -123,8 +131,8 @@ public class TestAnnotationLocator {
 	
 	//CT07
 	@Test
-	public void CT07() {
-		Annotation an = locator.findMetadata(CT07.class.getPackage(), Transaction02.class);
+	public void CT07() throws AnnotationReadingException {
+		Annotation an = ml.findMetadata(CT07.class.getPackage(), Transaction02.class);
 		
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT07.class.getPackage(), Transaction02.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT07.class.getPackage(), Transaction02.class);
@@ -141,7 +149,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT08() throws NoSuchMethodException {
+	public void CT08() throws NoSuchMethodException, AnnotationReadingException {
 			
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT08.class.getMethod("method", null), Transaction03.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT08.class.getMethod("method", null), Transaction03.class);
@@ -159,7 +167,7 @@ public class TestAnnotationLocator {
 	}
 
 	@Test
-	public void CT09() {
+	public void CT09() throws AnnotationReadingException {
 			
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT09.class, Transaction03.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT09.class, Transaction03.class);
@@ -171,7 +179,7 @@ public class TestAnnotationLocator {
 	
 	//CT10
 	@Test
-	public void CT10() {
+	public void CT10() throws AnnotationReadingException {
 
 		List<Annotation> locatorList = AnnotationFinder.findAnnotation(CT10.class.getPackage(), Transaction03.class);
 		boolean valid = AnnotationFinder.existAnnotation(CT10.class.getPackage(), Transaction03.class);

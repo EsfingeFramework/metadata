@@ -72,7 +72,7 @@ public class InheritanceLocatorTest {
         mockC6.superclass(c3);
         mockC6.method("setId");
         final Class<?> c6 = mockC6.build();
-        assertTrue(ml.hasMetadata(c6,annotation));
+        assertTrue(ml.hasMetadata(c6.getMethod("setId"),annotation));
 
 //Creating the class with annotation on method of Interfaces
         final IClassWriter mockC7 = ClassMock.of("ClassWithAnnotationOnMethodOfInterfaces");

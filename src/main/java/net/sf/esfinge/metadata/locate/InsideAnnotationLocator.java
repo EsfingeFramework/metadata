@@ -34,12 +34,19 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		Annotation nextLocatorFound  = getNextLocator().findMetadata(element, annotationClass);
 		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchInsideAnnotations.class)){
+
 			Annotation annotation = null;
 			for(Annotation a : element.getAnnotations()) {
-				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation"))
+
+				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
+					System.out.println(a.annotationType());
 					annotation =  findMetadata(a.annotationType(),annotationClass);
+					if(annotation!=null)
+						return annotation;
+				}
+
 			}
-			return annotation;
+			return null;
 		}
 		return nextLocatorFound;
 	}

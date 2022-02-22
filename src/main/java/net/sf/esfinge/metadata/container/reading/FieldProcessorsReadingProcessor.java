@@ -101,7 +101,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 	}
 
 	private void setFieldOnMapWithTypeContainer(AnnotatedElement elementWithMetadata, Object container,
-			Field fieldOfClazz, Annotation annotation) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			Field fieldOfClazz, Annotation annotation) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		// TODO Auto-generated method stub
 		for (Annotation processorAnnotation : AnnotationFinder
 				.findAnnotation(annotation.annotationType(), processorsAnnotationClass))
@@ -136,7 +136,7 @@ public class FieldProcessorsReadingProcessor implements AnnotationReadingProcess
 
 	private void setFieldOnMapWithFieldContainer(AnnotatedElement elementWithMetadata, Object container, Field fieldOfClazz,
 			Annotation annotation)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		for (Annotation processorAnnotation : AnnotationFinder
 				.findAnnotation(annotation.annotationType(), processorsAnnotationClass)) {
 			Class<?> valueClass = getElementAnnoted(processorAnnotation);

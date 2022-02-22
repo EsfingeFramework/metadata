@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
@@ -31,7 +32,7 @@ public class TestLevelLocator {
 	}
 	
 	@Test
-	public void CT01()throws NoSuchFieldException{
+	public void CT01() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT01.class.getField("attribute"), TransactionSearchOnEnclosing.class);
 		assertFalse(annList.isEmpty());
 		assertTrue(annList.get(0) instanceof TransactionSearchOnEnclosing);
@@ -39,7 +40,7 @@ public class TestLevelLocator {
 
 	//CT02		
 	@Test
-	public void CT02()throws NoSuchFieldException{
+	public void CT02() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT02.class.getField("attribute"), TransactionSearchOnEnclosing.class);
 		assertFalse(annList.isEmpty());
 		assertTrue(annList.get(0) instanceof TransactionSearchOnEnclosing);
@@ -53,7 +54,7 @@ public class TestLevelLocator {
 	}
 	
 	@Test 
-	public void CT03()throws NoSuchFieldException{
+	public void CT03() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT03.class.getField("attribute"), TransactionNoSearchEnclosing.class);
 		//Annotation an = locator.findMetadata(CT03.class.getField("attribute"), Transaction02.class);
 		assertTrue(annList.isEmpty());
@@ -62,7 +63,7 @@ public class TestLevelLocator {
 	
 	//CT04	
 	@Test
-	public void CT04()throws NoSuchFieldException{
+	public void CT04() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT04.class.getField("attribute"), TransactionNoSearchEnclosing.class);
 		assertTrue(annList.isEmpty());
 		//assertFalse(an instanceof Transaction02);
@@ -70,7 +71,7 @@ public class TestLevelLocator {
 	
 	//CT05		
 	@Test
-	public void CT05()throws NoSuchFieldException{
+	public void CT05() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT05.class, TransactionSearchOnEnclosing.class);
 		assertFalse(annList.isEmpty());
 		assertTrue(annList.get(0) instanceof TransactionSearchOnEnclosing);
@@ -78,7 +79,7 @@ public class TestLevelLocator {
 
 	//CT06	
 	@Test
-	public void CT06()throws NoSuchFieldException{
+	public void CT06() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT06.class, TransactionNoSearchEnclosing.class);
 		assertTrue(annList.isEmpty());
 		//assertFalse(an instanceof Transaction02);
@@ -86,7 +87,7 @@ public class TestLevelLocator {
 	
 	//CT07	
 	@Test
-	public void CT07()throws NoSuchMethodException{
+	public void CT07() throws NoSuchMethodException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT07.class.getMethod("method", null), TransactionSearchOnEnclosing.class);
 		assertFalse(annList.isEmpty());
 		assertTrue(annList.get(0) instanceof TransactionSearchOnEnclosing);
@@ -94,7 +95,7 @@ public class TestLevelLocator {
 
 	//CT08
 	@Test
-	public void CT08()throws NoSuchMethodException{
+	public void CT08() throws NoSuchMethodException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT08.class.getMethod("method", null), TransactionNoSearchEnclosing.class);
 		assertTrue(annList.isEmpty());
 		//assertFalse(an instanceof Transaction02);
@@ -109,7 +110,7 @@ public class TestLevelLocator {
 	}
 	
 	@Test
-	public void CT09()throws NoSuchMethodException{
+	public void CT09() throws NoSuchMethodException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT09.class.getMethod("method",null), TransactionSearchOnEnclosing.class);
 		assertFalse(annList.isEmpty());
 		assertTrue(annList.get(0) instanceof TransactionSearchOnEnclosing);
@@ -124,7 +125,7 @@ public class TestLevelLocator {
 	}
 	
 	@Test
-	public void CT10()throws NoSuchMethodException{
+	public void CT10() throws NoSuchMethodException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT10.class.getMethod("method"), TransactionNoSearchEnclosing.class);
 		//Annotation an = 
 		assertTrue(annList.isEmpty());
@@ -138,7 +139,7 @@ public class TestLevelLocator {
 	}
 	
 	@Test
-	public void CT11()throws NoSuchFieldException{
+	public void CT11() throws NoSuchFieldException, AnnotationReadingException {
 		List<Annotation>  annList = AnnotationFinder.findAnnotation(CT11.class, TransactionNoSearchEnclosing.class);
 		assertTrue(annList.isEmpty());
 	}	

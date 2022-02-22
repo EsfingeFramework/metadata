@@ -113,7 +113,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 
 	private void setFieldOnMapWithTypeContainer(AnnotatedElement elementWithMetadata, Object container,
 			Method methodOfClazz, Annotation annotation)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		for (Annotation processorAnnotation : AnnotationFinder.findAnnotation(annotation.annotationType(),
 				processorsAnnotationClass))
 
@@ -142,7 +142,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 
 	private void setFieldOnMapWithFieldContainer(AnnotatedElement elementWithMetadata, Object container,
 			Field fieldOfClazz, Annotation annotation)
-			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
 		for (Annotation processorAnnotation : AnnotationFinder.findAnnotation(annotation.annotationType(),
 				processorsAnnotationClass)) {
 			Class<?> valueClass = getElementAnnoted(processorAnnotation);
@@ -167,7 +167,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 
 	private void findDeclaredAnnotationOnInterface(AnnotatedElement elementWithMetadata, Object container,
 			Annotation annotation, Class<?> valueClass, Object objectToInvoke)
-			throws IllegalAccessException, InvocationTargetException {
+			throws IllegalAccessException, InvocationTargetException, AnnotationReadingException {
 		for (Method methodToInvoke : valueClass.getInterfaces()[0].getDeclaredMethods()) {
 			if (methodToInvoke.isAnnotationPresent(ExecuteProcessor.class)) {
 				executeParameters(elementWithMetadata, container, annotation, objectToInvoke, methodToInvoke);
@@ -176,7 +176,7 @@ public class MethodProcessorsReadingProcessor implements AnnotationReadingProces
 	}
 
 	private void executeParameters(AnnotatedElement elementWithMetadata, Object container, Annotation annotation,
-			Object objectToInvoke, Method methodToInvoke) throws IllegalAccessException, InvocationTargetException {
+			Object objectToInvoke, Method methodToInvoke) throws IllegalAccessException, InvocationTargetException, AnnotationReadingException {
 		Object[] args = new Object[methodToInvoke.getParameters().length];
 		int cont = 0;
 		for (Parameter p1 : methodToInvoke.getParameters()) {

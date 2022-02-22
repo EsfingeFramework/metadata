@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.purchase;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -15,7 +16,7 @@ public class TestValidatePurchase {
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT01.class);			
 	}
 	
@@ -27,7 +28,7 @@ public class TestValidatePurchase {
 	}
 	
 	@Test
-	public void CT02() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT02() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT02.class);			
 	}
 	
@@ -39,7 +40,7 @@ public class TestValidatePurchase {
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void CT03() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT03() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT03.class);			
 	}
 
@@ -49,7 +50,7 @@ public class TestValidatePurchase {
 	}
 	
 	@Test
-	public void CT04() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT04() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(CT04.class);			
 	}
 

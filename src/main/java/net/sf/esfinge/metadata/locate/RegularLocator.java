@@ -18,6 +18,7 @@ public class RegularLocator extends MetadataLocator {
 	public Annotation findMetadata(AnnotatedElement element,
 			Class<? extends Annotation> annotationClass)
 			throws MetadataLocationException {
+
 		return element.getAnnotation(annotationClass);
 	}
 	@Override

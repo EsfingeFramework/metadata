@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.unique;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -15,7 +16,7 @@ public class TestValidateUnique {
 	}
 	
 	@Test(expected = AnnotationValidationException.class)
-	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {			
+	public void CT01() throws AnnotationValidationException, IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(Classe.class);			
 	}
 	

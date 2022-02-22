@@ -1,5 +1,6 @@
 package net.sf.esfinge.metadata.validate.optimizeExecution;
 
+import net.sf.esfinge.metadata.AnnotationReadingException;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -13,7 +14,7 @@ import net.sf.esfinge.metadata.validate.optimizeExecution.CT21.OrderProcessing21
 import net.sf.esfinge.metadata.validate.optimizeExecution.CT25.OrderProcessing25;
 import net.sf.esfinge.metadata.validate.optimizeExecution.CT28.OrderProcessing28;
 
-public class TestValidateOptimizeExecution<Purchase> {
+public class TestValidateOptimizeExecution<Purchase>{
 
 	// CT01
 	public class OrderProcessing01 {
@@ -23,7 +24,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT01() throws AnnotationValidationException {
+	public void CT01() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing01.class);
 	}
 
@@ -36,7 +37,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT02() throws AnnotationValidationException {
+	public void CT02() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing02.class);
 	}
 
@@ -49,13 +50,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT03() throws AnnotationValidationException {
+	public void CT03() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing03.class);
 	}
 
 	// CT04
 	@Test(expected = AnnotationValidationException.class)
-	public void CT04() throws AnnotationValidationException {
+	public void CT04() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing04.class);
 	}
 
@@ -67,7 +68,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT05() throws AnnotationValidationException {
+	public void CT05() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing05.class);
 	}
 
@@ -80,13 +81,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT06() throws AnnotationValidationException {
+	public void CT06() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing06.class);
 	}
 
 	// CT07
 	@Test(expected = AnnotationValidationException.class)
-	public void CT07() throws AnnotationValidationException {
+	public void CT07() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing07.class);
 	}
 
@@ -98,7 +99,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT08() throws AnnotationValidationException {
+	public void CT08() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing08.class);
 	}
 
@@ -111,7 +112,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT09() throws AnnotationValidationException {
+	public void CT09() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing09.class);
 	}
 
@@ -124,13 +125,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT10() throws AnnotationValidationException {
+	public void CT10() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing10.class);
 	}
 
 	// CT11
 	@Test(expected = AnnotationValidationException.class)
-	public void CT11() throws AnnotationValidationException {
+	public void CT11() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing11.class);
 	}
 
@@ -143,7 +144,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT12() throws AnnotationValidationException {
+	public void CT12() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing12.class);
 	}
 
@@ -156,13 +157,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT13() throws AnnotationValidationException {
+	public void CT13() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing13.class);
 	}
 
 	// CT14
 	@Test(expected = AnnotationValidationException.class)
-	public void CT14() throws AnnotationValidationException {
+	public void CT14() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing14.class);
 	}
 
@@ -174,7 +175,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT15() throws AnnotationValidationException {
+	public void CT15() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing15.class);
 	}
 
@@ -187,7 +188,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT16() throws AnnotationValidationException {
+	public void CT16() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing16.class);
 	}
 
@@ -200,13 +201,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT17() throws AnnotationValidationException {
+	public void CT17() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing17.class);
 	}
 
 	// CT18
 	@Test
-	public void CT18() throws AnnotationValidationException {
+	public void CT18() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing18.class);
 	}
 
@@ -219,7 +220,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test(expected = AnnotationValidationException.class)
-	public void CT19() throws AnnotationValidationException {
+	public void CT19() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing19.class);
 	}
 
@@ -232,13 +233,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT20() throws AnnotationValidationException {
+	public void CT20() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing20.class);
 	}
 	
 	// CT21 
 	@Test
-	public void CT21() throws AnnotationValidationException {
+	public void CT21() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing21.class);
 	}
 	
@@ -250,7 +251,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 	}
 
 	@Test
-	public void CT22() throws AnnotationValidationException {
+	public void CT22() throws AnnotationValidationException, AnnotationReadingException {
 		MetadataValidator.validateMetadataOn(OrderProcessing22.class);
 	}
 	
@@ -263,7 +264,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 		}
 
 		@Test(expected = AnnotationValidationException.class)
-		public void CT23() throws AnnotationValidationException {
+		public void CT23() throws AnnotationValidationException, AnnotationReadingException {
 			MetadataValidator.validateMetadataOn(OrderProcessing23.class);
 		}
 
@@ -276,13 +277,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 		}
 
 		@Test
-		public void CT24() throws AnnotationValidationException {
+		public void CT24() throws AnnotationValidationException, AnnotationReadingException {
 			MetadataValidator.validateMetadataOn(OrderProcessing24.class);
 		}
 
 		// CT25
 		@Test
-		public void CT25() throws AnnotationValidationException {
+		public void CT25() throws AnnotationValidationException, AnnotationReadingException {
 			MetadataValidator.validateMetadataOn(OrderProcessing25.class);
 		}
 
@@ -295,7 +296,7 @@ public class TestValidateOptimizeExecution<Purchase> {
 		}
 		
 		@Test
-		public void CT26() throws AnnotationValidationException {
+		public void CT26() throws AnnotationValidationException, AnnotationReadingException {
 			MetadataValidator.validateMetadataOn(OrderProcessing26.class);
 		}
 		
@@ -308,13 +309,13 @@ public class TestValidateOptimizeExecution<Purchase> {
 		}
 		
 		@Test
-		public void CT27() throws AnnotationValidationException {
+		public void CT27() throws AnnotationValidationException, AnnotationReadingException {
 			MetadataValidator.validateMetadataOn(OrderProcessing27.class);
 		}
 		
 		// CT28		
 		@Test
-		public void CT28() throws AnnotationValidationException {
+		public void CT28() throws AnnotationValidationException , AnnotationReadingException{
 			MetadataValidator.validateMetadataOn(OrderProcessing28.class);
 		}
 
