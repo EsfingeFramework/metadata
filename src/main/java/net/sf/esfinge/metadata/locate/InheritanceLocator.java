@@ -11,7 +11,7 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.List;
 
-//TODO Refatorar o locator para usar o locator.....
+
 public class InheritanceLocator extends MetadataLocator {
 
 	private AnnotatedElement originalElement;
@@ -19,60 +19,63 @@ public class InheritanceLocator extends MetadataLocator {
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
 		List<Annotation> annotations = nextLocator.findAllMetadata(element);
-		if(element instanceof Class){
-			Class clazz = (Class) element;
-			Class superClazz = clazz.getSuperclass();
-			if(superClazz!= Object.class){
-				List<Annotation> superClazzAnnotations = findAllMetadata(superClazz);
-				for(Annotation a: superClazzAnnotations){
-					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
-						AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
-					}
-				}
-			}
-			Class[] interfaces = clazz.getInterfaces();
-			for(Class ainterface : interfaces){
-				List<Annotation> ClazzInterfaceAnnotations = findAllMetadata(ainterface);
-				for(Annotation a : ClazzInterfaceAnnotations){
-					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
-						AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
-					}
-				}
-			}
-			return annotations;
-		}else if(element instanceof Method){
-			Method method = (Method) element;
-			Class clazz = method.getDeclaringClass();
-			Class superClazz = clazz.getSuperclass();
-			if(superClazz!=Object.class){
-				try {
-					Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());
-					List<Annotation> superMethodAnnotations = findAllMetadata(superMethod);
-					for(Annotation a : superMethodAnnotations){
+		if(annotations==null){
+			if(element instanceof Class){
+				Class clazz = (Class) element;
+				Class superClazz = clazz.getSuperclass();
+				if(superClazz!= Object.class && superClazz!=null){
+					List<Annotation> superClazzAnnotations = findAllMetadata(superClazz);
+					for(Annotation a: superClazzAnnotations){
 						if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
 							AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
 						}
 					}
-				} catch (NoSuchMethodException e) {
-					// continue if there is no method
 				}
-				Class[] methodInterfaces = clazz.getInterfaces();
-				for(Class ainterface : methodInterfaces){
+				Class[] interfaces = clazz.getInterfaces();
+				for(Class ainterface : interfaces){
+					List<Annotation> ClazzInterfaceAnnotations = findAllMetadata(ainterface);
+					for(Annotation a : ClazzInterfaceAnnotations){
+						if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+							AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+						}
+					}
+				}
+				return annotations;
+			}else if(element instanceof Method){
+				Method method = (Method) element;
+				Class clazz = method.getDeclaringClass();
+				Class superClazz = clazz.getSuperclass();
+				if(superClazz!=Object.class && superClazz!=null){
 					try {
-						Method methodOfInterface = ainterface.getMethod(method.getName(),method.getParameterTypes());
-						List<Annotation> methodOfInterfaceAnnotations = findAllMetadata(methodOfInterface);
-						for(Annotation a : methodOfInterfaceAnnotations){
+						Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());
+						List<Annotation> superMethodAnnotations = findAllMetadata(superMethod);
+						for(Annotation a : superMethodAnnotations){
 							if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
 								AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
 							}
 						}
 					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
+						// continue if there is no method
+					}
+					Class[] methodInterfaces = clazz.getInterfaces();
+					for(Class ainterface : methodInterfaces){
+						try {
+							Method methodOfInterface = ainterface.getMethod(method.getName(),method.getParameterTypes());
+							List<Annotation> methodOfInterfaceAnnotations = findAllMetadata(methodOfInterface);
+							for(Annotation a : methodOfInterfaceAnnotations){
+								if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
+									AnnotatedElementUtils.addAnnotationIfNotInList(a, annotations);
+								}
+							}
+						} catch (NoSuchMethodException e) {
+							e.printStackTrace();
+						}
 					}
 				}
+				return annotations;
 			}
-			return annotations;
 		}
+
 		return annotations;
 	}
 
@@ -82,11 +85,9 @@ public class InheritanceLocator extends MetadataLocator {
 		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchOnAbstractions.class)){
 			if(element instanceof Class){
 				Class clazz = (Class) element;
-
 				Class superClazz = clazz.getSuperclass();
-
 				Annotation annotation = null;
-				if(superClazz != Object.class){
+				if(superClazz != Object.class && superClazz!=null){
 					annotation = findMetadata(superClazz,annotationClass);
 
 				}
@@ -102,7 +103,7 @@ public class InheritanceLocator extends MetadataLocator {
 				Class superClazz = clazz.getSuperclass();
 
 				Annotation annotation = null;
-				if(superClazz != Object.class){
+				if(superClazz != Object.class && superClazz!=null){
 
 					try {
 						Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());
@@ -112,7 +113,6 @@ public class InheritanceLocator extends MetadataLocator {
 					}
 
 				}
-				//procurar método nas interfaces
 				Class[] interfaces = clazz.getInterfaces();
 				for(Class ainterface : interfaces){
 
@@ -160,29 +160,35 @@ public class InheritanceLocator extends MetadataLocator {
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 		boolean nextLocatorFound = getNextLocator().hasMetadata(element, annotationClass);
 		if(!nextLocatorFound && annotationClass.isAnnotationPresent(SearchOnAbstractions.class)){
+
 			if(element instanceof Class){
 				Class clazz = (Class) element;
 
 				Class superClazz = clazz.getSuperclass();
 
 				boolean result = false;
-				if(superClazz != Object.class){
+				if(superClazz != Object.class && superClazz!=null){
 					result = result || hasMetadata(superClazz,annotationClass);
 
 				}
+
 				Class[] interfaces = clazz.getInterfaces();
+
 				for(Class ainterface : interfaces){
 
 					result = result || hasMetadata(ainterface,annotationClass);
+
 				}
+
 				return result;
 			}else if(element instanceof Method){
 				Method method = (Method) element;
+
 				Class clazz = method.getDeclaringClass();
 				Class superClazz = clazz.getSuperclass();
 
 				boolean result = false;
-				if(superClazz != Object.class){
+				if(superClazz != Object.class && superClazz!=null){
 
 					try {
 						Method superMethod = superClazz.getMethod(method.getName(),method.getParameterTypes());

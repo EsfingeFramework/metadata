@@ -1,0 +1,2079 @@
+{
+  "name": "metadata",
+  "children": [
+    {
+      "name": "Test",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.finder",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 2,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "Test.annotations",
+          "type": "schema",
+          "value": 9,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "Test.annotations",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 9,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 13,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "Test.annotations",
+              "type": "schema",
+              "value": 6,
+              "properties": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Test.containers",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 15,
+              "properties": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TestCustonReaderAnnoted",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang",
+          "type": "schema",
+          "value": 2,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 2,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "TestCustonReaderAnnoted",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 5,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "TestCustonReaderAnnoted.data",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "TestCustonReaderAnnoted",
+              "type": "schema",
+              "value": 1,
+              "properties": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UsageExample",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.locate.conventions.annotations",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "UsageExample.DataAccessObjectEsfinge",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "UsageExample",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "UsageExample.DataAccessObjectEsfinge.Entity",
+              "type": "package",
+              "properties": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "UsageExample.domain",
+          "type": "package",
+          "properties": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "With2Annotation",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 5,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "With2Annotation.Elements",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "With2Annotation.Elements",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "net.sf.esfinge.container.processor.Field",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.container.processor.Field",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "net.sf.esfinge.container.processor.clazz",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.container.processor.clazz.ct01",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "net.sf.esfinge.container.processor.clazz.ct01",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.container.processor.clazz.ct02",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "net.sf.esfinge.container.processor.clazz.ct02",
+              "type": "schema",
+              "value": 1,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator",
+              "type": "schema",
+              "value": 1,
+              "properties": {},
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "net.sf.esfinge.container.processor.method",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.container.processor.method",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.finder",
+          "type": "schema",
+          "value": 5,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 5,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "net.sf.esfinge.container.processor.parameter",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "java.lang.annotation",
+          "type": "schema",
+          "value": 2,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 3,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 8,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.container.processor.parameter",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "net.sf.esfinge.metadata",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 1,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.TestAnnotationReader",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.TestAnnotationReader",
+              "type": "schema",
+              "value": 4,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 7,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "org.junit",
+              "type": "schema",
+              "value": 15,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 73,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.TestAnnotationReader.AnnotationProperty",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.TestAnnotationReader.AnnotationProperty",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.container",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 22,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 38,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 19,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator",
+              "type": "schema",
+              "value": 10,
+              "properties": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.finder",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 8,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.finder",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.validator",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 24,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator",
+              "type": "schema",
+              "value": 9,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator.field",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 16,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 8,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator.method",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 27,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 13,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.container",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang",
+              "type": "schema",
+              "value": 3,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 9,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.container.reading",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang",
+                  "type": "schema",
+                  "value": 35,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "org.junit",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests.Containers",
+                      "type": "package",
+                      "properties": {},
+                      "children": [
+                        {
+                          "name": "net.sf.esfinge.metadata.annotation.container",
+                          "type": "schema",
+                          "value": 3,
+                          "properties": {},
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.factory",
+          "type": "package",
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.locate",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang",
+              "type": "schema",
+              "value": 13,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.AnnotationFinderTest",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.Heranca",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.Heranca",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 11,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.Heranca.Interfaces",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.locate.Heranca",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.annotationLocator",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 6,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 6,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 10,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.annotationLocator",
+                  "type": "schema",
+                  "value": 9,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.annotationLocator.CTAux1",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.annotationLocator.CTAux2",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.annotationLocator.CTAux3",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.conventions",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.locate.conventions",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang",
+                  "type": "schema",
+                  "value": 34,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 6,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.conventions.annotations",
+                  "type": "schema",
+                  "value": 8,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 10,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.conventions.annotations",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "java.lang.annotation",
+                      "type": "schema",
+                      "value": 49,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.locate.conventions.annotations",
+                      "type": "schema",
+                      "value": 34,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.conventions.classmock",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "org.junit",
+                      "type": "schema",
+                      "value": 13,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.conventions.mapping",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "java.lang.annotation",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.locate.conventions.annotations",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "org.junit",
+                      "type": "schema",
+                      "value": 2,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.annotation.container",
+                      "type": "schema",
+                      "value": 2,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.locate.conventions.mapping",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.levelLocator",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.locate.levelLocator",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 11,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.levelLocator.CTAux1",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.levelLocator.CTAux2",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.locators.FindAllMetadata",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.locators.FindAllMetadata",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.locators.FindMetadata",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.locators.FindMetadata",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.locators.FindMetadata.WithoutAnnotation",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.locators.HasMetadata",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.locators.HasMetadata",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.locators.HasMetadata.WithoutAnnotation",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.regularLocator",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 9,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.regularLocator",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.regularLocator.nopackageannotation",
+                  "type": "package",
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.locate.searchenclosing",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.locate.searchenclosing",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.properties",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "org.junit",
+              "type": "schema",
+              "value": 16,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.properties.annotation",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 5,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 10,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.properties.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.properties.containers",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.container",
+                  "type": "schema",
+                  "value": 20,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.properties.elements",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.container.processor.method",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.properties.annotation",
+                  "type": "schema",
+                  "value": 7,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "net.sf.esfinge.metadata.utils",
+          "type": "package",
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.validate",
+          "type": "package",
+          "properties": {},
+          "children": [
+            {
+              "name": "java.lang",
+              "type": "schema",
+              "value": 18,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "java.lang.annotation",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.container",
+              "type": "schema",
+              "value": 2,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.annotation.validator",
+              "type": "schema",
+              "value": 1,
+              "properties": {},
+              "children": []
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.field",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang",
+                  "type": "schema",
+                  "value": 16,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.field.test",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.field.test",
+                      "type": "schema",
+                      "value": 43,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "java.lang.annotation",
+                      "type": "schema",
+                      "value": 8,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.annotation.finder",
+                      "type": "schema",
+                      "value": 16,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.annotation.validator.field",
+                      "type": "schema",
+                      "value": 8,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "org.junit",
+                      "type": "schema",
+                      "value": 9,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.maxValue",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.validate.minValue",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.method",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang",
+                  "type": "schema",
+                  "value": 26,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.method.test",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.annotation.validator.method",
+                      "type": "schema",
+                      "value": 15,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "java.lang.annotation",
+                      "type": "schema",
+                      "value": 13,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.method.test",
+                      "type": "schema",
+                      "value": 61,
+                      "properties": {},
+                      "children": []
+                    },
+                    {
+                      "name": "org.junit",
+                      "type": "schema",
+                      "value": 14,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.minValue",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.validate.minValue",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.needsToHave",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                  "type": "schema",
+                  "value": 41,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 12,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 26,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT04",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT07",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 2,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT11",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT14",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT18",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT21",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT25",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.needsToHave.CT28",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.notNull",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.notNull",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 8,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 12,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 28,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                  "type": "schema",
+                  "value": 40,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 5,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT04",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT07",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT11",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.needsToHave",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT14",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT18",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT21",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT25",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.optimizeExecution.CT28",
+                  "type": "package",
+                  "properties": {},
+                  "children": [
+                    {
+                      "name": "net.sf.esfinge.metadata.validate.optimizeExecution",
+                      "type": "schema",
+                      "value": 1,
+                      "properties": {},
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.prohibits",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 3,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.prohibits",
+                  "type": "schema",
+                  "value": 5,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.purchase",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "net.sf.esfinge.metadata.validate.purchase",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 4,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.transaction",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.transaction",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "net.sf.esfinge.metadata.validate.unique",
+              "type": "package",
+              "properties": {},
+              "children": [
+                {
+                  "name": "java.lang.annotation",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.finder",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.validate.unique",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "org.junit",
+                  "type": "schema",
+                  "value": 1,
+                  "properties": {},
+                  "children": []
+                },
+                {
+                  "name": "net.sf.esfinge.metadata.annotation.validator",
+                  "type": "schema",
+                  "value": 2,
+                  "properties": {},
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "testMethodReading",
+      "type": "package",
+      "properties": {},
+      "children": [
+        {
+          "name": "net.sf.esfinge.metadata.TestAnnotationReader",
+          "type": "schema",
+          "value": 9,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "net.sf.esfinge.metadata.annotation.container",
+          "type": "schema",
+          "value": 5,
+          "properties": {},
+          "children": []
+        },
+        {
+          "name": "org.junit",
+          "type": "schema",
+          "value": 6,
+          "properties": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}

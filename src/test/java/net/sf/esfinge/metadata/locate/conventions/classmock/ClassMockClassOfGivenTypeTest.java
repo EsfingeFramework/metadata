@@ -36,7 +36,7 @@ public class ClassMockClassOfGivenTypeTest {
         mockC1.annotation(annotation);
 
         final Class<?> c1 = mockC1.build();
-        System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
+        //System.out.println("result for c1 "+ml.hasMetadata(c1, annotation));
 
 
 
@@ -45,7 +45,7 @@ public class ClassMockClassOfGivenTypeTest {
 
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
+        //System.out.println("result for c2 "+ml.hasMetadata(c2, annotation));
 
 
 
@@ -55,6 +55,6 @@ public class ClassMockClassOfGivenTypeTest {
         mockC3.superclass(ArrayList.class);
 
         final Class<?> c3 = mockC3.build();
-        System.out.println("result for c3 "+ml.hasMetadata(c3, annotation));
+        //System.out.println("result for c3 "+ml.hasMetadata(c3, annotation));
     }
 }

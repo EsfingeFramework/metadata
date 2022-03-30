@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Method;
 
 @Retention(RetentionPolicy.RUNTIME)
-@HaveAnnotationOnElementConvention(annotationClass = Deprecated.class,elementClass = Method.class)
+@HaveAnnotationOnElementConvention(annotationClass = Deprecated.class)
 public @interface HasAnnotationOnElement {
 }

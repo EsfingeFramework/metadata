@@ -15,14 +15,15 @@ public class InsideAnnotationLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		System.out.println(((Class<?>) element).getName()+" here?");
 		List<Annotation> annotations  = getNextLocator().findAllMetadata(element);
-		for(Annotation a: element.getAnnotations()){
-			if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
-				List<Annotation> AnnotationAnnotations = findAllMetadata(a.annotationType());
-				for(Annotation annotation : AnnotationAnnotations){
-					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)) {
-						AnnotatedElementUtils.addAnnotationIfNotInList(annotation, annotations);
+		if(annotations==null){
+			for(Annotation a: element.getAnnotations()){
+				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
+					List<Annotation> AnnotationAnnotations = findAllMetadata(a.annotationType());
+					for(Annotation annotation : AnnotationAnnotations){
+						if(a.annotationType().isAnnotationPresent(SearchInsideAnnotations.class)) {
+							AnnotatedElementUtils.addAnnotationIfNotInList(annotation, annotations);
+						}
 					}
 				}
 			}
@@ -39,7 +40,7 @@ public class InsideAnnotationLocator extends MetadataLocator {
 			for(Annotation a : element.getAnnotations()) {
 
 				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
-					System.out.println(a.annotationType());
+					//System.out.println(a.annotationType());
 					annotation =  findMetadata(a.annotationType(),annotationClass);
 					if(annotation!=null)
 						return annotation;
@@ -69,6 +70,7 @@ public class InsideAnnotationLocator extends MetadataLocator {
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
 
 		boolean nextLocatorFound  = getNextLocator().hasMetadata(element, annotationClass);
+
 		if(!nextLocatorFound && annotationClass.isAnnotationPresent(SearchInsideAnnotations.class)) {
 			boolean result = false;
 

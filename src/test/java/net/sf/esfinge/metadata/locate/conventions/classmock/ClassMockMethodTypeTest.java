@@ -42,7 +42,7 @@ public class ClassMockMethodTypeTest {
         mockC1.method("setId").annotation(annotation);
         final Class<?> c1 = mockC1.build();
 
-        System.out.println("result for c1 "+ml.hasMetadata(c1.getMethod("setId"), annotation));
+        //System.out.println("result for c1 "+ml.hasMetadata(c1.getMethod("setId"), annotation));
 
 
 
@@ -52,7 +52,7 @@ public class ClassMockMethodTypeTest {
         final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
         mockC2.method("setId").parameter("id",String.class);
         final Class<?> c2 = mockC2.build();
-        System.out.println("result for c2 "+ml.hasMetadata(c2.getMethod("setId",String.class), annotation));
+        //System.out.println("result for c2 "+ml.hasMetadata(c2.getMethod("setId",String.class), annotation));
 
 
 
@@ -62,6 +62,6 @@ public class ClassMockMethodTypeTest {
         mockC3.method("setId").parameter("id",Integer.class);
         mockC3.method("getChildren").parameter("children", ArrayList.class);
         final Class<?> c3 = mockC3.build();
-        System.out.println("result for c3 "+ml.hasMetadata(c3.getMethod("getChildren",ArrayList.class), annotation));
+        //System.out.println("result for c3 "+ml.hasMetadata(c3.getMethod("getChildren",ArrayList.class), annotation));
     }
 }

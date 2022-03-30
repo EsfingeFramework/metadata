@@ -43,7 +43,7 @@ public class ClassMockTest {
 		final Class<?> c1 = mockC1.build();
 
 
-		System.out.println(ml.hasMetadata(c1, annotation));
+		//System.out.println(ml.hasMetadata(c1, annotation));
 
 
 
@@ -54,7 +54,7 @@ public class ClassMockTest {
 		final Class<?> c2 = mockC2.build();
 
 
-		System.out.println(ml.hasMetadata(c2, annotation));
+		//System.out.println(ml.hasMetadata(c2, annotation));
 
 
 
@@ -65,7 +65,7 @@ public class ClassMockTest {
 		final Class<?> c3 = mockC3.build();
 
 
-		System.out.println(ml.hasMetadata(c3, annotation));
+		//System.out.println(ml.hasMetadata(c3, annotation));
 	}
 
 }

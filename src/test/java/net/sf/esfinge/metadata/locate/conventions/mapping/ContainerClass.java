@@ -9,7 +9,7 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 
 public class ContainerClass {
 
-	@ContainsAnnotation(PrefixConvention.class)
+	@ContainsAnnotation(Secure.class)
 	private boolean secure;
 
 	public boolean isSecure() {

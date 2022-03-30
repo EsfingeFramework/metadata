@@ -8,6 +8,6 @@ import net.sf.esfinge.metadata.locate.conventions.HaveAnnotationOnElementConvent
 @Target(ElementType.ANNOTATION_TYPE)
 @Verifier(HaveAnnotationOnElementConventionVerifier.class)
 public @interface HaveAnnotationOnElementConvention {
-    Class<?> annotationClass();
-    Class<?> elementClass();
+    Class<? extends Annotation> annotationClass();
+
 }

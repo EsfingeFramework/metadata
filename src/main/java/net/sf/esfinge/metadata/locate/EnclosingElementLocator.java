@@ -19,28 +19,29 @@ public class EnclosingElementLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-		for(StackTraceElement e : stackTraceElements)
-			System.out.println(e.getMethodName());
 		List<Annotation> annotations;
-		System.out.println(((Class<?>) element).getName()+" here?");
 		annotations = nextLocator.findAllMetadata(element);
-		if(element instanceof Method || element instanceof Field ){
-			Class clazz = ((Member) element).getDeclaringClass();
-			for(Annotation a : clazz.getDeclaredAnnotations()){
-				if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
-					AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
-				}
-			}
 
-		}else if (element instanceof Class){
-			System.out.println(((Class<?>) element).getName()+" here?");
-			Package apackage = ((Class) element).getPackage();
-			for(Annotation a : apackage.getDeclaredAnnotations()){
-				if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
-					AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
+		if(annotations==null){
+			annotations = new ArrayList<Annotation>();
+			if(element instanceof Method || element instanceof Field ){
+				Class clazz = ((Member) element).getDeclaringClass();
+				for(Annotation a : clazz.getDeclaredAnnotations()){
+					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
+						AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
+					}
+				}
+
+			}else if (element instanceof Class){
+
+				Package apackage = ((Class) element).getPackage();
+				for(Annotation a : apackage.getDeclaredAnnotations()){
+					if(a.annotationType().isAnnotationPresent(SearchOnEnclosingElements.class)){
+						AnnotatedElementUtils.addAnnotationIfNotInList(a,annotations);
+					}
 				}
 			}
+			return annotations;
 		}
 		return annotations;
 	}
@@ -67,6 +68,7 @@ public class EnclosingElementLocator extends MetadataLocator {
 	
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) {
+
 		boolean nextLocatorFound = getNextLocator().hasMetadata(element, annotationClass);
 
 		if(!nextLocatorFound && annotationClass.isAnnotationPresent(SearchOnEnclosingElements.class)){
@@ -75,7 +77,6 @@ public class EnclosingElementLocator extends MetadataLocator {
 				Class clazz = ((Member) element).getDeclaringClass();
 				return hasMetadata(clazz,annotationClass);
 			}else if (element instanceof Class){
-
 				Package apackage = ((Class) element).getPackage();
 
 				return hasMetadata(apackage,annotationClass);

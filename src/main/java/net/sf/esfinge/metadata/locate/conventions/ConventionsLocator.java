@@ -3,6 +3,7 @@ package net.sf.esfinge.metadata.locate.conventions;
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,7 +93,7 @@ public class ConventionsLocator extends MetadataLocator {
 
 	@Override
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		return null;
+		return nextLocator.findAllMetadata(element);
 	}
 
 	@Override
@@ -112,7 +113,6 @@ public class ConventionsLocator extends MetadataLocator {
 			throws MetadataLocationException {
 
 		boolean nextFoundMetadata = getNextLocator().hasMetadata(element, annotationClass);
-
 		if (!nextFoundMetadata) {
 
 			return isConventionsPresent(element, annotationClass);

@@ -9,44 +9,20 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class HaveAnnotationOnElementConventionVerifier implements ConventionVerifier<HaveAnnotationOnElementConvention>{
-    private Class<?> annotationClass;
-    private Class<?> elementClass;
+    private Class<? extends Annotation> annotationClass;
+
 
 
     @Override
     public void init(HaveAnnotationOnElementConvention conventionAnnotation) {
-        elementClass = conventionAnnotation.elementClass();
+
         annotationClass=conventionAnnotation.annotationClass();
 
     }
 
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
+        return element.isAnnotationPresent(annotationClass);
 
-        if(element instanceof Field){
-            if(elementClass==((Field) element).getClass()) {
-
-                Annotation[] fieldAnnotations = ((Field) element).getDeclaredAnnotations();
-                for (int i = 0; i < fieldAnnotations.length; i++) {
-
-                    if (fieldAnnotations[i].getClass() == annotationClass && elementClass==element.getClass()) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        }else if (element instanceof Method){
-
-                Annotation[] methodAnnotations = ((Method) element).getDeclaredAnnotations();
-
-                for(int i=0;i<methodAnnotations.length;i++){
-
-                    if(methodAnnotations[i].annotationType()==annotationClass  && elementClass==element.getClass()){
-                        return true;
-                    }
-                }
-                return false;
-        }
-        return false;
     }
 }

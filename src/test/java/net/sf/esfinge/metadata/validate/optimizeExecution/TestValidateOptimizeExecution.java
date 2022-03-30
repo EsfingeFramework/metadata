@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.validate.optimizeExecution;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationValidationException;
@@ -13,7 +14,7 @@ import net.sf.esfinge.metadata.validate.optimizeExecution.CT18.OrderProcessing18
 import net.sf.esfinge.metadata.validate.optimizeExecution.CT21.OrderProcessing21;
 import net.sf.esfinge.metadata.validate.optimizeExecution.CT25.OrderProcessing25;
 import net.sf.esfinge.metadata.validate.optimizeExecution.CT28.OrderProcessing28;
-
+@Ignore
 public class TestValidateOptimizeExecution<Purchase>{
 
 	// CT01
@@ -82,7 +83,8 @@ public class TestValidateOptimizeExecution<Purchase>{
 
 	@Test(expected = AnnotationValidationException.class)
 	public void CT06() throws AnnotationValidationException, AnnotationReadingException {
-		MetadataValidator.validateMetadataOn(OrderProcessing06.class);
+
+			MetadataValidator.validateMetadataOn(OrderProcessing06.class);
 	}
 
 	// CT07

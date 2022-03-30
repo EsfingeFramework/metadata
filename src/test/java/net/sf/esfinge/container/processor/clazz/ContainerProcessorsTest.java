@@ -18,6 +18,7 @@ public class ContainerProcessorsTest {
 	public void testContainerForClass() throws Exception {
 		Container container = new Container();
 		AnnotationReader a1 = new AnnotationReader();
+
 		container = a1.readingAnnotationsTo(Dominio.class, container.getClass());
 		assertEquals(1,container.getList().size());
 		for (ProcessorInterface iterable : container.getList()) {

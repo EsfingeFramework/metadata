@@ -98,18 +98,19 @@ public class AnnotationFinder {
 		Map<Integer, MetadataLocator> locators = getAplicableLocatorChain(annotationClass);
 		MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotationClass);
 		List<Annotation> annotations = new ArrayList<Annotation>();
+
 		Annotation an = ml.findMetadata(element,annotationClass);
 		if(an!=null)
 			annotations.add(an);
-
-
 		return annotations;
 	}
 
 	public static boolean existAnnotation(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws AnnotationReadingException {
 		try {
+
 			return !findAnnotation(element, annotationClass).isEmpty();
 		}catch(AnnotationReadingException are){
+
 			return false;
 		}
 	}
