@@ -101,7 +101,7 @@ public class ConventionsLocator extends MetadataLocator {
 			throws MetadataLocationException {
 
 		if (!nextLocator.hasMetadata(element, annotationClass) && isConventionsPresent(element, annotationClass)) {
-			Annotation an = AnnotatedElementUtils.instantiateAnnotation(annotationClass);
+			Annotation an = AnnotatedElementUtils.instantiateAnnotation(annotationClass,element);
 			return an;
 		}
 

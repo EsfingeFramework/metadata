@@ -1,16 +1,15 @@
 package net.sf.esfinge.metadata.utils;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.List;
 
 import net.sf.esfinge.classmock.ClassMock;
+import net.sf.esfinge.classmock.api.IAnnotationPropertyWriter;
 import net.sf.esfinge.classmock.api.IClassWriter;
+import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.AtributeConventionValueGenerator;
+import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.ElementNameAfterPrefix;
+import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.ValueGenerator;
 
 public class AnnotatedElementUtils {
 	
@@ -39,9 +38,32 @@ public class AnnotatedElementUtils {
 		annotations.add(annotation);
 	}
 	//missing -> when the annotation has attributes that need to get values
-	public static Annotation instantiateAnnotation(Class<? extends Annotation> annotClazz) {
+	public static Annotation instantiateAnnotation(Class<? extends Annotation> annotClazz, AnnotatedElement element) {
+
 		IClassWriter mock = ClassMock.of("MockName"+System.currentTimeMillis());
-		mock.annotation(annotClazz);
+		IAnnotationPropertyWriter ianot = mock.annotation(annotClazz);
+		for(Method m : annotClazz.getMethods()){
+			for(Annotation annot : m.getAnnotations()){
+				if(annot.annotationType().isAnnotationPresent(ValueGenerator.class)){
+					ValueGenerator generatorAnnotation =  annot.annotationType().getAnnotation(ValueGenerator.class);
+					Class<? extends AtributeConventionValueGenerator> generatorClass = generatorAnnotation.value();
+					try {
+						AtributeConventionValueGenerator generator = generatorClass.getConstructor().newInstance();
+						ianot.property(m.getName(),generator.generateValue(annotClazz,element,m,annot));
+					}catch (Exception e){
+						e.printStackTrace();
+					}
+
+				}
+			}
+//			if(m.isAnnotationPresent(ElementNameAfterPrefix.class)){
+//				ElementNameAfterPrefix ele = m.getAnnotation(ElementNameAfterPrefix.class);
+//				String prefix = ele.prefix();
+//				String nameAfterPrefix = getName(element).substring(prefix.length());
+//				ianot.property(m.getName(),nameAfterPrefix);
+//			}
+		}
+
 		Class<?> mockClass = mock.build();
 		
 		return mockClass.getAnnotation(annotClazz);

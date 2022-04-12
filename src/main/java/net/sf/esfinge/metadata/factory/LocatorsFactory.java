@@ -34,7 +34,11 @@ public class LocatorsFactory {
 //
 //		return locator;
 //	}
-	public static MetadataLocator createLocatorsChain(Class<? extends Annotation> annotType) throws AnnotationReadingException {
+	@Deprecated
+public static MetadataLocator createLocatorsChain(Class<? extends Annotation> annotType) throws AnnotationReadingException{
+	return createLocatorsChain();
+}
+	public static MetadataLocator createLocatorsChain() throws AnnotationReadingException {
 
 		MetadataLocator conventionsLocator = new ConventionsLocator();
 		MetadataLocator insideAnnotationsLocator = new InsideAnnotationLocator();

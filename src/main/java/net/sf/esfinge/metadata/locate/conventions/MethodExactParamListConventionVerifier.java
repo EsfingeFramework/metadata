@@ -3,9 +3,11 @@ package net.sf.esfinge.metadata.locate.conventions;
 import net.sf.esfinge.metadata.locate.conventions.annotations.MethodExactParamListConvention;
 
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Map;
 
 public class MethodExactParamListConventionVerifier implements ConventionVerifier<MethodExactParamListConvention> {
 
@@ -19,7 +21,20 @@ public class MethodExactParamListConventionVerifier implements ConventionVerifie
         }
 
     }
+    @Override
+    public void init(Map<String,String> parameters)  {
+        String[] annotations = parameters.get("parameters").split(",");
+        this.parameters = new Class<?>[annotations.length];
+        for(int i=0;i< annotations.length;i++){
+            try {
+                this.parameters[i] = Class.forName(annotations[i]);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
+
+    }
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
 

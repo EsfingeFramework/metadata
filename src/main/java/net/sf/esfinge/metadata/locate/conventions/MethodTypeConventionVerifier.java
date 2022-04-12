@@ -1,9 +1,11 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Map;
 
 import net.sf.esfinge.metadata.locate.conventions.annotations.MethodTypeConvention;
 
@@ -21,7 +23,21 @@ public class MethodTypeConventionVerifier implements ConventionVerifier<MethodTy
 		canBeSubtype = conventionAnnotation.canBeSubtype();
 
 	}
+	@Override
+	public void init(Map<String,String> parameters)  {
+		String[] annotations = parameters.get("parameters").split(",");
+		this.parameters = new Class<?>[annotations.length];
 
+		try {
+			for(int i=0;i<annotations.length;i++){
+				this.parameters[i] = Class.forName(annotations[i]);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		canBeSubtype = Boolean.getBoolean(parameters.get("canBeSubtype"));
+	}
 	@Override
 	public boolean isConventionPresent(AnnotatedElement element) {
 		if (element instanceof Method) {

@@ -7,6 +7,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier<ClassHaveAnnotationConvention>{
     private Class<?>[] classAnnotations;
@@ -21,7 +24,20 @@ public class ClassHaveAnnotationConventionVerifier implements ConventionVerifier
         canBeSubtype = conventionAnnotation.canBeSubtype();
 
     }
+    @Override
+    public void init(Map<String,String> parameters) {
+        String[] annotations = parameters.get("classAnnotations").split(",");
+        classAnnotations = new Class<?>[annotations.length];
+        for (int i = 0; i < annotations.length; i++) {
+            try {
+                classAnnotations[i] = Class.forName(annotations[i]);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        canBeSubtype = Boolean.getBoolean(parameters.get("canBeSubtype"));
 
+    }
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
 

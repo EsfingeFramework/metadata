@@ -5,6 +5,8 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.ClassOfGivenTypeCo
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
+
 public class ClassOfGivenTypeConventionVerifier implements ConventionVerifier<ClassOfGivenTypeConvention>{
     private Class<?> superClass;
     private boolean canBeSubtype;
@@ -13,7 +15,16 @@ public class ClassOfGivenTypeConventionVerifier implements ConventionVerifier<Cl
         superClass = conventionAnnotation.superClass();
         canBeSubtype = conventionAnnotation.canBeSubtype();
     }
+    @Override
+    public void init(Map<String,String> parameters)  {
+        try {
+            superClass= Class.forName(parameters.get("superClass"));
+            canBeSubtype = Boolean.getBoolean(parameters.get("canBeSubtype"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
+    }
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
         if (element instanceof Class<?>) {

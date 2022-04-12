@@ -1,6 +1,7 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
 import java.lang.reflect.AnnotatedElement;
+import java.util.Map;
 
 import net.sf.esfinge.metadata.locate.conventions.annotations.RegularExpressionConvention;
 import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
@@ -22,7 +23,15 @@ public class RegularExpressionConventionVerifier implements ConventionVerifier<R
 		upperCaseRegex = firstLetStr + remLetStr;
 		
 	}
-
+	@Override
+	public void init(Map<String, String> parameters) {
+		regex = parameters.get("regex");
+		upperCaseRegex = regex;
+		String firstLetStr = upperCaseRegex.substring(0, 1);
+		String remLetStr = upperCaseRegex.substring(1);
+		firstLetStr = firstLetStr.toUpperCase();
+		upperCaseRegex = firstLetStr + remLetStr;
+	}
 	@Override
 	public boolean isConventionPresent(AnnotatedElement element) {
 		String name = AnnotatedElementUtils.getName(element);

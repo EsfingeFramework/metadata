@@ -6,6 +6,7 @@ import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 public class ClassIsInPackageConventionVerifier implements ConventionVerifier<ClassIsInPackageConvention>{
 
@@ -24,7 +25,17 @@ public class ClassIsInPackageConventionVerifier implements ConventionVerifier<Cl
         upperCaseRegex = firstLetStr + remLetStr;
 
     }
+    @Override
+    public void init(Map<String,String> parameters)  {
+        regex = parameters.get("value");
+        upperCaseRegex = regex;
+        String firstLetStr = upperCaseRegex.substring(0, 1);
+        String remLetStr = upperCaseRegex.substring(1);
+        firstLetStr = firstLetStr.toUpperCase();
+        upperCaseRegex = firstLetStr + remLetStr;
 
+
+    }
     @Override
     public boolean isConventionPresent(AnnotatedElement element) {
             Class<?> clazz = (Class<?>) element;

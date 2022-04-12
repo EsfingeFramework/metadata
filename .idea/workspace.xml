@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f624b65-5285-48e4-aa14-5e68c020e25c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/AnnotationFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/EnclosingElementLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InheritanceLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/InsideAnnotationLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/RegularLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/factory/LocatorsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/factory/LocatorsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassHaveAnnotationConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassHaveAnnotationConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassHaveTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassHaveTypeConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassIsInPackageConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassIsInPackageConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassOfGivenTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ClassOfGivenTypeConventionVerifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ConventionsLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/ConventionsLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/FieldTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/FieldTypeConventionVerifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/HaveAnnotationOnElementConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/HaveAnnotationOnElementConventionVerifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/HaveAnnotationOnElementConvention.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/HaveAnnotationOnElementConvention.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/container/processor/clazz/ContainerProcessorsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/container/processor/clazz/ContainerProcessorsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/annotations/HasAnnotationOnElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/annotations/HasAnnotationOnElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockClassOfGivenTypeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockClassOfGivenTypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockMethodTypeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockMethodTypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/classmock/ClassMockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/mapping/ContainerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/mapping/ContainerClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/mapping/TestConventionsWithMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/mapping/TestConventionsWithMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/validate/optimizeExecution/TestValidateOptimizeExecution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/validate/optimizeExecution/TestValidateOptimizeExecution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodExactParamListConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodExactParamListConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodParamOfTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodParamOfTypeConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodReturnTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodReturnTypeConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodThrowsExceptionConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodThrowsExceptionConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodTypeConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/MethodTypeConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/RegularExpressionConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/RegularExpressionConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/SuffixConventionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/SuffixConventionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/AtributeWithAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/AtributeWithAnnotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/FileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/ForTestingConventions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/ForTestingConventions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +51,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="package-info" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -136,7 +136,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documentos/comparison" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -153,7 +153,7 @@
       <recent name="net.sf.esfinge.metadata.properties.containers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FileReader">
+  <component name="RunManager" selected="JUnit.TestAttributeConventions">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -223,16 +223,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestConventionsWithMapping" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestAttributeConventions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="metadata" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.mapping.*" />
+          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.attributes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="net.sf.esfinge.metadata.locate.conventions.mapping" />
-      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.conventions.mapping.TestConventionsWithMapping" />
+      <option name="PACKAGE_NAME" value="net.sf.esfinge.metadata.locate.conventions.attributes" />
+      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.conventions.attributes.TestAttributeConventions" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -287,20 +287,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.FileReader" />
       <item itemvalue="JUnit.All in metadata (2)" />
-      <item itemvalue="JUnit.TestConventionsWithMapping" />
       <item itemvalue="JUnit.ContainerProcessorsTest" />
       <item itemvalue="JUnit.TestValidateOptimizeExecution" />
       <item itemvalue="JUnit.ClassMockHaveAnnotationOnElementTest" />
-      <item itemvalue="Application.FileReader" />
+      <item itemvalue="JUnit.TestAttributeConventions" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestAttributeConventions" />
         <item itemvalue="Application.FileReader" />
         <item itemvalue="JUnit.ClassMockHaveAnnotationOnElementTest" />
         <item itemvalue="JUnit.TestValidateOptimizeExecution" />
         <item itemvalue="JUnit.ContainerProcessorsTest" />
-        <item itemvalue="JUnit.TestConventionsWithMapping" />
       </list>
     </recent_temporary>
   </component>
@@ -335,6 +335,13 @@
       <workItem from="1648471659238" duration="1278000" />
       <workItem from="1648473477071" duration="74000" />
       <workItem from="1648555340545" duration="595000" />
+      <workItem from="1648644353965" duration="288000" />
+      <workItem from="1648726063802" duration="1264000" />
+      <workItem from="1648728729219" duration="1367000" />
+      <workItem from="1648813040942" duration="232000" />
+      <workItem from="1649070752517" duration="1988000" />
+      <workItem from="1649760254209" duration="794000" />
+      <workItem from="1649761070075" duration="5619000" />
     </task>
     <servers />
   </component>

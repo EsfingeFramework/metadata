@@ -1,5 +1,7 @@
 package net.sf.esfinge.metadata.locate.conventions;
 
+import java.util.ArrayList;
+
 public class ForTestingConventions {
 	
 	public Number field1;
@@ -24,5 +26,6 @@ public class ForTestingConventions {
 	public void withAnnotationMethod() {}
 	
 	public void noConventionMethod() {}
+	public java.util.ArrayList getArray(){ return new ArrayList();}
 
 }
