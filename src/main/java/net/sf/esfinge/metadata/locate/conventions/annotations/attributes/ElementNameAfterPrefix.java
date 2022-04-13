@@ -1,5 +1,7 @@
 package net.sf.esfinge.metadata.locate.conventions.annotations.attributes;
 
+import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.generator.ElementNameAfterPrefixGenerator;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

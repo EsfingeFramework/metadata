@@ -1,4 +1,4 @@
-package net.sf.esfinge.metadata.locate.conventions.annotations.attributes;
+package net.sf.esfinge.metadata.locate.conventions.annotations.attributes.generator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;

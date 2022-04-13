@@ -7,8 +7,7 @@ import java.util.List;
 import net.sf.esfinge.classmock.ClassMock;
 import net.sf.esfinge.classmock.api.IAnnotationPropertyWriter;
 import net.sf.esfinge.classmock.api.IClassWriter;
-import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.AtributeConventionValueGenerator;
-import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.ElementNameAfterPrefix;
+import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.generator.AtributeConventionValueGenerator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.ValueGenerator;
 
 public class AnnotatedElementUtils {
