@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9f624b65-5285-48e4-aa14-5e68c020e25c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/AtributeConventionValueGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/generator/AtributeConventionValueGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementNameAfterPrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementNameAfterPrefix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementNameAfterPrefixGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/generator/ElementNameAfterPrefixGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementNameBeforeSufix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ElementNameBeforeSuffix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/FixedStringValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/FixedStringValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ValueGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/ValueGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/utils/AnnotatedElementUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/generator/ElementNameBeforeSuffixGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/sf/esfinge/metadata/locate/conventions/annotations/attributes/generator/ElementNameBeforeSuffixGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/MockClassConventions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/MockClassConventions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/TestAttributeConventions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/TestAttributeConventions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/WithAtributeConventions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/sf/esfinge/metadata/locate/conventions/attributes/AtributeAnnotations/WithAtributeConventions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +38,8 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
-        <option value="AnnotationType" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -196,16 +192,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ContainerProcessorsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClassMockMethodReturnTypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="metadata" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="net.sf.esfinge.container.processor.clazz.*" />
+          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.classmock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="net.sf.esfinge.container.processor.clazz" />
-      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.container.processor.clazz.ContainerProcessorsTest" />
+      <option name="PACKAGE_NAME" value="net.sf.esfinge.metadata.locate.conventions.classmock" />
+      <option name="MAIN_CLASS_NAME" value="net.sf.esfinge.metadata.locate.conventions.classmock.ClassMockMethodReturnTypeTest" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -216,7 +212,7 @@
       <module name="metadata" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.attributes.*" />
+          <option name="PATTERN" value="net.sf.esfinge.metadata.locate.conventions.attributes.AtributeAnnotations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -278,18 +274,18 @@
     <list>
       <item itemvalue="Application.FileReader" />
       <item itemvalue="JUnit.All in metadata (2)" />
-      <item itemvalue="JUnit.ContainerProcessorsTest" />
       <item itemvalue="JUnit.TestValidateOptimizeExecution" />
       <item itemvalue="JUnit.ClassMockHaveAnnotationOnElementTest" />
       <item itemvalue="JUnit.TestAttributeConventions" />
+      <item itemvalue="JUnit.ClassMockMethodReturnTypeTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestAttributeConventions" />
+        <item itemvalue="JUnit.ClassMockMethodReturnTypeTest" />
         <item itemvalue="Application.FileReader" />
         <item itemvalue="JUnit.ClassMockHaveAnnotationOnElementTest" />
         <item itemvalue="JUnit.TestValidateOptimizeExecution" />
-        <item itemvalue="JUnit.ContainerProcessorsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +327,8 @@
       <workItem from="1649070752517" duration="1988000" />
       <workItem from="1649760254209" duration="794000" />
       <workItem from="1649761070075" duration="5619000" />
-      <workItem from="1649853105186" duration="3228000" />
+      <workItem from="1649853105186" duration="3391000" />
+      <workItem from="1649939339176" duration="3828000" />
     </task>
     <servers />
   </component>
@@ -410,6 +407,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.AssertionError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

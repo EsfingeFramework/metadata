@@ -12,8 +12,8 @@ public class ElementNameBeforeSuffixGenerator implements AtributeConventionValue
     public Object generateValue(Class<? extends Annotation> mainAnnotation, AnnotatedElement element, Method annotationAtribute, Annotation atributeConvention) {
         ElementNameBeforeSuffix ele = (ElementNameBeforeSuffix)atributeConvention;
         String suffix = ele.suffix();
-        String nameBeforeSuffix = AnnotatedElementUtils.getName(element).substring(suffix.length());
-        System.out.println(nameBeforeSuffix);
+
+        String nameBeforeSuffix = AnnotatedElementUtils.getName(element).substring(0,suffix.length());
         return nameBeforeSuffix;
 
     }

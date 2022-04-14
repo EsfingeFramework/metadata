@@ -1,4 +1,4 @@
-package net.sf.esfinge.metadata.locate.conventions.attributes;
+package net.sf.esfinge.metadata.locate.conventions.attributes.AtributeAnnotations;
 
 import net.sf.esfinge.metadata.locate.conventions.annotations.PrefixConvention;
 import net.sf.esfinge.metadata.locate.conventions.annotations.attributes.ElementNameAfterPrefix;
