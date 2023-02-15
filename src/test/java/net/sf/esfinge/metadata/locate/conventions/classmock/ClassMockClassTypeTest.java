@@ -7,8 +7,6 @@ import net.sf.esfinge.metadata.factory.LocatorsFactory;
 import net.sf.esfinge.metadata.locate.MetadataLocator;
 import net.sf.esfinge.metadata.locate.conventions.annotations.ClassOfType;
 
-
-
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 

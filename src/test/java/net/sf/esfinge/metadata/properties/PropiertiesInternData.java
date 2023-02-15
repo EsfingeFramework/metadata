@@ -33,7 +33,7 @@ public class PropiertiesInternData {
 		
 		//fail("verificar o comportamento da classe");
 		assertEquals(3, container.getProperties().size());
-		assertTrue("FALSO",container.getPropertyDescriptor("prop1").isAnnoted());
+		assertFalse(container.getPropertyDescriptor("prop1").isAnnoted());
 		
 
 	}

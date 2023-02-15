@@ -3,15 +3,19 @@ package net.sf.esfinge.metadata.locate.conventions;
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import net.sf.esfinge.metadata.annotation.container.AnnotationProperty;
+import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
+import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
+import net.sf.esfinge.metadata.locate.RegularLocator;
+import org.apache.commons.beanutils.BeanUtils;
+import org.reflections.Reflections;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,6 +28,7 @@ import net.sf.esfinge.metadata.locate.conventions.annotations.Verifier;
 import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 public class ConventionsLocator extends MetadataLocator {
+
 
 	private static Map<Class<?>, ConventionsMetadataContainer> conventionsDefinitions = new HashMap<>();
 
@@ -92,8 +97,37 @@ public class ConventionsLocator extends MetadataLocator {
 	}
 
 	@Override
+
 	public List<Annotation> findAllMetadata(AnnotatedElement element) throws MetadataLocationException {
-		return nextLocator.findAllMetadata(element);
+		List<Annotation> annotations = new ArrayList<>();
+		annotations = nextLocator.findAllMetadata(element);
+		String packageRoot = AnnotatedElementUtils.getClassName(element).split("\\.")[0];
+		System.out.println("class name = "+AnnotatedElementUtils.getClassName(element));
+		System.out.println("element name = "+AnnotatedElementUtils.getName(element));
+		List<Annotation> convAnnotations = new ArrayList<>(annotations);
+		Set<Class<?>> conventions =
+				new Reflections("net.sf.esfinge.metadata.locate.conventions.annotations").getTypesAnnotatedWith(Verifier.class, true);
+		ConventionsMetadataContainer cmc = new ConventionsMetadataContainer();
+		Set<Class<?>> appConventions = new Reflections(packageRoot).getTypesAnnotatedWith(Verifier.class,true);
+		conventions.addAll(appConventions);
+		for (Class<?> c : conventions) {
+			//System.out.println(c);
+			Class<? extends Annotation> annot = c.asSubclass(Annotation.class);
+			Set<Class<?>> annotatedWithConventions = new Reflections(packageRoot).getTypesAnnotatedWith(annot, true);
+			//System.out.println(annotatedWithConventions.size());
+			for(Class<?> ac : annotatedWithConventions){
+				Class<? extends Annotation> annotatedac = ac.asSubclass(Annotation.class);
+				//System.out.println(ac.getSimpleName()+" "+c.getSimpleName());
+				if(hasMetadata(element,annotatedac) && isConventionsPresent(element,annotatedac)){
+					Annotation an =findMetadata(element,annotatedac);
+					System.out.println("found convention for annotation = "+ an.annotationType().getSimpleName());
+					convAnnotations.add(an);
+				}
+			}
+
+		}
+
+		return convAnnotations;
 	}
 
 	@Override
@@ -101,12 +135,15 @@ public class ConventionsLocator extends MetadataLocator {
 			throws MetadataLocationException {
 
 		if (!nextLocator.hasMetadata(element, annotationClass) && isConventionsPresent(element, annotationClass)) {
+			System.out.println("element class = "+element.getClass());
 			Annotation an = AnnotatedElementUtils.instantiateAnnotation(annotationClass,element);
 			return an;
 		}
 
 		return nextLocator.findMetadata(element, annotationClass);
 	}
+
+
 
 	@Override
 	public boolean hasMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass)
@@ -137,16 +174,22 @@ public class ConventionsLocator extends MetadataLocator {
 	}
 
 	private ConventionsMetadataContainer getConventions(Class<? extends Annotation> annotationClass) {
+		//System.out.println(annotationClass.getSimpleName());
 		if (conventionsDefinitions.containsKey(annotationClass)) {
+
 			return conventionsDefinitions.get(annotationClass);
 		} else {
 			ConventionsMetadataContainer cmc = new ConventionsMetadataContainer();
 			cmc.setAllConventionsNeedToApply(annotationClass.isAnnotationPresent(AllConventionsNeedToApply.class));
+
 			for (Annotation annot : annotationClass.getAnnotations()) {
 				try {
+
 					if (annot.annotationType().isAnnotationPresent(Verifier.class)) {
+
 						Verifier v = annot.annotationType().getAnnotation(Verifier.class);
 						Class<? extends ConventionVerifier> convClazz = v.value();
+
 						ConventionVerifier convVer = convClazz.getConstructor().newInstance();
 						convVer.init(annot);
 						cmc.getVerifiers().add(convVer);
@@ -156,6 +199,7 @@ public class ConventionsLocator extends MetadataLocator {
 				}
 			}
 			conventionsDefinitions.put(annotationClass, cmc);
+
 			return cmc;
 		}
 	}

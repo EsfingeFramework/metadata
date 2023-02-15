@@ -20,6 +20,9 @@ import net.sf.esfinge.metadata.annotation.container.ProcessorType;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
 import net.sf.esfinge.metadata.container.AnnotationReadingProcessor;
 import net.sf.esfinge.metadata.container.ContainerTarget;
+import net.sf.esfinge.metadata.factory.LocatorsFactory;
+import net.sf.esfinge.metadata.locate.MetadataLocator;
+import net.sf.esfinge.metadata.utils.AnnotatedElementUtils;
 
 public class PropertyProcessorsReadingProcessor implements AnnotationReadingProcessor{
 
@@ -35,6 +38,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 		
 		
 		fieldAnnoted = (Field) elementWithMetadata;
+
 		processors = (PropertyProcessors)an;
 		processorsAnnotationClass = processors.value();
 		fieldGenericType =  fieldAnnoted.getGenericType();
@@ -46,6 +50,7 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 			throws AnnotationReadingException {
 		try{			
 			annotationSearch(elementWithMetadata, container);
+
 			setProperty(container,fieldAnnoted.getName(),list);
 		}
 		catch (Exception e) {
@@ -81,9 +86,13 @@ public class PropertyProcessorsReadingProcessor implements AnnotationReadingProc
 
 	private void addObject(AnnotatedElement elementWithMetadata, Object container)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, AnnotationReadingException {
-		for (Annotation annotation : elementWithMetadata.getAnnotations()) {			
-			//TODO Verificar essa parte Até 
+		MetadataLocator locator = LocatorsFactory.createLocatorsChain();
+
+		for (Annotation annotation : locator.findAllMetadata(elementWithMetadata)) {
+			//System.out.println(AnnotationFinder.existAnnotation(annotation.annotationType(), processorsAnnotationClass));
+			//TODO Verificar essa parte Até
 			if(AnnotationFinder.existAnnotation(annotation.annotationType(), processorsAnnotationClass)){
+				//System.out.println(AnnotatedElementUtils.getName(elementWithMetadata));
 				Annotation processorAnnotation = annotation.annotationType().getAnnotation(processorsAnnotationClass);
 				Class<?> valueClass = (Class<?>) processorAnnotation.getClass().getDeclaredMethod("value").invoke(processorAnnotation);
 				Object objectToInvoke = valueClass.newInstance();

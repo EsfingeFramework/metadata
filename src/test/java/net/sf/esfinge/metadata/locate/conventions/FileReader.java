@@ -28,8 +28,7 @@ public class FileReader {
 		
 		boolean result = l.hasMetadata(m, ForTestingFileConventions.class);
 		
-		System.out.println(result);
-//		
+
 //		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 //		try {
 //			DocumentBuilder builder = factory.newDocumentBuilder();

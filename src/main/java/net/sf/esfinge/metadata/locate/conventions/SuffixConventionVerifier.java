@@ -17,6 +17,7 @@ public class SuffixConventionVerifier implements ConventionVerifier<SuffixConven
 		String remLetStr = suffix.substring(1); 
 		firstLetStr = firstLetStr.toUpperCase(); 
 		suffix = firstLetStr + remLetStr;
+
 	}
 	@Override
 	public void init(Map<String, String> parameters) {

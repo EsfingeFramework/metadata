@@ -100,6 +100,7 @@ public class AnnotationFinder {
 		List<Annotation> annotations = new ArrayList<Annotation>();
 
 		Annotation an = ml.findMetadata(element,annotationClass);
+
 		if(an!=null)
 			annotations.add(an);
 		return annotations;

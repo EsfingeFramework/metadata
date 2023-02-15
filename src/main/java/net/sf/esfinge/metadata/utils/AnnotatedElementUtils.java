@@ -28,6 +28,19 @@ public class AnnotatedElementUtils {
 
 		return ae.toString();
 	}
+
+	public static String getClassName(AnnotatedElement ae) {
+		if(ae instanceof Class)
+			return ((Class)ae).getName();
+		if(ae instanceof Method)
+			return ((Method)ae).getDeclaringClass().getName();
+		if(ae instanceof Constructor)
+			return ((Constructor)ae).getDeclaringClass().getName();
+		if(ae instanceof Field)
+			return ((Field)ae).getDeclaringClass().getName();
+		return ae.toString();
+	}
+
 	public static void addAnnotationIfNotInList(Annotation annotation, List<Annotation> annotations){
 		for(Annotation a : annotations){
 			if(a.annotationType()==annotation.annotationType()){
@@ -38,8 +51,9 @@ public class AnnotatedElementUtils {
 	}
 	//missing -> when the annotation has attributes that need to get values
 	public static Annotation instantiateAnnotation(Class<? extends Annotation> annotClazz, AnnotatedElement element) {
-
+		System.out.println("element class in class mock = "+element.getClass());
 		IClassWriter mock = ClassMock.of("MockName"+System.currentTimeMillis());
+		System.out.println("annotation class = "+annotClazz);
 		IAnnotationPropertyWriter ianot = mock.annotation(annotClazz);
 		for(Method m : annotClazz.getMethods()){
 			for(Annotation annot : m.getAnnotations()){

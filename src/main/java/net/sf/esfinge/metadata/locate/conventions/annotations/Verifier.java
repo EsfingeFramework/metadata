@@ -9,6 +9,7 @@ import net.sf.esfinge.metadata.locate.conventions.ConventionVerifier;
 
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+
 public @interface Verifier {
 	Class<? extends ConventionVerifier> value();
 }

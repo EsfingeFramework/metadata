@@ -12,7 +12,6 @@ import net.sf.esfinge.metadata.container.reading.PropertyContainsAnnotationProce
 @Retention(RetentionPolicy.RUNTIME)
 @AnnotationReadingConfig(PropertyContainsAnnotationProcessor.class)
 @SearchOnEnclosingElements
-
 public @interface PropertyContainsAnnotation {
 	Class<? extends Annotation> value();
 

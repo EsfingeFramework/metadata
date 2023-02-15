@@ -13,6 +13,7 @@ public class ClassTypeConventionVerifier implements ConventionVerifier<ClassType
 	public void init(ClassTypeConvention conventionAnnotation) {
 		superClass = conventionAnnotation.superClass();
 		canBeSubtype = conventionAnnotation.canBeSubtype();
+
 	}
 
 	@Override
