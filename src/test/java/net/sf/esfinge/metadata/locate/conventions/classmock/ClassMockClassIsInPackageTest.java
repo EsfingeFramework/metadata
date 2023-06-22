@@ -34,7 +34,7 @@ public class ClassMockClassIsInPackageTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation2");
         mockC1.annotation(annotation);
         final Class<?> c1 = mockC1.build();
         assertTrue(ml.hasMetadata(c1, annotation));

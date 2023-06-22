@@ -22,22 +22,23 @@ public class InheritanceLocatorTest {
 
         final Class<? extends Annotation> annotation = ToTestInheritance.class;
 
-        final IClassWriter interfaceF1 = ClassMock.of("TestInterface");
+        final IClassWriter interfaceF1 = ClassMock.of("TestInterface34567890");
 
 
         interfaceF1.asInterface().annotation(annotation);
 
          Class<?> f1 = interfaceF1.build();
 
-        final IClassWriter interfaceF2 = ClassMock.of("TestInterfaceWithMethod");
+        final IClassWriter interfaceF2 = ClassMock.of("TestInterfaceWithMethod333322");
         interfaceF2.asInterface().method("setId").modifiers(ModifierEnum.ABSTRACT).annotation(annotation);
         Class<?> f2 = interfaceF2.build();
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
-        IClassWriter mockC1 = ClassMock.of("TestInheritance");
+        IClassWriter mockC1 = ClassMock.of("TestInheritance444333222");
         mockC1.annotation(annotation);
         Class<?> c1 = mockC1.build();
+
         assertTrue(ml.hasMetadata(c1, annotation));
 
 
@@ -51,31 +52,31 @@ public class InheritanceLocatorTest {
 
 //Creating the class to test annotation on method
 
-        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnMethod");
+        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnMethod876532");
         mockC3.method("setId").annotation(annotation);
         Class<?> c3 = mockC3.build();
 
         assertTrue(ml.hasMetadata(c3.getMethod("setId"), annotation));
 
 //Creating the class with annotation on superclass
-        final IClassWriter mockC4 = ClassMock.of("ClassWithAnnotationOnSuperCLass");
+        final IClassWriter mockC4 = ClassMock.of("ClassWithAnnotationOnSuperCLass776665");
         mockC4.superclass(c1);
         final Class<?> c4 = mockC4.build();
         assertTrue(ml.hasMetadata(c4, annotation));
 //Creating the class with annotation on interface
-        final IClassWriter mockC5 = ClassMock.of("ClassWithAnnotationOnInterface");
+        final IClassWriter mockC5 = ClassMock.of("ClassWithAnnotationOnInterface122222");
         mockC5.interfaces(f1);
         final Class<?> c5 = mockC5.build();
         assertTrue(ml.hasMetadata(c5, annotation));
 ////Creating the class with annotation on method of superclass
-        final IClassWriter mockC6 = ClassMock.of("ClassWithAnnotationOnMethodOfSuperclass");
+        final IClassWriter mockC6 = ClassMock.of("ClassWithAnnotationOnMethodOfSuperclass4545");
         mockC6.superclass(c3);
         mockC6.method("setId");
         final Class<?> c6 = mockC6.build();
         assertTrue(ml.hasMetadata(c6.getMethod("setId"),annotation));
 
 //Creating the class with annotation on method of Interfaces
-        final IClassWriter mockC7 = ClassMock.of("ClassWithAnnotationOnMethodOfInterfaces");
+        final IClassWriter mockC7 = ClassMock.of("ClassWithAnnotationOnMethodOfInterfaces6666789");
         mockC7.interfaces(f2);
         mockC7.method("setId");
         final Class<?> c7 = mockC7.build();

@@ -33,7 +33,7 @@ public class ClassMockHaveAnnotationOnElementTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation567");
         mockC1.method("setId").annotation(annotation);
 
         final Class<?> c1 = mockC1.build();
@@ -44,7 +44,7 @@ public class ClassMockHaveAnnotationOnElementTest {
 
 //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation222189");
         mockC2.method("setId");
         final Class<?> c2 = mockC2.build();
         assertFalse(ml.hasMetadata(c2.getDeclaredMethod("setId"), annotation));
@@ -53,7 +53,7 @@ public class ClassMockHaveAnnotationOnElementTest {
 
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement");
+        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement87920001");
         mockC3.method("setId").annotation(Deprecated.class);
 
         final Class<?> c3 = mockC3.build();

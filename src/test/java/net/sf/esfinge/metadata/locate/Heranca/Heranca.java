@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.annotation.Annotation;
 
 import net.sf.esfinge.metadata.AnnotationReadingException;
+import net.sf.esfinge.metadata.locate.RegularLocator;
 import org.junit.Test;
 
 import net.sf.esfinge.metadata.AnnotationFinder;
@@ -20,10 +21,12 @@ public class Heranca {
 	
 	
 	InheritanceLocator locator = new InheritanceLocator();
-	
+
 	@Test
 	public void testNullInterface() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(ClassNotAnnotation.class, AnnotationReq.class);
+
 		assertNull(an);
 		assertFalse(an instanceof AnnotationReq);
 
@@ -31,6 +34,7 @@ public class Heranca {
 	
 	@Test
 	public void testNullSuper() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(Son.class, AnnotationReq.class);
 		assertNull(an);
 		assertFalse(an instanceof AnnotationReq);
@@ -39,9 +43,10 @@ public class Heranca {
 	
 	@Test
 	public void testNullSuperIn2Level() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(Neto.class, AnnotationReq.class);
 		assertNull(an);
-		assertFalse(an instanceof AnnotationReq);
+		//assertFalse(an instanceof AnnotationReq);
 
 	}
 
@@ -60,6 +65,7 @@ public class Heranca {
 	
 	@Test
 	public void testReturnInInterface() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(ClassWithAnnotation.class, AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);
@@ -68,6 +74,7 @@ public class Heranca {
 	
 	@Test
 	public void testReturnInSuper() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(SonWithMetadata.class, AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);
@@ -76,6 +83,7 @@ public class Heranca {
 	
 	@Test
 	public void testReturnInSuperIn2Level() {
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(NetoWithMetadata.class, AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);
@@ -86,8 +94,8 @@ public class Heranca {
 	//TODO testsForMethods
 	@Test
 	public void testMethodNullInInterface() throws MetadataLocationException, NoSuchMethodException, SecurityException {
-		
-		
+
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(MethodInterfaceAnnotation.class.getMethod("value1"), AnnotationReq.class);
 		assertNull(an);
 		assertFalse(an instanceof AnnotationReq);
@@ -96,8 +104,8 @@ public class Heranca {
 	
 	@Test
 	public void testMethodNullInSuperclass() throws MetadataLocationException, NoSuchMethodException, SecurityException {
-		
-		
+
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(MethodSuperclassAnnotation.class.getMethod("value1"), AnnotationReq.class);
 		assertNull(an);
 		assertFalse(an instanceof AnnotationReq);
@@ -108,8 +116,8 @@ public class Heranca {
 	
 	@Test
 	public void testNotNullMethodInInterface() throws MetadataLocationException, NoSuchMethodException, SecurityException {
-		
-		
+
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(MethodInterfaceAnnotation.class.getMethod("value2"), AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);
@@ -117,8 +125,8 @@ public class Heranca {
 	}
 	@Test
 	public void testMethodNotNullInSuperclass() throws MetadataLocationException, NoSuchMethodException, SecurityException {
-		
-		
+
+		locator.setNextLocator(new RegularLocator());
 		Annotation an = locator.findMetadata(MethodSuperclassAnnotation.class.getMethod("value2"), AnnotationReq.class);
 		assertNotNull(an);
 		assertTrue(an instanceof AnnotationReq);

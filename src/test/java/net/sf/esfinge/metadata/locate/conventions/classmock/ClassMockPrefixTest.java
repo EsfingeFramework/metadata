@@ -20,7 +20,7 @@ public class ClassMockPrefixTest {
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain(annotation);
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation8795111");
         mockC1.annotation(annotation);
         final Class<?> c1 = mockC1.build();
         assertTrue(ml.hasMetadata(c1, annotation));
@@ -28,14 +28,14 @@ public class ClassMockPrefixTest {
 
         //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation11111");
         final Class<?> c2 = mockC2.build();
         assertFalse(ml.hasMetadata(c2, annotation));
 
 
         //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("PrefixClassWithoutAnnotation");
+        final IClassWriter mockC3 = ClassMock.of("PrefixClassWithoutAnnotation244487");
         final Class<?> c3 = mockC3.build();
         assertTrue(ml.hasMetadata(c3, annotation));
     }

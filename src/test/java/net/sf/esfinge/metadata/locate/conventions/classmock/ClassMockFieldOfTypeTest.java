@@ -34,7 +34,7 @@ public class ClassMockFieldOfTypeTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation55");
         mockC1.field("id");
         mockC1.annotation(annotation);
         final Class<?> c1 = mockC1.build();
@@ -45,7 +45,7 @@ public class ClassMockFieldOfTypeTest {
 
 //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation666");
 
         final Class<?> c2 = mockC2.build();
         assertFalse(ml.hasMetadata(c2, annotation));
@@ -54,7 +54,7 @@ public class ClassMockFieldOfTypeTest {
 
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement");
+        final IClassWriter mockC3 = ClassMock.of("ClassWithAnnotationOnAnotherElement81000");
         mockC3.field("id").type(Integer.class);
         final Class<?> c3 = mockC3.build();
         assertTrue(ml.hasMetadata(c3.getDeclaredField("id"), annotation));

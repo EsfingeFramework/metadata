@@ -28,7 +28,7 @@ public class ClassMockMethodParamOfTypeTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation10000002");
         mockC1.annotation(annotation);
         mockC1.method("setId").parameter("id",Integer.class);
         final Class<?> c1 = mockC1.build();
@@ -36,14 +36,14 @@ public class ClassMockMethodParamOfTypeTest {
         //System.out.print(ml.hasMetadata(c1.getDeclaredMethod("setId"), annotation));
 //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation0000000005");
         mockC2.method("setId").parameter("id",String.class);
         final Class<?> c2 = mockC2.build();
         assertFalse(ml.hasMetadata(c2.getDeclaredMethod("setId",String.class), annotation));
        // System.out.print(ml.hasMetadata(c2.getDeclaredMethod("setId",String.class), annotation));
 //Creating the class with prefix and without annotation
 
-        final IClassWriter mockC3 = ClassMock.of("MethodHasParameterOfTypeWithoutAnnotation");
+        final IClassWriter mockC3 = ClassMock.of("MethodHasParameterOfTypeWithoutAnnotation000000004");
         IMethodWriter m1 = mockC3.method("setId");
         m1.parameter("id", ArrayList.class);
         m1.parameter("nome",String.class);

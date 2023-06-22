@@ -51,9 +51,7 @@ public class AnnotatedElementUtils {
 	}
 	//missing -> when the annotation has attributes that need to get values
 	public static Annotation instantiateAnnotation(Class<? extends Annotation> annotClazz, AnnotatedElement element) {
-		System.out.println("element class in class mock = "+element.getClass());
 		IClassWriter mock = ClassMock.of("MockName"+System.currentTimeMillis());
-		System.out.println("annotation class = "+annotClazz);
 		IAnnotationPropertyWriter ianot = mock.annotation(annotClazz);
 		for(Method m : annotClazz.getMethods()){
 			for(Annotation annot : m.getAnnotations()){

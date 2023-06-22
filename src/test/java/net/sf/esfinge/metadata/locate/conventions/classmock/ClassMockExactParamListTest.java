@@ -35,7 +35,7 @@ public class ClassMockExactParamListTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation09");
         IMethodWriter m0 = mockC1.method("setId");
         m0.parameter("id",Integer.class);
         mockC1.annotation(annotation);
@@ -49,7 +49,7 @@ public class ClassMockExactParamListTest {
 
 //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation00");
         mockC2.method("setName").parameter("name",String.class);
         final Class<?> c2 = mockC2.build();
         assertFalse(ml.hasMetadata(c2.getDeclaredMethod("setName",String.class), annotation));

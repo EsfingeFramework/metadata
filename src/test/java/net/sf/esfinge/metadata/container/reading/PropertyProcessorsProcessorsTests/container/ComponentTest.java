@@ -2,6 +2,7 @@ package net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTe
 
 import net.sf.esfinge.metadata.AnnotationReader;
 import net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests.container.reading.annotations.DeepTest;
+import net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests.container.reading.annotations.IgnoreTest;
 import net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests.container.testClasses.ClassWithAnnotations;
 import net.sf.esfinge.metadata.container.reading.PropertyProcessorsProcessorsTests.container.testClasses.ClassWithConvention;
 import net.sf.esfinge.metadata.factory.LocatorsFactory;
@@ -11,23 +12,23 @@ import org.junit.Test;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
+@IgnoreTest
 public class ComponentTest {
 
     @Test
     public void ProccessWithAnnotationsTest() throws Exception {
-        AnnotationReader leitura = new AnnotationReader();
+        AnnotationReader leitura23 = new AnnotationReader();
 
-        ComparisonDescriptor descr = leitura.readingAnnotationsTo(ClassWithAnnotations.class,ComparisonDescriptor.class);
+        ComparisonDescriptor descr23 = leitura23.readingAnnotationsTo(ClassWithAnnotations.class,ComparisonDescriptor.class);
         //System.out.println(descr.getPropertyDescriptor("num").getProcessor());
     }
 
 
     @Test
     public void ProccessWithConventionsTest() throws Exception {
-        AnnotationReader leitura = new AnnotationReader();
+        AnnotationReader leitura1 = new AnnotationReader();
 
-        ComparisonDescriptor descr = leitura.readingAnnotationsTo(ClassWithConvention.class,ComparisonDescriptor.class);
-        System.out.println(descr.getPropertyDescriptor("num").getProcessor());
+        ComparisonDescriptor descr1 = leitura1.readingAnnotationsTo(ClassWithConvention.class,ComparisonDescriptor.class);
 
         MetadataLocator ml = LocatorsFactory.createLocatorsChain();
         //System.out.println(ml.findAllMetadata(ClassWithConvention.class.getMethod("getNum")));

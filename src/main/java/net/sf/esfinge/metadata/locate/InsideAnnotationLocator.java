@@ -40,7 +40,6 @@ public class InsideAnnotationLocator extends MetadataLocator {
 			for(Annotation a : element.getAnnotations()) {
 
 				if(!a.annotationType().getPackage().getName().equals("java.lang.annotation")){
-					//System.out.println(a.annotationType());
 					annotation =  findMetadata(a.annotationType(),annotationClass);
 					if(annotation!=null)
 						return annotation;

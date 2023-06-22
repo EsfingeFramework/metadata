@@ -82,6 +82,7 @@ public class InheritanceLocator extends MetadataLocator {
 	@Override
 	public Annotation findMetadata(AnnotatedElement element, Class<? extends Annotation> annotationClass) throws MetadataLocationException {
 		Annotation nextLocatorFound = getNextLocator().findMetadata(element, annotationClass);
+
 		if(nextLocatorFound==null && annotationClass.isAnnotationPresent(SearchOnAbstractions.class)){
 			if(element instanceof Class){
 				Class clazz = (Class) element;
@@ -217,5 +218,7 @@ public class InheritanceLocator extends MetadataLocator {
 
 		return nextLocatorFound;
 	}
-
+	public void setNextLocator(RegularLocator rl){
+		this.nextLocator =rl;
+	}
 }

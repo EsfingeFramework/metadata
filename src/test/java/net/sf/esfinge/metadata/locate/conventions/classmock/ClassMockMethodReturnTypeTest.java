@@ -32,7 +32,7 @@ public class ClassMockMethodReturnTypeTest {
 
 //Creating the class with annotation
 
-        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation");
+        final IClassWriter mockC1 = ClassMock.of("ClassWithAnnotation000258");
         mockC1.method("setId").returnType(List.class).annotation(annotation);
         final Class<?> c1 = mockC1.build();
         //System.out.println(ml.hasMetadata(c1.getMethod("id"), annotation));
@@ -42,7 +42,7 @@ public class ClassMockMethodReturnTypeTest {
 
 //Creating the class without prefix and without annotation
 
-        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation");
+        final IClassWriter mockC2 = ClassMock.of("ClassWithoutAnnotation0014789");
         final Class<?> c2 = mockC2.build();
         //System.out.println(ml.hasMetadata(c2, annotation));
         assertFalse(ml.hasMetadata(c2, annotation));

@@ -15,6 +15,7 @@ import net.sf.esfinge.metadata.annotation.container.PropertyContainsAnnotation;
 import net.sf.esfinge.metadata.annotation.container.PropertyProcessors;
 import net.sf.esfinge.metadata.locate.RegularLocator;
 import org.apache.commons.beanutils.BeanUtils;
+
 import org.reflections.Reflections;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -102,8 +103,6 @@ public class ConventionsLocator extends MetadataLocator {
 		List<Annotation> annotations = new ArrayList<>();
 		annotations = nextLocator.findAllMetadata(element);
 		String packageRoot = AnnotatedElementUtils.getClassName(element).split("\\.")[0];
-		System.out.println("class name = "+AnnotatedElementUtils.getClassName(element));
-		System.out.println("element name = "+AnnotatedElementUtils.getName(element));
 		List<Annotation> convAnnotations = new ArrayList<>(annotations);
 		Set<Class<?>> conventions =
 				new Reflections("net.sf.esfinge.metadata.locate.conventions.annotations").getTypesAnnotatedWith(Verifier.class, true);
@@ -120,7 +119,6 @@ public class ConventionsLocator extends MetadataLocator {
 				//System.out.println(ac.getSimpleName()+" "+c.getSimpleName());
 				if(hasMetadata(element,annotatedac) && isConventionsPresent(element,annotatedac)){
 					Annotation an =findMetadata(element,annotatedac);
-					System.out.println("found convention for annotation = "+ an.annotationType().getSimpleName());
 					convAnnotations.add(an);
 				}
 			}
@@ -135,7 +133,7 @@ public class ConventionsLocator extends MetadataLocator {
 			throws MetadataLocationException {
 
 		if (!nextLocator.hasMetadata(element, annotationClass) && isConventionsPresent(element, annotationClass)) {
-			System.out.println("element class = "+element.getClass());
+			//System.out.println("element class = "+element.getClass());
 			Annotation an = AnnotatedElementUtils.instantiateAnnotation(annotationClass,element);
 			return an;
 		}
